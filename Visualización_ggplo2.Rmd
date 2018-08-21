@@ -1,0 +1,6 @@
+#**Visualización con ggplot2**
+
+###*Introducción* 
+
+En ésta lescción te enseñaremos a visualizar datos usando ggplot2. ¿Qué es ggplot2?, ggplot2 es un sistema que implementa una gramática gráfica, esto lo hace ser un sistema coherente para describir y construir graficas  con mayor facilidad.
+
