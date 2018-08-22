@@ -128,7 +128,32 @@ $(document).ready(function () {
 <h1><strong>Visualización con ggplot2</strong></h1>
 <div id="introduccion" class="section level3">
 <h3><em>Introducción</em></h3>
-<p>En ésta lescción te enseñaremos a visualizar datos usando ggplot2. ¿Qué es ggplot2?, ggplot2 es un sistema que implementa una gramática gráfica, esto lo hace ser un sistema coherente para describir y construir graficas con mayor facilidad.</p>
+<p>En ésta lección te enseñaremos a visualizar datos usando ggplot2. ¿Qué es ggplot2?, ggplot2 es un sistema que implementa una gramática gráfica, esto lo hace ser un sistema coherente para describir y construir graficas con mayor facilidad.</p>
+<p>Para iniciar el curso, requerimos el uso de la libreria tidyverse, la cual se puede inicializar con el siguiente codigo: &gt;library(tidyverse)</p>
+<p>Iniciaremos por plantear una cuestión: ¿los autos con grandes engranes usan mas combustible que autos con engranes pequeños?</p>
+<p>Para resolver esta pregunta, iniciaremos por imprimir los contenidos de un “data frame” correspondiente a las observaciones recolectadas por la agencia de protección del medio ambiente de U.S.A. en 38 modelos de autos.</p>
+<blockquote>
+<p>Data frame: Colección rectangular de variables en las columnas, y observaciones en los campos.</p>
+</blockquote>
+<p>Imprime el data frame ingresando el comando: &gt;mpg</p>
+<p>Para obtener una descripción sobre los datos, variables, e información relevante para la interpretación correcta del data frame puedes usar ?mpg</p>
+<p>Usar un ? antes de cualquier función o variable te permite obtener información importante para su comprensión, implementación o interpretación.</p>
+<p>Ahora bien, si se quiere visualizar la información en un gráfico se puede usar la siguiente estructura básica de codigo:</p>
+<blockquote>
+<p>ggplot(data = <DATOS>) + <GEOM_FUNCIÓN>(mapping = aes(<MAPPEADOS>))</p>
+</blockquote>
+<p>La cual, al reemplazar la información en mayusculas de la siguiente forma:</p>
+<blockquote>
+<p>ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))</p>
+</blockquote>
+<p>Donde: * ggplot: función que inicializa el conjunto de datos a usar * mpg: conjunto de datos a usar, en este caso un data frame * geom_point: función que genera una sección de un producto cartesiano por puntos * aes: contracción del termino aesthetics, los cuales son indicaciónes de gráficos insertados en el producto cartesiano, donde se definen variables y como se desea iterpretar visualmente, por ejemplo <x = displ, y="hwy">, donde se indica que dentro de los vectores x y y se insertaran los valores de las variables displ y hwy correspondientes a mpg</p>
+</div>
+<div id="mapeos-esteticos" class="section level3">
+<h3><em>Mapeos Estéticos</em></h3>
+<p>Al diagrama de dispersión binomial generado por el comando anterior, puede agregarle una tercera variable, como clase, asignándolo a una estética.</p>
+<blockquote>
+<p><em>Estética: propiedad visual de los objetos en la gráfica</em></p>
+</blockquote>
 </div>
 </div>
 

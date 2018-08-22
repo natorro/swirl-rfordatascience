@@ -33,3 +33,63 @@ Donde:
 * mpg: conjunto de datos a usar, en este caso un data frame
 * geom_point: función que genera una sección de un producto cartesiano por puntos
 * aes: contracción del termino aesthetics, los cuales son indicaciónes de gráficos insertados en el producto cartesiano, donde se definen variables y como se desea iterpretar visualmente, por ejemplo <x = displ, y = hwy>, donde se indica que dentro de los vectores x y y se insertaran los valores de las variables displ y hwy correspondientes a mpg
+
+
+###*Mapeos Estéticos*
+
+Al diagrama de dispersión binomial generado por el comando anterior, puede agregarle una tercera variable, como clase, asignándolo a una estética.
+
+>*Estética: propiedad visual de los objetos en la gráfica*
+
+La estetica incluye cosas como el tamaño, la forma o el color de tus datos en la gráfica; para hacer referencia a la estetica propiamente dicha utilizaremos la referencia nivel.
+
+Para poder realizar un mapeo mucho más sencillo de la clase de tus datos, asignaremos la variable  color al código anterior, quedando como se muestra a continuación:
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+
+Para asignar una estética a una variable, asocie el nombre de la estetica a la variable dentro del siguiente comando:
+
+```{r}
+aes().ggplot2
+```
+
+Automaticamente asignara un unico nivel a la estética(sólo en ésta parte un unico color) para cada valor único de la variable, un proceso conocido como:
+
+```{r}
+scaling.ggplot2
+```
+
+Este proceso tambien te agregará una leyenda que explica que niveles coresponden a cada valor.
+
+También se puede hacer un mapeo por el tamaño de la clase, agregando la siguiente variable:
+
+```{r}
+size = class
+```
+
+En este caso,el tamaño exacto de cada punto revelará su clase, quedando el código de la siguiente manera:
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
+```
+
+__*Este comando es sólo para mapear un desorden variable, si se mapea una estética en orden, nos lanzará una advertencia*__
+
+Para mapear la estética ordenada de los datos que tenemos en la gráfica, podemos hacerlo mapeando la clase de la estetica alpha, que controla la transparencia de los puntos o la forma de los puntos.
+
+Los siguientes códigos son un ejemplo para mapear la estética alpha, tanto en transparencia como en forma.
+
+__ Estética alpha donde se controla la transparencia de los puntos__
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+```
+
+__Estética alpha donde se controla la forma de los puntos__
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+```
+
