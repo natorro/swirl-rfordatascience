@@ -25,9 +25,9 @@ Ahora bien, si se quiere visualizar la información en un gráfico se puede usar
 >ggplot(data = <DATOS>) + <GEOM_FUNCIÓN>(mapping = aes(<MAPPEADOS>))
 
 La cual, al reemplazar la información en mayusculas de la siguiente forma: 
-
->ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
-
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+```
 Donde: 
 * ggplot: función que inicializa el conjunto de datos a usar
 * mpg: conjunto de datos a usar, en este caso un data frame
@@ -42,6 +42,8 @@ Al diagrama de dispersión binomial generado por el comando anterior, puede agre
 >*Estética: propiedad visual de los objetos en la gráfica*
 
 La estetica incluye cosas como el tamaño, la forma o el color de tus datos en la gráfica; para hacer referencia a la estetica propiamente dicha utilizaremos la referencia nivel.
+
+La función junta cada uno de los mapeos estéticos usados por capas y los pasa a el argumento de mapeo de capas. Incluso las variables x y y son esteticas al ser localizaciones que se pueden mapear como propiedades visuales sobre los datos.
 
 Para poder realizar un mapeo mucho más sencillo de la clase de tus datos, asignaremos la variable  color al código anterior, quedando como se muestra a continuación:
 
@@ -92,4 +94,18 @@ __Estética alpha donde se controla la forma de los puntos__
 ```{r}
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 ```
+alpha solo usa 6 figuras en una sola implementación, y por default los grupos adicionales no seran graficados cuando se usa.
+
+Las estéticas tambien se pueden aplicar a todo el conjunto, sin que contengan información sobre la variable, y solo cambien la apariencia del gráfico, definindolas fuera de la funcion aes():
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+```
+
+Aplica para:
+*Cambios de color
+*Tamaño de un punto en mm
+*la figura de un punto
+
+Una vez que mapeas la estética, ggplot2 selecciona una escala razonable para mapearlo, y construye las leyendas que explican el mapeado entre valores y niveles. Para x y y crea un axis que marca y etiqueta.
 
