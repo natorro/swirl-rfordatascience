@@ -108,4 +108,4 @@ Aplica para:
 *la figura de un punto
 
 Una vez que mapeas la estética, ggplot2 selecciona una escala razonable para mapearlo, y construye las leyendas que explican el mapeado entre valores y niveles. Para x y y crea un axis que marca y etiqueta.
-
+wuuuu
