@@ -1,0 +1,135 @@
+---
+title: "Workflow Basics"
+output: html_document
+---
+
+Antes de seguir con el curso, debemos tener una base solida en el lenguaje R.
+
+####R como calculadora
+```{r , echo = TRUE}
+1 + 10
+1 - 10
+(1 + 9) * (1 - 10)
+10 / 10
+```
+
+####Funciones Matematicas
+```{r , echo=TRUE}
+sin(0)
+cos(0)
+log(1)
+exp(1)
+log(exp(1))
+```
+
+####Asignacion de valores a objetos
+```{r, echo=TRUE}
+x <- 10
+1 + x
+y <- 1 + x
+y
+```
+
+Buenas practicas, asignar valores a objetos.
+```{r, echo=TRUE}
+variable_descripcion1 <- 10 * 10
+variable.descripcion1 <- 10 * 10
+```
+
+Para imprimir los valores solo base escribir el nombre de nuestras variables
+```{r, echo=TRUE}
+variable_descripcion1
+variable.descripcion1
+```
+
+En caso de no recordar que objetos tenemos creados, funcion util para conocer nuestros objetos.
+```{r, echo=TRUE}
+ls()
+```
+
+####Funciones de llamada
+
+R tiene una gran coleccion de funciones listas para usar, como analistas de datos es nuestro deber conocer y entender un gran numero de funciones utiles.
+
+Antes de empezar a trabajar con funciones es importante conocer su estructura, el siguiente codigo ejemplifica como se definiria la suma en R
+
+```{r echo=TRUE}
+suma <- function(val1,val2) {
+  val1 + val2
+}
+```
+
+Uso de nuestra funcion suma
+```{r echo=TRUE}
+suma(1,10)
+```
+
+
+Definicion de una operacion inventada
+```{r echo=TRUE}
+operacion <- function(val1, val2){
+  (val1/val2)*10
+}
+```
+
+Uso de nuestra funcion operacion
+```{r echo=TRUE}
+operacion(10,100)
+```
+
+No ahi que abrumarnos con esto, no definiremos cada funcion con la trabajaremos.
+R ya tiene sus propias Funciones que nos facilitaran el trabajo.
+
+```{r echo=TRUE}
+sum(1,10)
+```
+
+Secuencia de numeros
+```{r echo=TRUE}
+secuencia_1 <- seq(1,10)
+secuencia_1
+```
+Las funciones tambien contienen parametros, los cuales enriquecen su uso. 
+En este caso el parametreo length.out = 5, solo colocara 5 elementos del 1 al 10 con las misma longitud.
+```{r echo=TRUE}
+secuencia_2 <- seq(1,10, length.out = 5)
+secuencia_2
+```
+Otro truco para escribir codigo es;
+```{r echo=TRUE}
+(secuencia_2 <- seq(1,10, length.out = 5))
+```
+
+#Practica
+
+
+```{r echo=TRUE}
+```
+
+```{r echo=TRUE}
+```
+```{r echo=TRUE}
+```
+
+```{r echo=TRUE}
+```
+
+```{r echo=TRUE}
+```
+
+```{r echo=TRUE}
+```
+
+```{r echo=TRUE}
+```
+
+```{r echo=TRUE}
+```
+```{r echo=TRUE}
+```
+
+```{r echo=TRUE}
+```
+
+
+
