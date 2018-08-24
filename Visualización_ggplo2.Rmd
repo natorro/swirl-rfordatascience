@@ -51,6 +51,7 @@ La función junta cada uno de los mapeos estéticos usados por capas y los pasa 
 Para poder realizar un mapeo mucho más sencillo de la clase de tus datos, asignaremos la variable  color al código anterior, quedando como se muestra a continuación:
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
@@ -125,9 +126,9 @@ Para analizar detalladamente las variables categoricas, es util dividir su gráf
 
 Para facetear su gráfica con una sola variable, esto se logra con el comando:
 
-```{r}
-facet_wrap()
-```
+
+>facet_wrap()
+
 
 el argumento dentro de __facet_wrap__ deberia ser una formula que crees  con "~" seguido de un nombre de variable.
 
@@ -136,20 +137,20 @@ __*Aquí "formula" es el nombre de la estructura de datos en R,no es un sinonimo
 La variable que le pasas a __facet_wrap__ debe ser discreto:
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
 ```
 
 Ahora para facetear tu gráfica pero con dos variables, lo único que tenemos que hacer es agregar:
 
-```{r}
-facet_grid()
-```
+>facet_grid()
 
 El primer argumento de __facet_grid__ debe ser una formula, pero a diferencia de la enterior, ésta contendrá dos nombres de variables separados por "~".
 
 Ejemplo:
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(drv ~ cyl)
 ```
 
@@ -163,10 +164,12 @@ Si no quiere facetear en filas y columnas, use a **"."** En lugar de un nombre d
 En qué se parecen las dos gráficas que acontinuación se precentan:
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
 ```
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
 ```
 
