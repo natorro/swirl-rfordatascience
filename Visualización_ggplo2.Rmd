@@ -151,7 +151,15 @@ Si no quiere facetear en filas y columnas, use a **"."** En lugar de un nombre d
 
 ###*Objetos Geométricos*
 
-imagenes de graficas
+En qué se parecen las dos gráficas que acontinuación se precentan:
+
+```{r}
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+```
+
+```{r}
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
+```
 
 
 Ambas gráficas contienen a las mismas variables *"xy"* y la misma variable *"y"*, y ambas gráficas describen los mismos datos, pero visualmente las gráficas no representan los mismos datos. En la sintaxis de ggplot2, se dice que usan diferentes geoms.
@@ -159,4 +167,6 @@ Ambas gráficas contienen a las mismas variables *"xy"* y la misma variable *"y"
 > geom: Es un objeto geométrico que una gráficautiliza para representar datos.
 
 Las personas clasifican a las gráficas por el tipo de geom que utiliza, por ejemplo, las gráficas de barras(o histogramas), usan un geom de barra, las gráficas de linea, utilizan un geom de linea, etc. 
+
+
 
