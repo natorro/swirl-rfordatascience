@@ -113,6 +113,70 @@ Aplica para:
 
 Una vez que mapeas la estética, ggplot2 selecciona una escala razonable para mapearlo, y construye las leyendas que explican el mapeado entre valores y niveles. Para x y y crea un axis que marca y etiqueta.
 
+<<<<<<< HEAD
 ###*Facetas*
 
 >Facetas: 
+=======
+
+##*Facetas*
+
+Para analizar detalladamente las variables categoricas, es util dividir su gráfica en facetas, es decir, dividir la gráfica en subgráficas que muestran un subconjunto de datos.
+
+Para facetear su gráfica con una sola variable, esto se logra con el comando:
+
+```{r}
+facet_wrap()
+```
+
+el argumento dentro de __facet_wrap__ deberia ser una formula que crees  con "~" seguido de un nombre de variable.
+
+__*Aquí "formula" es el nombre de la estructura de datos en R,no es un sinonimo de ecuación)__
+
+La variable que le pasas a __facet_wrap__ debe ser discreto:
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
+```
+
+Ahora para facetear tu gráfica pero con dos variables, lo único que tenemos que hacer es agregar:
+
+```{r}
+facet_grid()
+```
+
+El primer argumento de __facet_grid__ debe ser una formula, pero a diferencia de la enterior, ésta contendrá dos nombres de variables separados por "~".
+
+Ejemplo:
+
+```{r}
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(drv ~ cyl)
+```
+
+Si no quiere facetear en filas y columnas, use a **"."** En lugar de un nombre de variable, por ejemplo:
+
+> + facet_grid(.~cyl)
+
+
+###*Objetos Geométricos*
+
+En qué se parecen las dos gráficas que acontinuación se precentan:
+
+```{r}
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+```
+
+```{r}
+ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
+```
+
+
+Ambas gráficas contienen a las mismas variables *"xy"* y la misma variable *"y"*, y ambas gráficas describen los mismos datos, pero visualmente las gráficas no representan los mismos datos. En la sintaxis de ggplot2, se dice que usan diferentes geoms.
+
+> geom: Es un objeto geométrico que una gráficautiliza para representar datos.
+
+Las personas clasifican a las gráficas por el tipo de geom que utiliza, por ejemplo, las gráficas de barras(o histogramas), usan un geom de barra, las gráficas de linea, utilizan un geom de linea, etc. 
+
+
+
+>>>>>>> 81a9828034ebf701dda79c8f10677f5de201e120
