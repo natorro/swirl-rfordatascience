@@ -25,9 +25,12 @@ Ahora bien, si se quiere visualizar la información en un gráfico se puede usar
 >ggplot(data = <DATOS>) + <GEOM_FUNCIÓN>(mapping = aes(<MAPPEADOS>))
 
 La cual, al reemplazar la información en mayusculas de la siguiente forma: 
+
 ```{r}
+library(ggplot2)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
+
 Donde: 
 * ggplot: función que inicializa el conjunto de datos a usar
 * mpg: conjunto de datos a usar, en este caso un data frame
@@ -53,27 +56,25 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class)
 
 Para asignar una estética a una variable, asocie el nombre de la estetica a la variable dentro del siguiente comando:
 
-```{r}
-aes().ggplot2
-```
+
+>aes().ggplot2
+
 
 Automaticamente asignara un unico nivel a la estética(sólo en ésta parte un unico color) para cada valor único de la variable, un proceso conocido como:
 
-```{r}
-scaling.ggplot2
-```
+>scaling.ggplot2
 
 Este proceso tambien te agregará una leyenda que explica que niveles coresponden a cada valor.
 
 También se puede hacer un mapeo por el tamaño de la clase, agregando la siguiente variable:
 
-```{r}
-size = class
-```
+>size = class
+
 
 En este caso,el tamaño exacto de cada punto revelará su clase, quedando el código de la siguiente manera:
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
 ```
 
@@ -86,12 +87,14 @@ Los siguientes códigos son un ejemplo para mapear la estética alpha, tanto en 
 __ Estética alpha donde se controla la transparencia de los puntos__
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
 ```
 
 __Estética alpha donde se controla la forma de los puntos__
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 ```
 alpha solo usa 6 figuras en una sola implementación, y por default los grupos adicionales no seran graficados cuando se usa.
@@ -99,6 +102,7 @@ alpha solo usa 6 figuras en una sola implementación, y por default los grupos a
 Las estéticas tambien se pueden aplicar a todo el conjunto, sin que contengan información sobre la variable, y solo cambien la apariencia del gráfico, definindolas fuera de la funcion aes():
 
 ```{r}
+library(tidyverse)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 ```
 
@@ -108,4 +112,7 @@ Aplica para:
 *la figura de un punto
 
 Una vez que mapeas la estética, ggplot2 selecciona una escala razonable para mapearlo, y construye las leyendas que explican el mapeado entre valores y niveles. Para x y y crea un axis que marca y etiqueta.
-wuuuu
+
+###*Facetas*
+
+>Facetas: 
