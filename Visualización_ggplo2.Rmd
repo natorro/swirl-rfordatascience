@@ -176,10 +176,101 @@ ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
 
 Ambas gráficas contienen a las mismas variables *"xy"* y la misma variable *"y"*, y ambas gráficas describen los mismos datos, pero visualmente las gráficas no representan los mismos datos. En la sintaxis de ggplot2, se dice que usan diferentes geoms.
 
-> geom: Es un objeto geométrico que una gráficautiliza para representar datos.
+> geom: Es un objeto geométrico que una gráfica utiliza para representar datos.
 
 Las personas clasifican a las gráficas por el tipo de geom que utiliza, por ejemplo, las gráficas de barras(o histogramas), usan un geom de barra, las gráficas de linea, utilizan un geom de linea, etc. 
 
+Como se puede visualizar en las gráficas anteriores, la función geom in ggplot2 toma un argumento de mapeo. Sin envargo, no siempre se trabaja la estetica con geom. Puedes transformar la forma de un punto, pero no puedes transformar la forma de una linea, lo que puedes hacer en este caso es establecer el tipo de una linea. La funcion geom_smooth() se encarga de dibujar una linea diferente, para cada valor único de la variable que asigne al tipo de linea.
+
+En la gráfica anterior, la función geom_smooth separa los autos en tres lineas basadas en su valor de dvr, que describe la transmision de un automovil.
+
+Donde:
+
+*Una linea describe todos los puntos con un valor de 4.
+*Otra describe todos los puntos con un valor de f.
+*La última linea describe todos los pntos con un valor r.
+
+De los tres valores, 4 hace referencia a la tracción de las cuatro ruedas, f para la tracción frontal y r para la tracción tracera.
+
+Puedes visualizar multiples geoms en una gráfica, agragando multiples funciones a ggplot().
+
+Ejemplo:
+
+```{r}
+library(tidyverse)
+ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + geom_smooth(mapping = aes(x = displ, y = hwy))
+```
+
+Sin emvargo, el codigo anterior se nos duplica, para evitar ésta duplicación, pasamos un conjunto de asignaciones a ggplot(). ggplot2 tratará estos mapeos como mapeos globales que se aplican a cada geom en el gráfico.
+
+Utilizará estas asignaciones para extender o sobrescribe las acciones globales solo para esa capa. Esto lo hace posible para mostrar diferenes estéticas en diferentes capas.
+
+Ejemplo:
 
 
->>>>>>> 81a9828034ebf701dda79c8f10677f5de201e120
+```{r}
+library(tidyverse)
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth()
+```
+
+Puede usar la misma idea para especificar datos diferentes para cada capa.
+Aquí, nuestra línea suave muestra solo un subconjunto del conjunto de datos de mpg,los 
+vehículos subcompactos.
+
+```{r}
+library(tidyverse)
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth(data = filter(mpg, class == "subcompact"),se = FALSE)
+```
+
+El argumento de datos locales en geom_smooth () anula el argumento de datos globales en ggplot () solo para esa capa.
+
+
+
+
+###*Transformación Estática*
+
+Acontinuación, se verá como hacer una gráfica de barras y que información nos aportan.
+
+Para realizar una gráfica de barras en ggplot2, usaremos el siguiente código:
+
+```{r}
+library(tidyverse)
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut))
+```
+
+La gráfica anterior, muestra la cantidad de diamantes por calidad de corte.
+
+Recordemos que:
+
+• Las gráficas de barras, los histogramas y los polígonos de frecuencia almacenan sus datos y luego grafica el numero de repeticiones de cada dato.
+
+• Los suavizadores ajustan un modelo a sus datos y luego grafican predicciones
+del modelo.
+
+
+El algoritmo utilizado para calcular nuevos valores para un gráfico se llama
+stat.
+
+Generalmente puedes usar geoms y sets e intercambiarlas,por ejemplo, puedes recrear una gráfica anterior usando *stat_count()* en vez de geom_bar().
+
+Ejemplo:
+
+Supongamos que queremos recrear la sigiente gráfica:
+
+```{r}
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut))
+```
+
+para poderla recrear usando set, cambiamos geom_bar() por set_count():
+
+```{r}
+ggplot(data = diamonds) + stat_count(mapping = aes(x = cut))
+```
+
+Esto funciona porque cada geom tiene una estadística predeterminada, y cada estadística tiene un geom predeterminado. Esto significa que normalmente puede usar geoms
+sin preocuparse por la transformación estadística subyacente.
+
+Hay tres razones por las que podría necesitar usar una estadística explícitamente:
+
