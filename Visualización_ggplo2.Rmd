@@ -274,3 +274,34 @@ sin preocuparse por la transformación estadística subyacente.
 
 Hay tres razones por las que podría necesitar usar una estadística explícitamente:
 
+La primera es para cambiar la estadistica predeterminada, en el siguiente código se cambia *geom_bar()* de conteo a la identidad, esto nos pemite modificar la altura de las barras de una altura ya asignada por la variable *y*.
+
+Ahora veamos como modificar la altura de cada varra por cada valor en *y*:
+
+*Primero tenemos que definir la altura de las barras, esto lo logramos con la tabla tribble asignando a la variable "a" la barra y a la variable "b" el tamaño de la barra.
+
+Ejemplo:
+
+```{r}
+demo <- tribble(
+~a,      ~b,
+"bar_1", 20,
+"bar_2", 30,
+"bar_3", 40
+)
+```
+
+Despues solo la llamamos en la función ggplot:
+```{r}
+ggplot(data = demo) + geom_bar(mapping = aes(x = a, y = b), stat = "identity")
+```
+
+
+La segunda es si quisieramos modificar el mapeo por estáticas predeterminado (una de conteo por ejemplo) a una gráfica de barras de proporción:
+
+```{r}
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
+```
+
+
+La tercera  la utilizaremos para resaltar las estádisticas de formación de tú código:
