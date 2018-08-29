@@ -1,0 +1,63 @@
+#**Transformación de datos con dplyr**
+
+
+###*Introducción*
+
+En este capituo nos centraremos en la funcionalidad del paquete dplyr, con esta herramienta se podrá generar nuevas variables o resumenes, renombrar las variables o reordenar las observaciones, entre otras muchas cosas.
+
+Estaremos utilizando las librerias:
+
+>library(tidyverse)
+>library(nycflights13)
+
+####*nycflights13*
+
+Esta libreria nos ayudará a explorar los verbos básicos de manipulació de datos de dplyr, este marco de datos contiene los vuelos que partieron desde New York en 2013
+
+*Para visualizar los datos en la consola de R, escriba "flights"*
+
+Como se puede observar que el marco de datos se imprime un poco diferente, ya que otros marcos solo muestran los datos que caben en pantalla. Se imprime de ésta manera porque es un *tibble*.
+
+>Tibble: Es un marco de datos, pero ligeramente ajustado para que mejore su funcionamiento en el tidyvers.
+
+Las variables que se utilizarán en este capitulo son:
+
+• int
+• dbl
+• chr
+• dttm
+
+Otras variables que apareceran en el curso, pero que no se les tratara de una forma especifica como los anteriores son:
+
+• lgl   -> Significa lógico, vectores que solo contienen TRUE o FALSE.
+• fctr  -> Significa factor,sirve para representar. 
+• date  -> significa datos.
+
+
+###*Conceptos básicos de dplyr*
+
+En este capítulo aprenderá cinco funciones clave, que le permiten resolver la gran mayoría de su manipulación de datos.
+
+*Escoge las observaciones por sus valores _filter()_
+
+*Reordenar las filas _arrange()_
+
+*Elegir las variables por sus nombres _select()_
+
+*Crear nuevas variables con funciones de variables ya existentes _mutate()_
+
+*Colapsar algunos valores hasta tener un resumen _summarize()_
+
+Todos estos se pueden usar junto con *group_by()*, que cambia el alcance de cada función de operar en todo el conjunto de datos a operar grupo por grupo.
+
+Todos los verbos funcionan de manera similar:
+
+1. El primer argumento es un marco de datos.
+
+2. Los argumentos posteriores describen qué hacer con el marco de datos, usando los nombres de variables (sin comillas).
+
+3. El resultado es un nuevo marco de datos.
+
+Este conjunto de funciones las podemos concatenar para la resolución de problemas complejos. Esto lo estaremos tratando más adelante.
+
+###*Filtrar filas con filter()*

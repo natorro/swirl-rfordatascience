@@ -114,11 +114,7 @@ Aplica para:
 
 Una vez que mapeas la estética, ggplot2 selecciona una escala razonable para mapearlo, y construye las leyendas que explican el mapeado entre valores y niveles. Para x y y crea un axis que marca y etiqueta.
 
-<<<<<<< HEAD
-###*Facetas*
 
->Facetas: 
-=======
 
 ##*Facetas*
 
@@ -314,6 +310,8 @@ La tercera  la utilizaremos para resaltar las estádisticas de formación de tú
 library(tidyverse)
 ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
 ```
+
+
 ###*Ajustes de posición*
 Se puede colorear una gráfica de barras usando tanto la estetica color o fill:
 
@@ -367,3 +365,51 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = "j
 ```
 
 Añadiendo aleatoriedad hace que tus gráficas sean mas reveladores a una escala mas robusta. 
+
+###*Sistemas Coordinados*
+
+Los sistemas coordinados probablemente sean la parte más complicada de ggplot2. El sistema coordinado carteciano esta por determinado, donde la posición de x y de y actuan de manera independiente que buscan la localización de cada punto. Son un número de otros sistemas coordinados ocacionalmente útil.
+
+>**coord_flip() : cambia los ejes x e y. Esto es usado si quieres un diagrama de cajas horizontal.** 
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + geom_boxplot()
+```
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + geom_boxplot() + coord_flip()
+```
+
+
+>**coord_quickmap() : establece la relación de aspecto correctamente para los mapas.** 
+
+**_Es importante si trazas datos espaciales con ggplot2_**
+
+Ejemplo:
+
+```{r}
+nz <- map_data("nz")
+ggplot(nz, aes(long, lat, group = group)) + geom_polygon(fill = "white", color ="black")
+```
+
+```{r}
+ggplot(nz, aes(long, lat, group = group)) + geom_polygon(fill = "white", color ="black") + coord_quickmap()
+```
+
+>**coord_polar : usado para las coordenadas polares.**
+
+Las coordenadas polares revelan una interconexión sobre una gráfica de barras y una gráfica coxcomb.
+
+```{r}
+library(tidyverse)
+bar <- ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = cut),show.legend = FALSE, width = 1) + theme(aspect.ratio = 1) + labs(x = NULL, y = NULL)
+```
+
+```{r}
+bar + coord_flip()
+bar + coord_polar()
+```
+
+
+
+
