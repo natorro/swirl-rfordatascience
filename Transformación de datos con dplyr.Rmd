@@ -61,3 +61,69 @@ Todos los verbos funcionan de manera similar:
 Este conjunto de funciones las podemos concatenar para la resolución de problemas complejos. Esto lo estaremos tratando más adelante.
 
 ###*Filtrar filas con filter()*
+
+La función filter() nos ayuda a encontrar un grupo de datos en especifico que quisieramos analizar, en la primer argumento tenemos que poner el nombre del conjunto de datos que queremos desplegar, el segundo y los subsecuentes son las expreciones que filtran el marco de datos, por ejemplo:
+
+```{r}
+library(nycflights13)
+library(tidyverse)
+filter(flights, month == 1, day == 1)
+```
+
+Como se puede apreciar esta función despliega un nuevo marco de un conjunto de datos con las expreciones que fueron especificadas en la función filter(), para guardar este nuevo conjunto de datos lo tenemos que hacer mediante una variable.
+
+```{r}
+jan1 <- filter(flights, month == 1, day == 1)
+```
+
+Como sabemos R guarda los datos en una variable o los imprime, en caso de hacer ambas cosas, solo lo tenemos que cerrar entre parentesis como se muestra a continuación: 
+
+```{r}
+(dec25 <- filter(flights, month == 12, day == 25))
+```
+
+**NOTA: para poder usar correctamente la función filtro debemos utilizar correctamente los operadores de comparación(>, >=, <, <=, !=, ==) y los operadores lógicos: or "|", and "&", not "!"**
+
+Tambien podemos simlificar subconjuntos de datos complicados recordando la ley de Morgan:
+
+>!(x & y) 
+
+Tambien se puede representar de las siguienetes maneras:
+>!x | !y
+>!(x | y)
+>!x & !y
+
+Ejemplo:
+
+```{r}
+filter(flights, !(arr_delay > 120 | dep_delay > 120))
+```
+
+```{r}
+filter(flights, arr_delay <= 120, dep_delay <= 120)
+```
+
+###*Valores perdidos*
+
+Una caracteristica importante de R que puede dificultar la comparación es la falta de valores(o valores perdidos "NA"), ya que cualquier operacion con un valor desconocido también será desconocido.
+
+Para poder determinar si hay vcalores perdidos o desconocidos, usamos:
+
+>is.na()
+
+
+filter() solo incluye filas donde la condición es TRUE; excluyendo FALSE y NA, si se desea preservar los valores perdidos, solo tenemos que preguntar por ellos explicitamente:
+
+```{r}
+df <- tibble(x = c(1, NA, 3))
+```
+
+```{r}
+filter(df, x > 1)
+```
+
+```{r}
+filter(df, is.na(x) | x > 1)
+```
+
+
