@@ -169,12 +169,12 @@ $(document).ready(function () {
 <p>La función filter() nos ayuda a encontrar un grupo de datos en especifico que quisieramos analizar, en la primer argumento tenemos que poner el nombre del conjunto de datos que queremos desplegar, el segundo y los subsecuentes son las expreciones que filtran el marco de datos, por ejemplo:</p>
 <pre class="r"><code>library(nycflights13)
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+<pre><code>## ── Attaching packages ────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.5
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>filter(flights, month == 1, day == 1)</code></pre>

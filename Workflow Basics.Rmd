@@ -106,7 +106,7 @@ Otro truco para escribir codigo es;
 ¿Por que este codigo no funciona?
 ```{r echo=TRUE}
 my_variable <- 10
-my_varıable
+#my_varıable
 ```
 Por el símbolo que se encuentra en lugar de una i, si lo cambiamos el codigo funcionará.
 ```{r echo=TRUE}
