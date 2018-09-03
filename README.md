@@ -2,7 +2,7 @@
 # Ciencia de Datos con R
 
 
-Se vera como subir y ordenar una cantidad de datos significativos y se analizaranly mediante las siguientes dos formas:
+Se vera como subir y ordenar una cantidad de datos significativos y se analizaran mediante las siguientes dos formas:
 
 -Visualización 
 
