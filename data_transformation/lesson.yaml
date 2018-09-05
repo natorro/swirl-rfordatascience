@@ -1,0 +1,46 @@
+- Class: meta
+  Course: Ciencia de datos con R
+  Lesson: data_transformation
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+
+- Class: text
+  Output: En este capituo nos centraremos en la funcionalidad del paquete dplyr, 
+          con esta herramienta se podrá generar nuevas variables o resumenes, 
+          renombrar las variables o reordenar las observaciones, entre otras muchas cosas.
+          
+  
+  Class: script
+  Output: Para visualizar los datos que se analizaran en esta sección escriba "flights"
+  CorrectAnswer: flights
+  
+  class: text
+  output: ¿Cuál es la diferencia de éste conjunto de datos a los demás? 
+          A diferencia de los demas conjuntos de datos este, sumarco se ajusta al tamaño de la consola,
+          se imprime de esta manera porque es un tibble.
+          Tibble <- Es un marco de datos, pero ligeramente ajustado para que mejore su funcionamiento en el tidyvers.
+  
+  Class: text 
+  output: Uno de los conceptos básicos para manejar un conjunto de datos,
+          es el comando filter(). La función nos ayuda a encontrar un grupo
+          de datos en especifico.
+          Para esto se utilizan los parametros de busqueda, en el primer parametro va 
+          el nombre del conjunto de datos analizados, los otros dos parametros son 
+          los de busqueda especifica que puede ser por mes, año,etc.
+          
+  class: script
+  output: Escribe la función filter() con parametros que busquen los datos de los
+          vuelos en el mes 1 del día 1.
+  CorrectAnswer: fitlter(flights, month == 1, day == 1)
+  AnwserTest: expr_uses_func('filter')
+  Hint: intenta igualando los dos parametros con uno.
+  
+  
+  
+  
+  
+
+
