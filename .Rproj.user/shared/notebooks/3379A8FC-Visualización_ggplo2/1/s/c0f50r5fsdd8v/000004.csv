@@ -1,0 +1,12 @@
+"0","library(tidyverse)"
+"0","nz <- map_data(""nz"")"
+"2","
+Attaching package: ‘maps’
+
+"
+"2","The following object is masked from ‘package:purrr’:
+
+    map
+
+"
+"0","ggplot(nz, aes(long, lat, group = group)) + geom_polygon(fill = ""white"", color =""black"")"
