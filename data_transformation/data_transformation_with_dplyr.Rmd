@@ -70,7 +70,7 @@ library(tidyverse)
 filter(flights, month == 1, day == 1)
 ```
 
-Como se puede apreciar esta función despliega un nuevo marco de un conjunto de datos con las expreciones que fueron especificadas en la función filter(), para guardar este nuevo conjunto de datos lo tenemos que hacer mediante una variable.
+Como se puede apreciar, esta función despliega un nuevo marco de un conjunto de datos con las expreciones que fueron especificadas en la función filter(), para guardar este nuevo conjunto de datos lo tenemos que hacer mediante una variable.
 
 ```{r}
 jan1 <- filter(flights, month == 1, day == 1)

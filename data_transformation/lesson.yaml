@@ -38,8 +38,92 @@
   AnwserTest: expr_uses_func('filter')
   Hint: intenta igualando los dos parametros con uno.
   
+  class: text 
+  output: Como puedes ver, esta función despliega un nuevo marco de un conjunto 
+          de datos con las expreciones que fueron especificadas en la función filter(),
+          para guardar este nuevo conjunto de datos lo tenemos que hacer mediante
+          una variable.
+          
+  class: mult_question 
+  output: ¿Qué piensas que puede hacer R al guardar los datos en una variable?
+  AnswerChoices: Imprimir los datos; Guardar en la variable; Guardar e Imprimir;
+                  No los guarda
+                  
+  CorrectAnswer: Guardar en la variable 
+  AnwserTest: "Guardar en la variable"
+  Hint: Se guardan en la variable y si lo deceas puedes imprimirlos
+        con solo hacer un llamado a la variable.
   
+  class: cm_question
+  output: Si tenemos un conjunto de datos complicados de analizar, lo podemos simplificar
+          en subconjunbtos, esto se logra recordando la ley de morgan !(x & y), de 
+          que otra forma lo puedes reprecentar con operadores lógicos?
+  AnwserTest: any_of_exprs('!x | !y','!(x | y)', '!x & !y')
+  Hint: tambié se puede representar como una or negada.
   
+  class: text
+  output: Una caracteristica importante de R que puede dificultar la comparación es la falta 
+          de valores(o valores perdidos "NA"), ya que cualquier operacion con un valor 
+          desconocido también será desconocido.
+  
+  class: text
+  output: Para hacer busqueda en el conjunto de datos de un dato vacio, usamos la función
+          is.na(), como parametro recibirá la variable en donde almacenamos los datos que
+          queremos analizar.Este mismo funciona como un parametro de busqueda al utilizar 
+          la función filtro.
+          
+  class: text
+  output: Ejemplo de esto seria 
+          filter(df, is.na(x) | x > 1)
+  
+  class: text
+  output: La función arrange funciona igual que filter; a diferencia de filter, arrange
+          reordena las coumnas. utiliza los parametros para ordenar los datos, por ejemplo,
+          si queremos ordenar los datos por año, mes y día, estos tres se los pasamos como
+          parametros a la función si olvidar que primero va el nombre de la variable que 
+          contiene los datos que vamos a ordenar.
+          
+  class: text
+  output: Podemos utilizar el parametro desc("nombre de la columna"), para ordenar el 
+          conjunto de datos en forma decendente.
+  
+  class: cm_question
+  output: Con el conjunto de datos de flights usa la función de arrange y ordena la 
+          clumna arr_time de forma descendente.
+  CorrectAnswer: arrange(flights, desc(arr_delay))
+  AnwserTest: expr_uses_func('arrange')
+  Hint: Usa la función arrange y el nombre del conjunto junto con el parametro desc().
+  
+  class: text
+  output: Otra función de ayuda para manipular los datos es *selec(), nos permite acercarnos
+          rápidamente a un subconjunto útil utilizando operaciones basadas en los nombres de 
+          las variables del conjunto de datos.
+          
+  
+  calss: text
+  output: Bien ahora pasemos a la practica, como en las funciones anteriores, a esta función
+          le puedes pasar como parametros del nombre de las variables de los datos que 
+          quieras analizar.
+          
+  class: cm_question
+  output: Una de las formas para pasar un conjunto de parametros, es pasandolos como una lista.
+          Usando selec() pasa como parametros el año,mes y día en forma de lista.
+  CorrectAnswer: selec(flights, year:day)
+  AnwserTest: expr_uses_func('selec')
+  Hint: Utiliza  year:day como segundo parametro y flights como el primer parametro.
+  
+  class: text 
+  output: Hay una serie de auxiliares que puedes usar dentro de selec().
+          * starts_with("abc"); coincide con nombres que empiecen con abc
+          * ends_with("xyz");   coincide con nombres que terminen con xyz
+          * contains("ijk");    coincide con nombres que contengan ijk
+          * matches("(.)\\1");  selecciona variables que coincidan con una expresión.
+                                este ejemplo coincide con cualquier variable que contenga
+                                caracteres repetidos.
+          * num_range("x", 1:3); coincide con x1,x2 y x3.
+
+  class: text
+  output: 
   
   
 
