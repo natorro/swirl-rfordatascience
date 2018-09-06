@@ -1,0 +1,20 @@
+]0;curso@curso-1:~/swirl-rfordatascience]7;file://curso-1/home/curso/swirl-rfordatascience]0;curso@curso-1: ~/swirl-rfordatascience[01;32mcurso@curso-1[00m:[01;34m~/swirl-rfordatascience[00m$ git push origin 
+FETCH_HEAD      master          origin/master   
+HEAD            ORIG_HEAD       
+]0;curso@curso-1: ~/swirl-rfordatascience[01;32mcurso@curso-1[00m:[01;34m~/swirl-rfordatascience[00m$ git push origin 
+FETCH_HEAD      master          origin/master   
+HEAD            ORIG_HEAD       
+]0;curso@curso-1: ~/swirl-rfordatascience[01;32mcurso@curso-1[00m:[01;34m~/swirl-rfordatascience[00m$ git push origin master
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': flynna godslayer
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://flynngodslayer@github.com': 
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/natorro/swirl-rfordatascience/'
+]0;curso@curso-1:~/swirl-rfordatascience]7;file://curso-1/home/curso/swirl-rfordatascience]0;curso@curso-1: ~/swirl-rfordatascience[01;32mcurso@curso-1[00m:[01;34m~/swirl-rfordatascience[00m$ git push origin master
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': flynngodslayer
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://flynngodslayer@github.com': 
+Everything up-to-date
+]0;curso@curso-1:~/swirl-rfordatascience]7;file://curso-1/home/curso/swirl-rfordatascience]0;curso@curso-1: ~/swirl-rfordatascience[01;32mcurso@curso-1[00m:[01;34m~/swirl-rfordatascience[00m$ 

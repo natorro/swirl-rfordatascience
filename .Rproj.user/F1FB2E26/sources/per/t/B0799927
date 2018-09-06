@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1535995851796.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3188203343",
+    "id" : "B0799927",
+    "lastKnownWriteTime" : 1536001525,
+    "last_content_update" : 1536001525476,
+    "path" : "~/swirl-rfordatascience/Flujo_de_trabajo_scripts.Rmd",
+    "project_path" : "Flujo_de_trabajo_scripts.Rmd",
+    "properties" : {
+        "cursorPosition" : "0,25",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
