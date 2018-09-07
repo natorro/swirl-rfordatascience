@@ -123,8 +123,33 @@
           * num_range("x", 1:3); coincide con x1,x2 y x3.
 
   class: text
-  output: 
+  output: Para poder cambiar el nombre de una de las columnas utilizamos la función rename(),
+          pasandole como segundo parametro del nombre al que se quiere cambiar e igualando al 
+          existente, ademas concerva todas las variables que no se mencionan explicitamente.
+
+  class: text
+  output: Si se quiere agregar columanas a las ya existentes, podemos utilizar la funcion 
+          mutate(), esta nos permitira agregar nuevas columnas (variables) al conjunto ya existente.
+          antes de usar la función, tenemos que seleccionar los datos en los que vamos a trabajar
+          y guardarlos en una variable para que este pase a ser el primer parametro de 
+          referencia de la función mutate().
+
+  class: text
+  output: mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
+          este ejemplo agregamos dos variables al conjunto de datos, una es la ganancia
+          y la segunda es la velocidad. Si se decea trabajar solo con las nuevas variables
+          creadas en ves de poner mutate, ponemos transmute().
   
+  class: text 
+  output: La ultima función es summarize(), ésta función colapsa un marco de datos a una sola fila,
+          por lo regular esta función la complementan con group_by().
+          Esto hace que cambie completamente el análisis del conjunto de datos completo 
+          para indicar grupos individuales.
+  
+  class: text
+  output: Cuando se usan los verbos dplyr en un marco de datos agrupados, se aplicaran automaticamente
+          por grupo.
+          
   
 
 
