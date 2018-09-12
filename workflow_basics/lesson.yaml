@@ -84,3 +84,9 @@
   CorrectAnswer: y
   AnswerTests: omnitest(correctExpr='y')
   Hint: Solo escribe y
+
+- Class: cmd_question
+  Output: El siguiente codigo tiene errores y no se ejecuta de manera correcta, por favor, corrigelo y ejecutalo para obtener lo deseado":" library(tidyverse) ggplot(dota = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) fliter(mpg, cyl = 8) filter(diamond, carat > 3)
+  CorrectAnswer: library(tidyverse) ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) filter(mpg, cyl = 8) filter(diamond, carat > 3)
+  AnswerTests: omnitest(correctExpr='library(tidyverse) ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) filter(mpg, cyl = 8) filter(diamond, carat > 3)')
+  Hint: Presta especial atención a las letras, y que esten bien escritas las expresiones.
