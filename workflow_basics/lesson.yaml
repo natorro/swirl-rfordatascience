@@ -42,3 +42,45 @@
   CorrectAnswer: x <- 10
   AnswerTests: omnitest(correctExpr='x <- 10')
   Hint: Transcribe la expresión x <- 10
+
+- Class: text
+  Output: Para llevar a cabo la asinganción de valores basta con que sigas esta nomenclatura":" nombre_del_objeto <- valor_u_operacion 
+
+- Class: text
+  Output: EN R, se usa la convención snake_case para asignar nombres a los objetos, alguno de los ejemplos pueden ser yo_uso_snake_case, otras PersonasUsanCamelCase, otras.usan.puntos.
+
+- Class: cmd_question
+  Output: Para que se entienda mejor, asigna el valor 25 al objeto mi_numero
+  CorrectAnswer: mi_numero <- 25
+  AnswerTests: omnitest(correctExpr='mi_numero <- 25')
+  Hint: Escribe el objeto y despues asigna el numero 25 de acuerdo a la fórmula que vimos anteriormente.
+
+- Class: cmd_question
+  Output: ¡Muy bien! Ahora, si quieres consultar lo que contiene el objeto, basta con que lo invoques; invoca mi_numero
+  CorrectAnswer: mi_numero
+  AnswerTests: omnitest(correctExpr='mi_numero')
+  Hint: solo escribe el nombre de mi_numero
+
+- Class: text
+  Output: Recuerda que en R es de vital importancia que seas preciso, la forma en como escribes si con mayuscula o minuscula importa, no es lo mismo Mi_numero, mi_Numero MInumero o mi_numero, por lo que debes estar siempre atento a como escribes las expresiones en todo momento para no toparte con errores.
+
+- Class: text
+  Output: R tiene una larga lista de funciones pre-fabricadas, que pueden ser llamadas con la siguiente nomenclatura":" nombre_funcion(arg1 = val1, arg2 = val2, ...)
+
+- Class: cmd_question
+  Output: Puedes usar la función seq(x, y) para establecer la secuencia de un número x a un número y de manera ordenada, intentalo numerando del 1 al 10
+  CorrectAnswer: seq(1, 10)
+  AnswerTests: omnitest(correctExpr='seq(1, 10)')
+  Hint: x es el primer valor, y 10 el segundo valor, x es el inicio y y el final, ahora reemplaza los numeros de acuerdo a la numeración deseada
+
+- Class: cmd_question
+  Output: También puedes asignar el resultado de operaciones o salidas de funciones en objetos; añade la siguiente operación al objeto y seq(1, 10, length.out = 5)
+  CorrectAnswer: y <- seq(1, 10, length.out = 5)
+  AnswerTests: omnitest(correctExpr='y <- seq(1, 10, length.out = 5)')
+  Hint: solo transcribe la operación y asignala a y como objeto
+
+- Class: cmd_question
+  Output: Y bien, ¿Ahora como puedo saber el valor de la operación que realize? Te puedes llevar una sorpresa al ver que no es solo un valor, y que corresponde con una serie de reglas que definiste en la operación; consulta el objeto y
+  CorrectAnswer: y
+  AnswerTests: omnitest(correctExpr='y')
+  Hint: Solo escribe y
