@@ -13,11 +13,11 @@
           renombrar las variables o reordenar las observaciones, entre otras muchas cosas.
           
   
-  Class: script
+- Class: script
   Output: Para visualizar los datos que se analizaran en esta sección escriba "flights"
   CorrectAnswer: flights
   
-  class: text
+- class: text
   output: ¿Cuál es la diferencia de éste conjunto de datos a los demás? 
           A diferencia de los demas conjuntos de datos este, sumarco se ajusta al tamaño de la consola,
           se imprime de esta manera porque es un tibble.
@@ -134,11 +134,27 @@
           y guardarlos en una variable para que este pase a ser el primer parametro de 
           referencia de la función mutate().
 
-  class: text
-  output: mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
-          este ejemplo agregamos dos variables al conjunto de datos, una es la ganancia
-          y la segunda es la velocidad. Si se decea trabajar solo con las nuevas variables
-          creadas en ves de poner mutate, ponemos transmute().
+  class: mult_question
+  output: aparte de agregar las dos columnas,sería posible que a los parametros les asignemos
+          operaciones entre columnas 
+  AnswerChoices: si, no
+  CorrectAnswer: si
+  AnwserTest: omnitest(correctVal='si')
+  
+  class: mult_question
+  output: ¿Cómo visualizarias el resultado en el marco de datos, en un conjunto de datos o 
+          en un solo resultado?
+  AnswerChoices: En un conjunto de datos, En un solo resultado por cada variable agregada
+  CorrectAnswer: En un conjunto de datos
+  AnwserTest: omnitest(correctVal='En un conjunto de datos')
+  Hint: Se visualizaran en un conjunto de datos por cada variable.
+  
+  class: cm_question
+  output: Escribe la siguiente funcion
+          mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
+  CorrectAnswer: mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
+  AnwserTest: expr_uses_func('mutate')
+  
   
   class: text 
   output: La ultima función es summarize(), ésta función colapsa un marco de datos a una sola fila,
