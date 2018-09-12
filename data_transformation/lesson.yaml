@@ -150,6 +150,8 @@
   output: Cuando se usan los verbos dplyr en un marco de datos agrupados, se aplicaran automaticamente
           por grupo.
           
+  class: cm_question
+  output: 
   
 
 
