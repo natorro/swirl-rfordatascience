@@ -7,93 +7,6 @@
   Version: 2.4.3
 
 
-- Class: text
-  Output: En este capituo nos centraremos en la funcionalidad del paquete dplyr, 
-          con esta herramienta se podrá generar nuevas variables o resumenes, 
-          renombrar las variables o reordenar las observaciones, entre otras muchas cosas.
-          
-  
-- Class: script
-  Output: Para visualizar los datos que se analizaran en esta sección escriba "flights"
-  CorrectAnswer: flights
-  
-- class: text
-  output: ¿Cuál es la diferencia de éste conjunto de datos a los demás? 
-          A diferencia de los demas conjuntos de datos este, sumarco se ajusta al tamaño de la consola,
-          se imprime de esta manera porque es un tibble.
-          Tibble <- Es un marco de datos, pero ligeramente ajustado para que mejore su funcionamiento en el tidyvers.
-  
-  Class: text 
-  output: Uno de los conceptos básicos para manejar un conjunto de datos,
-          es el comando filter(). La función nos ayuda a encontrar un grupo
-          de datos en especifico.
-          Para esto se utilizan los parametros de busqueda, en el primer parametro va 
-          el nombre del conjunto de datos analizados, los otros dos parametros son 
-          los de busqueda especifica que puede ser por mes, año,etc.
-          
-  class: script
-  output: Escribe la función filter() con parametros que busquen los datos de los
-          vuelos en el mes 1 del día 1.
-  CorrectAnswer: fitlter(flights, month == 1, day == 1)
-  AnwserTest: expr_uses_func('filter')
-  Hint: intenta igualando los dos parametros con uno.
-  
-  class: text 
-  output: Como puedes ver, esta función despliega un nuevo marco de un conjunto 
-          de datos con las expreciones que fueron especificadas en la función filter(),
-          para guardar este nuevo conjunto de datos lo tenemos que hacer mediante
-          una variable.
-          
-  class: mult_question 
-  output: ¿Qué piensas que puede hacer R al guardar los datos en una variable?
-  AnswerChoices: Imprimir los datos; Guardar en la variable; Guardar e Imprimir;
-                  No los guarda
-                  
-  CorrectAnswer: Guardar en la variable 
-  AnwserTest: "Guardar en la variable"
-  Hint: Se guardan en la variable y si lo deceas puedes imprimirlos
-        con solo hacer un llamado a la variable.
-  
-  class: cm_question
-  output: Si tenemos un conjunto de datos complicados de analizar, lo podemos simplificar
-          en subconjunbtos, esto se logra recordando la ley de morgan !(x & y), de 
-          que otra forma lo puedes reprecentar con operadores lógicos?
-  AnwserTest: any_of_exprs('!x | !y','!(x | y)', '!x & !y')
-  Hint: tambié se puede representar como una or negada.
-  
-  class: text
-  output: Una caracteristica importante de R que puede dificultar la comparación es la falta 
-          de valores(o valores perdidos "NA"), ya que cualquier operacion con un valor 
-          desconocido también será desconocido.
-  
-  class: text
-  output: Para hacer busqueda en el conjunto de datos de un dato vacio, usamos la función
-          is.na(), como parametro recibirá la variable en donde almacenamos los datos que
-          queremos analizar.Este mismo funciona como un parametro de busqueda al utilizar 
-          la función filtro.
-          
-  class: text
-  output: Ejemplo de esto seria 
-          filter(df, is.na(x) | x > 1)
-  
-  class: text
-  output: La función arrange funciona igual que filter; a diferencia de filter, arrange
-          reordena las coumnas. utiliza los parametros para ordenar los datos, por ejemplo,
-          si queremos ordenar los datos por año, mes y día, estos tres se los pasamos como
-          parametros a la función si olvidar que primero va el nombre de la variable que 
-          contiene los datos que vamos a ordenar.
-          
-  class: text
-  output: Podemos utilizar el parametro desc("nombre de la columna"), para ordenar el 
-          conjunto de datos en forma decendente.
-  
-  class: cm_question
-  output: Con el conjunto de datos de flights usa la función de arrange y ordena la 
-          clumna arr_time de forma descendente.
-  CorrectAnswer: arrange(flights, desc(arr_delay))
-  AnwserTest: expr_uses_func('arrange')
-  Hint: Usa la función arrange y el nombre del conjunto junto con el parametro desc().
-  
   class: text
   output: Otra función de ayuda para manipular los datos es *selec(), nos permite acercarnos
           rápidamente a un subconjunto útil utilizando operaciones basadas en los nombres de 
@@ -170,4 +83,68 @@
   output: 
   
 
+-------------------------------------------------------------------------------------------
 
+- Class: text
+  Output: En este capituo nos centraremos en la funcionalidad del paquete dplyr, con esta herramienta se podrá generar nuevas variables o resumenes, renombrar las variables o reordenar las observaciones, entre otras muchas cosas.
+          
+
+- Class: cmd_question
+  Output: Para visualizar los datos que se analizaran en esta sección escriba "flights"
+ 
+  CorrectAnswer: flights
+  AnswerTests: omnitest(correctExpr='flights')
+  Hint: Con este conjunto de datos o tambien llamado marco de datos, nos apoyaremos para realizar éstre capitulo
+
+- Class: text
+  Output: ¿Cuál es la diferencia de éste conjunto de datos a los demás? A diferencia de los demas conjuntos de datos este, sumarco se ajusta al tamaño de la consola, se imprime de esta manera porque es un tibble. Tibble <- Es un marco de datos, pero ligeramente ajustado para que mejore su funcionamiento en el tidyvers.
+
+- Class: text
+  Output: Uno de los conceptos básicos para manejar un conjunto de datos, es el comando filter(). La función nos ayuda a encontrar un grupo de datos en especifico.
+
+- Class: text
+  Output: Al momento de hacer una busqueda, le tenemos que pasar los parametros de busqueda,n el primer parametro va el nombre del conjunto de datos analizados, los otros dos parametros son los de busqueda especifica que puede ser por mes, año,etc.
+          
+
+- Class: cmd_question
+  Output: Escribe la función filter() con parametros que busquen los datos de los vuelos en el mes 1 del día 1.
+  CorrectAnswer: fitlter(flights, month == 1, day == 1)
+  AnswerTests: omnitest(correctExpr='fitlter(flights, month == 1, day == 1)')
+  Hint: Intenta con  fitlter(flights, month == 1, day == 1)
+
+- Class: text
+  Output: Como puedes ver, esta función despliega un nuevo marco de un conjunto de datos con las expreciones que fueron especificadas en la función filter(), para guardar este nuevo conjunto de datos lo tenemos que hacer mediante una variable.
+
+- Class: mult_question
+  Output: ¿Qué piensas que puede hacer R al guardar los datos en una variable?
+  AnswerChoices: Guardar en la variable;Guardar e Imprimir;No se puede guardar un conjunto de datos en una variable
+  CorrectAnswer: Guardar en la variable 
+  AnswerTests: omnitest(correctExpr='Guarda e la variable')
+  Hint: Se guardan en la variable y si lo deceas puedes imprimirlos con solo hacer un llamado a la variable.
+
+- Class: cmd_question
+  Output: Si tenemos un conjunto de datos complicados de analizar, lo podemos simplificar en subconjunbtos, esto se logra recordando la ley de morgan !(x & y), de que otra forma lo puedes reprecentar con operadores lógicos?
+  CorrectAnswer: Expression or Value
+  AnswerTests: any_of_exprs('!x | !y','!(x | y)', '!x & !y')
+  Hint: tambié se puede representar como una or "|" o un and "&".
+
+- Class: text
+  Output: Una caracteristica importante de R que puede dificultar la comparación es la falta de valores(o valores perdidos "NA"), ya que cualquier operacion con un valor desconocido también será desconocido.
+
+- Class: text
+  Output: Para hacer busqueda en el conjunto de datos de un dato vacio, usamos la función is.na(), como parametro recibirá la variable en donde almacenamos los datos que queremos analizar.Este mismo funciona como un parametro de busqueda al utilizar la función filtro.
+
+- Class: text
+  Output:  Ejemplo de esto seria filter(df, is.na(x) | x > 1)
+
+- Class: text
+  Output: La función arrange funciona igual que filter; a diferencia de filter, arrange reordena las coumnas. utiliza los parametros para ordenar los datos, por ejemplo, si queremos ordenar los datos por año, mes y día, estos tres se los pasamos como parametros a la función si olvidar que primero va el nombre de la variable que contiene los datos que vamos a ordenar.
+
+- Class: text
+  Output: Podemos utilizar el parametro desc("nombre de la columna"), para ordenar el conjunto de datos en forma decendente.
+
+- Class: cmd_question
+  Output: Con el conjunto de datos de flights usa la función de arrange y ordena la clumna arr_time de forma descendente.
+  CorrectAnswer: arrange(flights, desc(arr_delay))
+  AnswerTests: omnitest(correctExpr='arrange(flights, desc(arr_delay))')
+  Hint: Usa la función arrange y el nombre del conjunto junto con el parametro desc().
