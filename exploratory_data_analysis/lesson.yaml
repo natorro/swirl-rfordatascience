@@ -1,0 +1,29 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: exploratory_data_analysis
+  Author: Victor Hugo Avila Felipe
+  Type: Standard
+  Organization: Instituto de Física
+  Version: 2.4.3
+  
+  - Class: meta
+  Course: swirl-rfordatascience
+  Lesson: exploratory_data_analysis
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: En este capítulo revisaremos la visualización y transformación para la exploración de datos de manera sistemática; o lo que es lo mismo, análisis exploratorio de datos. Se trata de un ciclo iterativo donde:
+  
+
+- Class: text
+  Output: 1.- Generas preguntas sobre tus datos.
+
+- Class: text
+  Output: 2.- Buscas respuestas al visualizar, transformar, y modelar tus datos.
+
+- Class: text
+  Output: 3.- Usas lo que aprendes para refinar las preguntas y/o generar nuevas preguntas.
+
