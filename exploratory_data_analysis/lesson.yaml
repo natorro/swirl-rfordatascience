@@ -27,3 +27,38 @@
 - Class: text
   Output: 3.- Usas lo que aprendes para refinar las preguntas y/o generar nuevas preguntas.
 
+
+- Class: text
+  Output: Durante el capítulo se aplicarán las librerías 'dyplr' y 'ggplot2' que se vieron en capítulos anteriores para poder trabajar con los datos de manera interactiva.
+  
+- Class: text
+  Output: La exploración análitica de datos es en principio creatividad. Al querer trabajar con los datos se generan preguntas que en un principio son difíciles de contestar puesto que no sabemos como vienen nuestros datos.
+  
+- Class: text
+  Output: Existen dos preguntas que nos serán muy útiles para empezar a analizar nuestros datos que son:
+  
+  
+
+- Class: text
+  Output: 1- ¿Qué varianza hay entre los datos?
+  
+- Class: text
+  Output: 2- ¿Qué covarianza hay entre los datos?
+  
+
+- Class: text
+  Output: Existen ciertos conceptos que debemos de tener claros antes de comenzar el capítulo:
+  
+  
+
+- Class: text
+  Output: 1.- Variable: Es un propiedad de cantidad o calidad que es medible.
+  
+- Class: text
+  Output: 2.- Valor: Es lo que arroja la variable al ser medida.
+  
+- Class: text
+  Output: 3.- Obsevación: Es una serie de pruebas que se hacen bajo condiciones similares a nuestros datos en el que al final se asocian diferentes valores a diferentes variables o conjuntos de datos.
+  
+- Class: text
+  Output: 4.- Datos Tabulados: Es una serie de datos asociados a varibles y observaciones. Es importante reocordar que los datos tabulados están ordenados si cada valor está en su propio espacio , cada variable en su respectiva columna y cada observación en su propia fila.
