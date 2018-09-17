@@ -6,59 +6,67 @@
   Organization: Instituto de Física
   Version: 2.4.3
   
-  - Class: meta
-  Course: swirl-rfordatascience
-  Lesson: exploratory_data_analysis
-  Author: your name goes here
-  Type: Standard
-  Organization: your organization's name goes here
-  Version: 2.4.3
-
+ 
 - Class: text
-  Output: En este capítulo revisaremos la visualización y transformación para la exploración de datos de manera sistemática; o lo que es lo mismo, análisis exploratorio de datos. Se trata de un ciclo iterativo donde:
+  Output: En este capítulo revisaremos la visualización y transformación para la exploración de datos de manera sistemática; o lo que es lo mismo, análisis exploratorio de datos. Se trata de un ciclo iterativo donde(:)
   
 
 - Class: text
-  Output: 1.- Generas preguntas sobre tus datos.
+  Output: 1 Generas preguntas sobre tus datos.
 
 - Class: text
-  Output: 2.- Buscas respuestas al visualizar, transformar, y modelar tus datos.
+  Output: 2 Buscas respuestas al visualizar, transformar, y modelar tus datos.
+
+
 
 - Class: text
-  Output: 3.- Usas lo que aprendes para refinar las preguntas y/o generar nuevas preguntas.
-
+  Output: 3 Usas lo que aprendes para refinar las preguntas y/o generar nuevas preguntas.
 
 - Class: text
   Output: Durante el capítulo se aplicarán las librerías 'dyplr' y 'ggplot2' que se vieron en capítulos anteriores para poder trabajar con los datos de manera interactiva.
-  
-- Class: text
-  Output: La exploración análitica de datos es en principio creatividad. Al querer trabajar con los datos se generan preguntas que en un principio son difíciles de contestar puesto que no sabemos como vienen nuestros datos.
-  
-- Class: text
-  Output: Existen dos preguntas que nos serán muy útiles para empezar a analizar nuestros datos que son:
-  
-  
 
 - Class: text
-  Output: 1- ¿Qué varianza hay entre los datos?
-  
+  Output:  La exploración análitica de datos es en principio creatividad. Al querer trabajar con los datos se generan preguntas que en un principio son difíciles de contestar puesto que no sabemos como vienen nuestros datos.
+
+- Class: text
+  Output:  Existen dos preguntas que nos serán muy útiles para empezar a analizar nuestros datos que son(:)
+
+- Class: text
+  Output: 1 ¿Qué varianza hay entre los datos?
+
 - Class: text
   Output: 2- ¿Qué covarianza hay entre los datos?
-  
 
 - Class: text
-  Output: Existen ciertos conceptos que debemos de tener claros antes de comenzar el capítulo:
-  
-  
+  Output: Existen ciertos conceptos que debemos de tener claros antes de comenzar el capítulo(:)
 
 - Class: text
-  Output: 1.- Variable: Es un propiedad de cantidad o calidad que es medible.
-  
+  Output: 1.- Variable(:) Es un propiedad de cantidad o calidad que es medible.
+
 - Class: text
-  Output: 2.- Valor: Es lo que arroja la variable al ser medida.
-  
+  Output: 2.- Valor(:) Es lo que arroja la variable al ser medida.
+
 - Class: text
-  Output: 3.- Obsevación: Es una serie de pruebas que se hacen bajo condiciones similares a nuestros datos en el que al final se asocian diferentes valores a diferentes variables o conjuntos de datos.
-  
+  Output: 3.- Obsevación(:) Es una serie de pruebas que se hacen bajo condiciones similares a nuestros datos en el que al final se asocian diferentes valores a diferentes variables o conjuntos de datos.
+
 - Class: text
-  Output: 4.- Datos Tabulados: Es una serie de datos asociados a varibles y observaciones. Es importante reocordar que los datos tabulados están ordenados si cada valor está en su propio espacio , cada variable en su respectiva columna y cada observación en su propia fila.
+  Output: 4.- Datos Tabulados(:) Es una serie de datos asociados a varibles y observaciones. Es importante reocordar que los datos tabulados están ordenados si cada valor está en su propio espacio , cada variable en su respectiva columna y cada observación en su propia fila.
+
+- Class: text
+  Output: Varianza(:) Podemos definirla como la tendencia que tienen las variables de cambiar entre una medición y la otra. Esto siempre se cumple ya que en toda medición se tiene al menos un pequeño error. Dependiendo de la variable es el tipo de error que se va a presentar sin embargo la mejor forma de entender este tipo de errores es encontrando la distribución que modela a nuestro conjunto de variables.
+
+- Class: text
+  Output: Visualizando Distribuciones(:) Lo primero que hay que ver es el tipo de variable, analizaremos de dos tipos(:)
+
+
+
+- Class: text
+  Output:  1 Categóricas(:) Tipo de variable que puede tomar un sólo valor de un cojunto limitado de valores donde estos son mutuamente excluyentes. Estas se pueden analizar con una gráfica de barras.
+
+- Class: figure
+  Output: Aquí podemos ver un ejemplo en el que se separan por la variable especie.
+  Figure: Fish.R
+  FigureType: new
+
+- Class: text
+  Output: 2 Continuas(:)Se define como continua si puede tomar cualquier valor de un conjunto infinito de valores, para examinar su distribución utilice un histograma. Para hacer un histograma se divide el eje x entre el número de columnas que se quiera tener y la altura se define por el número de observaciones que caigan en el rango.
