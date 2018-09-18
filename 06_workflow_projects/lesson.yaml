@@ -1,0 +1,41 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 06_workflow_projects
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Para evaluar si es necesario comenzar a usar un proyecto de R se deben tener en cuenta estas 2 preguntas":"
+
+- Class: text
+  Output: ¿Qué partes de tu análisis es real? Por ejemplo, ¿que guardarías como el último registro de lo que sucedio durante tu análisis?
+
+- Class: text
+  Output: ¿Dónde queda guardado tu análisis? ¿Es un conjunto de análisis?
+
+- Class: text
+  Output: Debes de considerar como reales a tus scripts de R y tus archivos de datos, ya que con ellos puedes recrear el ambiente de desarrollo en el que te encontrabas trabajando. Esta consideración se decidió debido a que si haces lo inverso, recuperar tu código del ambiente de R, es mucho más complicado.
+
+- Class: text
+  Output: Es una buena práctica indicar a Rstudio que no preserve tu ambiente de trabajo (workspace) entre sesiones, forzandote a capturar todas las interacciones importantes en archivos de código, documentando asi todos los pasos que des en tu análisis de datos.
+
+- Class: text
+  Output: Para lograr esto de manera eficiente, es recomdable que aprendas a usar los atajos con el teclado que te permiten asegurarte de haber capturado las partes importantes de tu código en el editor:
+
+- Class: text
+  Output: Presionando Cmd/Ctrl_Shift-F10 puedes reiniciar Rstudio. Pero espera, no lo ejecutes ahora, termina la lección y despues juegas con estos comandos.
+
+- Class: text
+  Output: Presionando Cmd/Ctrl-Shift-S puedes volver a correr el archivo de código R (script) en el que te encontrabas trabajando.
+
+- Class: cmd_question
+  Output: Con el comando getwd() puedes obtener el directorio en el que te encuentras trabajando actualmente, adelante, intentalo, ejecuta getwd()
+  CorrectAnswer: getwd()
+  AnswerTests: omnitest(correctExpr='getwd()')
+  Hint: Solo escribe getwd()
+  
+
+- Class: text
+  Output: Ahora bien, debes estar conciente del directorio en el que trabajas, ya que en el es donde se guardan todos los archivos que creas cuando trabajas con Rstudio. Es importante que tengas en cuenta esto para poder asignar un espacio de trabajo a tu proyecto. No es para nada recomendable usar el comando setwd() para inicializar un directorio de trabajo, ya que no tenemos el control de nuestro espacio de trabajo.
