@@ -7,84 +7,6 @@
   Version: 2.4.3
 
 
-  class: text
-  output: Otra función de ayuda para manipular los datos es *selec(), nos permite acercarnos
-          rápidamente a un subconjunto útil utilizando operaciones basadas en los nombres de 
-          las variables del conjunto de datos.
-          
-  
-  calss: text
-  output: Bien ahora pasemos a la practica, como en las funciones anteriores, a esta función
-          le puedes pasar como parametros del nombre de las variables de los datos que 
-          quieras analizar.
-          
-  class: cm_question
-  output: Una de las formas para pasar un conjunto de parametros, es pasandolos como una lista.
-          Usando selec() pasa como parametros el año,mes y día en forma de lista.
-  CorrectAnswer: selec(flights, year:day)
-  AnwserTest: expr_uses_func('selec')
-  Hint: Utiliza  year:day como segundo parametro y flights como el primer parametro.
-  
-  class: text 
-  output: Hay una serie de auxiliares que puedes usar dentro de selec().
-          * starts_with("abc"); coincide con nombres que empiecen con abc
-          * ends_with("xyz");   coincide con nombres que terminen con xyz
-          * contains("ijk");    coincide con nombres que contengan ijk
-          * matches("(.)\\1");  selecciona variables que coincidan con una expresión.
-                                este ejemplo coincide con cualquier variable que contenga
-                                caracteres repetidos.
-          * num_range("x", 1:3); coincide con x1,x2 y x3.
-
-  class: text
-  output: Para poder cambiar el nombre de una de las columnas utilizamos la función rename(),
-          pasandole como segundo parametro del nombre al que se quiere cambiar e igualando al 
-          existente, ademas concerva todas las variables que no se mencionan explicitamente.
-
-  class: text
-  output: Si se quiere agregar columanas a las ya existentes, podemos utilizar la funcion 
-          mutate(), esta nos permitira agregar nuevas columnas (variables) al conjunto ya existente.
-          antes de usar la función, tenemos que seleccionar los datos en los que vamos a trabajar
-          y guardarlos en una variable para que este pase a ser el primer parametro de 
-          referencia de la función mutate().
-
-  class: mult_question
-  output: aparte de agregar las dos columnas,sería posible que a los parametros les asignemos
-          operaciones entre columnas 
-  AnswerChoices: si, no
-  CorrectAnswer: si
-  AnwserTest: omnitest(correctVal='si')
-  
-  class: mult_question
-  output: ¿Cómo visualizarias el resultado en el marco de datos, en un conjunto de datos o 
-          en un solo resultado?
-  AnswerChoices: En un conjunto de datos, En un solo resultado por cada variable agregada
-  CorrectAnswer: En un conjunto de datos
-  AnwserTest: omnitest(correctVal='En un conjunto de datos')
-  Hint: Se visualizaran en un conjunto de datos por cada variable.
-  
-  class: cm_question
-  output: Escribe la siguiente funcion
-          mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
-  CorrectAnswer: mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
-  AnwserTest: expr_uses_func('mutate')
-  
-  
-  class: text 
-  output: La ultima función es summarize(), ésta función colapsa un marco de datos a una sola fila,
-          por lo regular esta función la complementan con group_by().
-          Esto hace que cambie completamente el análisis del conjunto de datos completo 
-          para indicar grupos individuales.
-  
-  class: text
-  output: Cuando se usan los verbos dplyr en un marco de datos agrupados, se aplicaran automaticamente
-          por grupo.
-          
-  class: cm_question
-  output: 
-  
-
--------------------------------------------------------------------------------------------
-
 - Class: text
   Output: En este capituo nos centraremos en la funcionalidad del paquete dplyr, con esta herramienta se podrá generar nuevas variables o resumenes, renombrar las variables o reordenar las observaciones, entre otras muchas cosas.
           
@@ -108,9 +30,9 @@
 
 - Class: cmd_question
   Output: Escribe la función filter() con parametros que busquen los datos de los vuelos en el mes 1 del día 1.
-  CorrectAnswer: fitlter(flights, month == 1, day == 1)
-  AnswerTests: omnitest(correctExpr='fitlter(flights, month == 1, day == 1)')
-  Hint: Intenta con  fitlter(flights, month == 1, day == 1)
+  CorrectAnswer: filter(flights, month == 1, day == 1)
+  AnswerTests: omnitest(correctExpr=' filter(flights, month == 1, day == 1)')
+  Hint: Intenta con flights, month == 1, day == 1, pasandolos como parametros
 
 - Class: text
   Output: Como puedes ver, esta función despliega un nuevo marco de un conjunto de datos con las expreciones que fueron especificadas en la función filter(), para guardar este nuevo conjunto de datos lo tenemos que hacer mediante una variable.
@@ -148,3 +70,54 @@
   CorrectAnswer: arrange(flights, desc(arr_delay))
   AnswerTests: omnitest(correctExpr='arrange(flights, desc(arr_delay))')
   Hint: Usa la función arrange y el nombre del conjunto junto con el parametro desc().
+
+- Class: text
+  Output: Otra función de ayuda para manipular los datos es *selec(), nos permite acercarnos rápidamente a un subconjunto útil utilizando operaciones basadas en los nombres de las variables del conjunto de datos.
+
+- Class: text
+  Output: Bien ahora pasemos a la practica, como en las funciones anteriores, a esta función le puedes pasar como parametros del nombre de las variables de los datos que quieras analizar.
+
+- Class: cmd_question
+  Output: Una de las formas para pasar un conjunto de parametros, es pasandolos como una lista. Usando selec() pasa como parametros el año,mes y día en forma de lista.
+  CorrectAnswer: selec(flights, year:day)
+  AnswerTests: omnitest(correctExpr='selec(flights, year:day)')
+  Hint: Utiliza  year:day como segundo parametro y flights como el primer parametro.
+
+- Class: text
+  Output: Hay una serie de auxiliares que puedes usar dentro de selec().De los cuales esta starts_with(), este parametro nos busca en el marco de datos, nombres que inicien con las iniciales que nosotros le asignemos; ends_with(), este parametro busca los nombres que terminen con las letras asignadas; contains(), este parametro nos busja las variables o datos que contengan las letras asignadas; matches() este parametro en particular busca variables que contengan la expresión asignada y por ultimo num_range(), nos sirve para buscar variables enlistados.
+
+- Class: text
+  Output: Para poder cambiar el nombre de una de las columnas utilizamos la función rename(), pasandole como segundo parametro del nombre al que se quiere cambiar e igualando al existente, ademas concerva todas las variables que no se mencionan explicitamente.
+
+
+- Class: text
+  Output: Si se quiere agregar columanas a las ya existentes, podemos utilizar la funcion mutate(), esta nos permitira agregar nuevas columnas (variables) al conjunto ya existente. antes de usar la función, tenemos que seleccionar los datos en los que vamos a trabajar  y guardarlos en una variable para que este pase a ser el primer parametro de referencia de la función mutate().
+
+- Class: mult_question
+  Output: Aparte de agregar las dos columnas,sería posible que a los parametros les asignemos operaciones entre columnas 
+  AnswerChoices: si; no
+  CorrectAnswer: si
+  AnswerTests: omnitest(correctExpr='si')
+  Hint: Piensalo e intentalo de nuevo.
+
+- Class: mult_question
+  Output: ¿Cómo visualizarias el resultado en el marco de datos, en un conjunto de datos o en un solo resultado?
+  AnswerChoices: En un conjunto de datos; En un solo resultado por cada variable agregada
+  CorrectAnswer: En un conjunto de datos
+  AnswerTests: omnitest(correctExpr='En un conjunto de datos')
+  Hint: Se visualizaran en un conjunto de datos por cada variable.
+  
+
+- Class: cmd_question
+  Output: Escribe la siguiente funcion mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
+  CorrectAnswer: mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
+  AnswerTests: expr_uses_func('mutate')
+  Hint: prueva con mutate(flights_sml,gain = arr_delay - dep_delay,speed = distance / air_time * 60)
+
+
+
+- Class: text
+  Output: La ultima función es summarize(), ésta función colapsa un marco de datos a una sola fila, por lo regular esta función la complementan con group_by(). Esto hace que cambie completamente el análisis del conjunto de datos completo para indicar grupos individuales.
+
+- Class: text
+  Output: Cuando se usan los verbos dplyr en un marco de datos agrupados, se aplicaran automaticamente por grupo.
