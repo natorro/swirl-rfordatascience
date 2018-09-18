@@ -1,0 +1,16 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 04_workflow_scripts
+  Author: Marcos Daniel Montaño Delgado
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+
+- Class: text
+  Output: En esta sección te mostraremos lo útil que puede ser usar un Script para no trabajar directo desde consola.Este te permite tener mas espacio para trabajar. Un script editor se abre dando click en la pestaña file, seguido de eso baja a New File donde daras click nuevamente y se abrira otra pestaña, de la nueva pestaña seleccionamos la primera opción que es "R Script". Has terminado! Ahora puedes comenzar a escribir tú código
+
+
+
+- Class: text
+  Output: Para usar el R Script de manera eficiente debes memorizar los keyboard shortcuts correspondientes --> Cmd ó Ctrl - Enter que sirve para correr el comando sobre el que estas posicionado y Cmd ó Ctrl-Shift-S que sirve para correr todo el Script.
