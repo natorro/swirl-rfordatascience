@@ -1,0 +1,26 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 05_exploratory_data_analysis
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: En este capítulo revisaremos la visualización y transformación para la exploración de datos de manera sistemática; o lo que es lo mismo, análisis exploratorio de datos. Se trata de un ciclo iterativo donde
+
+- Class: text
+  Output: 1 Generas preguntas sobre tus datos.
+
+
+- Class: text
+  Output: 2 Buscas respuestas al visualizar, transformar, y modelar tus datos.
+
+- Class: text
+  Output: 3 Usas lo que aprendes para refinar las preguntas y/o generar nuevas preguntas.
+
+- Class: text
+  Output: Durante el capítulo se aplicarán las librerías 'dyplr' y 'ggplot2' que se vieron en capítulos anteriores para poder trabajar con los datos de manera interactiva.
+
+- Class: text
+  Output: La exploración análitica de datos es en principio creatividad. Al querer trabajar con los datos se generan preguntas que en un principio son difíciles de contestar puesto que no sabemos como vienen nuestros datos.
