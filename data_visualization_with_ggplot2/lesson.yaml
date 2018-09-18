@@ -1,8 +1,69 @@
 - Class: meta
   Course: Ciencia de datos con R
-  Lesson: isVualizacion de datos con ggplot2
+  Lesson: Visualizacion de datos con ggplot2
   Author: Ruiz Rodriguez Ricardo
   Type: Standard
   Organization: Instituto de Física
   Version: 2.4.3
+
+
+- Class: text
+  Output: En esta lección nos concentraremos en la visualización de datos usando ggplot2
+
+- Class: text
+  Output: ggplot2 es un sistema que implementa una gramática gráfica.
+
+- Class: text
+  Output: Primero nos apoyaremos de una librería que tiene un nconjunto de datos llamado tidyverse, los cules estan contenidos en un dataframe, el cual mandaremos a imprimir para ver el conjunto de datos que este contiene y poderlos modificar más adelante.
+
+- Class: text
+  Output: Data frame --> Colección rectangular de variables en las columnas, y observaciones en los campos.
+
+- Class: cmd_question
+  Output: Para lograr ver el conjunto de datos, escribe el data frame mpg
+  CorrectAnswer: mpg
+  AnswerTests: omnitest(correctExpr='mpg')
+  Hint: 
+
+- Class: text
+  Output: Si en algun momento se te presenta alguna duda de como funciona algun comando, recuerda primero poner ? seguido del comando que quieres investigar.
+
+- Class: text
+  Output: Ahora pasemos a la estructura para la manipulación de los datos, si se quiere visualizar la información en un gráfico se puede usar la siguiente estructura básica de codigo":"
+
+- Class: text
+  Output: ggplot(data = <DATOS>) + <GEOM_FUNCIÓN>(mapping = aes(<MAPPEADOS>))
+
+- Class: text
+  Output: Ahora analizaremos las componentes de la función ggplot.
+
+- Class: text
+  Output: ggplot --> función que inicializa el conjunto de datos a usar
+
+- Class: text
+  Output: mpg --> conjunto de datos a usar, en este caso un data frame
+
+- Class: text
+  Output: geom_point --> función que genera una sección de un producto cartesiano por puntos
+
+- Class: text
+  Output: aes --> contracción del termino aesthetics, los cuales son indicaciónes de gráficos insertados en el producto cartesiano, donde se definen variables y como se desea iterpretar visualmente, por ejemplo <x = displ, y = hwy>, donde se indica que dentro de los vectores x y y se insertaran los valores de las variables displ y hwy correspondientes a mpg
+
+- Class: cmd_question
+  Output: Escribe la función ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+  CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+  AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))')
+  Hint: Vamos, con calma.
+
+- Class: text
+  Output: Ahora bien al diagrama de dispersión binomial generado por el comando anterior, puede agregarle una tercera variable, como clase, asignándolo a una estética.
+
+- Class: text
+  Output: Eética --> propiedad visual de los objetos en la gráfica
+
+- Class: text
+  Output: La estetica incluye cosas como el tamaño, la forma o el color de tus datos en la gráfica, para hacer referencia a la estética propiamente dicha utilizaremos la referencia nivel.
+
+
+
 
