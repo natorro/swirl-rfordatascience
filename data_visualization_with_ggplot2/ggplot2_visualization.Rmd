@@ -18,7 +18,7 @@ Imprime el data frame ingresando el comando:
 
 Para obtener una descripción sobre los datos, variables, e información relevante para la interpretación correcta del data frame puedes usar ?mpg
 
-Usar un ? antes de cualquier función o variable te permite obtener información importante para su comprensión, implementación o interpretación.
+Usar un ? antes de cualquier función o variable te permite obtener información importante para su implementación o interpretación.
 
 Ahora bien, si se quiere visualizar la información en un gráfico se puede usar la siguiente estructura básica de codigo:
 
@@ -42,7 +42,7 @@ Donde:
 
 Al diagrama de dispersión binomial generado por el comando anterior, puede agregarle una tercera variable, como clase, asignándolo a una estética.
 
->*Estética: propiedad visual de los objetos en la gráfica*
+>*Eética: propiedad visual de los objetos en la gráfica*
 
 La estetica incluye cosas como el tamaño, la forma o el color de tus datos en la gráfica; para hacer referencia a la estetica propiamente dicha utilizaremos la referencia nivel.
 
@@ -134,7 +134,7 @@ La variable que le pasas a __facet_wrap__ debe ser discreto:
 
 ```{r}
 library(tidyverse)
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
+
 ```
 
 Ahora para facetear tu gráfica pero con dos variables, lo único que tenemos que hacer es agregar:
