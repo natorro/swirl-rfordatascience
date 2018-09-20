@@ -1,0 +1,52 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 07_tibbles_with_tibble
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Los Tibbles son data frames, pero con agunos comportamientos distintos para facilitar el análisis de datos. La inovación que se desarrolla para R se implementa por medio de paquetes, a que el codigo base de R es viejo y dificil de cambiar. 
+
+- Class: cmd_question
+  Output: Para iniciar la lección se debe de tener en cuenta que trabajaremos con la libreria tidyverse, a estas alturas debes ser capaz de ejecutarla. Por favor, carga la libreria.
+  CorrectAnswer: library(tidyverse)
+  AnswerTests: omnitest(correctExpr='library(tidyverse)')
+  Hint: library(algo)
+
+- Class: text
+  Output: Los tibbles son cualidades centrales de tidyverse, y puedes convertir un data frame o marco de datos en un tibble, usando la función as_tibble()
+
+- Class: cmd_question
+  Output: Convierte el data frame iris a un tibble.
+  CorrectAnswer: as_tibble(iris)
+  AnswerTests: omnitest(correctExpr='as_tibble(iris)')
+  Hint: Usa la función que describimos anteriormente y dentro añade el dataframe que queremos convertir
+
+- Class: text
+  Output: Puedes crear un nuevo tibble con vectores individuales con la función tibble(), la cual recicla automáticamente inputs de longitud 1, y permite referir variables creadas por el usuario.
+
+- Class: cmd_question
+  Output: Ejecuta el siguiente código(:) tibble(x = 1:5, y = 1, z = x ^ 2 + y)
+  CorrectAnswer: tibble(x = 1:5, y = 1, z = x ^ 2 + y)
+  AnswerTests: omnitest(correctExpr='tibble(x = 1:5, y = 1, z = x ^ 2 + y)')
+  Hint: Solo copia tibble(x = 1:5, y = 1, z = x ^ 2 + y)
+
+- Class: text
+  Output: Cabe destacar que a diferencia de data.frame(), tibble() nunca cambia en tipo de las entradas, ni los nombres de las variables, ni crea nuevos nombres para las columnas.
+
+- Class: text
+  Output: Es posible que un tibble tenga nombres no sintactico, o que no acepta R, como aquellos que no inician con una letra, o que contienen espacios, los cuales debes de rodear con `
+
+- Class: cmd_question
+  Output: Un buen ejemplo de estos nombres es el siguiente código que debes ejecutar(:) tb <- tibble(`:)` = "smile", ` ` = "space", `2000` = "number")
+  CorrectAnswer: tb <- tibble(`:)` = "smile", ` ` = "space", `2000` = "number")
+  AnswerTests: omnitest(correctExpr='tb <- tibble(`:)` = "smile", ` ` = "space", `2000` = "number")')
+  Hint: Copia el código tb <- tibble(`:)` = "smile", ` ` = "space", `2000` = "number")
+
+- Class: cmd_question
+  Output: Ahora vamos a consultar cómo se visualiza ese tibble, llama el objeto por favor.
+  CorrectAnswer: tb
+  AnswerTests: omnitest(correctExpr='tb')
+  Hint: Solo llamalo con su nombre, tb
