@@ -46,7 +46,7 @@ Al diagrama de dispersión binomial generado por el comando anterior, puede agre
 
 La estetica incluye cosas como el tamaño, la forma o el color de tus datos en la gráfica; para hacer referencia a la estetica propiamente dicha utilizaremos la referencia nivel.
 
-La función junta cada uno de los mapeos estéticos usados por capas y los pasa a el argumento de mapeo de capas. Incluso las variables x y y son esteticas al ser localizaciones que se pueden mapear como propiedades visuales sobre los datos.
+La función junta cada uno de los mapeos estéticos usados por capas y los pasa al argumento de mapeo de capas. Incluso las variables x y y son esteticas al ser localizaciones que se pueden mapear como propiedades visuales sobre los datos.
 
 Para poder realizar un mapeo mucho más sencillo de la clase de tus datos, asignaremos la variable  color al código anterior, quedando como se muestra a continuación:
 

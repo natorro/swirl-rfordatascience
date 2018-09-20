@@ -59,11 +59,37 @@
   Output: Ahora bien al diagrama de dispersión binomial generado por el comando anterior, puede agregarle una tercera variable, como clase, asignándolo a una estética.
 
 - Class: text
-  Output: Eética --> propiedad visual de los objetos en la gráfica
+  Output: Estética --> propiedad visual de los objetos en la gráfica
 
 - Class: text
   Output: La estetica incluye cosas como el tamaño, la forma o el color de tus datos en la gráfica, para hacer referencia a la estética propiamente dicha utilizaremos la referencia nivel.
 
+- Class: text
+  Output: La función junta cada uno de los mapeos estéticos usados por capas y los pasa al argumento de mapeo de capas. Incluso las variables x y y son esteticas al ser localizaciones que se pueden mapear como propiedades visuales sobre los datos.
+  
+- Class: text
+  Output: Lo que podemos hacer para la visualización de los datos es ponerle color a la clase, esto lo logramos con el parametro color=class, este parametro  va dentro de la de la función aes después de la asignación de los vectores x,y.
 
+- Class: cmd_question
+  Output: Escribe la función ggplot y agregale el parametro color dentro de la función aes.
+  CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))')
+  Hint: La función modificada es --> ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
 
+- Class: text
+  Output: En este ejemplo se le esta asignando un solo nivel a la estética, para cada valor único de la variable, este proceso se le conoce como "scaling". Esta función también te agregará una leyenda que explica que niveles coresponden a cada valor del conjunto.
 
+- Class: text
+  Output: Un parametro muy util de la función aes es el size, el cual nos permite realizar un mapeo de nuetro conjunto de datos, el cual nos ayuda a saber el tipo de lase que tienen los datos.
+
+- Class: cmd_question
+  Output: Modifica la función ggplot y agrega a la función aes el parametro size.
+  CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
+  AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))')
+  Hint:  La función deberia dee ser --> ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
+
+- Class: text
+  Output: NOTA --> Este comando es sólo para mapear un desorden variable, si se mapea una estética en orden, nos lanzará una advertencia
+
+- Class: text
+  Output: Para mapear la estética ordenada del conjunto de datos, podemos hacerlo con los parametros alpha y shape, el parametro alpha controla la transparencia de los puntos, esto nos ayuda para resaltar la clase que deseamos, el parametro shape cambia la forma de representar gráficamente los datos.
