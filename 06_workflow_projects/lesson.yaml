@@ -36,6 +36,17 @@
   AnswerTests: omnitest(correctExpr='getwd()')
   Hint: Solo escribe getwd()
   
-
 - Class: text
   Output: Ahora bien, debes estar conciente del directorio en el que trabajas, ya que en el es donde se guardan todos los archivos que creas cuando trabajas con Rstudio. Es importante que tengas en cuenta esto para poder asignar un espacio de trabajo a tu proyecto. No es para nada recomendable usar el comando setwd() para inicializar un directorio de trabajo, ya que no tenemos el control de nuestro espacio de trabajo.
+
+- Class: text
+  Output: Rstudio añade la funcionalidad de crear proyectos en 3 categorías():) Nuevo directorio, Directorio existente y Control de versiones.
+
+- Class: text
+  Output: Nuevo directorio(:) Permite crear un espacio de trabajo completamente nuevo, puedes seleccionar el directorio de tu computadora donde deseas guardar los cambios, tu historial de comandos usados, scripts y entorno de trabajo. Ideal para cuando se esta iniciando un trabajo desde cero. Tambies es bueno para establecer si se esta iniciando un proyecto de análisis de datos o el desarrollo de una aplicación web con Shiny.
+
+- Class: text
+  Output: Directorio existente(:) En caso de que ya tengas un folder con scripts de R y otros archivos, y quieras agruparlos para mantener un control este debe ser la opción que uses. 
+
+- Class: text
+  Output: Control de versiones(:) Esta opción es para aquellos proyectos que estes manejando junto con un controlador de versiones como Git desde el cual puedes clonarlo del repositorio en el que se encuentre. También existe la posibilidad de usar un repositorio de Subversion. Esta es la configuración recomendada para inicializar tu proyecto, ya que Rstudio tiene una interfaz de control de versiones integrado para que puedas trabajar de manera mas practica y eficiente, con la condición de guardar tus cambios cada vez que una nueva funcionalidad o cambio importante se implemente dentro de tu proyecto.
