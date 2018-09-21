@@ -66,10 +66,19 @@
 - Class: text
   Output: 2 Continuas-->Se define como continua si puede tomar cualquier valor de un conjunto infinito de valores, para examinar su distribución utilice un histograma. Para hacer un histograma se divide el eje x entre el número de columnas que se quiera tener y la altura se define por el número de observaciones que caigan en el rango.
 
-
-
 - Class: script
   Output: En el caso de las variables continuas es conveniente usar histogramas para analizarlas pues nos muestra el comportamiento de los valores. Grafíca un histograma utilizando ggplot, geom-histogram, la Data Frame ya esta cargada como df y la variable que debes graficar se llama dep que tiene valores de tiempo de vuelo de un conjunto de aviones.
   AnswerTests: omnitest(correctExpr='ggplot( data = df) + geom_histogram(mapping = aes(x = dep),binwidth = .95)')
   Hint: ggplot( data = df) + geom_histogram(mapping = aes(x = dep),binwidth = .95)
   Script: hist.R
+
+
+
+- Class: text
+  Output: Los histogramas como se menciono anteriormente son gráficos que nos permiten ver como se comporta el conjunto de variables
+
+- Class: text
+  Output: Funciona de la siguiente manera --> Se divide en espacios o rangos iguales, seguido de esto la altura se determina por la cantidad de valores del conjunto que caen en cada uno.
+
+- Class: text
+  Output: Para ajustar el ancho de los intervalos se utiliza el argumento width, es importante experimentar con esto por que nos puede ayudar a determinar el patrón correcto que modela nuestro conjunto o al menos los estima.
