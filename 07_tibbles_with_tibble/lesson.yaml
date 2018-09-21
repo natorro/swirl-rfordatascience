@@ -50,3 +50,36 @@
   CorrectAnswer: tb
   AnswerTests: omnitest(correctExpr='tb')
   Hint: Solo llamalo con su nombre, tb
+
+- Class: cmd_question
+  Output: Ejecuta el siguiente código de ejemplo para entender como funciona(:) tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
+  CorrectAnswer: tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
+  AnswerTests: omnitest(correctExpr='tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)')
+  Hint: Copia el código y ejecutalo.
+
+- Class: text
+  Output: Otra variante de un data frame es el tribble, abreviado de transposed tibble, lo cual quiere decir que es una funcion modificada para permitir entrada de datos en forma de código; los encabezados de columnas son definidos por fórmulas, y los registros son separados por comas; lo cual hace posible ingresar trozos pequeños de datos directamente.
+
+- Class: cmd_question
+  Output: Para entender como ingresar datos por medio de un tribble, ejecuta el siguiente código(:) tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
+  CorrectAnswer: tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
+  AnswerTests: omnitest(correctExpr='tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)')
+  Hint: Copia el código y ejecutalo
+
+- Class: text
+  Output: Existen dos diferencias principales entre los Tibbles y un data.frame clásico(:) el como imprimen los datos y el extraer datos.
+
+- Class: text
+  Output: Los tibbles solo muestran las 10 primeras filas, y todas las columnas que quepan dentro de la pantalla, lo cual hace que sea más facil trabajar con grandes volumenes de datos, ademas de mostrar el tipo de dato con el que se esta trabajando.
+
+- Class: text
+  Output: Los tibbles fueron diseñados para que no llenes tu pantalla de datos al imprimir un conjunto de datos, sin embargo, puede que en ocasiones necesites usar la función print() para mostrar más filas que las permitidas por default.
+
+- Class: cmd_question
+  Output: Puedes controlar el número de filas y la longitud de la impresión, como este codigo que debes ejecutar(:) nycflights13::flights %>% print(n = 10, width = Inf)
+  CorrectAnswer: nycflights13::flights %>% print(n = 10, width = Inf)
+  AnswerTests: omnitest(correctExpr='nycflights13::flights %>% print(n = 10, width = Inf)')
+  Hint: Ingresa el código de impresión de datos.
+
+- Class: text
+  Output: Ahora bien, para extraer data de un tibble de una sola variable puedes usar $ y [[, donde [[ extraen por nombre o posición, y $ solo extrae por nombre pero sin menos elementos a recordar.
