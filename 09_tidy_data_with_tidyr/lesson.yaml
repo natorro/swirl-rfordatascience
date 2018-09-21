@@ -5,3 +5,58 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.3
+
+- Class: text
+  Output: Durante este capítulo aprenderas una nueva forma de organizar la información llamada tidy data, se requiere algo de trabajo para ordenar la información de esta forma pero vale la pena.
+
+- Class: text
+  Output: Tener la información en este formato nos permite pasar menos tiempo acomodando la  información para representarla de una manera o de otra y pasar más tiempo analizandola. Este capítulo te brindara una introducción practica a lo que es tidy data utilizando herramientas que se encuetran en la paquetería 'tidyr'
+
+- Class: text
+  Output: El único prerequisito que se pide es importar la libreria tidyverse con 'library(tidyverse)' ya que la paqueteria 'tidyr' pertence a ella. 
+
+- Class: text
+  Output: No es algo nuevo decir que la información se puede presentar de distintas maneras ya sesa ordenando la tabla de acuerdo al alfabeto de cierta columna, de forma ascendente o descendente , etc.
+
+- Class: text
+  Output: Existen tres reglas claves para poder decir que una serie de datos es tidy o no 
+
+- Class: text
+  Output: 1.- Cada variable tiene su propia columna
+
+- Class: text
+  Output: 2.- Cada observación tiene su propia fila
+
+- Class: text
+  Output: 3.- Cada valor tiene su propia celda
+
+- Class: text
+  Output: Por ende concluimos que las variables están en columnas, las observaciones en filas y los valores están en celdas. 
+
+- Class: text
+  Output: Se dice que los tres condiciones anteriores están interrelacionadas por que no se pueden cumplir sólo dos de las tres, el incumplimiento de una en automático anula las otras dos.
+
+- Class: text
+  Output: EL contar con esta relación nos permite pasar a un conjunto de instrucciones más simples para trabajar con los datos
+
+- Class: text
+  Output: 1.- Poner cada serie de datos en un tibble estructura vista en el capítulo siete
+
+- Class: text
+  Output: 2.- Poner cada variable en una columna 
+
+- Class: text
+  Output: Pero por que aseguranos de que nuestros datos sean tidy
+
+
+
+
+
+- Class: text
+  Output: 1.- El tener los datos almacenados y estructurados de manera consistente hace que sea  mucho más sencillo aprender las herramientas para trabajarlos, pues tiene una uniformidad subyacente.
+
+- Class: text
+  Output: 2.- El tener las variables sobre cada columna hace que r trabaje de una manera más eficiente por su naturaleza de vectorizar, una gran cantidad de funciones en R trabajan directamente con vectores como elementos de entrada. Por lo que transformar datos en formato tidy se facilita.
+
+- Class: text
+  Output: Las paqueterías dyplr y ggplot2 están diseñadas para trabajar con datos en formato tidy.
