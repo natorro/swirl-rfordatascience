@@ -325,7 +325,7 @@ library(tidyverse)
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = cut))
 ```
 
-En caso de aplicar la estetica fill a alguna otra variable como clarity observaremos que se representará la variable con diferentes colores dentro de las barras, el cuales realizado automaticamente por el ajuste de posición especificado por el argumento position.
+En caso de aplicar la estetica fill a alguna otra variable como clarity observaremos que se representará la variable con diferentes colores dentro de las barras, el cual es realizado automaticamente por el ajuste de posición especificado por el argumento position.
 
 ```{r}
 library(tidyverse)
