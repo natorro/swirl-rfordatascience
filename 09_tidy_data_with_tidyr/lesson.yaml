@@ -60,3 +60,38 @@
 
 - Class: text
   Output: Las paqueterías dyplr y ggplot2 están diseñadas para trabajar con datos en formato tidy.
+
+
+
+
+- Class: figure
+  Output: Ahora veremos un ejemplo de una tabla con formato tidy, ya esta cargada la librería nycflights , las varaibles x, y y z representan una columna de la tabla,las unimos y generamos una data frame a partir de ellas , la nombramos como w y la imprimimos.
+  Figure: data.R
+  FigureType: new
+
+- Class: text
+  Output: Difundir y Reunir Datos
+
+- Class: text
+  Output: Podríamos pensar que las reglas de la tidy data osea información ordenada son muy obvias y hasta podráis llegar a preguntarte si en algún momento vas a llegar a encontrarte con información desordenada, desafortunaamente la mayor parte de los datos que encuentres van a estar desordenados y estas son las razones
+
+- Class: text
+  Output: Primero la mayoria de las personas no está familiarizada con la información ordenada 
+
+- Class: text
+  Output: Segundo, los datos en general se encontraran ordenados para objetivos diferentes que su análisis, muchas veces es sólo para que sea más fácil ingresar la información.
+
+- Class: text
+  Output: Que quiere decir esto, que en la mayor parte de análisis que hagamos, tendremos que hacer un poco de ordenamiento en nuestros datos, hay dos problematicas que nos encontraremos comúnmente.
+
+- Class: text
+  Output: 1.- Que una variable se encuentre en más de una columna
+
+- Class: text
+  Output: 2.- Que una observación se encuentre en más de una fila.
+
+- Class: text
+  Output: Para solucionar esto utilizaremos unas de las funciones más importantes en tidyr que vienen siendo gather para reunir y spread para extender
+
+- Class: text
+  Output: Primero veremos Reuniendo con la función Gather -->
