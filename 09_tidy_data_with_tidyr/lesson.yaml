@@ -95,3 +95,41 @@
 
 - Class: text
   Output: Primero veremos Reuniendo con la función Gather -->
+
+- Class: text
+  Output: Como se menciono anteriormente los datos pueden estar desordenados, un problema con el que comúnmente nos vamos a encontrar es que en la tabla original de la información haya columnas que en lugar de ser nombres de variables son valores de variables y esto debemos modificarlo.
+
+- Class: text
+  Output: En el siguiente ejemplo veremos un tabla que presenta la problemática mencionada y como arreglarla con la función gather.
+
+
+
+
+- Class: text
+  Output: Lo que vamos a hacer en este ejercicio será crear una data frame llamada autos_data que no este en formato tidy, esta será generada con tres vectores precargados que son modelo, hp2010 y hp2011
+
+
+
+- Class: script
+  Output: Realiza lo que se te pidió e imprime la tabla
+  AnswerTests: omnitest(correctExpr='autos_data = data.frame(modelo , hp2010 , hp2011)')
+  Hint: Usa la función dataframe
+  Script: notidy.R
+
+- Class: text
+  Output: Como podemos ver esta tabla no está ordenada en el formato requerido puesto que la segunda y tercera columna son valores y no variables
+
+- Class: text
+  Output: Ordena la tabla utilizando la función gather e imprimela. 
+
+- Class: text
+  Output: Prueba aplicar la función gather de la siguiente manera 'tidydata=gather(autos_data,'hp2010','hp2011', key = 'hpYear',value = 'hp')'
+
+- Class: script
+  Output: Realiza lo que se te pidió e imprímelo
+  AnswerTests: omnitest(correctExpr='tidydata=gather(autos_data,'hp2010','hp2011', key = 'hpYear',value = 'hp')')
+  Hint: Utiliza la función gather
+  Script: notidy.R
+
+- Class: text
+  Output: Como vimos se reordeno la tabla y los títulos de la columna dos y tres que se convirtieron en valores y se asignaron nombres a las nuevas variables.
