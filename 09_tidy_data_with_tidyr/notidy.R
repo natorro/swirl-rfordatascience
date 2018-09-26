@@ -17,3 +17,6 @@ fusion = data.frame(modelo1,hpyear,tipo,valor)
 fusion
 fusionS = spread(fusion, key = tipo, value = valor)
 fusionS
+tipoval = c('hybrid-189','normal-179','hybrid-240','normal-210')
+sep = data.frame(modelo1, hpyear, tipoval)
+separate(sep, tipoval, into = c('tipo','valor'))

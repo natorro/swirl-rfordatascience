@@ -157,3 +157,33 @@
   AnswerTests: omnitest(correctExpr='fusionS = spread(fusion, key = tipo, value = valor)')
   Hint: Revisa que hayas escrito correctamente la expresión que te proporcionamos
   Script: notidy.R
+
+- Class: text
+  Output: Como se puede apreciar al imprimir nuestra nueva tabla, ahora sólo hay un fusion de cada año por fila y hay dos nuevas columnas por lo que nuestros datos han quedado ordenados  
+
+- Class: text
+  Output: La siguiente función que veremos es Separation and Pull es decir separación y extracción  
+
+- Class: text
+  Output: Ya hemos aprendido ha solucionar cierto tipo de problemas a lo largo de la lección
+
+- Class: text
+  Output: Utilizaremos la función separate para cuando tenemos más de un valor de diferentes varaibles en una misma columna separado por algún caracter especial o espacio. Que si bien visulamente se entiende sin mayor problema, analíticamente esto sólo nos arrogaría datos sin sentido.
+
+- Class: text
+  Output: Como en ejercicios anteriores generaremos una data frame con un problema que puede ser resuelto con la función en turno , generalo con 'sep = data.frame(modelo1, hpyear, tipoval)' todo ya esta precargado
+
+- Class: script
+  Output: Realiza lo que se te pidió
+  AnswerTests: omnitest(correctExpr='sep = data.frame(modelo1, hpyear, tipoval)')
+  Hint: Escribe lo que se te ordeno
+  Script: notidy.R
+
+- Class: text
+  Output: Ahora aplicaremos la función separate para arreglar el problema de la tabla , prueba con 'separate(sep, tipoval, into = c('tipo','valor'))'
+
+- Class: script
+  Output: Realiza lo que se te pidió
+  AnswerTests: omnitest(correctExpr='separate(sep, tipoval, into = c('tipo','valor'))')
+  Hint: Escribe lo que se te ordeno
+  Script: notidy.R
