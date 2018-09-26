@@ -133,3 +133,27 @@
 
 - Class: text
   Output: Como vimos se reordeno la tabla y los títulos de la columna dos y tres que se convirtieron en valores y se asignaron nombres a las nuevas variables.
+
+- Class: text
+  Output: La función spread se utiliza para resolver el problema análogo pero de las filas, es decir cuando tenemos una observación repartida entre varias filas
+
+- Class: text
+  Output: Lo primero que haremos para realizar nuestra práctica será generar un data frame llamado fusion con los vectores precargados modelo1, hpyear, tipo, valor.
+
+- Class: script
+  Output: Realiza lo que se te pidió.
+  AnswerTests: omnitest(correctExpr='fusion = data.frame(modelo1,hpyear,tipo,valor)')
+  Hint: Utiliza la función data frame y revisa que hayas escrito correctamente tanto el nombre de la data frame como las columnas 
+  Script: notidy.R
+
+- Class: text
+  Output: Como puedes ver en la data frame que acabas de crear el modelo fusion del año 2010 se encuentra en dos filas cuando lo correcto para que se encuentre en formato tidy sería que sólo haya un fusion de cierto año por cada fila
+
+- Class: text
+  Output: Ahora prueba aplicar la función spread de la siguiente manera 'fusionS = spread(fusion, key = tipo, value = valor)'
+
+- Class: script
+  Output: Realiza lo que se te pidió
+  AnswerTests: omnitest(correctExpr='fusionS = spread(fusion, key = tipo, value = valor)')
+  Hint: Revisa que hayas escrito correctamente la expresión que te proporcionamos
+  Script: notidy.R
