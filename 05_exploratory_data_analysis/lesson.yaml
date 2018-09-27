@@ -11,7 +11,7 @@
 
 - Class: text
   Output: 1 Generas preguntas sobre tus datos.
-
+          
 
 - Class: text
   Output: 2 Buscas respuestas al visualizar, transformar, y modelar tus datos.
