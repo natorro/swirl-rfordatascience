@@ -82,3 +82,11 @@
 
 - Class: text
   Output: Para ajustar el ancho de los intervalos se utiliza el argumento width, es importante experimentar con esto por que nos puede ayudar a determinar el patrón correcto que modela nuestro conjunto o al menos los estima.
+
+- Class: figure
+  Output: Al momento de que se necesite hacer una superposición de varios datos, y los queremos en una sola gráficación, lo más recomendable es usar la función geom_freqpoly().
+  Figure: freq.R
+  FigureType: new
+
+- Class: text
+  Output: Pasando al analisis de los datos, al momento de que nosotros graficamos nuestro conjunto de datos en un histograma, podemos obtener valores inusuales, pero para poder apreciarlos en un gran conjunto de dtos tenemos quee utilizar la función coord_cartesian()
