@@ -90,3 +90,20 @@
 
 - Class: text
   Output: Pasando al analisis de los datos, al momento de que nosotros graficamos nuestro conjunto de datos en un histograma, podemos obtener valores inusuales, pero para poder apreciarlos en un gran conjunto de dtos tenemos quee utilizar la función coord_cartesian()
+
+- Class: figure
+  Output: Aquí podrás ver la implementación de la función coordenada carteciana.
+  Figure: coordC.R
+  FigureType: new
+
+- Class: text
+  Output: Existen dos formas en las cuales puedes deshacerte de valores que no existen (valores NA), en realidad existen dos opciones para quitar este tipo de datoss de tu dataset.
+
+- Class: text
+  Output: La primera forma no es muy recomendable, el primer argumento es que no eliminas mediciones, que por ejemplo se encuentran entre el rango de y = 3 | y = 20, esta opción es la siguiente --> diamonds2 <- diamonds %>% filter(between(y, 3, 20))
+
+- Class: text
+  Output: La segunda opción que se dará a continuación es la adecuada para eliminar los valores que no queremos que salgan en la gráfica, está opcioón es la siguiente --> diamonds2 <- diamonds %>% mutate(y = ifelse(y < 3 | y > 20, NA, y)).
+
+- Class: text
+  Output: El primer argumento de la función verifica que se trate de un vector lógico, el segundo toma el valor esto es cuando sea TRUE, y el ultimo no contendrá un valor esto es cuando sea FALSE.
