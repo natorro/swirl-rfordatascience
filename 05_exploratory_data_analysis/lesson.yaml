@@ -97,13 +97,22 @@
   FigureType: new
 
 - Class: text
-  Output: Existen dos formas en las cuales puedes deshacerte de valores que no existen (valores NA), en realidad existen dos opciones para quitar este tipo de datoss de tu dataset.
+  Output: Existen dos formas en las cuales puedes deshacerte de valores que no existen (valores NA), en realidad existen dos opciones para quitar este tipo de datos de tu dataset.
 
 - Class: text
-  Output: La primera forma no es muy recomendable, el primer argumento es que no eliminas mediciones, que por ejemplo se encuentran entre el rango de y = 3 | y = 20, esta opción es la siguiente --> diamonds2 <- diamonds %>% filter(between(y, 3, 20))
+  Output: La primera forma no es muy recomendable,sobre todo cuando se tiene una medición que no es valida,en otras palabras valores que son raros o que probovocan ruidos en la gráfica, y para su despresición la opción es la siguiente --> diamonds2 <- diamonds %>% filter(between(y, 3, 20))
 
 - Class: text
-  Output: La segunda opción que se dará a continuación es la adecuada para eliminar los valores que no queremos que salgan en la gráfica, está opcioón es la siguiente --> diamonds2 <- diamonds %>% mutate(y = ifelse(y < 3 | y > 20, NA, y)).
+  Output: La segunda opción que se dará a continuación es la adecuada para remplazar los valores raros por valores NA y es la opción que se recomienda para no alterar los resultados al graficar, está opcioón es la siguiente --> diamonds2 <- diamonds %>% mutate(y = ifelse(y < 3 | y > 20, NA, y)).
 
 - Class: text
-  Output: El primer argumento de la función verifica que se trate de un vector lógico, el segundo toma el valor esto es cuando sea TRUE, y el ultimo no contendrá un valor esto es cuando sea FALSE.
+  Output: El primer argumento de la función verifica que se trate de un vector lógico, el segundo toma el valor del vector cuando sea TRUE, y el ultimo no contendrá un valor esto es cuando sea FALSE.
+
+- Class: text
+  Output: Lo anterior nos lleva a querer comparar los valores perdidos de los valores registrados, para ejemplificar lo anterior haremos uso del conjunto de datos flights, el cual tiene valores perdidos la variable dep_time, y estos nos pueden indicar la cancelación de vuelos.
+
+- Class: cmd_question
+  Output: Escribe la siguiente función y observa que para hcer las comparaciones de valores perdidos contra los registrados usaremos la función is.na(). Escribe la siguiente función y observa el resultado
+  CorrectAnswer: Expression or Valuenycflights13::flights %>% mutate(cancelled = is.na(dep_time),sched_hour = sched_dep_time %/% 100,sched_min = sched_dep_time %% 100, sched_dep_time = sched_hour + sched_min / 60) %>% ggplot(mapping = aes(sched_dep_time)) + geom_freqpoly(mapping = aes(color = cancelled), binwidth = 1/4)
+  AnswerTests: omnitest(correctExpr='Expression or Valuenycflights13::flights %>% mutate(cancelled = is.na(dep_time),sched_hour = sched_dep_time %/% 100,sched_min = sched_dep_time %% 100, sched_dep_time = sched_hour + sched_min / 60) %>% ggplot(mapping = aes(sched_dep_time)) + geom_freqpoly(mapping = aes(color = cancelled), binwidth = 1/4)')
+  Hint: Tú puedes!!
