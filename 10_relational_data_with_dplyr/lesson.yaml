@@ -1,0 +1,56 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 10_relational_data_with_dplyr
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Datos relacionales con dplyr
+
+- Class: text
+  Output: Cuando se hace análisis de datos es muy raro el caso en el que se usa una única tabla de datos que contenga todo lo que necesitamos.
+
+- Class: text
+  Output: Típicamente existen varias tablas con distinta información y es necesario combinarlas para poder responder preguntas en las que estás interesado.
+
+
+- Class: text
+  Output: Para que esto quede más claro veremos un ejemplo sencillo. Digamos que tienes dos tablas, una de los estudiantes que asisten a una escuela. En esta table puedes ver la inforamción de cada estudiante desde su id de identificación hasta el grado escolar al que pertecen. En la segunda tabla tienes tienes el id de cada alumno y sus asistencias por fechas, entonces se te pide que digas el índice de asistencia del día de ayer por cada grado escolar.
+
+- Class: text
+  Output: Como ninguna de las dos tablas te puede dar la respuesta que necesitas por si misma. Intuitivamente suena lógico pensar que necesitas unir la información de ambas tablas, pero cómo, es decir de manera manual sería muy ineficiente. Aquí es donde entran las herramientas que veremos en el curso.
+
+- Class: text
+  Output: A este tipo de conjunto de datos se le llama datos relacionales. Cualquier otra relación entre tablas parte de esta simple idea.
+
+- Class: text
+  Output: Para trabajar con datos relacionales necesitas funciones que trabajen con pares de tablas. Existen tres familias de funciones que trabajan con datos relacionales y son 
+
+- Class: text
+  Output: 1 Mutating Joins ->  Añaden nuevas variables a un data frame de observaciones coincidentes de otra tabla.
+
+- Class: text
+  Output: Filtering joins -> Filtran una data frame basado en las observaciones coincidentes de otra tabla relacionada.
+
+- Class: text
+  Output: Set operations -> Trata a las observaciones como si fueran conjuntos de elementos.
+
+- Class: text
+  Output: Normalmente los datos relacionales están en un sistema de administración de bases de datos relacionales. Sí has trabajado con este tipo de bases de datos, lo más probabe es que has trabajado con SQL, de ser cierto los conceptos de dplyr se te harán familiares aun que la forma de expresarlas es un poco diferente.  
+
+- Class: text
+  Output: En general dplyr es un poco más fácil de usar que SQL pues está especializado en el análisis de datos, la desventaja es que cuando se trata de cosas menos comunes en le análisis lo hace un poco más complejo. 
+
+- Class: text
+  Output: Como prerequisito para poder ver y entender los ejemplos habrá que instalar las librerías tidyverse y nycflights13
+
+- Class: text
+  Output: Lo primero que haremos es explorar la base de datos realcional de nycflights13 ya que más adelante la utilizaremos para aprender de datos relacionales
+
+- Class: cmd_question
+  Output: Teclea nycflights13::airlines para que visualices la tabla de airlines que contiene los nombres de las aerolíneas con sus respectivas abreviaturas.
+  CorrectAnswer: nycflights13::airlines
+  AnswerTests: omnitest(correctExpr='nycflights13::airlines')
+  Hint: Escribe lo que se te pidió
