@@ -37,7 +37,7 @@
   Output: Cabe destacar que a diferencia de data.frame(), tibble() nunca cambia en tipo de las entradas, ni los nombres de las variables, ni crea nuevos nombres para las columnas.
 
 - Class: text
-  Output: Es posible que un tibble tenga nombres no sintactico, o que no acepta R, como aquellos que no inician con una letra, o que contienen espacios, los cuales debes de rodear con `
+  Output: Es posible que un tibble tenga nombres no sintactico, o que no acepta R, como aquellos que no inician con una letra, o que contienen espacios, los cuales debes de rodear entre comillas simples (`)
 
 - Class: cmd_question
   Output: Un buen ejemplo de estos nombres es el siguiente código que debes ejecutar(:) tb <- tibble(`:)` = "smile", ` ` = "space", `2000` = "number")
@@ -52,18 +52,18 @@
   Hint: Solo llamalo con su nombre, tb
 
 - Class: cmd_question
-  Output: Ejecuta el siguiente código de ejemplo para entender como funciona(:) tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
-  CorrectAnswer: tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
-  AnswerTests: omnitest(correctExpr='tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)')
+  Output: Ejecuta el siguiente código de ejemplo para entender como funciona(:) tribble(~x, ~y, ~z, "a", 2, 3.6, "b", 1, 8.5 )
+  CorrectAnswer: tribble(~x, ~y, ~z, "a", 2, 3.6, "b", 1, 8.5 )
+  AnswerTests: omnitest(correctExpr='tribble(~x, ~y, ~z, "a", 2, 3.6, "b", 1, 8.5 )')
   Hint: Copia el código y ejecutalo.
 
 - Class: text
   Output: Otra variante de un data frame es el tribble, abreviado de transposed tibble, lo cual quiere decir que es una funcion modificada para permitir entrada de datos en forma de código; los encabezados de columnas son definidos por fórmulas, y los registros son separados por comas; lo cual hace posible ingresar trozos pequeños de datos directamente.
 
 - Class: cmd_question
-  Output: Para entender como ingresar datos por medio de un tribble, ejecuta el siguiente código(:) tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
-  CorrectAnswer: tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)
-  AnswerTests: omnitest(correctExpr='tribble(~x, ~y, ~z, #--/--/---- "a", 2, 3.6, "b", 1, 8.5)')
+  Output: Para entender como ingresar datos por medio de un tribble, ejecuta el siguiente código(:) tribble(~x, ~y, ~z, "a", 2, 3.6, "b", 1, 8.5)
+  CorrectAnswer: tribble(~x, ~y, ~z, "a", 2, 3.6, "b", 1, 8.5)
+  AnswerTests: omnitest(correctExpr='tribble(~x, ~y, ~z, "a", 2, 3.6, "b", 1, 8.5)')
   Hint: Copia el código y ejecutalo
 
 - Class: text
@@ -83,3 +83,24 @@
 
 - Class: text
   Output: Ahora bien, para extraer data de un tibble de una sola variable puedes usar $ y [[, donde [[ extraen por nombre o posición, y $ solo extrae por nombre pero sin menos elementos a recordar.
+
+- Class: cmd_question
+  Output: Utiliza el siguiente código para poner en práctica la extracción por nombre y posición. Primero define el df con df <- tibble(x = runif(5),y = rnorm(5))
+  CorrectAnswer: df <- tibble(x = runif(5),y = rnorm(5))
+  AnswerTests: omnitest(correctExpr='df <- tibble(x = runif(5),y = rnorm(5))')
+  Hint: Define el df con df <- tibble(x = runif(5),y = rnorm(5))
+
+- Class: cmd_question
+  Output: Ahora lleva a cabola búsqueda por nombre con el código (:) df$x (tambien es valido usar df[["x"]], pero para este ejemplo solo usaremos la primera expresión)
+  CorrectAnswer: df$x
+  AnswerTests: omnitest(correctExpr='df$x')
+  Hint: 
+
+- Class: text
+  Output: Toma en cuenta que $ funciona como un indicador que expresa la salida de un objeto, o el realizar alguna operación dentro de ese data frame
+
+- Class: cmd_question
+  Output: En algun punto de desarrollo con R te puedes encontrar con código viejo que no funciona con tibbles, por lo que deberas convertir tu tibble de nuevo en un data.frame. Para ello, tienes la funcion as.data.frame() a tu disposición. Ejecuta la función dentro de una class() para convertir a tb
+  CorrectAnswer: class(as.data.frame(tb))
+  AnswerTests: omnitest(correctExpr='class(as.data.frame(tb))')
+  Hint: ejecuta class(as.data.frame(tb))
