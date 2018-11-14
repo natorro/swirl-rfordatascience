@@ -158,14 +158,86 @@
 - Class: text
   Output: Nota -> utilizaremos pipes para hacer más legibles los códigos '%>%'
 
+
+
+- Class: text
+  Output: Cabe destacar que es necesario que tengas instalada la paquetería de dyplr así como que la llames con la función library
+
+- Class: text
+  Output: Sin más que aclarar vamos al ejercicio!
+
 - Class: cmd_question
-  Output: Escribe el código airports %>% 
-    count(faa) %>%
-    filter(n > 1)
-  CorrectAnswer: airports %>% 
-    count(faa) %>%
-    filter(n > 1)
-  AnswerTests: omnitest(correctExpr='airports %>% 
-    count(faa) %>%
-    filter(n > 1)')
+  Output: Escribe el código airports %>% count(faa) %>% filter(n > 1)
+  CorrectAnswer: airports %>% count(faa) %>% filter(n > 1)
+  AnswerTests: omnitest(correctExpr='airports %>% count(faa) %>% filter(n > 1)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Como puedes ver el código que acabas de correr te arroja un tibble de 0 por 2 los que significa esto es que efectivamente es un llave primaria de la tabla pues no hay repeticiones es decir hay cero repeticiones de valores por lo que nos arrojo el código
+
+- Class: text
+  Output: Lo que sigue es que pongas en practica lo que acabas de aprender y hagas lo mismo pero con la tabla weather
+
+- Class: text
+  Output: Recuerda que la tabla weather emplea varias de sus variables es decir columnas para para formar sus llaves foráneas.  
+
+- Class: text
+  Output: Te recordamos que en weather las columnas que deberías utilizar son year, month, day, hour y origin.
+
+- Class: text
+  Output: Vamos al ejercicio
+
+- Class: cmd_question
+  Output: Utiliza todas las recomendaciones que se te hicieron anteriormente y determina sí las columnas que te digimos de weather efectivamente forman una llave.
+  CorrectAnswer: weather %>% count(year, month, day, hour, origin) %>% filter(n > 1)
+  AnswerTests: omnitest(correctExpr='weather %>% count(year, month, day, hour, origin) %>% filter(n > 1)')
+  Hint: Recuerda utilizar pipes para escribir tú respuesta y haber incluido todas las columnas que te mencionamos. La estructura es la misma que en el ejercicio anterior.
+
+- Class: text
+  Output: Este es un claro ejemplo de que no siempre se tiene una llave primaria explícita por que ninguna combinación de variables nos da un identificación única de cada observación, esto tabién sucede en la tabla de flights.
+
+- Class: text
+  Output: Usualmente para solucionar esto se agrega una nueva columna con la función mutate() y row_number(). De esta manera es más fácil identificar las observaciones.
+
+- Class: text
+  Output: A esto se le llama llave sustituta.
+
+- Class: text
+  Output: Ahora que tienes todas estás herramientas comenzaremos a ver los joins
+
+- Class: text
+  Output: Primero veremos los Mutating Joins
+
+- Class: text
+  Output: Esta es la primera herramienta que te mostraremos para combinar un par de tablas 
+
+- Class: text
+  Output: Lo que hace es emparejar a las observaciones por sus llaves y despues copia los valores correspondientes de cada una para formar la nueva tabla.
+
+- Class: text
+  Output: A la hora de trabajar con datos es importante nunca  modificar nuestra base original por lo que se recomienda hacer una copia de la tabla o tablas con las que vayas trabajar.
+
+- Class: text
+  Output: En el siguiente ejercicio es justo lo que vas a hacer 
+
+- Class: cmd_question
+  Output: Escribe el código vuelos <- flights %>% select(year:day, hour, origin, tailnum, carrier) esto generará una nueva tabla con las variables que seleccionaste.
+  CorrectAnswer: vuelos <- flights %>% select(year:day, hour, origin, tailnum, carrier)
+  AnswerTests: omnitest(correctExpr='vuelos <- flights %>% select(year:day, hour, origin, tailnum, carrier)')
   Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Ahora para visualizar lo que acabas de hacer escribe vuelos
+  CorrectAnswer: vuelos
+  AnswerTests: omnitest(correctExpr='vuelos')
+  Hint: Escribe vuelos.
+
+- Class: cmd_question
+  Output: Ahora veremos el ejemplo de un left join teclea, imagina que quieres agregar la información del avión que hizo el vuelo para cada observación y sólo quieres ver la fecha el origen y la información del avión. Escribe el código vuelos %>% select(-carrier) %>% left_join(planes, by = 'tailnum')
+  CorrectAnswer: vuelos %>% select(-carrier) %>% left_join(planes, by = 'tailnum')
+  AnswerTests: omnitest(correctExpr='vuelos %>% select(-carrier) %>% left_join(planes, by = 'tailnum')')
+  Hint: Escribe lo que se te pidió
+
+
+- Class: text
+  Output: Como podrás apreciar se agrego la información deseada
