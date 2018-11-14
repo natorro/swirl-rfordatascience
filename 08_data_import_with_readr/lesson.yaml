@@ -5,3 +5,45 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.3
+
+- Class: text
+  Output: En este capitulo aprenderas a leer archivos de texto plano en R usando las propiedades de importar datos.
+
+- Class: cmd_question
+  Output: Como es costumbre, iniciaremos por cargar la biblioteca de Tidyverse. Ejecuta el código necesario para ello.
+  CorrectAnswer: library(tidyverse)
+  AnswerTests: omnitest(correctExpr='library(tidyverse)')
+  Hint: usa la función library()
+
+- Class: text
+  Output: la función de readr's es la de convertir textos planos en data frames, teniendo como conjutno de funciones a read_csv() y read_csv2() que se diferencian en el cómo estan separados los valores, si por coma o por semicolon respectivamente.
+
+- Class: text
+  Output: read_tsv() lee archivos delimitados por tabuladores, y read_delim() lee archivos con cualquier delimitante, lo cual la convierte en la función mas flexible para leer archivos.
+
+- Class: text
+  Output: read_fwf() lee archivos con un ancho fijo, los cuales se pueden especificar en campos con fwf_widths() o ayudar a encontrar su posición con fwf_positions(). 
+
+- Class: text
+  Output: read_log() lee archivos de estilo apache o webreadr.
+
+- Class: text
+  Output: Para poder usar read_csv(), debes entender que la parte crucial para que funcione se encuentra en la dirección que usas para ubicar un archivo a leer, y que esta lectura la puedes asignar a  un data frame. Esto lo logras poniendo la dirección del directorio donde se encuentra el archivo dentro de la función.
+  
+- Class: cmd_question
+  Output: El csv que vamos a usar en la lección se encuentra alojado en un objeto llamado direccion, es necesario que uses la función print() en este objeto
+  CorrectAnswer: print(direccion)
+  AnswerTests: omnitest(correctExpr='print(direccion)')
+  Hint: Usa print(direccion)
+
+- Class: cmd_question
+  Output: A la ubicación que se te mostro anteriormente, la completaremos con el nombre del archivo profesores.csv para poder cargarlo. Para ello usaremos la función file.path y guardaremos la dirección en un objeto llamado "direccion_completa"
+  CorrectAnswer: direccion_completa <- file.path(direccion, "profesores.csv")
+  AnswerTests: omnitest(correctExpr='direccion_completa <- file.path(direccion, "profesores.csv")')
+  Hint: Usa el código direccion_completa <- file.path(direccion, "profesores.csv")
+
+- Class: cmd_question
+  Output: Lee el archivo profesores.csv usando el objeto "direccion_completa" y guardalo dentro de un data frame llamado "profesores". Toma en cuenta que dentro del código que uses mas adelante puedes usar la dirección completa de la ubicación de tu archivo en lugar del objeto
+  CorrectAnswer: profesores <- read_csv(direccion_completa)
+  AnswerTests: omnitest(correctExpr='profesores <- read_csv(direccion_completa)')
+  Hint: Usa profesores <- read_csv(direccion_completa)
