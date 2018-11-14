@@ -54,3 +54,118 @@
   CorrectAnswer: nycflights13::airlines
   AnswerTests: omnitest(correctExpr='nycflights13::airlines')
   Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Teclea nycflights13::airports para que visualices la tabla de aeropuertos que incluye el nombre de los aeropuertos con su respectiva clave de identificación en la columna faa
+  CorrectAnswer: nycflights13::airports
+  AnswerTests: omnitest(correctExpr='nycflights13::airports')
+  Hint: Escribe lo que se te pidió
+
+
+
+- Class: cmd_question
+  Output:  Escribe nycflights13::planes para desplegar la tabla de aviones que contiene información con el identificador de cada uno.
+  CorrectAnswer: nycflights13::planes
+  AnswerTests: omnitest(correctExpr='nycflights13::planes')
+  Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Ya para terminar la exploración de esta base teclea nycflights13::weather , esto despliega la tabla clima que da el estado del tiempo de cada aeropuerto de Nueva York por hora.
+  CorrectAnswer: nycflights13::weather 
+  AnswerTests: omnitest(correctExpr='nycflights13::weather ')
+  Hint: Escribe lo que se te pidió
+
+
+- Class: text
+  Output: Hay varias relaciones entre las tablas que acabamos de ver por ejemplo
+
+- Class: text
+  Output: La tabla de vuelos 'flights' se conecta con la tabla de aviones llamada 'airports' de dos maneras por la columna origen y la columan destino de la primera tabla a la columna faa de la segunda tabla
+
+- Class: text
+  Output: Flights también se conecta con aerolineas por la columna carrier que se encuentra en ambas tablas
+
+- Class: text
+  Output: Por último la tabla weather se conecta con flights por la columna origin presente en ambas tablas y el tiempo que engloba el año, mes, día, hora y vuelo.
+
+- Class: text
+  Output: Veremos un subtema más y comenzaremos con ejercicios de esta base.
+
+- Class: text
+  Output: Las llaves
+
+
+
+- Class: text
+  Output: Se le denomina llaves a las variables que se utilizan para conectar cada par de tablas, es una variable que idetifica de manera única una observación.
+
+- Class: text
+  Output: Por ejemplo cada aeropuerto se puede identificar por su clave única faa
+
+
+- Class: text
+  Output: Aun que existen casos en los que se necesita más de una columna o la convianción de ellas para poder hacer este identificador. Que por cierto es baśico para que un conjunto de datos relacionales funcione de manerea correcta, si no, se pierde la integridad de la inforamción entre otras cosas.
+
+- Class: text
+  Output: Existen dos tipos de llaves 
+
+- Class: text
+  Output: Las llaves primarias <- estas identifican de manera única una observación en su propia tabla
+
+- Class: text
+  Output: Llaves foraneas <- estás identifican una observación en otra tabla
+
+- Class: text
+  Output: Un buen ejemplo de esto es la columna flights$origin de la tabla flights por que identifica cada vuelo con su respectivo aeropuerto de origen 
+
+- Class: text
+  Output: Aunque también se puede dar le caso en el que una misma columna es llave foránea y primaria a la vez.
+
+- Class: text
+  Output: Por ejemplo el año es parte de la llave primaria de flights pero también es llave foránea para relacionar los datos con los de weather.
+
+- Class: text
+  Output: Ahora te daremos las llaves primarias de cada tabla para que no haya malentendidos. Piensa si pudiste identificarlas por ti mismo, es un buen ejercicio.
+
+- Class: text
+  Output: airports <- faa
+
+
+
+- Class: text
+  Output: flights <- year, month, day, hour, flight
+
+- Class: text
+  Output: planes <- tailnum
+
+- Class: text
+  Output: weather <- year, month, day, hour, origin
+
+- Class: text
+  Output: airlines <- carrier
+
+
+
+- Class: text
+  Output: Metimos una tabla extra que también pertencen a nycfights13 te damos su llave foránea, si quieres verla más a fondo puedes correr una línea de código similar a las que usaste para visualizar las otras tablas pero cambiando el nombre correspondiente.
+
+- Class: text
+  Output: Cuando estes trabajando con datos relacionales puede que ya hayas identificado tus posibles llaves primarias pero siempre es importante verificar que la llave identifique a una única información.
+
+- Class: text
+  Output: Una forma de hacerlo es
+
+- Class: text
+  Output: Nota -> utilizaremos pipes para hacer más legibles los códigos '%>%'
+
+- Class: cmd_question
+  Output: Escribe el código airports %>% 
+    count(faa) %>%
+    filter(n > 1)
+  CorrectAnswer: airports %>% 
+    count(faa) %>%
+    filter(n > 1)
+  AnswerTests: omnitest(correctExpr='airports %>% 
+    count(faa) %>%
+    filter(n > 1)')
+  Hint: Escribe lo que se te pidió
