@@ -232,12 +232,50 @@
   AnswerTests: omnitest(correctExpr='vuelos')
   Hint: Escribe vuelos.
 
+
+
+
+
 - Class: cmd_question
-  Output: Ahora veremos el ejemplo de un left join teclea, imagina que quieres agregar la información del avión que hizo el vuelo para cada observación y sólo quieres ver la fecha el origen y la información del avión. Escribe el código vuelos %>% select(-carrier) %>% left_join(planes, by = 'tailnum')
-  CorrectAnswer: vuelos %>% select(-carrier) %>% left_join(planes, by = 'tailnum')
-  AnswerTests: omnitest(correctExpr='vuelos %>% select(-carrier) %>% left_join(planes, by = 'tailnum')')
+  Output: Ahora veremos el ejemplo de un left join, imagina que quieres agregar la información del aeropuerto de donde salió el vuelo para cada observación. Escribe el código vuelos %>% head(10) %>% left_join(airports, by = c("origin"="faa"))
+  CorrectAnswer: vuelos %>% head(10) %>% left_join(airports, by = c("origin"="faa"))
+  AnswerTests: omnitest(correctExpr='vuelos %>% head(10) %>% left_join(airports, by = c("origin"="faa"))')
   Hint: Escribe lo que se te pidió
 
 
 - Class: text
-  Output: Como podrás apreciar se agrego la información deseada
+  Output: Como podrás apreciar en la tabla que se desplego tienes la tabla original de vuelos a la que se le añadio la respectica información del aeropuerto con respecto al lugar de origen de cada uno.
+
+- Class: text
+  Output: Utilizamos head(10) para que sólo haga esto para las primeras 10 observaciones de la tabla vuelos y sea más fácil visualizar el resultado.
+
+- Class: text
+  Output: El left join funciona de la siguiente manera 
+
+- Class: text
+  Output: Supongamos que ya tienes las llaves de las dos tablas con las que vas a hacer el join, la información de la segunda tabla se va a añadir a la primera tabla con base en las llaves como se explicó anteriormente.
+
+- Class: text
+  Output: Pero en el caso del left join todos los renglones de la primera tabla se van a respetar y aparecerán en la tabla resultante, sin embargo de la segunda tabla sólo se traerán los valores coincidentes y en caso de no existir se colocará un NA
+
+- Class: figure
+  Output: Para que entiendas mejor la relación te presentaremos una diagrama de venn con los datos que contendría la tabla resultante del join.
+  Figure: venn.R
+  FigureType: new
+
+- Class: figure
+  Output: Análogamente te presentamos el funcionamiento del right join con otro diagrama de venn
+  Figure: vennr.R
+  FigureType: new
+
+- Class: text
+  Output: Ahora pasaremos a los inner joins
+
+- Class: text
+  Output: Estos son los más fáciles de comprender
+
+- Class: text
+  Output: Lo que hace un inner join es generar una nueva tabla con las filas que tienen llaves coincidentes entre tablas.
+
+- Class: text
+  Output: Veremos un ejemplo muy sencillo para entender lo que hace
