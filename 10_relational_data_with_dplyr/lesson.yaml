@@ -279,3 +279,80 @@
 
 - Class: text
   Output: Veremos un ejemplo muy sencillo para entender lo que hace
+
+- Class: text
+  Output: En este ejercicio generaremos dos data frames que se relacionen por una llave pero que sus llaves sólo tengan ciertos valores en común.
+
+
+
+
+- Class: text
+  Output: Vamos a hacerlo paso a paso
+
+- Class: cmd_question
+  Output: Crea una data frame corriendo el siguiente código df <- data.frame(llave = c("1", "2", "3") ,dos = c("a", "b", "c")).
+  CorrectAnswer: df <- data.frame(llave = c("1", "2", "3") ,dos = c("a", "b", "c"))
+  AnswerTests: omnitest(correctExpr='df <- data.frame(llave = c("1", "2", "3") ,dos = c("a", "b", "c"))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Crea otro data frame corriendo este código df1 <- data.frame(llave1 = c("1", "2", "4"), dos1 = c("e", "f", "g"))
+  CorrectAnswer: df1 <- data.frame(llave1 = c("1", "2", "4"), dos1 = c("e", "f", "g"))
+  AnswerTests: omnitest(correctExpr='df1 <- data.frame(llave1 = c("1", "2", "4"), dos1 = c("e", "f", "g"))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Imprime los dos data frames con print(list(df, df1))
+  CorrectAnswer: print(list(df, df1))
+  AnswerTests: omnitest(correctExpr='print(list(df, df1))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Como puedes ver en la columna llave y llave1 se comparten sólo algunos valores.
+
+- Class: cmd_question
+  Output: Ahora vas a aplicar un inner join con el siguiente código df %>% inner_join(df1, by = c("llave" = "llave1")).
+  CorrectAnswer: df %>% inner_join(df1, by = c("llave" = "llave1"))
+  AnswerTests: omnitest(correctExpr='df %>% inner_join(df1, by = c("llave" = "llave1"))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Sí ves el output de lo que acabas de compilar, la tabla que se generó sólo contiene los renglones de las llaves que estaban contenidas en ambas tablas.
+
+- Class: text
+  Output: Ahora veremos el outer join
+
+- Class: text
+  Output: Funciona de una forma similar a todos los joins, pero lo que hace este join es que en la neuva tabla mantiene todas las observaciones que aparecen en ambas tablas, si no existe relación de algún renglón con la otra tabla se rellena con NAs.
+
+- Class: cmd_question
+  Output: Ahora te toca a ti,  has un outer join con la misma estructura que el inner join pero utilizando la función full_join.
+  CorrectAnswer: df %>% full_join(df1, by = c("llave" = "llave1"))
+  AnswerTests: omnitest(correctExpr='df %>% full_join(df1, by = c("llave" = "llave1"))')
+  Hint: Es el mismo código, sólo utiliza la función full_join  en lugar de inner_join.
+
+- Class: text
+  Output: Si te fijas, trajo todas las observaciones y las que no tienen una relación con la otra tabla rellenan ese espacio con NAs.
+
+- Class: text
+  Output: En realidad el left join y el right join que vimos anteriormente son tipos de outer joins es sólo que en el caso del left join, mantiene todas las observaciones de la primera tabla y las que cuadren de la segunda a su vez en el caso del right join, mantiene todas las observaciones de la segunda tabla y las que cuadren de la primera.
+
+- Class: text
+  Output: Ahora una imagen que ilustra lo que viste del outer join.
+
+- Class: figure
+  Output: Cada círculo representa una tabla, el número de la intersección nos dice cuantos valores comparten y los otros cuantos difieren.
+  Figure: venno.R
+  FigureType: new
+
+- Class: text
+  Output: Ahora que terminamos de ver el funcionamiento y tipo de joins veremos una de las grandes dificultades de trabajar con ellos.
+
+- Class: text
+  Output: Las llaves duplicadas.
+
+- Class: text
+  Output: Hasta ahora casi todos los ejemplos que hemos visto tuvieron llaves únicas pero veremos otros valores que pueden conectar las tablas.
+
+- Class: text
+  Output: Hasta ahora casi todos los ejemplos que hemos visto tuvieron llaves únicas pero ese no siempre es el caso, veremos que pasa cuando hay valores repetidos en las llaves.
