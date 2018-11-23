@@ -355,4 +355,127 @@
   Output: Hasta ahora casi todos los ejemplos que hemos visto tuvieron llaves únicas pero veremos otros valores que pueden conectar las tablas.
 
 - Class: text
-  Output: Hasta ahora casi todos los ejemplos que hemos visto tuvieron llaves únicas pero ese no siempre es el caso, veremos que pasa cuando hay valores repetidos en las llaves.
+  Output: Hasta ahora casi todos los ejemplos que hemos visto tenían llaves únicas pero ese no siempre es el caso, veremos que pasa cuando hay valores repetidos en las llaves.
+  
+  
+
+- Class: text
+  Output: Veremos las dos posibilidades de output con unos sencillos ejercicios
+
+- Class: cmd_question
+  Output: Creamos una data frame escribiendo el código df1 <- data.frame(llave1 = c("1", "2", "2","1"), dos1 = c("e", "f", "g","h"))
+  CorrectAnswer: df1 <- data.frame(llave1 = c("1", "2", "2","1"), dos1 = c("e", "f", "g","h"))
+  AnswerTests: omnitest(correctExpr='df1 <- data.frame(llave1 = c("1", "2", "2","1"), dos1 = c("e", "f", "g","h"))')
+  Hint: Escribe lo que se te pidió
+
+- Class: text
+  Output: Como podrás notarlo en la columna de llave1 el valor dos está  repetido.
+
+- Class: cmd_question
+  Output: Genera un segundo data frame con el siguiente código df <- data.frame(llave = c("1", "2") ,dos = c("a", "b"))
+  CorrectAnswer: df <- data.frame(llave = c("1", "2") ,dos = c("a", "b"))
+  AnswerTests: omnitest(correctExpr='df <- data.frame(llave = c("1", "2") ,dos = c("a", "b"))')
+  Hint: Utiliza comillas dobles.
+
+- Class: text
+  Output: Lo has notado?
+
+- Class: text
+  Output: Son las mismas llaves que en df1 pero sin repetición además de que las dimensiones de df1 y df son distintas.
+
+- Class: cmd_question
+  Output: Aplica un left join tomando a df1 como la primera tabla.
+  CorrectAnswer: df1 %>% left_join(df, by = c("llave1" = "llave"))
+  AnswerTests: omnitest(correctExpr='df1 %>% left_join(df, by = c("llave1" = "llave"))')
+  Hint: df1 %>% left_join(df, by = c("llave1" = "llave"))
+
+- Class: text
+  Output: Viendo el output notarás que los valores de df se repiten para rellenar los espacios de la nueva tabla,  esto pasa por que comparten llaves.
+
+- Class: text
+  Output: De esta manera puedes agregar información a una tabla rapidamente, digamos que tienes en una columna los nombres de los aeropuertos pero con muchas repeticiones y en una tabla aparte tiene las abreviaturas de cada nombre de manera única, al hacer el join rellenaras la columna con la abreviatura correspondiente.
+
+- Class: text
+  Output: Veamos el segundo caso que es cuando hay repeticiones en las llaves de ambas tablas. 
+
+- Class: cmd_question
+  Output: Generamos el primer data frame con el siguiente código df4 <- data.frame(llave1 = c("1", "2", "2","1"), dos1 = c("e", "f", "g","h"))
+  CorrectAnswer: df4 <- data.frame(llave1 = c("1", "2", "2","1"), dos1 = c("e", "f", "g","h"))
+  AnswerTests: omnitest(correctExpr='df4 <- data.frame(llave1 = c("1", "2", "2","1"), dos1 = c("e", "f", "g","h"))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Generamos el segundo data frame con el siguiente código df3 <- data.frame(llave = c("1", "2","2") ,dos = c("a", "b","c"))
+  CorrectAnswer: df3 <- data.frame(llave = c("1", "2","2") ,dos = c("a", "b","c"))
+  AnswerTests: omnitest(correctExpr='df3 <- data.frame(llave = c("1", "2","2") ,dos = c("a", "b","c"))')
+  Hint: Escribe lo que se te pidió.
+
+
+- Class: cmd_question
+  Output: Aplica un left join tomando df4 como la primera tabla.
+  CorrectAnswer: df4 %>% left_join(df3, by = c("llave1" = "llave"))
+  AnswerTests: omnitest(correctExpr='df4 %>% left_join(df3, by = c("llave1" = "llave"))')
+  Hint: df4 %>% left_join(df3, by = c("llave1" = "llave"))
+
+- Class: text
+  Output: Lo que hace la fución para solucionar el problema de llaves repetidas es que le asigina un nuevo renglón en la tabla resultante por cada repetición, de esta manera no se pierde información.
+
+- Class: text
+  Output: Por ultimo veremos Filtering joins, hay dos tipos
+
+- Class: text
+  Output: semi_join que mantiene todas las observaciones de la primera tabla que coincidan con las de la segunda.
+  
+
+- Class: text
+  Output: anti_join este tipo de join hace justo lo contrario, elimina todas las observaciones en la primera tabla que tengan coincidencia con las de la segunda.
+
+- Class: text
+  Output: Crearemos dos data frames que nos servirán para ver como funcionan ambos joins.
+
+- Class: cmd_question
+  Output: Creamos data frame df5 <- data.frame(llave1 = c("1", "2", "3","4"), dos1 = c("e", "f", "g","h"))
+  CorrectAnswer: df5 <- data.frame(llave1 = c("1", "2", "3","4"), dos1 = c("e", "f", "g","h"))
+  AnswerTests: omnitest(correctExpr='df5 <- data.frame(llave1 = c("1", "2", "3","4"), dos1 = c("e", "f", "g","h"))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Creamos data frame df6 <- data.frame(llave = c("1", "2") ,dos = c("a", "b"))
+  CorrectAnswer: df6 <- data.frame(llave = c("1", "2") ,dos = c("a", "b"))
+  AnswerTests: omnitest(correctExpr='df6 <- data.frame(llave = c("1", "2") ,dos = c("a", "b"))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Aplica un semi join corriendo el siguiente código df5 %>% semi_join(df6, by = c("llave1" = "llave"))
+  CorrectAnswer: df5 %>% semi_join(df6, by = c("llave1" = "llave"))
+  AnswerTests: omnitest(correctExpr='df5 %>% semi_join(df6, by = c("llave1" = "llave"))')
+  Hint: df5 %>% semi_join(df6, by = c("llave1" = "llave"))
+
+- Class: text
+  Output: Observa como se mantuvieron sólo las llaves coincidentes entre ambas tablas.
+  
+  
+
+- Class: cmd_question
+  Output: Aplica un anti join sobre los data frames anteriores con este código df5 %>% anti_join(df6, by = c("llave1" = "llave"))
+  CorrectAnswer: df5 %>% anti_join(df6, by = c("llave1" = "llave"))
+  AnswerTests: omnitest(correctExpr='df5 %>% anti_join(df6, by = c("llave1" = "llave"))')
+  Hint: df5 %>% anti_join(df6, by = c("llave1" = "llave"))
+
+- Class: text
+  Output: Justo a la inversa, sólo se mantuvieron las observaciones que no eran coincidentes con la segunda tabla.
+
+- Class: text
+  Output: Ya para terminar veremos 3 operadores.
+
+- Class: text
+  Output: intersect(tab1, tab2) que nos regresará las observaciones que esten en ambas tablas.
+
+- Class: text
+  Output: union(tab1, tab2) regresa una nueva tabla con las observaciones de ambas tablas sin repeticiones.
+
+- Class: text
+  Output: setdiff(tab1, tab2) regresa observaciones que esten en tab1 pero no en tab2.
+
+- Class: text
+  Output: Felicidades hemos terminado la lección!
