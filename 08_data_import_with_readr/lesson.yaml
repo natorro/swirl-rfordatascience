@@ -16,7 +16,7 @@
   Hint: usa la función library()
 
 - Class: text
-  Output: la función de readr's es la de convertir textos planos en data frames, teniendo como conjutno de funciones a read_csv() y read_csv2() que se diferencian en el cómo estan separados los valores, si por coma o por semicolon respectivamente.
+  Output: la función de readr's es la de convertir textos planos en data frames, teniendo como conjunto de funciones a read_csv() y read_csv2() que se diferencian en el cómo estan separados los valores, si por coma o por semicolon respectivamente.
 
 - Class: text
   Output: read_tsv() lee archivos delimitados por tabuladores, y read_delim() lee archivos con cualquier delimitante, lo cual la convierte en la función mas flexible para leer archivos.
@@ -31,19 +31,46 @@
   Output: Para poder usar read_csv(), debes entender que la parte crucial para que funcione se encuentra en la dirección que usas para ubicar un archivo a leer, y que esta lectura la puedes asignar a  un data frame. Esto lo logras poniendo la dirección del directorio donde se encuentra el archivo dentro de la función.
   
 - Class: cmd_question
-  Output: El csv que vamos a usar en la lección se encuentra alojado en un objeto llamado direccion, es necesario que uses la función print() en este objeto
+  Output: El csv que vamos a usar en la lección se encuentra alojado en un objeto llamado "direccion", es necesario que uses la función print() en este objeto
   CorrectAnswer: print(direccion)
   AnswerTests: omnitest(correctExpr='print(direccion)')
   Hint: Usa print(direccion)
 
 - Class: cmd_question
-  Output: A la ubicación que se te mostro anteriormente, la completaremos con el nombre del archivo profesores.csv para poder cargarlo. Para ello usaremos la función file.path y guardaremos la dirección en un objeto llamado "direccion_completa"
+  Output: A la ubicación que se te mostro anteriormente, la completaremos con el nombre del archivo profesores.csv para poder cargarlo. Para ello usaremos la función file.path() con el objeto direccion seguido del nombre del archivo csv y guardaremos la dirección en un objeto llamado "direccion_completa"
   CorrectAnswer: direccion_completa <- file.path(direccion, "profesores.csv")
   AnswerTests: omnitest(correctExpr='direccion_completa <- file.path(direccion, "profesores.csv")')
   Hint: Usa el código direccion_completa <- file.path(direccion, "profesores.csv")
 
 - Class: cmd_question
-  Output: Lee el archivo profesores.csv usando el objeto "direccion_completa" y guardalo dentro de un data frame llamado "profesores". Toma en cuenta que dentro del código que uses mas adelante puedes usar la dirección completa de la ubicación de tu archivo en lugar del objeto
+  Output: Lee el archivo profesores.csv usando la funcion read_csv() en el objeto "direccion_completa" y guardalo dentro de un data frame llamado "profesores". Toma en cuenta que dentro del código que uses mas adelante puedes usar la dirección completa de la ubicación de tu archivo en lugar del objeto
   CorrectAnswer: profesores <- read_csv(direccion_completa)
   AnswerTests: omnitest(correctExpr='profesores <- read_csv(direccion_completa)')
   Hint: Usa profesores <- read_csv(direccion_completa)
+
+- Class: text
+  Output: Cada vez que usas la fucnión read_csv() se te mostrará un mensaje que contiene el nombre y tipo de columna que se creo dentro del data frame.
+
+- Class: text
+  Output: Algo interesante que puedes lograr con la función read_csv() es leer un csv sin tener que ingresar un archivo.
+
+- Class: cmd_question
+  Output: Intenta crear uno, usa el siguiente arreglo de caracteres para crear un csv desde la función read_csv(), "a, b, c\n5, 8, 3\n9, 3, 7"
+  CorrectAnswer: read_csv("a, b, c\n5, 8, 3\n9, 3, 7")
+  AnswerTests: omnitest(correctExpr='read_csv("a, b, c\n5, 8, 3\n9, 3, 7")')
+  Hint: Usa el codigo read_csv("a, b, c\n5, 8, 3\n9, 3, 7")
+
+- Class: text
+  Output: read_csv() usa la primera fila de los datos que se encuentran en el csv como los nombres para las columnas, lo cual es una convención muy comun; pero en algunos casos la primera fila de los archivos estan llenos de datos que no corresponden con el nombre o con datos que queremos extraer, por lo que es de gran ayuda que exista el atributo skip = n, el cual te permite saltar n numero de lineas e iniciar la lectura en la inea inmediata
+
+- Class: text
+  Output: Tambien existe comment = "#", el cual permite comentar las lineas que empiezen con el caracter que especifiques
+
+- Class: text
+  Output: Si los datos no tienen nombre de columna, puedes usar col_names = FALSEpara indicarle a la funcion read_csv() que no trate a la primera linea como encabezados, si no que los trate bajo el nombre de X1 a Xn
+
+- Class: cmd_question
+  Output: Intentemos realizar un ejemplo de read_csv() sin nombres, usando el arreglo "1,2,3\n4,5,6" y asignando el valor FALSE a col_names
+  CorrectAnswer: read_csv("1,2,3\n4,5,6", col_names = FALSE)
+  AnswerTests: omnitest(correctExpr='read_csv("1,2,3\n4,5,6", col_names = FALSE)')
+  Hint: Usa el codigo read_csv("1,2,3\n4,5,6", col_names = FALSE)
