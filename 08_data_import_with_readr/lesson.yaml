@@ -93,3 +93,18 @@
   CorrectAnswer: read_csv("Bebida,papas,hamburguesa\nSi,.,Si\n.,.,Si\nSi,.,.\nSi,Si,Si", na = ".")
   AnswerTests: omnitest(correctExpr='read_csv("Bebida,papas,hamburguesa\nSi,.,Si\n.,.,Si\nSi,.,.\nSi,Si,Si", na = ".")')
   Hint: solo copia read_csv("Bebida,papas,hamburguesa\nSi,.,Si\n.,.,Si\nSi,.,.\nSi,Si,Si", na = ".")
+
+- Class: text
+  Output: Todos los modos en que puedes emplear read_csv() que mostramos durante el curso se pueden adaptar a las funciones de lectura de otras extensiones de archivo, como readtsv() y read_fwf(). 
+
+- Class: text
+  Output: ¿Como es que hasta el momento usamos read_csv() sobre la función base de read.csv() en R? Muy simple, es mas ventajoso en las siguientes cualidades(:)
+
+- Class: text
+  Output: La velocidad de procesamiento de la función de lectura de tidyverse llega a ser 10 veces mas veloz, y muestra una barra indicadora del progreso del proceso
+
+- Class: text
+  Output: Produce tibbles, los cuales te protegen de errores comunes en la función base de R, y te salva de varias frustraciones con la conversión de tipos de datos.
+
+- Class: text
+  Output: La función de tidyverse es independiente del equipo que estes utilizando, a diferencia de su contraparte, que toma algunos recursos y depende de la configuración de algunos equipos donde se ejecute, por lo que nos ofrece mas portabilidad en código.
