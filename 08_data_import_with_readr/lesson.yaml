@@ -83,3 +83,13 @@
   CorrectAnswer: read_csv("65, 26, 83\n93, 23, 92", col_names = c("gatos", "perros", "peces"))
   AnswerTests: omnitest(correctExpr='read_csv("65, 26, 83\n93, 23, 92", col_names = c("gatos", "perros", "peces"))')
   Hint: La respuesta es read_csv("65, 26, 83\n93, 23, 92", col_names = c("gatos", "perros", "peces"))
+
+
+- Class: text
+  Output: En algunas ocasiones, existe un formato para indicar que un espacio en tu csv esta vacio, para indocarle esto a R y que los tome como vacios puedes usar el atributo na = "", donde puedes indicarle que trate a todos los espacios que encuentre con esa definicion como nulos
+
+- Class: cmd_question
+  Output: lee el output del código read_csv("Bebida,papas,hamburguesa\nSi,.,Si\n.,.,Si\nSi,.,.\nSi,Si,Si", na = ".") y verifica en que convirtio los registros que contenian .
+  CorrectAnswer: read_csv("Bebida,papas,hamburguesa\nSi,.,Si\n.,.,Si\nSi,.,.\nSi,Si,Si", na = ".")
+  AnswerTests: omnitest(correctExpr='read_csv("Bebida,papas,hamburguesa\nSi,.,Si\n.,.,Si\nSi,.,.\nSi,Si,Si", na = ".")')
+  Hint: solo copia read_csv("Bebida,papas,hamburguesa\nSi,.,Si\n.,.,Si\nSi,.,.\nSi,Si,Si", na = ".")
