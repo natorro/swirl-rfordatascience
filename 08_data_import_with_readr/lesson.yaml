@@ -74,3 +74,12 @@
   CorrectAnswer: read_csv("1,2,3\n4,5,6", col_names = FALSE)
   AnswerTests: omnitest(correctExpr='read_csv("1,2,3\n4,5,6", col_names = FALSE)')
   Hint: Usa el codigo read_csv("1,2,3\n4,5,6", col_names = FALSE)
+
+- Class: text
+  Output: Tambien puedes usar un vector con los nombres de las columnas cuando requieras de mantenerlos separados y organizados
+
+- Class: cmd_question
+  Output: usemos el atributo col_names = c(), donde a c() le corresponderian los nombres ("gatos", "perros", "peces"), para los datos "65, 26, 83\n93, 23, 92" en la función read_csv()
+  CorrectAnswer: read_csv("65, 26, 83\n93, 23, 92", col_names = c("gatos", "perros", "peces"))
+  AnswerTests: omnitest(correctExpr='read_csv("65, 26, 83\n93, 23, 92", col_names = c("gatos", "perros", "peces"))')
+  Hint: La respuesta es read_csv("65, 26, 83\n93, 23, 92", col_names = c("gatos", "perros", "peces"))
