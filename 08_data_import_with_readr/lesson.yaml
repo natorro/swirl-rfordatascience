@@ -108,3 +108,25 @@
 
 - Class: text
   Output: La función de tidyverse es independiente del equipo que estes utilizando, a diferencia de su contraparte, que toma algunos recursos y depende de la configuración de algunos equipos donde se ejecute, por lo que nos ofrece mas portabilidad en código.
+  
+
+- Class: text
+  Output: Ahora bien, para sacar provecho de la funcionalidad de lectura, necesitas aprender a usar las funciones parse_*(), lo cual se puede traducir a funciones que convierten datos a un tipo de dato especifico, añadiendo propiedades lógicas, de caracteres especiales, agrupación exclusiva de numeros o conversión a fechas.
+
+- Class: cmd_question
+  Output: Como ejemplo convertiremos una serie de cadenas descriptivas del orden en que se aplica el tipo de dato booleano; para ello ejecuta la siguiente linea de código(:) str(parse_logical(c("TRUE", "FALSE", "NA")))
+  CorrectAnswer: str(parse_logical(c("TRUE", "FALSE", "NA")))
+  AnswerTests: omnitest(correctExpr='str(parse_logical(c("TRUE", "FALSE", "NA")))')
+  Hint: ingresa el código str(parse_logical(c("TRUE", "FALSE", "NA")))
+
+- Class: text
+  Output: Como te habras dado cuenta, el resultado de la ejecución del codigo es una linea que inicia con logi, el cual indica que se aplicó el tipo de dato lógico a la cadena, en el orden especificado(:) TRUE, equivalente a 1, FALSE correspondiente a 0 y NA, que declara vacio, pero estas ya no son solo cadenas, si no que ademas indican un estado booleano al usarse. 
+
+- Class: text
+  Output: Si por alguna razón falla la conversión a tipo de dato de una serie de cadenas a, por ejemplo, números enteros, y entre las cadenas se encuentran letras, la función te devolvera un mensaje de error indicando que datos fueron imposibles de convertir, debido a que conflictuan con la definición del tipo de dato al que pretendias convertirlos.
+
+- Class: cmd_question
+  Output:     Para testear el error, intenta convertir el arreglo c("75", "465", "número", "24", "veinticinco") a números enteros con la función parse_integer(), guardandolos en un dataframe llamado enteros
+  CorrectAnswer: enteros <- parse_integer(c("75", "465", "número", "24", "veinticinco"))
+  AnswerTests: omnitest(correctExpr='enteros <- parse_integer(c("75", "465", "número", "24", "veinticinco"))')
+  Hint: Recuerda que para guardar en un data frame el resultado de una operación se utiliza enteros <-
