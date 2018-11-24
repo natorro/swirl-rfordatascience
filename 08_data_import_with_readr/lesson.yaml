@@ -130,3 +130,42 @@
   CorrectAnswer: enteros <- parse_integer(c("75", "465", "número", "24", "veinticinco"))
   AnswerTests: omnitest(correctExpr='enteros <- parse_integer(c("75", "465", "número", "24", "veinticinco"))')
   Hint: Recuerda que para guardar en un data frame el resultado de una operación se utiliza enteros <-
+
+- Class: cmd_question
+  Output: Ahora llama al objeto para revisar que datos no resultaron aptos para la conversión, pero con la función problems(), que te desglosa todos los problemas que contiene el objeto enteros devueltos en un tibble
+  CorrectAnswer: problems(enteros)
+  AnswerTests: omnitest(correctExpr='problems(enteros)')
+  Hint: intenta con problems(enteros)
+
+- Class: text
+  Output: Las funciones parse() que encontras son(:) Parse_logical(), parse_integer(), parse_double(), parse_character(), parse_factor(), parse_datetime(), parse_date() y parse_time(), haciendo referencia al tipo de dato en el cual vas a convertir el arreglo que ingreses.
+
+- Class: text
+  Output: Ahora bien, surgen algunos problemas al intentar convertir datos en varios contextos, por lo que describiremos algunas precauciones que se deben de tomar al convertir ciertos tipos de datos
+
+- Class: text
+  Output: Para los numéricos, existe el problema del contexto y procedencia, ya que un arreglo de datos puede estar dentro del contexto de moneda $56.40 con una separación de decimales en cada parte del mundo, pudiendo ser tanto un . como una , o de porcentaje 70%, lo cual representa un conflicto con las reglas que parse sigue para aceptar o negar datos. 
+
+- Class: text
+  Output: Afortunadamente las funciones de parse() en readr cuentan con la herramienta locale, la cual abre la oportunidad para establecer los signos de puntuación que separan decimales o montos de moneda en el cual trabaja el conjunto de datos, indicandole a R de que manera debe atacar el problema
+
+- Class: cmd_question
+  Output: Como ejemplo convertiremos un numero doble que separaron con , para indicar decimales, pero que aroojará un error si no se usa locale de la siguiente forma(:) parse_double("97,632", locale = locale(decimal_mark = ","))
+  CorrectAnswer: parse_double("97,632", locale = locale(decimal_mark = ","))
+  AnswerTests: omnitest(correctExpr='parse_double("97,632", locale = locale(decimal_mark = ","))')
+  Hint: Copia el codigo que se te indica en la pregunta y presta atención al resultado.
+
+- Class: text
+  Output: la función parse_number() es bastanteutil para extrar solo los numeros de una cadena, facilitando la extracción de caracteres agregados por contexto como $, #, % o pesos
+
+- Class: cmd_question
+  Output: intentemos aplicar parse_number() con el dato "200% de rebaja"
+  CorrectAnswer: parse_number("200% de rebaja")
+  AnswerTests: omnitest(correctExpr='parse_number("200% de rebaja")')
+  Hint: ingresa la cadena en la función que se indico
+
+- Class: cmd_question
+  Output: Ahora aplicaremos un ejemplo combinatorio de ambas soluciones, al ejecutar la función parse_number() con la propiedad locale para transformar un dato "costo 200,00,00 libras" en números puros usando locale = locale(grouping_mark = ','), puedes usar como referencia la pregunta anterior donde usamos estas funciones y resolver como se pueden combinar
+  CorrectAnswer: parse_number("costo 200,00,00 libras", locale = locale(grouping_mark = ","))
+  AnswerTests: omnitest(correctExpr='parse_number("costo 200,00,00 libras", locale = locale(grouping_mark = ","))')
+  Hint: La respuesta es parse_number("costo 200,00,00 libras", locale = locale(grouping_mark = ","))
