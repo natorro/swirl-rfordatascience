@@ -49,7 +49,22 @@
   Output: Al utlilizar la diagonal invertida "\" muchos caracteres adqueiren otra función por ejemplo la \n indica un cambio de línea, \t indica una tabulación otro ejemplo importante es "/u00b5" que sirve para escribir caracteres que nos pertenecen al inglés que funcionan en cualquier plataforma.
 
 - Class: cmd_question
-  Output: Se pueden guardar strings dentro de un vector, genera uno escribiendo el siguiente código c("a", "b", "c").
-  CorrectAnswer: c("a", "b", "c")
-  AnswerTests: omnitest(correctExpr='c("a", "b", "c")')
-  Hint: Escribe c("a", "b", "c").
+  Output: Se pueden guardar strings dentro de un vector, genera uno escribiendo el siguiente código c("a", "bb", "c").
+  CorrectAnswer: c("a", "bb", "c")
+  AnswerTests: omnitest(correctExpr='c("a", "bb", "c")')
+  Hint: Escribe c("a", "bb", "c").
+
+- Class: text
+  Output: Longitud de los strings.
+
+- Class: text
+  Output: R contiene muchas funciones para trabajar con strings por default, sin embargo suelen se inconsistentes y por lo tanto difíciles de recordar. Nosotros utilizaremos las funciones de stringr que suelen ser más intuitivas y siempre comiezan con un "str_".
+
+- Class: text
+  Output: Una de las funciones más comunes es str_length que te devuelve el número de caracteres que tiene un string. 
+
+- Class: cmd_question
+  Output: Para que veas su funcionamiento corre el código str_length(c("a", "bb", "b b", NA))
+  CorrectAnswer: str_length(c("a", "bb", "b b", NA))
+  AnswerTests: omnitest(correctExpr='str_length(c("a", "bb", "b b", NA))')
+  Hint: Escribe str_length(c("a", "bb", "b b", NA))
