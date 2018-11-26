@@ -34,3 +34,22 @@
   CorrectAnswer: string <- "hola"
   AnswerTests: omnitest(correctExpr='string <- "hola"')
   Hint: Escribe lo que se te indico.
+
+
+- Class: text
+  Output: Un ejemplo de comillas dentro de un string sería el siguiente string2 <-'Esto es "Esparta"'
+
+- Class: text
+  Output: Sí algunas ves olvidas poner las comillas finales en un string te va mandar error en la consola y se quedará corriendo hasta que lo detengas, esto puedes hacerlo presionando la tecla de esc.
+
+- Class: text
+  Output: Si quieres incluir literalmente alguna comilla o algún símbolo puedes utilizar una diagonal invertida "\" para que se ignore el símbolo.
+
+- Class: text
+  Output: Al utlilizar la diagonal invertida "\" muchos caracteres adqueiren otra función por ejemplo la \n indica un cambio de línea, \t indica una tabulación otro ejemplo importante es "/u00b5" que sirve para escribir caracteres que nos pertenecen al inglés que funcionan en cualquier plataforma.
+
+- Class: cmd_question
+  Output: Se pueden guardar strings dentro de un vector, genera uno escribiendo el siguiente código c("a", "b", "c").
+  CorrectAnswer: c("a", "b", "c")
+  AnswerTests: omnitest(correctExpr='c("a", "b", "c")')
+  Hint: Escribe c("a", "b", "c").
