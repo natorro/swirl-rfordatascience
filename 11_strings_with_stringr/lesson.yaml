@@ -68,3 +68,24 @@
   CorrectAnswer: str_length(c("a", "bb", "b b", NA))
   AnswerTests: omnitest(correctExpr='str_length(c("a", "bb", "b b", NA))')
   Hint: Escribe str_length(c("a", "bb", "b b", NA))
+
+- Class: text
+  Output: Combinar Strings.
+
+- Class: text
+  Output: Para hacer esto se utiliza la función str_c()
+
+- Class: text
+  Output: Por ejemplo str_c("a", "b") regresaría como output "ab"
+
+- Class: text
+  Output: Un caso un poco más avanzado sería str_c("a", "b" , sep = "-") regresaría como output "a-b"
+
+- Class: text
+  Output: Es posible combinar multiples caracteres.
+
+- Class: cmd_question
+  Output: Corre el siguiente código para que veas un ejemplo str_c("Good ", c("morning", "night")).
+  CorrectAnswer: str_c("Good ", c("morning", "night"))
+  AnswerTests: omnitest(correctExpr='str_c("Good ", c("morning", "night"))')
+  Hint: Escribe lo que se te pidió.
