@@ -5,3 +5,32 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.3
+
+- Class: text
+  Output: Strings con "stringr"
+
+- Class: text
+  Output: Durante este capítulo te introduciremos al manejo de strings con R.
+
+
+- Class: text
+  Output: Veremos lo básico de los strings y como crearlos pero nos enfocaremos en las expresiones regulares.
+
+
+- Class: text
+  Output: Estas expresiones son útiles porque por lo general los strings son datos no estructurados o semi estructurados y las expresiones regulares sirven para describir sus patrones.
+
+- Class: text
+  Output: Para este capítulo deberas tener instaladas las librerías "tidyverse" y "stringr".
+
+- Class: text
+  Output: Conceptos básicos 
+
+- Class: text
+  Output: Un string se puede crear ya sea  con comillas simples '' o con comillas dobles "" no hay diferencia en el comportamiento. Te recomendamos que utilices comillas dobles salvo el caso en que quieras incluir comillas dentro del string entonces utilizarás comillas simples afuera y dobles adentro.
+
+- Class: cmd_question
+  Output: Genera un string introduciendo el siguiente código string <- "hola"
+  CorrectAnswer: string <- "hola"
+  AnswerTests: omnitest(correctExpr='string <- "hola"')
+  Hint: Escribe lo que se te indico.
