@@ -89,3 +89,37 @@
   CorrectAnswer: str_c("Good ", c("morning", "night"))
   AnswerTests: omnitest(correctExpr='str_c("Good ", c("morning", "night"))')
   Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Como en todas las funciones de R, una ves que comprendes como funciona puedes empezar a hacer combinaciones y experimentar.
+
+- Class: text
+  Output: Por ejemplo 
+
+- Class: cmd_question
+  Output: Define esta variable nombre_alumno <- "Pepe".
+  CorrectAnswer: nombre_alumno <- "Pepe" 
+  AnswerTests: omnitest(correctExpr='nombre_alumno <- "Pepe"')
+  Hint: Usa este código.
+
+- Class: cmd_question
+  Output: Ahora define la variable aprobado <- FALSE
+  CorrectAnswer: aprobado <- FALSE
+  AnswerTests: omnitest(correctExpr='aprobado <- FALSE')
+  Hint: Utiliza el código que se te indicó.
+
+- Class: text
+  Output: Tienes definida una variable de tipo character y otro de tipo booleano, lo que vamos a hace en el siguiente ejemplo será combinar la función str_c() con un condicional "if()".
+
+- Class: cmd_question
+  Output: Escribe el siguiente código str_c( "Felicidades ", nombre_alumno, " ", if (aprobado) " Aprobaste", if(!aprobado) "podrás cursar de nuevo la materia",".")
+
+  CorrectAnswer: str_c( "Felicidades ", nombre_alumno, " ", if (aprobado) " Aprobaste", if(!aprobado) "podrás cursar de nuevo la materia", ".")
+  AnswerTests: omnitest(correctExpr='str_c( "Felicidades ", nombre_alumno, " ", if (aprobado) " Aprobaste", if(!aprobado) "podrás cursar de nuevo la materia", ".")')
+  Hint: Utiliza el código que se te proporciono.
+
+- Class: text
+  Output: Como viste al tener aprobado como false se cumplio la condición de if(!aprobado).
+
+- Class: text
+  Output: En el caso de que aprobado fuera TRUE, se escribiría lo que indica la otra condición.
