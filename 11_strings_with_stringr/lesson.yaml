@@ -171,3 +171,46 @@
   CorrectAnswer: color
   AnswerTests: omnitest(correctExpr='color')
   Hint: Escribe color.
+
+- Class: text
+  Output: Al aplicar funciones como str_to_upper, str_to_lower, str_to_title o str_sort es importante considerar el idioma con el que estamos trabajando ya que cada lenguaje tiene sus propias reglas.
+
+- Class: text
+  Output: Afortunadamente a cada una de estas funciones se le puede agregar un argumento llamado locale = '', lo que hace este argumento como ya lo has de suponer es definir el idioma, cada idioma tiene su propio código por ejemplo en el caso del inglés es "en".
+
+- Class: text
+  Output: Si no sabes cuál es el tuyo simplemente buscalo en internet.
+
+- Class: mult_question
+  Output: Una ultima practica para pasar a lo siguiente. Supon que quieres extraer la letra central de un conjunto de palabras, que funciones usarías en el caso de las palabras que tienen un número par de letras si te dicen que te tomes las dos letras centrales dadas las siguientes opciones.
+  AnswerChoices: str_to_title y str_sub;if y str_subset;if y str_sub;str_to_title
+  CorrectAnswer: if y str_sub
+  AnswerTests: omnitest(correctVal='if y str_sub')
+  Hint: Revisa que hace cada función.
+
+- Class: text
+  Output: Buscando patrones con expresiones regulares
+
+- Class: text
+  Output: Las expresiones regulares son una herramienta que nos ayuda a encontrar patrones dentro de los strings.
+
+- Class: text
+  Output: Las primeras expresiones que utilizaremos son str_view y str_view_all.
+
+- Class: text
+  Output: Las anteriores reciben como argumentos
+
+- Class: text
+  Output: un string o conjunto de strings
+
+- Class: text
+  Output: el patrón que se desea encontrar
+
+- Class: text
+  Output: Veamos un ejemplo práctico.
+
+- Class: cmd_question
+  Output: Aplica la función str_view con el siguiente código str_view(color, "a")
+  CorrectAnswer: str_view(color, "a")
+  AnswerTests: omnitest(correctExpr='str_view(color, "a")')
+  Hint: Escribe el código que se te proporciono.
