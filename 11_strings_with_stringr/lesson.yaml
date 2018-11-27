@@ -123,3 +123,51 @@
 
 - Class: text
   Output: En el caso de que aprobado fuera TRUE, se escribiría lo que indica la otra condición.
+
+- Class: text
+  Output: Ahora veremos subconjuntos de strings.
+
+- Class: text
+  Output: Para obtener un substring utilizaremos la función str_sub().
+
+- Class: text
+  Output: Los argumentos que esta recibe son
+
+- Class: text
+  Output: un string o conjunto de strings
+
+- Class: text
+  Output: start <- el lugar del string donde inicia el subconjunto
+
+- Class: text
+  Output: end <- el lugar del string donde termina el subconjunto
+
+- Class: text
+  Output: Hagamos un ejercicio sencillo de esto
+
+- Class: cmd_question
+  Output: define el siguiente vector color <- c("rojo", "azul", "amarillo")
+  CorrectAnswer: color <- c("rojo", "azul", "amarillo")
+  AnswerTests: omnitest(correctExpr='color <- c("rojo", "azul", "amarillo")')
+  Hint: Utiliza lo que se te dió.
+
+- Class: cmd_question
+  Output: Utiliza la función str_sub() para  extraer la primera letra de cada color.
+  CorrectAnswer: str_sub(color, start = 1, end = 1)
+  AnswerTests: omnitest(correctExpr='str_sub(color, start = 1, end = 1)')
+  Hint: Utiliza este código str_sub(color, start = 1, end = 1).
+
+- Class: text
+  Output: Existen otras funciones que pueden ser muy útiles como son str_to_lower que sirve para hacer las letras minúsculas o str_to_upper para hacerlas mayúsculas, str_sort para ordenar y str_to_title que hace mayúscula a la primer letra de la palabra.
+
+- Class: cmd_question
+  Output: En este ejercicio vas a hacer mayúscula la primer letra de cada color. Deberas utlizar la función str_sub dentro de str_to_upper pero ojo, esto sólo te arrojará los valores que pides, tienes que definir a estás letras como las nuevas letras inciales.
+  CorrectAnswer: str_sub(color, 1, 1) <- str_to_upper(str_sub(color, 1, 1))
+  AnswerTests: omnitest(correctExpr='str_sub(color, 1, 1) <- str_to_upper(str_sub(color, 1, 1))')
+  Hint: Esta es la respuesta correcta str_sub(color, 1, 1) <- str_to_upper(str_sub(color, 1, 1))
+
+- Class: cmd_question
+  Output: Escribe color para que veas como quedó el vector.
+  CorrectAnswer: color
+  AnswerTests: omnitest(correctExpr='color')
+  Hint: Escribe color.
