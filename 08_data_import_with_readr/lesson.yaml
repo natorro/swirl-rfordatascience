@@ -169,3 +169,44 @@
   CorrectAnswer: parse_number("costo 200,00,00 libras", locale = locale(grouping_mark = ","))
   AnswerTests: omnitest(correctExpr='parse_number("costo 200,00,00 libras", locale = locale(grouping_mark = ","))')
   Hint: La respuesta es parse_number("costo 200,00,00 libras", locale = locale(grouping_mark = ","))
+
+- Class: text
+  Output: Una vez dominado el uso de parse_number(), podremos entender las implicaciones de usar parse_character(), función que puede parecer sencilla a primera vista, pero que cumple funciones importantes para el análisis de datos que requieran de ingreso de datos en el extranjero, como la función charToRaw() lo demustra.
+
+- Class: cmd_question
+  Output: Ingresa la palabra "Ciencia" en la función charToRaw, y evalua el mensaje que se te presento. 
+  CorrectAnswer: charToRaw("Ciencia")
+  AnswerTests: omnitest(correctExpr='charToRaw("Ciencia")')
+  Hint: La solución es charToRaw("Ciencia")
+
+- Class: mult_question
+  Output: ¿Cúal es la función más probable que cumple charToRaw() basandote en el mensaje que desplegó?
+  AnswerChoices: Es el número de letras disponibles en todo el texto;Muestra la transformación de la cadena en hexadecimal, correspondiente a su codificación en ASCII;Número que indica la posición de las letras en el alfabeto
+  CorrectAnswer: Muestra la transformación de la cadena en hexadecimal, correspondiente a su codificación en ASCII
+  AnswerTests: omnitest(correctVal='Muestra la transformación de la cadena en hexadecimal, correspondiente a su codificación en ASCII')
+  Hint: Recuerda que en programación usamos la palabra codificación mucho.
+
+- Class: text
+  Output: Exactamente, transforma los caracteres a su codificación en ASCII, el cual, para no entrar en muchos detalles, lo trataremos como un código estandar que usa la computadora para saber a que caracter nos estamos refiriendo.
+
+- Class: text
+  Output: Normalmente otros lenguajes diferentes al español o el ingles, cuentan con una codificación diferente debido a la gran variedad de estandares de codificación de caracteres que satisfacen las necesidades de cada idioma, por lo que la necesidad de crear un estandar universal llamado UTF-8 se hizo cada vez mas evidente, para poder comunicarnos bajo un mismo estandar. readr usa esta codificación como su configuración predeterminada, y así ofrecer un medio para transformar varias codificaciones.
+
+- Class: cmd_question
+  Output: Obten la codificación que se usa en el español usando guess_encoding() en la frase "La piña esta en la canasta de mi mamá"
+  CorrectAnswer: guess_encoding("La piña esta en la canasta de mi mamá")
+  AnswerTests: omnitest(correctExpr='guess_encoding("La piña esta en la canasta de mi mamá")')
+  Hint: Ingresa la cadena en la función
+
+- Class: cmd_question
+  Output: Obten la codificación de la frase "La piña esta en la canasta de mi mamá" con charToRaw() anidada en guess_encoding() para saber en que codificación podemos encontrar la ñ
+  CorrectAnswer: guess_encoding(charToRaw("La piña esta en la canasta de mi mamá"))
+  AnswerTests: omnitest(correctExpr='guess_encoding(charToRaw("La piña esta en la canasta de mi mamá"))')
+  Hint: Ingresa la cadena en la función charToRaw(), y esa expresión anidala en guess_encoding()
+
+- Class: mult_question
+  Output: Tomando en cuenta los resultados que mostro el codigo anterior, donde encoding muestra el estandar, y confidence el porcentaje de caracteres que se encontraron en esa codificación, ¿cual dirias que es la codificación que engloba mas caracteres?
+  AnswerChoices: ISO-8859-2;UTF-8;ISO-8859-1
+  CorrectAnswer: ISO-8859-1
+  AnswerTests: omnitest(correctVal='ISO-8859-1')
+  Hint: Recuerda que el porcentaje lo puedes encontrar en confidence
