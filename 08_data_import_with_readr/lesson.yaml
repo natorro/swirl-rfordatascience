@@ -210,3 +210,30 @@
   CorrectAnswer: ISO-8859-1
   AnswerTests: omnitest(correctVal='ISO-8859-1')
   Hint: Recuerda que el porcentaje lo puedes encontrar en confidence
+
+- Class: cmd_question
+  Output: Una vez ubicada la ccodificación en la que se encuentra nuestro texto, podremos transformarlo a UTF-8, usando parse_character(), y la utilidad locale = locale(encoding = ""), en la cual insertaremos la codificación arrojada anteriormente. Ingresa el codigo correcto teniendo en cuenta las respuestas a preguntas anteriores, usando el mismo texto "La piña esta en la canasta de mi mamá" y la codificación ISO-8859-1.
+  CorrectAnswer: parse_character("La piña esta en la canasta de mi mamá", locale = locale(encoding = "ISO-8859-1"))
+  AnswerTests: omnitest(correctExpr='parse_character("La piña esta en la canasta de mi mamá", locale = locale(encoding = "ISO-8859-1"))')
+  Hint: La respuesta es parse_character("La piña esta en la canasta de mi mamá", locale = locale(encoding = "ISO-8859-1"))
+
+- Class: text
+  Output: Listo! tu texto esta codificado de manera correcta en UTF-8, ya no tendras que preocuparte por errores en algunos caracteres especiales si sigues la sanitización de datos con tus cadenas de esta forma.
+
+- Class: text
+  Output: Una funcionalidad importante que se le puede aplicar a un arreglo de datos es asignarle factores para representar variables categóricas, lo cual puede ser útil para crear catálogos o delimitar los datos que pueden ser ingresados en un campo.
+
+- Class: text
+  Output: parse_factor() permite ingresar un arreglo para generar una notificación cada vez que se presente un valor no especificado en el arreglo, cumpliendo la función de restringir los datos que son ingresados en una tabla
+
+- Class: cmd_question
+  Output: Asigna el catalogo c(Rojo, Azul, Verde, Amarillo) en el objeto "colores"
+  CorrectAnswer: colores <- c(Rojo, Azul, Verde, Amarillo)
+  AnswerTests: omnitest(correctExpr='colores <- c(Rojo, Azul, Verde, Amarillo)')
+  Hint: Para asignar el catalogo debes de tratar al objeto como un dataframe, colores <- y poniendo a continuación el arreglo
+
+- Class: cmd_question
+  Output: Ahora usa la función parse_factor() en el siguiente arreglo c(Azul, Blanco, Rojo, Negro) defininedo la utilidad levels = colores
+  CorrectAnswer: parse_factor(c(Rojo, Azul, Verde, Amarillo), levels = colores)
+  AnswerTests: omnitest(correctExpr='parse_factor(c(Rojo, Azul, Verde, Amarillo), levels = colores)')
+  Hint: Usa la función de la siguiente forma parse_factor(c(Rojo, Azul, Verde, Amarillo), levels = colores)
