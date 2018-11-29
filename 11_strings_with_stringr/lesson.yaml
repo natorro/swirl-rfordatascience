@@ -214,3 +214,51 @@
   CorrectAnswer: str_view(color, "a")
   AnswerTests: omnitest(correctExpr='str_view(color, "a")')
   Hint: Escribe el código que se te proporciono.
+
+- Class: text
+  Output: Existen caracteres especiales que se usan para busquedas un poco más avanzadas por ejemplo cuando quieres que R busque cualquier caracter se utiliza un "." es decir digamos que quieres todas las palabras que tengan una a entre la segunda y la penúltima letra debes usar ".a."
+
+- Class: text
+  Output: Te preguntarás que pasa cuando quieres buscar uno de estos caracteres de manera particular, es curioso por que también existe un caracter especial para estos casos. 
+
+- Class: text
+  Output:  Este símbolo es "\\" , dando un ejemplo justo de lo anterior para buscar el punto se escribiría "\\."
+
+- Class: text
+  Output: Surge una duda natural, entonces como busco \ es lógico pensar que bastaría con tres diagonales pero como la "\" tiene la misma función que "\\" pero para las expresiones regulares de los strings, se deben utilizar cuatro diagonales para poder buscar una "\\\\"
+
+- Class: text
+  Output: Ahora veremos enrutamientos, mejor conocidos como "Anchors".
+
+- Class: text
+  Output: Normalmente cuando utilizas una expresión regular hace una busqueda de cualquier carácter que concuerde.
+
+- Class: text
+  Output: Los anchors resultan muy útiles porque puedes hacer que la condición concuerde con el inicio o el final de los strings a los que les estás aplicando la busqueda.
+
+- Class: text
+  Output: Para que concuerde con el inicio de los strings se utiliza el símbolo "^".
+
+- Class: text
+  Output: Para que concuerde con el final de los strings se utiliza el símbolo "$".
+
+- Class: text
+  Output: Hagamos una practica para que puedas aplicar lo que acabas de aprender.
+
+- Class: cmd_question
+  Output: Manda llamar el vector color para que recuerdes su estructura.
+  CorrectAnswer: color
+  AnswerTests: omnitest(correctExpr='color')
+  Hint: Escribe "color" para mandarlo llamar. 
+
+- Class: cmd_question
+  Output: Ahora que los viste aplica la función str_view y busca los colores que comienzan con la letra "A".
+  CorrectAnswer: str_view(color, "^A")
+  AnswerTests: omnitest(correctExpr='str_view(color, "^A")')
+  Hint: Recuerda poner la letra tal y como viene en el string. EL código correcto es str_view(color, "^A")
+
+- Class: cmd_question
+  Output: Ahora aplica la misma función pero busca los colores que terminen con "o".
+  CorrectAnswer: str_view(color, "o$")
+  AnswerTests: omnitest(correctExpr='str_view(color, "o$")')
+  Hint: Debes utilizar el símbolo $
