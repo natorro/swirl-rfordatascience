@@ -62,3 +62,5 @@
 
 - Class: text
   Output: Ahora, se presenta un problema al momento de manejar un tibble, ya que en realidad no vemos los niveles que tiene, para este caso lo que haremos será agregarle al nombre que contiene el tibble, por ejemplo "y %>% count(nombres)", donde nombres es la columna de la descripcion de cada dato contenido en el tibble
+
+
