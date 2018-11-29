@@ -262,3 +262,71 @@
   CorrectAnswer: str_view(color, "o$")
   AnswerTests: omnitest(correctExpr='str_view(color, "o$")')
   Hint: Debes utilizar el símbolo $
+
+- Class: text
+  Output: Pero que pasa cuando se trata de un lista muy larga, en algunos casos es más eficiente que sólo te muestre los strings que cumplem con el patrón deseado, para eso se agrega un argumento a str_view() llamado match, el mismo lo definirás como "match = TRUE".
+
+- Class: text
+  Output: Ya has visto caracteres especiales que sirven para identificar más de un caracter, ahora veremos a otros cuatro de ellos que pueden resultar muy útiles.
+
+
+
+
+- Class: text
+  Output: \d que sirve para buscar cualquier dígito.
+
+- Class: text
+  Output: \s que sirve para buscar espacios en blanco.
+
+
+
+
+
+- Class: text
+  Output: el siguiente son corchetes de tipo []
+
+- Class: text
+  Output: Que si se introducen caracteres separados por comas, r buscará todos los strings que contengan alguno de los mismos.
+
+- Class: text
+  Output: Si quiere excluir esos caracteres de una busqueda general simplemente añade este símbolo "^" antes del primer carácter
+
+- Class: text
+  Output: Es importane recordar que para poder usar cualquier expresión que tenga una diagonal invertida la incio "\" se debe añadir otra diagonal para evitar que se genere un error.
+
+
+- Class: text
+  Output: Es posible utilizar expresiones lógicas como "o" mejor conocido como "OR" que se denota por "|".
+
+
+- Class: cmd_question
+  Output: Digamos que tienes el vector c("tomo", "tome", "temía", "temerá") y quieres que encuentre las primeras dos de la lista. Utilizá un "or". 
+  CorrectAnswer: str_view(c("tomo", "tome", "temía", "temerá"), "tom(o|e)")
+  AnswerTests: omnitest(correctExpr='str_view(c("tomo", "tome", "temía", "temerá"), "tom(o|e)")')
+  Hint: El código correcto es str_view(c("tomo", "tome", "temía", "temerá"), "tom(o|e)").
+
+- Class: text
+  Output: Repeticiones.
+
+- Class: text
+  Output: y con repeticiones queremos decir controlar que número de coincidencias que se deben buscar.
+
+- Class: text
+  Output: Existen varios caracters que se pueden utilizar para esto.
+
+
+- Class: text
+  Output: Un signo de interrogación (final) sirve para buscar cero o una.
+
+- Class: text
+  Output: Un signo de más para buscar uno a más coincidencias.
+
+- Class: text
+  Output: Un signo de multiplicación para buscar cero o más. 
+
+
+- Class: cmd_question
+  Output: Tienes el vector color y quieres el patrón A seguido de algún caracter
+  CorrectAnswer: str_view(color, "A*")
+  AnswerTests: omnitest(correctExpr='str_view(color, "A*")
+  Hint: Utiliza A*.
