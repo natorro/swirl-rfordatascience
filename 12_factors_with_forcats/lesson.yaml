@@ -1,0 +1,64 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 12_factors_with_forcats
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: En esta lección trabajaremos con factores, para esto necesitaremos la libreria forcats, esta libreria nos dara acceso a las variables categoricas que contiene, y por consiguiente podremos manipularlos.
+
+- Class: cmd_question
+  Output: Crearemos un vector al cual se guardará en la variable "x" y tendrá como contenido los caracteres "Zaira","Carlos","Victor"
+  CorrectAnswer: x <- c("Zaira","Carlos","Victor")
+  AnswerTests: omnitest(correctExpr='x <- c("Zaira","Carlos","Victor")')
+  Hint: El vector que tienes que generar se hace con c()
+
+- Class: cmd_question
+  Output: Crearemos un vector al cual se guardará en la variable "x2" y tendrá como contenido los caracteres "Matza","Ricardo","Daniel"
+  CorrectAnswer: x2 <- c("Matza","Ricardo","Daniel")
+  AnswerTests: omnitest(correctExpr='x2 <- c("Matza","Ricardo","Daniel")')
+  Hint: El vector que tienes que generar se hace con c()
+
+- Class: cmd_question
+  Output: Ahora crearemos un vector llamado "comb", en el cual tendrá los caracteres siguientes "Abril","Daniel","Carlos", "Matza","Ricardo", "Victor", "Xatziri", "Zaira"
+  CorrectAnswer: comb <- c("Abril","Daniel","Carlos", "Matza","Ricardo", "Victor", "Xatziri", "Zaira")
+  AnswerTests: omnitest(correctExpr='comb <- c("Abril","Daniel","Carlos", "Matza","Ricardo", "Victor", "Xatziri", "Zaira")')
+  Hint: El vector que tienes que generar se hace con c()
+
+- Class: cmd_question
+  Output: Ahora procederemos a crear un factor, el cual estará estructurado de la siguiente manera y <- factor(x, levels = comb)
+  CorrectAnswer: y <- factor(x, levels = comb)
+  AnswerTests: omnitest(correctExpr='y <- factor(x, levels = comb)')
+  Hint: vamos! tú puedes 
+
+- Class: cmd_question
+  Output: Llama al factor "y" para que se imprima su contenido
+  CorrectAnswer: y
+  AnswerTests: omnitest(correctExpr='y')
+  Hint: Solo tienes que poner "y" en la terminal
+
+- Class: cmd_question
+  Output: hora pondremos la función sort(y), esta función permite ordenar el vector, con forme aparese en los niveles que definimos "levels=comb"
+  CorrectAnswer: sort(y)
+  AnswerTests: omnitest(correctExpr='sort(y)')
+  Hint: Solo tienes que poner sort(y) en la terminal
+
+- Class: cmd_question
+  Output: Para hacer otro factor, se declara exactamente igual al anterior, pero ahora utilizaras al vector x2 como primer parametro y en levels le asignarás comb, este factor se debe guardar en una variable llamada "y1"
+  CorrectAnswer: y1 <- factor(x2, levels = comb)
+  AnswerTests: omnitest(correctExpr='y1 <- factor(x2, levels = comb)')
+  Hint: quedaría de la siguiente manera y1 <- factor(x2, levels = comb)
+
+- Class: text
+  Output: En caso de que se prefiera que los niveles sean los mismos de los primeros datos de lectura, al argumento levels, se le asigna "unique(el vector requerido)
+
+- Class: text
+  Output: Otra expresión equivalente a la anterior seria por ejemplo y <- x %>% factor() %>% fct_inorder()
+
+- Class: text
+  Output: Al igual puedes acceder a los niveles del factor, esto se hace solo llamando en la terminal, por ejemplo  "levels(y)"
+
+- Class: text
+  Output: Ahora, se presenta un problema al momento de manejar un tibble, ya que en realidad no vemos los niveles que tiene, para este caso lo que haremos será agregarle al nombre que contiene el tibble, por ejemplo "y %>% count(nombres)", donde nombres es la columna de la descripcion de cada dato contenido en el tibble
