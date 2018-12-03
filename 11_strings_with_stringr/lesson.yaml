@@ -328,5 +328,45 @@
 - Class: cmd_question
   Output: Tienes el vector color y quieres el patrón A seguido de algún caracter
   CorrectAnswer: str_view(color, "A*")
-  AnswerTests: omnitest(correctExpr='str_view(color, "A*")
+  AnswerTests: omnitest(correctExpr='str_view(color, "A*")')
   Hint: Utiliza A*.
+
+- Class: text
+  Output: Para que quede más claro haremos un ejercicio más con repeticiones.
+
+- Class: mult_question
+  Output: Supón que tienes el vector x <- "aaaaaa" y corres el código str_view(x, "a*"). Cuál será el resultado.
+  AnswerChoices: Todas las a son seleccionadas;Ninguna letra es seleccionada, el patŕon no coincide;Se selecciona sólo la primera letra
+  CorrectAnswer: Todas las a son seleccionadas
+  AnswerTests: omnitest(correctVal='Todas las a son seleccionadas')
+  Hint: Recuerda que hace cada símbolo.
+
+- Class: text
+  Output: Muy bien, al poner el signo "*" le indicamos a R que busque repeticiones del patŕon en cada string. Por eso es que señala todas las letras.
+
+- Class: text
+  Output: Aun que también puedes determinar el número de repeticiones que quieres que R busque en cada string.
+
+- Class: text
+  Output: /{n}/ Se usa para indicar que quieres que lo busque n veces.(Ignora las diagonales)
+
+- Class: text
+  Output: /{n,}/ le indica a R que debe de buscar mínimo n repeticiones por string. (Ignora las diagonales)
+
+- Class: text
+  Output: /{,n}/ le indica a R que debe de buscar máximo n repeticiones por string. (Ignora las diagonales)
+
+- Class: text
+  Output: /{n,m}/ le indica a R que debe de buscar entre n y m repeticiones por string. (Ignora las diagonales)
+
+- Class: text
+  Output: Hagamos un ejercicio con el vector x .
+
+- Class: cmd_question
+  Output: Utiliza la función str_view() y lo que acabas de ver para que sólo busque tres patrones por string. En este caso el patrón sigue siendo "a"
+  CorrectAnswer: str_view(x, "a{3}")
+  AnswerTests: omnitest(correctExpr='str_view(x, "a{3}")')
+  Hint: La respuesta correcta es str_view(x, "a{3}")
+
+- Class: text
+  Output: Como pudiste ver sólo señalo tres letras de x.
