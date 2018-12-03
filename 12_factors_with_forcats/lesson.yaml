@@ -61,6 +61,74 @@
   Output: Al igual puedes acceder a los niveles del factor, esto se hace solo llamando en la terminal, por ejemplo  "levels(y)"
 
 - Class: text
-  Output: Ahora, se presenta un problema al momento de manejar un tibble, ya que en realidad no vemos los niveles que tiene, para este caso lo que haremos será agregarle al nombre que contiene el tibble, por ejemplo "y %>% count(nombres)", donde nombres es la columna de la descripcion de cada dato contenido en el tibble
+  Output: Ahora, se presenta un problema al momento de manejar un tibble, ya que en realidad no vemos los niveles que tiene, para este caso lo que haremos será agregarle count() y el nombre que contiene el tibble, por ejemplo "y %>% count(nombres)", donde nombres es la columna de la descripcion de cada dato contenido en el tibble. Esta funsión count() es equivalente a as.data.frame(table(x))
 
 
+
+- Class: text
+  Output: Ahora comenzaremos a utilizar el conjunto de datos relacionales de forcats::gss_cat
+
+- Class: cmd_question
+  Output: Para el primer ejercicio necesitamos utilizar el dataframe de las horas de telivisión vistas por las diferentes relogiones. Por lo tanto lo primero que haremos es pasar el gss_cat a una variable llamada dato.
+  CorrectAnswer: dato <- gss_cat
+  AnswerTests: omnitest(correctExpr='dato <- gss_cat')
+  Hint: vamos tú puedes, solo asignale a la variable dato el conjunto de datos de gss_cat
+
+- Class: text
+  Output: Ahora comenzaremos a modificar el orden de los factores, para el siguente ejercicio utilizaremos el factor de relig que esta dentro del conjunto de datos llamado gss_cat
+
+- Class: cmd_question
+  Output: De la asignación anterior tendremos que aumentarle que solo la variable contenga el grupo del factor relig, para hacer esto utiliza el modificador "%>%" y la función group_by()
+  CorrectAnswer: dato <- gss_cat %>% group_by(relig)
+  AnswerTests: omnitest(correctExpr='dato <- gss_cat %>% group_by(relig)')
+  Hint: La sentencia correcta seria dato <- gss_cat %>% group_by(relig)
+
+
+
+- Class: cmd_question
+  Output: Para poder visualizar como se estan graficando los datos, utiliza la función ggplot() y geom_point(), como parametro de la abscisa, utilizaremos el factor de tvhours, para la visualización de los datos.
+  CorrectAnswer: ggplot(dato, aes(tvhours, relig)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(dato, aes(tvhours, relig)) + geom_point()')
+  Hint: vamos, la respuesta correcta es ggplot(dato, aes(tvhours, relig)) + geom_point()
+
+- Class: text
+  Output: De la manra que nos arroja los resultados al momento de que gráficamos los datos, nos son de utilidad, por lo tanto lo que devemos de hacer es utilizar la funsión summarize() para que nos de el promedio de horas que ven televisión
+
+- Class: cmd_question
+  Output: Ahora a la asignación de gss_cat a la variable le modificaremos solo el factor de las horas vistas de televisión para esto como argumentos dde la funsión summarize, pondremos -> age = mean(age, na.rm = TRUE),tvhours = mean(tvhours, na,rm = TRUE), n = n()
+  CorrectAnswer: dato <- gss_cat %>% group_by(relig) %>% summarize(age = mean(age,na.rm = TRUE), tvhours = mean(tvhours, na.rm = TRUE), n = n())
+  AnswerTests: omnitest(correctExpr='dato <- gss_cat %>% group_by(relig) %>% summarize(age = mean(age,na.rm = TRUE), tvhours = mean(tvhours, na.rm = TRUE), n = n())')
+  Hint: la asignación es dato <- gss_cat %>% group_by(relig) %>% summarize(age = mean(age,na.rm = TRUE), tvhours = mean(tvhours, na.rm = TRUE), n = n())
+
+- Class: text
+  Output: Para tener una visualización un poco más clara, pero no por ende interpletable en su totalidad, podemos ordenar el factor con forme a las horas de televisión
+
+- Class: cmd_question
+  Output: Para poder reordenar el factor de relig con forme a las horas vistas, utilizaremos la función fct_reorder() que va como segundo argumento de la fusión de aes, que esta dentro de ggplot, a la funsión fct_reorder le pasaremos como primer argumento relig, y el segundo argumento tvhours, este hará que se ordene el factor de relig con forme a las horas promedio vistas de tv.
+  CorrectAnswer: ggplot(data, aes(tvhours, fct_reorder(relig, tvhours))) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(data, aes(tvhours, fct_reorder(relig, tvhours))) + geom_point()')
+  Hint: La funsión quedaría de la siguiente manera ggplot(data, aes(tvhours, fct_reorder(relig, tvhours))) + geom_point()
+
+- Class: text
+  Output: Otra manera equivalente de hacer esta modificación es relig %>% mutate(relig = fct_reorder(relig, tvhours)) %>% ggpot(aes(tvhours, relig)) + geom_point()
+
+- Class: text
+  Output: Ahora veremos como podemos modificar a los factores por sus niveles, por ejemplo en el factor relig, podemos cambiar los id de "Moslem/islam" por Occidente y "Orthodox-christian" por Orthodox
+
+- Class: cmd_question
+  Output: Para poder modificar los niveles de los factores, utilizaremos la funsión mutate() de la siguinet manera gss_cat %>% mutate(relig = fct_recode(relig,"Arabe" = "Moslem/islam","Christian" = "Orthodox-christian"))
+  CorrectAnswer: gss_cat %>% mutate(relig = fct_recode(relig,"Arabe" = "Moslem/islam","Christian" = "Orthodox-christian"))
+  AnswerTests: omnitest(correctExpr='gss_cat %>% mutate(relig = fct_recode(relig,"Arabe" = "Moslem/islam","Christian" = "Orthodox-christian"))')
+  Hint: Vamos tú puedes!!!!
+
+- Class: cmd_question
+  Output: Para poder ver los cambios correspondientes en los niveles modificados a la funsión anterior agregaremos la funsión count(), la cual nos permite ver la información del factor como si fuese una declaración de dataframe, pasandole como parametro el nombre del factor a mostrar en este caso relig
+  CorrectAnswer: gss_cat %>% mutate(relig = fct_recode(relig,"Arabe" = "Moslem/islam","Christian" = "Orthodox-christian"))%>% count(relig)
+  AnswerTests: omnitest(correctExpr='gss_cat %>% mutate(relig = fct_recode(relig,"Arabe" = "Moslem/islam","Christian" = "Orthodox-christian"))%>% count(relig)')
+  Hint: Vamos tú puedes!!!! la funsión es gss_cat %>% mutate(relig = fct_recode(relig,"Arabe" = "Moslem/islam","Christian" = "Orthodox-christian"))%>% count(relig)
+
+- Class: text
+  Output: Para no estar cambiando id por id del factor, podemos hacer un vector de los nombres que deceamos remplazar por una sola variable por ejemplo otro = c("Christian","Orthodox-Christian"), solo que si se quiere utilizar esta forma en vez de utilizar fct_recode, utilizariamos fct_collapse
+
+- Class: text
+  Output: Para ordenar de mayor a menor el factor lo único que haremos es gss_cat %>% mutate(relig = fct_lump(relig)) %>% count(relig)
