@@ -370,3 +370,66 @@
 
 - Class: text
   Output: Como pudiste ver sólo señalo tres letras de x.
+
+- Class: text
+  Output: Ahora que sabes lo básico de las expresiones regulares es hora de que comencemos a ver ejemplos más practicos.
+
+- Class: text
+  Output: Para este veremos la detección de patrones con str_detect()
+
+- Class: text
+  Output: Recordemos el vector color.
+
+- Class: cmd_question
+  Output: Escribe color para que puedas visualizarlo
+  CorrectAnswer: color
+  AnswerTests: omnitest(correctExpr='color')
+  Hint: Escribe color.
+
+- Class: text
+  Output: La función str_detect() devuelve un vector lógico, es decir un vector que tiene TRUE en caso de contener el patrón y FALSE en el caso negativo.
+
+- Class: text
+  Output: Hagamos algo simple.
+
+- Class: cmd_question
+  Output: Aplica la función str_detect() al vector color utilizando como patrón la letra "a".
+  CorrectAnswer: str_detect(color, "a")
+  AnswerTests: omnitest(correctExpr='str_detect(color, "a")')
+  Hint: La función se aplica de la misma manera que str_view()
+
+- Class: text
+  Output: Como viste el único valor que arroja un TRUE en el vector lógico es "Amarillo" que cumple en tener el patrón exacto.
+
+- Class: text
+  Output: Como ya te lo hemos mencionada anteriormente siempre puedes jugar con las combinaciones y generar resultados interesantes.
+
+- Class: text
+  Output: Por ejemplo si le aplicas la función sum a está función, te regresará la cantidad de string que cumplen con el patrón que buscas. 
+
+- Class: cmd_question
+  Output: Otro buen ejemplo es aplicar mean sobre la función para detectar patrones. Corre el siguiente código mean(str_detect(color, "A")).
+  CorrectAnswer: mean(str_detect(color, "A"))
+  AnswerTests: omnitest(correctExpr='mean(str_detect(color, "A"))')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Este número te indica la proporción de valores del vector que cumplen con la condición contra los que no.
+
+- Class: text
+  Output: Este fue un ejemplo de una combinación sencilla, sin embargo puedes lograr cosas muchos más complejas.
+  
+
+- Class: text
+  Output: Otro ejemplo.
+
+- Class: mult_question
+  Output: Que valores serán marcados como true si se aplica el siguiente código a un vector cualquiera !str_detect( vector, "[^aeiou]")
+  AnswerChoices: Los que comienzen con vocal;Los que no comienzen con vocal;error
+  CorrectAnswer: Los que no comienzen con vocal
+  AnswerTests: omnitest(correctVal='Los que no comienzen con vocal')
+  Hint: Recuerda que significa el signo de admiración antes de una condición.
+
+
+
+
