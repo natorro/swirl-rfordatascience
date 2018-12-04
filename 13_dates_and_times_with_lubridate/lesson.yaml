@@ -1,0 +1,53 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 13_dates_and_times_with_lubridate
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: En este capitulo nos consentraremos en analizar los datos en días y horas, hay tres maneras en las que podemos crear un fecha y hora
+
+
+- Class: text
+  Output: La primera forma de creación es por un string o caracteres, para esto necesitaremos de lubridate. Para hacer la representación de una fecha tenemos tres maneras, la primera es la función ymd("2018-06-25"), la segunda mdy("March 17th, 2018") y por ultimo dmy("25-Jan-2017") de las tres formas siempre sacan el mismo resultado
+
+- Class: cmd_question
+  Output: Escribe la fecha 2018-12-12 con la función ymd
+  CorrectAnswer: ymd("2018-12-12")
+  AnswerTests: omnitest(correctExpr='ymd("2018-12-12")')
+  Hint: vamos tú uedes!
+
+- Class: cmd_question
+  Output: Escribe la fecha March 31ts, 2018 con la función mdy
+  CorrectAnswer: mdy("March 31ts, 2018")
+  AnswerTests: omnitest(correctExpr='mdy("March 31ts, 2018")')
+  Hint: vamos tú uedes!
+
+- Class: cmd_question
+  Output: Escribe la fecha 31-Enero-2019 con la función dmy
+  CorrectAnswer: dmy("31-Enero-2019")
+  AnswerTests: omnitest(correctExpr='dmy("31-Enero-2019")')
+  Hint: vamos tú uedes!
+
+- Class: text
+  Output: Ahora para poder agregar una hora a las fechas es "_hm", por ejemplo ymd_hm("2018-12-12 19:15:56")
+
+- Class: text
+  Output: Ahora veremos como analizar las fechas y horas por sus componentes individuales, del conjunto de datos flights
+
+- Class: cmd_question
+  Output:  Seleccionaremos los años, meses, días, horas y minutos, para esto utiliza la funcion select()
+  CorrectAnswer: flights %>% select(year, month, day, hour, minute)
+  AnswerTests: omnitest(correctExpr='flights %>% select(year, month, day, hour, minute)')
+  Hint: la expresión es flights %>% select(year, month, day, hour, minute)
+
+- Class: text
+  Output: Ahora, si queremos que los vectores de la fecha aparescan en un solo vector dentro de flights usaremos la funsión mutate y como argumento "nombre del vector" = make_date(), pero si también queremos que salga la hora a make_date lo combiamos por make_datetime
+
+- Class: cmd_question
+  Output: De la función anterior modificala para que en el vector "nuevo" contenga la fecha y hora completos, utiliza la funsión make_datetime()
+  CorrectAnswer: flights %>% select(year, month, day, hour, minute) %>% mutate( nuevo = make_datetime(year, month, day, hour, minute))
+  AnswerTests: omnitest(correctExpr='flights %>% select(year, month, day, hour, minute) %>% mutate( nuevo = make_datetime(year, month, day, hour, minute))')
+  Hint: La expresión  queda como flights %>% select(year, month, day, hour, minute) %>% mutate( nuevo = make_datetime(year, month, day, hour, minute))
