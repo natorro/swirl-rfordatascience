@@ -433,3 +433,95 @@
 
 
 
+
+- Class: text
+  Output: Extracción de Texto.
+
+- Class: text
+  Output: Con esto nos referimos a la extracción de caracteres coincidentes con los patrones que busques.
+
+- Class: text
+  Output: Esto se hace con la función str_exact().
+  
+  
+
+- Class: text
+  Output: Vamos a utilizar "Harvard sentences" que son parte de la libraría de stringr y nos serán muy útiles para practicar expresiones regulares.
+
+- Class: text
+  Output: Harvard sentences consta de 720 oraciones con las que haremos distintas busquedas.
+
+- Class: cmd_question
+  Output: Para que veas el tipo de oraciones que contiene escribe head(sentences).
+  CorrectAnswer: head(sentences)
+  AnswerTests: omnitest(correctExpr='head(sentences)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Veamos un ejemplo en el que utilizaremos varias de las funciones que ya vimos en este capítulo en conjunto con str_extract. 
+
+- Class: text
+  Output: Lo que vamos a hacer es extraer las oraciones que comienzen con algún pronombre, seguido de esto vamos a extraer los pronombres y meterlos en un data frame. Esto puede servir para analizar el tipo de texto que tenemos así como su estructura.
+
+- Class: cmd_question
+  Output: Lo primero que haremos será definir un vector con los pronombres que vamos a buscar, escribe el código pro <- c("You","He","She","It","We","They")
+  CorrectAnswer: pro <- c("You","He","She","It","We","They")
+  AnswerTests: omnitest(correctExpr='pro <- c("You","He","She","It","We","They")')
+  Hint: Escribe le vector que se te pidió, asegurate de utilizar comillas dobles para cada string.
+
+- Class: text
+  Output: Pero el vector como tal no nos sirve para hacer la busqueda por que las oraciones que buscamos contienen sólo uno de los pronombres de nuestor vector.
+
+- Class: cmd_question
+  Output: Debemos de convertirlo en una expresión regular pero como haremos eso, escribe el código xpr <- str_c(pro, collapse = "|")
+  CorrectAnswer: xpr <- str_c(pro, collapse = "|")
+  AnswerTests: omnitest(correctExpr='xpr <- str_c(pro, collapse = "|")')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Escribe xpr para que visualices la expresión que acabas de crear
+  CorrectAnswer: xpr
+  AnswerTests: omnitest(correctExpr='xpr')
+  Hint: Escribe xpr.
+
+- Class: text
+  Output: Como podrás apreciar se concateno en un string separando las palabras por "|" que para R esto indica un "o" para la busqueda.
+
+- Class: text
+  Output: Ahora del conjunto de oraciones hacemos un subconjunto de las que cumplen con el patrón.
+
+- Class: cmd_question
+  Output: Escribe el código s_coincidence <- str_subset(sentences, xpr)
+  CorrectAnswer: s_coincidence <- str_subset(sentences, xpr)
+  AnswerTests: omnitest(correctExpr='s_coincidence <- str_subset(sentences, xpr)')
+  Hint: Escribe s_coincidence <- str_subset(sentences, xpr).
+
+- Class: text
+  Output: s_coincidence contiene todas las oraciones de sentences que cumplen con el patrón que pedimos.
+
+- Class: text
+  Output: Ahora extraemos el patrón con el que cumplió cada oración, que en la practica nos serviría para simplificar su análisis.
+
+- Class: cmd_question
+  Output: Escribimos el código final <- str_extract_all(s_coincidence, xpr, simplify = TRUE)
+  CorrectAnswer: final <- str_extract_all(s_coincidence, xpr, simplify = TRUE)
+  AnswerTests: omnitest(correctExpr='final <- str_extract_all(s_coincidence, xpr, simplify = TRUE)')
+  Hint: Escribe lo que se te indicó.
+
+- Class: text
+  Output: Se utilizó el argumento de simplify para que de output nos genere una matriz.
+
+- Class: cmd_question
+  Output: CConvierte final a data frame y renombralo como finaldt.
+  CorrectAnswer: finaldt <- as.data.frame(final)
+  AnswerTests: omnitest(correctExpr='finaldt <- as.data.frame(final)')
+  Hint: Escribe finaldt <- as.data.frame(final).
+
+- Class: cmd_question
+  Output: Escribe finaldt para que veas el resultado de lo que acabas de hacer.
+  CorrectAnswer: finaldt
+  AnswerTests: omnitest(correctExpr='finaldt')
+  Hint: Escribe finaldt
+
+- Class: text
+  Output: En final dt tenemos el resultado final con el que ya podríamos trabajar.
