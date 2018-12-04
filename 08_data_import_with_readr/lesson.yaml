@@ -237,3 +237,80 @@
   CorrectAnswer: parse_factor(c(Rojo, Azul, Verde, Amarillo), levels = colores)
   AnswerTests: omnitest(correctExpr='parse_factor(c(Rojo, Azul, Verde, Amarillo), levels = colores)')
   Hint: Usa la función de la siguiente forma parse_factor(c(Rojo, Azul, Verde, Amarillo), levels = colores)
+
+- Class: text
+  Output: tambien puedes usar la función parse() con datos para convertirlas a fechas, facilitando el uso de estandares para su lectura
+
+- Class: text
+  Output: existen 3 tipos de datos de fechas, los cuales se dividen en fecha (el número de dias desde 1970-01-01), una fecha-hora (el número de segundos desde la media noche de 1970-01-01), o una hora (el número de segundos desde la medianoche del dia presente)
+
+- Class: cmd_question
+  Output: parse_datetime() genera fechasen el estandar ISO8601 en el cual los digitos se arreglan de mayor a menor, año, mes, dia, hora, minuto y segundo. Usa la cadena "2018-12-30T2010" con la función y observa el resultado que arroja
+  CorrectAnswer: parse_datetime("2018-12-30T2010")
+  AnswerTests: omnitest(correctExpr='parse_datetime("2018-12-30T2010")')
+  Hint: solo ingresa la cadena con "" dentro de los parentesis de la funcion
+
+- Class: cmd_question
+  Output: parse_date() siempre recibirá de entrada una fecha en concreto, con separadores entre el mes y dia como - o /, como "2018-05-21", cadena que debes de ingresar en la función para continuar con la lección
+  CorrectAnswer: parse_date("2018-05-21")
+  AnswerTests: omnitest(correctExpr='parse_date("2018-05-21")')
+  Hint: solo ingresa la cadena "2018-05-21" en la función parse_date()
+
+- Class: cmd_question
+  Output: Para poder iniciar con el comando de horas es necesario que carguemos la biblioteca hms, la cual nos permite manejar de una manera mas precisa las horas, minutos y segundos
+  CorrectAnswer: library(hms)
+  AnswerTests: omnitest(correctExpr='library(hms)')
+  Hint: Recuerda que cargamos las bibliotecas con library()
+
+- Class: cmd_question
+  Output: parse_time() espera que ingreses una hora, la cual puede tener formato de 24 horas o con un indicador am o pm opcional. Siempre separando las horas de los minutos con un (:), con la opción de incluir segundos de la misma forma. Ahora ingresa la cadena "10:20 pm" a la función para transformarla en una hora.
+  CorrectAnswer: parse_time("10:20 pm")
+  AnswerTests: omnitest(correctExpr='parse_time("10:20 pm")')
+  Hint: ingresa la cadena "10:20 pm" en parse_time()
+
+
+- Class: text
+  Output: Ahora que tienes las bases de aplicar parse() a variables y vectores, es tiempo de regresar a los archivos para poder procesar grandes cantidades de datos
+
+- Class: cmd_question
+  Output: Puedes usar la función guess_parser() con cualquier cadena de datos, para que readr pueda hacer una busqueda del formato mas adecuado de acuerdo a las reglas que cada tipo de dato tiene, usa la cadena "1456,2324,356" con la función
+  CorrectAnswer: guess_parser("1456,2324,356")
+  AnswerTests: omnitest(correctExpr='guess_parser("1456,2324,356")')
+  Hint: solo usa la cadena dentro de la función como lo has hecho en ocasiones anteriores
+
+- Class: mult_question
+  Output: ¿Cual sera el output de guess_parser() con la cadena "TRUE"?
+  AnswerChoices: date;time;logical;integer
+  CorrectAnswer: logical
+  AnswerTests: omnitest(correctVal='logical')
+  Hint: Recuerda los tipos de datos que existen.
+
+- Class: text
+  Output: con esta función llegan a presentarse algunos problemas con archivos que presentan casos excepcionales en los primeros 1000 registros, cauando que algunos datos críticos no sean leidos en archivos lo suficientemente grandes, o que haya tantos NA que readr piense que es un dato a transformar.
+
+- Class: cmd_question
+  Output: Para revisar esto readr tiene un archivo que demuestras los errores, por lo que debes ejecutar el siguiente código(:) errores <- read_csv(readr_example("challenge.csv"))
+  CorrectAnswer: errores <- read_csv(readr_example("challenge.csv"))
+  AnswerTests: omnitest(correctExpr='errores <- read_csv(readr_example("challenge.csv"))')
+  Hint: Solo copia y pega errores <- read_csv(readr_example("challenge.csv"))
+
+- Class: cmd_question
+  Output: Para poder revisar a mas detalle los errores que se mostraron hay que usar la función problems() en el objeto errores
+  CorrectAnswer: problems(errores)
+  AnswerTests: omnitest(correctExpr='problems(errores)')
+  Hint: intenta problems(errores)
+
+- Class: cmd_question
+  Output: Para poder corregir este error, podemos usar la estrategia de leer mas de 1000 registros, por lo que podemos repetir la lectura si usamos el código errores2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+  CorrectAnswer: errores2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+  AnswerTests: omnitest(correctExpr='errores2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)')
+  Hint: Copia el codigo errores2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+
+- Class: text
+  Output: Una de las funciones mas usadas de readr es write_csv() y write_tsv(), con las cuales debes de tener en cosideración que siempre codifican con UTF-8, y guarda las fechas-horas en el formato establecido por la ISO8601 para su facilidad de conversión. Si deseas exportar datos a un excel tambien existe write_excel_csv()
+
+- Class: cmd_question
+  Output: como ejemplo guardaremos errores2 en un archivo CSV con la nomenclatura de la función write_csv(objeto, nombre), sustituyendo el nombre con "errores.csv"
+  CorrectAnswer: write_csv(errores2, "errores2.csv")
+  AnswerTests: omnitest(correctExpr='write_csv(errores2, "errores2.csv")')
+  Hint: el código correcto es write_csv(errores2, "errores2.csv")
