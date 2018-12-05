@@ -534,3 +534,59 @@
   Output: En final dt tenemos el resultado final con el que ya podríamos trabajar.
 
 
+
+- Class: text
+  Output: Agrupación de texto
+
+- Class: text
+  Output: Es decir agrupación del texto que tenga patrones coincidentes con la busqueda.
+
+- Class: text
+  Output: Para agrupar estos resultados utilizaremos parenthesis, estos nos ayudarán a extraer las partes de patrones complejos.
+
+- Class: text
+  Output: Veamos un ejemplo, utilizaremos pipes pertenecientes a dplyr para facilitar el entendimiento del código, y funciones de stringr.
+
+- Class: cmd_question
+  Output: Vamos a extraer he, she y am con la palabra que le siga en cada oración. Escriba be <- "(is|are|am) ([^ ]+)"
+  CorrectAnswer: be <- "(is|are|am) ([^ ]+)"
+  AnswerTests: omnitest(correctExpr='be <- "(is|are|am) ([^ ]+)"')
+  Hint: Escriba lo que se le pidió respetando los espacios.
+
+- Class: text
+  Output: Ahora que está generado el patrón de busqueda. Vamos al ejercicio.
+
+- Class: cmd_question
+  Output: Ahora filtra sentences utilizando str_subset, recuerda que ya tienes tu patŕon de busqueda y que debes utilizar pipes. Nombra a está busqueda como "sentence_be".
+  CorrectAnswer: sentence_be <- sentences %>% str_subset(be)
+  AnswerTests: omnitest(correctExpr='sentence_be <- sentences %>% str_subset(be)')
+  Hint: El código correcto es sentence_be <- sentences %>% str_subset(be)
+
+- Class: cmd_question
+  Output: Utiliza sentence_be %>% head(5) para que veas las primeras 5 oraciones que filtraste y que efectivamente contienen lo que buscas.
+  CorrectAnswer: sentence_be %>% head(5)
+  AnswerTests: omnitest(correctExpr='sentence_be %>% head(5)')
+  Hint: Escribe sentence_be %>% head(5).
+
+- Class: cmd_question
+  Output: Aplica str_extract() a sentence_be con el patrón de busqueda que ya tienes.
+  CorrectAnswer: sentence_be %>% str_extract(be)
+  AnswerTests: omnitest(correctExpr='sentence_be %>% str_extract(be)')
+  Hint: La respuesta es sentence_be %>% str_extract(be).
+
+- Class: text
+  Output: Como pudiste ver te trae todo los patrones coincidentes, pero entonces dónde quedo el agrupamiento. Vamos a ello.
+
+- Class: text
+  Output: Te introducimos la función str_match, con ella podrás extraer los patrones coincidentes pero los tendrás concatenados y separados.
+
+
+
+- Class: cmd_question
+  Output: Repite le ejercicio anterior pero con str_match().
+  CorrectAnswer: sentence_be %>% match(be)
+  AnswerTests: omnitest(correctExpr='sentence_be %>% str_match(be)')
+  Hint: Mucho mejor, generamos una tabla mucho más completa.
+
+- Class: text
+  Output: Existe una manera más sencilla de hacer todo esto, podrás experimentar con ella despues si así lo deseas. Se usa la función tidyr::extract que funciona muy similar a str_match sólo que en esta se definen los nombres de los grupos de cada patrón. Por ejemplo tidyr::extract(sentence, c("be", "word"), "(is|are|am) ([^ ]+)", remove = FALSE)
