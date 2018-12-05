@@ -359,6 +359,13 @@
 - Class: text
   Output: /{n,m}/ le indica a R que debe de buscar entre n y m repeticiones por string. (Ignora las diagonales)
 
+- Class: cmd_question
+  Output: Genera el vector x, escribe x <- "aaaaaa" 
+  CorrectAnswer: x <- "aaaaaa" 
+  AnswerTests: omnitest(correctExpr='x <- "aaaaaa" ')
+  Hint: Escribe x <- "aaaaaa" 
+
+
 - Class: text
   Output: Hagamos un ejercicio con el vector x .
 
@@ -525,3 +532,5 @@
 
 - Class: text
   Output: En final dt tenemos el resultado final con el que ya podríamos trabajar.
+
+
