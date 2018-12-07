@@ -1,0 +1,64 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: test
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Una tarea laboriosa para los Cientificos de Datos, es la organizacion de la informacion. En este capitulo trabajaremos con una tecnica llamada tidy data, tener nuestros datos en orden asegura mejores analisis y eficienta los tiempos de trabajo.
+  
+- Class: cmd_question
+  Output: Ejecuta en la consola library(tidyverse), para comenzar a trabajar, la paqueteria tidyr ya viene incluida.
+  CorrectAnswer: library(tidyr)
+  AnswerTests: omnitest(correctExpr='library(tidyverse)')
+  Hint: Tal vez tenemos un caracter erroneo
+
+- Class: text
+  Output: Recordemos que la informacion puede representarse de varias maneras; ordenada numericamente, alfabeticamente, etc. Pero existen 3 reglas clave para tener nuestros datos tidy y trabajar de la mejor forma con ellos.
+
+- Class: text
+  Output: Cada variable tiene su propia columna, cada observacion su propia fila, cada valor su propia celda.
+
+- Class: text
+  Output: Veremos 2 ejemplos de como organizar la informacion, Observa e imagina como transformarias los datos.
+
+- Class: cmd_question
+  Output: Ejecuta head(table1,5) ; head(table2,5).
+  CorrectAnswer: head(table1,5) ; head(table2,5)
+  AnswerTests: omnitest(correctExpr='head(table1,5) ; head(table2,5)')
+  Hint: head(table1,5) ; head(table2,5)
+  
+ -Class: text
+  Output: Al tener los datos almacenado y estructurados ayuda a aprender herramientas de trabajo mas avanzadas para el analisis de datos. Al tener las variables sobre cada columna permita a R trabajar mejor, se es mas eficiente con los datos vectorizados y una gran cantidad de funciones en R son compatibles con estas estructuras. Las paqueterias ggplot2 y dplyr estan diseñadas para trabajar con datos tidy.
+  
+- Class: text
+  Output: Una buena practica antes de comenzar a usar una paqueteria es investigar y leer un poco sobre ella.
+
+- Class: cmd_question
+  Output: Ejecuta help(dplyr) y lee un poco.
+  CorrectAnswer: help(dplyr)
+  AnswerTests: omnitest(correctExpr='help(dplyr)')
+  Hint: help(dplyr)
+
+- Class: cmd_question
+  Output: Ejecuta help(tidyr) y lee un poco.
+  CorrectAnswer: help(tidyr)
+  AnswerTests: omnitest(correctExpr='help(tidyr)')
+  Hint: help(tidyr)
+
+- Class: text
+  Output: Comenzemos a trabajar con la funcion mutate(). (Crea una nueva columna en los datos)
+
+- Class: cmd_question
+  Output: Ejecuta table1 %>% mutate(rate = cases / population * 10000), creamos una nueva columna a partir de columnas existentes.
+  CorrectAnswer: table1 %>% mutate(rate = cases / population * 10000)
+  AnswerTests: omnitest(correctExpr='table1 %>% mutate(rate = cases / population * 10000)')
+  Hint: table1 %>% mutate(rate = cases / population * 10000)
+
+- Class: cmd_question
+  Output: Ejecuta ; table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) 
+  CorrectAnswer: table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) 
+  AnswerTests: omnitest(correctExpr='table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) ')
+  Hint: table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) 
