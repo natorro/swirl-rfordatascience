@@ -70,3 +70,56 @@
 
 - Class: text
   Output: Bien hecho, como lo habrás notado fue mucho más sencillo obtener el mismo resultado además de que el código es intuitivo y se vuelve más fácil ver que es lo que se está haciendo.
+
+- Class: text
+  Output: Aunado a esto el uso de los pipes reduce la cantidad de errores por falta de parentesis, espacios, etc. 
+
+- Class: text
+  Output: Una de las preocupaciones de los usuarios es que se generen muchas copias de sus datos y esto llene la memoria disponible, sin embargo estos fueron pensados para que las columnas comunes entre data frames fueran reutilizadas así que es algo de lo que no debes preocuparte. 
+
+- Class: text
+  Output: Cuando no es recomendable el uso de pipes.
+
+- Class: text
+  Output: Sí tus pipes requieren más de 10 pasos es mejor que utilices otra herramienta o que generes objetos intermedios para que de presentarse errores sean más fáciles de encontrar.
+
+- Class: text
+  Output: Los pipes son fundamentalmente lineales así que si estás pensando en meterle relaciones de expresiones complejas es probable que termines confundido y sin resolver el problema.
+
+- Class: text
+  Output: Herramientas alternas de magrittr.
+
+- Class: text
+  Output: Cuando se trabaja con pipes más complejos es común que se agreguen funciones por sus efectos ya sea para imprimir o graficar pero esto suele arrojar errores con los pipes y no generar nada o arrojar valores inconsistentes.
+
+
+- Class: text
+  Output: Para solucionar esto se utilizan los "tee" pipes %T>%, funcionan de la misma manera que los pipes que ya conoces, con la excepción de que regresa el valor original en lugar del resultado. 
+
+
+- Class: text
+  Output: Otro variante del pipe que puedes utilizar es "%$%".
+
+
+- Class: text
+  Output: Es útil cuando se trabaja sin un data frame, lo que hace es simular un data frame con las variables que tengas.
+
+
+- Class: text
+  Output: Por último está el pipe para reasignación del valor de un objeto "%<>%". 
+
+
+- Class: text
+  Output: Veamos un ejemplo.
+
+- Class: text
+  Output: En lugar de usar este código para asignar un nuevo valor diamonds, diamonds <- diamonds %>% filter(cut == "Ideal") %>% head(5) 
+
+- Class: text
+  Output: Lo que se haría es -> diamonds %$% filter(cut == "Ideal") %>% head(5)  
+
+- Class: text
+  Output: No suele ser lo más recomendable por que siempre es bueno mantener nuestros datos originales sin modificar por cualquier error.
+
+- Class: text
+  Output: Felicidades, terminamos el curso!
