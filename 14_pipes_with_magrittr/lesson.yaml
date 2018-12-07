@@ -5,3 +5,68 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.3
+
+- Class: text
+  Output: Pipes con magrittr
+
+- Class: text
+  Output: Los pipes son un herramienta muy útil para tener un código más limpio. De está manera tú puedes ver de manera secuencial las operaciones que estás aplicando. Durante este capítulo veremos su aplicación así como alternativas a ellos. 
+
+- Class: text
+  Output: Al terminar el capítulo sabrás cuando es conveniente utilizarlos y cuando es mejor buscar otra herramienta.
+
+- Class: text
+  Output: Los pipes vienen de la paquetería magrittr hecha por Stefan Milton. Usualemnte no es necesario cargar esta paquetería por que los pipes ya vienen cargados en tidyverse.
+
+- Class: text
+  Output: Por favor instala la paquetería magrittr con install.packages() y cargala con library() para el curso.
+
+- Class: text
+  Output: Veamos algunos ejemplos de como es que los pipes simplifican el trabajo.
+
+- Class: text
+  Output: Por favor carga la librería ggplot2.
+
+- Class: cmd_question
+  Output: Escribe diamonds para que veas los datos con los que vamos a trabajar.
+  CorrectAnswer: diamonds
+  AnswerTests: omnitest(correctExpr='diamonds')
+  Hint: Escribe diamonds.
+
+
+- Class: text
+  Output: Podrás ver que tiene distintas columnas enfocadas a describir diamantes. 
+
+
+- Class: text
+  Output: Ahora hagamos un par de modificaciones a los datos, primero lo haremos sin pipe y despues con pipes para ver la diferencia.
+
+- Class: text
+  Output: Digamos que quieres filtrar los datos porel tipo de cut = Ideal y sólo quieres las primeras 5 observaciones.
+
+- Class: cmd_question
+  Output: Primero el filtro, filtra diamonds por cut = Ideal utilizando la función filter y nombralo diamonds2
+  CorrectAnswer: diamonds2 <- filter(diamonds, cut == "Ideal")
+  AnswerTests: omnitest(correctExpr='diamonds2 <- filter(diamonds, cut == "Ideal")')
+  Hint: Esta es la respuesta diamonds2 <- filter(diamonds, cut == "Ideal")
+
+- Class: cmd_question
+  Output: Ahora nombra como diamonds3 a las primeras 5 observaciones utilizando la función head
+  CorrectAnswer: diamonds3 <- head(diamonds2, 5)
+  AnswerTests: omnitest(correctExpr='diamonds3 <- head(diamonds2, 5)')
+  Hint: Esta es la respuesta diamonds3 <- head(diamonds2, 5)
+
+- Class: cmd_question
+  Output: Escribe diamonds3 para que veas el resultado.
+  CorrectAnswer: diamonds3
+  AnswerTests: omnitest(correctExpr='diamonds3')
+  Hint: Escribe diamonds3.
+
+- Class: cmd_question
+  Output: Ahora haremos lo mismo pero con pipes, escribe diamonds %>% filter(cut == "Ideal") %>% head(5). 
+  CorrectAnswer: diamonds %>% filter(cut == "Ideal") %>% head(5) 
+  AnswerTests: omnitest(correctExpr='diamonds %>% filter(cut == "Ideal") %>% head(5) ')
+  Hint: Escribe diamonds %>% filter(cut == "Ideal") %>% head(5). 
+
+- Class: text
+  Output: Bien hecho, como lo habrás notado fue mucho más sencillo obtener el mismo resultado además de que el código es intuitivo y se vuelve más fácil ver que es lo que se está haciendo.
