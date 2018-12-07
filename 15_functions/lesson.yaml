@@ -5,7 +5,7 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.3
-
+  
 - Class: text
   Output: En esta lección aprenderas a escribir funciones para automatizar tareas en el copiado y pegado de datos.
 
@@ -37,4 +37,4 @@
   Output: 2. Un listado de las entradas o argumentos de entrada que seran procesados dentro de la función, pueden ser uno o varios argumetos.
 
 - Class: text
-  Output: 3. Pones el codigo que has desarrollado en el cuerpo de la función entre {}
+Output: 3. Pones el codigo que has desarrollado en el cuerpo de la función entre {}

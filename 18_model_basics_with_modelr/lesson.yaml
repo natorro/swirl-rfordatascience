@@ -1,0 +1,61 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 18_model_basics_with_modelr
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Ahora que ya tienes muchas herramientas podemos comenzar con modelación.
+
+- Class: text
+  Output: El objetivo de un modelo es proporcionar un resumen simple de un conjunto de datos, idealmente se encontrarán patrones generados por el fenómeno de interés y se ignorará el ruido.
+
+- Class: text
+  Output: Con ruido nos referimos a la variación aleatoria en la que no estamos interesados pues no nos ayudará a generar predicciones.
+
+- Class: text
+  Output: Durante el curso cubriremos únicamente modelos predictivos.
+
+- Class: text
+  Output: No veremos de manera formal o profunda la teoría matemática que está detras de los modelos. El curso está enfocado a darte herramientas para utilizar este tipo de modelos y entender mejor tus datos.
+
+- Class: text
+  Output: Te mostraremos como estos modelos son una buena herramienta para la exploración de datos.
+
+- Class: text
+  Output: Tradicionalmente los modelos se aplican en la inferencia o para confirmar hipótesis sobre los datos que  se tienen.
+
+- Class: text
+  Output: Hay dos puntos muy importantes que debes comprender para hacer una inferencia de la manera correcta.
+
+- Class: text
+  Output: Lo primero es que cada observación debe ser designada ya sea para exploración de los datos o confirmación de la hipótesis pero nunca para ambas.
+
+- Class: text
+  Output: Segundo, las observaciones se pueden utilizar repetidas veces para exploración, pero pueden usarse una sola vez para confirmación.
+
+
+- Class: text
+  Output: Lo que queremos decir con todo esto es que los datos que se utilizen para confirmación de hipótesis deben de ser independientes de los que sean usados para exploración.
+  
+
+- Class: text
+  Output: Si no sigues estos pasos basicos, lo único que vas a lograr es un sobreajuste de tus datos y vas a modelar lo mismo que ya tienes por lo tanto tu modelo no será significativo a la hora de hacer una predicción y no servirá de nada tu análisis.
+
+- Class: text
+  Output: Sí quieres hacer una análisis serio para confirmación, tienes que dividir tus datos en tres grupos.
+
+
+- Class: text
+  Output: 60% será para training o exploración, donde podrás aplicarle distintos modelos y hacer visualizaciones.
+
+- Class: text
+  Output: 20% para el query set, donde compararas modelos o visualizaciones.
+
+- Class: text
+  Output: Finalmente 20% para test o confirmación, es para confirmar el modelo final.
+
+- Class: text
+  Output: Si haces todo esto podrás generar hipotesis candidatas y hacer distintas pruebas para estar más seguro del modelo final.
