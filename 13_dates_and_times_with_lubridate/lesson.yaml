@@ -106,3 +106,54 @@
   CorrectAnswer: vuelos %>% mutate(wday = wday(dep_time, label = TRUE)) %>% ggplot(aes(x = wday)) + geom_bar()  
   AnswerTests: omnitest(correctExpr='vuelos %>% mutate(wday = wday(dep_time, label = TRUE)) %>% ggplot(aes(x = wday)) + geom_bar()  ')
   Hint: vamos tú puedes 
+
+- Class: text
+  Output: Podemos tambien redondear las fechas por unidad de tiempo, para esto hay varias funsiones que podemos utilizar segun sea el redondeo que deceemos, de las cules estan floor_date(), round_date() y ceiling_date(), en estos casos se les pasa como argumento el conjunto de datos de fechas que se quiere hacer el redondeo y como segundo parametro se les pasa el tipo de redondeo.
+
+- Class: cmd_question
+  Output: Para este ejemplo lo que haremos a continuación es hacer un redondeo de los arribos de los vuelos por día,por lo tanto a la variable "vuelos" le agregaremos la funsión count la cual quedaria  vuelos %>% count(day = round_date(sched_arr_time, "day"))
+  CorrectAnswer: vuelos %>% count(day = round_date(sched_arr_time, "day"))
+  AnswerTests: omnitest(correctExpr='vuelos %>% count(day = round_date(sched_arr_time, "day"))')
+  Hint: La expresión es vuelos %>% count(day = round_date(sched_arr_time, "day"))
+
+- Class: cmd_question
+  Output: Ahora graficaremos el redondeo con ggplot(aes(day, n)) + geom_line()
+  CorrectAnswer: vuelos %>% ggplot(aes(day, n)) + geom_line()
+  AnswerTests: omnitest(correctExpr='vuelos %>% ggplot(aes(day, n)) + geom_line()')
+  Hint: La expresión es vuelos %>% ggplot(aes(day, n)) + geom_line()
+
+- Class: text
+  Output: Otro tipo de modificación es ajustando los componentes de la fecha y hora, un ejemplo sencillo, es crear una variable por ejemplo, fecha y le pasamos una fecha y hora, la cual quedaría fecha <- ymd_hms("2018-05-01 13:45:00") y si modificamos el día como mday(fecha) <- 06
+
+- Class: text
+  Output: Ahora aprenderemos algunas operaciones como a suma, resta y division, así como las funciones de duración, intervalo de tiempo y periodos de tiempo 
+
+- Class: cmd_question
+  Output: Primero empezaremos por la funsión de duración, la cual nos da el tiempo en segundos de una diferencia de fechas; por ejemplo si queremos saber la duración en segundos del día de hao a la fecha de 1900-09-15 lo que tenemos que hacer es ddt <- today() - ymd(19000915), por favor escribe la expresión.
+  CorrectAnswer: ddt <- today() - ymd(19000915)
+  AnswerTests: omnitest(correctExpr='ddt <- today() - ymd(19000915)')
+  Hint: Es fácil !!!
+
+- Class: cmd_question
+  Output: Ahora manda a llamar a la variable ddt
+  CorrectAnswer: ddt 
+  AnswerTests: omnitest(correctExpr='ddt ')
+  Hint: Es fácil !!!
+
+- Class: text
+  Output: Ahora bien nosotros podemos saver  exatamente la duración de la variable que hemos creado, ya que anteriormente la conversion es muy relativa, ya que te lo puede dar en días, horas, minutos,etc. por lo tanto para una diferencia más exacta utilizamos as.duration() es una funsión que es parte de la libreria de lubridate
+
+- Class: cmd_question
+  Output: Escribe a continuasión  la funsión antes mencionada y pasale como parametro la variable "ddt"
+  CorrectAnswer: as.duration(ddt)
+  AnswerTests: omnitest(correctExpr='as.duration(ddt)')
+  Hint: la funsión queda as.duration(ddt)
+
+- Class: cmd_question
+  Output: Ahora bien, tambien podemos hacer conversiones de minutos, horas, días, meses y años a segundos por ejemplo, escribe dyears(10)
+  CorrectAnswer: dyears(10)
+  AnswerTests: omnitest(correctExpr='dyears(10)')
+  Hint: Tú puedes
+
+- Class: text
+  Output: tambien puedes agregar o restar duraciones por ejemplo ayer <- today() - ddays(1) o sumarle hoy <- ayer + ddays(1)
