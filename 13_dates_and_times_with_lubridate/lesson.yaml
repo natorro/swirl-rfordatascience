@@ -51,3 +51,58 @@
   CorrectAnswer: flights %>% select(year, month, day, hour, minute) %>% mutate( nuevo = make_datetime(year, month, day, hour, minute))
   AnswerTests: omnitest(correctExpr='flights %>% select(year, month, day, hour, minute) %>% mutate( nuevo = make_datetime(year, month, day, hour, minute))')
   Hint: La expresión  queda como flights %>% select(year, month, day, hour, minute) %>% mutate( nuevo = make_datetime(year, month, day, hour, minute))
+
+
+- Class: text
+  Output: Ahora agruparemos los datos de las cuatro columnas de tiempo, para esto utilizaremos el modulo para extraer los datos.
+
+- Class: cmd_question
+  Output: Ahora lo que se te pide que hagas es extraer el modulo de las dos columnas que pertenecen a time, para esto utilizaras la siguiente expresión make_datetime_100 <- function(year, month, day, time) {make_datetime(year, month, day, time %/% 100, time %% 100)}
+  CorrectAnswer: make_datetime_100 <- function(year, month, day, time) {make_datetime(year, month, day, time %/% 100, time %% 100)}
+  AnswerTests: omnitest(correctExpr='make_datetime_100 <- function(year, month, day, time) {make_datetime(year, month, day, time %/% 100, time %% 100)}')
+  Hint: Type a hint.
+
+- Class: text
+  Output: Ahora con la funsión anterior ya podemos filtrar los vectores hours y minutes
+
+- Class: cmd_question
+  Output: Para filtrar los datos crearemos un dataframe donde filtraremos los datos para no tener valores NA dentro de la nueva agrupación  por lo tanto la expresión es vuelos <- flights %>% filter(!is.na(dep_time), !is.na(arr_time))
+  CorrectAnswer: vuelos <- flights %>% filter(!is.na(dep_time), !is.na(arr_time))
+  AnswerTests: omnitest(correctExpr='vuelos <- flights %>% filter(!is.na(dep_time), !is.na(arr_time))')
+  Hint: Vamos tú puedes!!
+
+- Class: cmd_question
+  Output: A la expresión anterior le agregaremos la funsión de mutate para que le pasemos a los vectores definidos anteriormente, los valores agrupados de las fechas y de las horas de los vuelos, la funsión de mutate quedaría mutate(dep_time = make_datetime_100(year, month, day, dep_time),arr_time = make_datetime_100(year, month, day, arr_time),sched_dep_time = make_datetime_100(year, month, day, sched_dep_time),sched_arr_time = make_datetime_100(year, month, day, sched_arr_time)), escribe de nuevo la expresión anterior y agregale la funsión mutate descrita anteriormente.
+  CorrectAnswer: vuelos <- flights %>% filter(!is.na(dep_time), !is.na(arr_time)) %>% mutate(dep_time = make_datetime_100(year, month, day, dep_time),arr_time = make_datetime_100(year, month, day, arr_time),sched_dep_time = make_datetime_100(year, month, day, sched_dep_time),sched_arr_time = make_datetime_100(year, month, day, sched_arr_time))
+  AnswerTests: omnitest(correctExpr='vuelos <- flights %>% filter(!is.na(dep_time), !is.na(arr_time)) %>% mutate(dep_time = make_datetime_100(year, month, day, dep_time),arr_time = make_datetime_100(year, month, day, arr_time),sched_dep_time = make_datetime_100(year, month, day, sched_dep_time),sched_arr_time = make_datetime_100(year, month, day, sched_arr_time))')
+  Hint: la expresion correcta es "vuelos <- flights %>% filter(!is.na(dep_time), !is.na(arr_time)) %>% mutate(dep_time = make_datetime_100(year, month, day, dep_time),arr_time = make_datetime_100(year, month, day, arr_time),sched_dep_time = make_datetime_100(year, month, day, sched_dep_time),sched_arr_time = make_datetime_100(year, month, day, sched_arr_time))"
+
+- Class: cmd_question
+  Output: Ahora comprueba que en verdad se icienron los agrupamientos correctamente y con los formatos correctos de las fechas y las horas de cada vuelo, para esto manda a llamar la variable donde se guardaron los cambios
+  CorrectAnswer: vuelos
+  AnswerTests: omnitest(correctExpr='vuelos')
+  Hint: Solo escribe vuelos
+
+- Class: text
+  Output: Si se decea visualzar estos nuevos conjuntos de datos con sus respectivos nombres de vuelos lo único que  tendriamos que agregarle a la expresión de vuelos es la funsión select, de la cual desplegariamos los conjuntos origin, dest, ends_with("delay"), ends_with("time"), estas dos ultimas muestran los conjuntos con terminación delay y time
+
+- Class: cmd_question
+  Output: Para no quedarnos con las dudas a la variable "vuelos" aplicale la funsión select() y como argumentos usarás el nombre de los conjuntos antes mencionados
+  CorrectAnswer: vuelos %>% select(origin, dest, ends_with("delay"), ends_with("time"))
+  AnswerTests: omnitest(correctExpr='vuelos %>% select(origin, dest, ends_with("delay"), ends_with("time"))')
+  Hint: la expresión correcta es vuelos %>% select(origin, dest, ends_with("delay"), ends_with("time"))
+
+- Class: text
+  Output: De las agrupasiones realizadas anteriormente podríamos sacar más información, como por ejemplo, sacar la gráfica de las frecuencias de los vuelos en un sierto periodo de tiempo 
+
+- Class: cmd_question
+  Output: Para gráficar la fecuencia de vuelos en un peroido de tiempo por ejemplo 80000 segundos en el día, veremos la frecuencia de vuelos en este periodo de tiempo, la expresión sería vuelos %>% ggplot(aes(sched_dep_time)) + geom_freqpoly(binwidth = 80000), expresala en la consola.
+  CorrectAnswer: vuelos %>% ggplot(aes(sched_dep_time)) + geom_freqpoly(binwidth = 80000)
+  AnswerTests: omnitest(correctExpr='vuelos %>% ggplot(aes(sched_dep_time)) + geom_freqpoly(binwidth = 80000)')
+  Hint: No te desanimes, si puedes!
+
+- Class: cmd_question
+  Output: Del conjunto que hicimos en los ejercicios anteriores tambien podemos tratar al conjunto por sus componentes, por ejemplo de date_time, podemos hacer un histograma con los vuelos que salen por segundos en cada mes del año. para esto la expresíon a utilizar es vuelos %>% mutate(wday = wday(dep_time, label = TRUE)) %>% ggplot(aes(x = wday)) + geom_bar()  
+  CorrectAnswer: vuelos %>% mutate(wday = wday(dep_time, label = TRUE)) %>% ggplot(aes(x = wday)) + geom_bar()  
+  AnswerTests: omnitest(correctExpr='vuelos %>% mutate(wday = wday(dep_time, label = TRUE)) %>% ggplot(aes(x = wday)) + geom_bar()  ')
+  Hint: vamos tú puedes 
