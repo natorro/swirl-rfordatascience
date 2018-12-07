@@ -1,0 +1,40 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 15_functions
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: En esta lección aprenderas a escribir funciones para automatizar tareas en el copiado y pegado de datos.
+
+- Class: text
+  Output: Las ventajas de crear funciones se pueden resumir en(:)
+
+- Class: text
+  Output: Puedes renombrar la función de manera personalizada para hacer de tu codigo uno mas legible y facil de entender, llamando una función que recorre un archivo como lectura() por ejemplo.
+
+- Class: text
+  Output: Para cuestiones de requisitos de cambios cuando se trabaja con un equipo en un programa, puedes llevar a cabo los cambios en un solo lugar, en vez de multiples lineas.
+
+- Class: text
+  Output: Eliminas la probabilidad de errores en el copiado y pegado que un humano pueda cometer si no usas la recursividad de las funciones.
+
+- Class: text
+  Output: La mejor forma de saber si necesitas de una función es cuando tienes dos o mas tareas ejecutandose en tu codigo que hacen exactamente lo mismo, o hacer una acción de manera recursiva en varios objetos a la vez, como sumas, restas, conversiones de datos, etc. 
+
+- Class: text
+  Output: Una clave para empezar a transformar codigo en una función es evaluar cuantas entradas y salidas contienen, reemplazandolas por variables temporales con nombres generales, para poder identificar las entradas y salidas.
+
+- Class: text
+  Output: Hay 3 pasos clave para transformar un código en una función(:)
+
+- Class: text
+  Output: 1. Escoger un nombre para la función, que sea descriptivo de lo que el código lleva a cabo de manera corta y concisa.
+
+- Class: text
+  Output: 2. Un listado de las entradas o argumentos de entrada que seran procesados dentro de la función, pueden ser uno o varios argumetos.
+
+- Class: text
+  Output: 3. Pones el codigo que has desarrollado en el cuerpo de la función entre {}
