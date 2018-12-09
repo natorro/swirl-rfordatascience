@@ -10,7 +10,7 @@
   Output: Una tarea laboriosa para los Cientificos de Datos, es la organizacion de la informacion. En este capitulo trabajaremos con una tecnica llamada tidy data, tener nuestros datos en orden asegura mejores analisis y eficienta los tiempos de trabajo.
   
 - Class: cmd_question
-  Output: Ejecuta en la consola library(tidyverse), para comenzar a trabajar, la paqueteria tidyr ya viene incluida.
+  Output: Trabajaremos con la paqueteria tidyverse (contiene dply y tidyr).Ejecuta;library(tidyverse)
   CorrectAnswer: library(tidyr)
   AnswerTests: omnitest(correctExpr='library(tidyverse)')
   Hint: Tal vez tenemos un caracter erroneo
@@ -19,46 +19,78 @@
   Output: Recordemos que la informacion puede representarse de varias maneras; ordenada numericamente, alfabeticamente, etc. Pero existen 3 reglas clave para tener nuestros datos tidy y trabajar de la mejor forma con ellos.
 
 - Class: text
-  Output: Cada variable tiene su propia columna, cada observacion su propia fila, cada valor su propia celda.
+  Output: 1.Cada variable tiene su propia columna, 2.cada observacion su propia fila, 3.cada valor su propia celda
 
 - Class: text
   Output: Veremos 2 ejemplos de como organizar la informacion, Observa e imagina como transformarias los datos.
+  
+- Class: cmd_question
+  Output: Ejecuta;head(table1,5) 
+  CorrectAnswer: head(table1,5)
+  AnswerTests: omnitest(correctExpr='head(table1,5)')
+  Hint: head(table1,5)
 
 - Class: cmd_question
-  Output: Ejecuta head(table1,5) ; head(table2,5).
-  CorrectAnswer: head(table1,5) ; head(table2,5)
-  AnswerTests: omnitest(correctExpr='head(table1,5) ; head(table2,5)')
-  Hint: head(table1,5) ; head(table2,5)
-  
- -Class: text
-  Output: Al tener los datos almacenado y estructurados ayuda a aprender herramientas de trabajo mas avanzadas para el analisis de datos. Al tener las variables sobre cada columna permita a R trabajar mejor, se es mas eficiente con los datos vectorizados y una gran cantidad de funciones en R son compatibles con estas estructuras. Las paqueterias ggplot2 y dplyr estan diseñadas para trabajar con datos tidy.
+  Output: Ejecuta;head(table2,5) (las columnas cases y population ahora viven en la columna type)
+  CorrectAnswer: head(table2,5)
+  AnswerTests: omnitest(correctExpr='head(table1,5)')
+  Hint: head(table2,5)
+
+- Class: text
+  Output: Teniendo los datos almacenados y estructurados podemos utilizar herramientas de trabajo mas avanzadas para el analisis de datos. La manipulacion de variables sobre cada columna permite a R trabajar mejor, siendo mas eficiente con los datos vectorizados y una gran cantidad de funciones en R son compatibles con estas estructuras. Las paqueterias ggplot2,dplyr y tidyr estan diseÃ±adas para trabajar con datos tidy.
   
 - Class: text
-  Output: Una buena practica antes de comenzar a usar una paqueteria es investigar y leer un poco sobre ella.
+  Output: Investiguemos un poco sobre las paqueterias a usar dplyr y tidyr.
 
 - Class: cmd_question
-  Output: Ejecuta help(dplyr) y lee un poco.
+  Output: Ejecutemos help(dplyr) y veamos un poco su uso general.
   CorrectAnswer: help(dplyr)
   AnswerTests: omnitest(correctExpr='help(dplyr)')
   Hint: help(dplyr)
 
 - Class: cmd_question
-  Output: Ejecuta help(tidyr) y lee un poco.
+  Output: Ahora veamos help(tidyr)
   CorrectAnswer: help(tidyr)
   AnswerTests: omnitest(correctExpr='help(tidyr)')
   Hint: help(tidyr)
 
 - Class: text
-  Output: Comenzemos a trabajar con la funcion mutate(). (Crea una nueva columna en los datos)
+  Output: dplyr nos ayuda a manipular los datos y tidyr a transformarlos
+
+- Class: text
+  Output: Comenzemos a trabajar con la funcion mutate() del paquete dplyr (Ayuda a la creacion de nuevas columnas en los datos)
 
 - Class: cmd_question
-  Output: Ejecuta table1 %>% mutate(rate = cases / population * 10000), creamos una nueva columna a partir de columnas existentes.
+  Output: Veamos un ejemplo.Ejecuta;table1 %>% mutate(rate = cases / population * 10000) (observa que se creo una nueva columna a partir de columnas existentes)
   CorrectAnswer: table1 %>% mutate(rate = cases / population * 10000)
   AnswerTests: omnitest(correctExpr='table1 %>% mutate(rate = cases / population * 10000)')
   Hint: table1 %>% mutate(rate = cases / population * 10000)
 
 - Class: cmd_question
-  Output: Ejecuta ; table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) 
-  CorrectAnswer: table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) 
-  AnswerTests: omnitest(correctExpr='table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) ')
-  Hint: table1 %>% filter(years == 1999) %>% mutate(rate = population * 10) 
+  Output: Otra funcion util es filter() (ayuda a filtrar los datos por alguna condicion logica). Ejecuta;table1 %>% filter(year == 1999) %>% mutate(rate = population * 10) 
+  CorrectAnswer: table1 %>% filter(year == 1999) %>% mutate(rate = population * 10) 
+  AnswerTests: omnitest(correctExpr='table1 %>% filter(year == 1999) %>% mutate(rate = population * 10) ')
+  Hint: table1 %>% filter(year == 1999) %>% mutate(rate = population * 10) 
+  
+- Class: cmd_question
+  Output: Es tu Turno, crea la siguiente manipulacion datos;Con un filtro en los datos table1 donde year sea igual a 2000 y una nueva columna llamada rate y igual a cases * 10
+  CorrectAnswer: table1 %>% filter(year == 2000) %>% mutate(rate = cases * 10)
+  AnswerTests: omnitest(correctExpr='table1 %>% filter(year == 2000) %>% mutate(rate = cases * 10)')
+  Hint: Combina ambas funciones filter y mutate, table1 %>% filter() %>% mutate()
+
+- Class: cmd_question
+  Output: Sigamos aprendiendo funciones. count() (agrupa y suma los elementos). Ejecuta;table1 %>% count(year, wt = cases)
+  CorrectAnswer: table1 %>% count(year, wt = cases)
+  AnswerTests: omnitest(correctExpr='table1 %>% count(year, wt = cases)')
+  Hint: table1 %>% count(year, wt = cases)
+
+- Class: text
+  Output: Resumen, hemos visto 3 funciones mutate(),filter(),count() del paquete dplyr. En la siguiente liga puedes encontrar mas funciones utiles -https://www.rstudio.com/wp-content/uploads/2015/03/data-wrangling-spanish.pdf
+
+- Class: text
+  Output: Veamos 2 funciones muy utiles del paquete tidyr (transforma los datos), gather() y spread().
+  
+  
+
+
+
