@@ -9,6 +9,14 @@
 - Class: text
   Output: En este capitulo nos consentraremos en analizar los datos en días y horas, hay tres maneras en las que podemos crear un fecha y hora
 
+- Class: text
+  Output: La libreria lubria lubridate, es bastante útil al momento de la manipulación de fechas, ya que, si manipulamos la fechas sin esta libreria se vuleve meramente complejo, por eso esta librería nos permite una manipulasión fácil.
+
+- Class: cmd_question
+  Output: Primero para tratar las fechas y horas, tenemos que saber en que formato estan, para poder saber el formato que se esta manejando en R utilizamos el comando Sys.getlocale("LC_TIME"), escribela para que sepas el formato de trabajo de fecha y hora.
+  CorrectAnswer: Sys.getlocale("LC_TIME")
+  AnswerTests: omnitest(correctExpr='Sys.getlocale("LC_TIME")')
+  Hint: Esto va a ser fácil.
 
 - Class: text
   Output: La primera forma de creación es por un string o caracteres, para esto necesitaremos de lubridate. Para hacer la representación de una fecha tenemos tres maneras, la primera es la función ymd("2018-06-25"), la segunda mdy("March 17th, 2018") y por ultimo dmy("25-Jan-2017") de las tres formas siempre sacan el mismo resultado
@@ -19,11 +27,29 @@
   AnswerTests: omnitest(correctExpr='ymd("2018-12-12")')
   Hint: vamos tú uedes!
 
+- Class: text
+  Output: El formato de ymd es muy fácil primero se decribe el año-mes-día, tambie acepta el formato de año/mes/dia
+
+- Class: cmd_question
+  Output: Escribe el segundo formato de la fecha para ymd dondde se utiliza "/" en vez de "-", ocupa el mes Junio, día 03 y año 2005  
+  CorrectAnswer: ymd("2005/Junio/03")
+  AnswerTests: omnitest(correctExpr='ymd("2005/Junio/03")')
+  Hint: la epresión es ymd("2005/Junio/03")
+
+- Class: text
+  Output: Ahora tienes que cuidar el formato de lectura de las fechas ya que si metes el nombre de los meses en otro idioma, no seran reconocidas las fechas y mandará error.
+
+- Class: text
+  Output: Ahora pasaremos al formato de mdy() primero va mes-día-año o en el segundo formato mes/día/año
+
 - Class: cmd_question
   Output: Escribe la fecha March 31ts, 2018 con la función mdy
   CorrectAnswer: mdy("March 31ts, 2018")
   AnswerTests: omnitest(correctExpr='mdy("March 31ts, 2018")')
   Hint: vamos tú uedes!
+
+- Class: text
+  Output: Ahora pasaremos al formato de dmy, el formato de esta función es día-mes-año o día/mes/año.
 
 - Class: cmd_question
   Output: Escribe la fecha 31-Enero-2019 con la función dmy
@@ -32,10 +58,126 @@
   Hint: vamos tú uedes!
 
 - Class: text
-  Output: Ahora para poder agregar una hora a las fechas es "_hm", por ejemplo ymd_hm("2018-12-12 19:15:56")
+  Output: Como podrás ver es muy sencillo, pero ahora vamos a extraer información de las fechas
 
 - Class: text
-  Output: Ahora veremos como analizar las fechas y horas por sus componentes individuales, del conjunto de datos flights
+  Output: Para saber la fecha de hoy se utiliza la funsión today(), esta nos devuelve la fecha actual.
+
+- Class: cmd_question
+  Output: Obten la fecha de hoy. 
+  CorrectAnswer: today()
+  AnswerTests: omnitest(correctExpr='today()')
+  Hint: La expresión es today()
+
+- Class: cmd_question
+  Output: trabajaremos con la expresión today() para sacar solo la información que queremos. Para esto necesitaos guardar la información que nos entrega en una variable llamada "hoy" 
+  CorrectAnswer: hoy <- today()
+  AnswerTests: omnitest(correctExpr='hoy <- today()')
+  Hint: la expresión queda hoy <- today()
+
+- Class: cmd_question
+  Output: Primero extraeremos el año de la fecha guardada en la variable hoy y la guardaremos en otra variable llamada año.Para extraer solo el año de una fecha se utiliza la funsión year().
+  CorrectAnswer: año <- year(hoy)
+  AnswerTests: omnitest(correctExpr='año <- year(hoy)')
+  Hint: la expresión queda año <- year(hoy)
+
+- Class: cmd_question
+  Output: Pasemos a la obtención del mes, para esto utilizaremos la función month() y guardaremos la información en la variable mes.
+  CorrectAnswer: mes <- month(hoy)
+  AnswerTests: omnitest(correctExpr='mes <- month(hoy)')
+  Hint: la expresión queda mes <- month(hoy)
+
+- Class: cmd_question
+  Output: Por ultimo, deduce la expresión para obtener el día de la variable hoy y guardala en la variable dia.
+  CorrectAnswer: dia <- day(hoy)
+  AnswerTests: omnitest(correctExpr='dia <- day(hoy)')
+  Hint: la expresión queda dia <- day(hoy)
+
+- Class: cmd_question
+  Output: Para visualizar la variables antes obtenidas las juntaremos en un formato de tabla utilizando rbind(), le pasaremos como paramentros las variables de año, mes y dia.
+  CorrectAnswer: rbind(año,mes,dia)
+  AnswerTests: omnitest(correctExpr='rbind(año,mes,dia)')
+  Hint: la expresión queda rbind(año,mes,dia)
+
+- Class: cmd_question
+  Output: Pasemos a obtener en valor numérico el dia de la semana, mes y año, esto desde la variable hoy creada anterirmente, para esto utilizaremos la funsión wday() y la guardaremos en la variable ds
+  CorrectAnswer: ds <- wday(hoy)
+  AnswerTests: omnitest(correctExpr='ds <- wday(hoy)')
+  Hint: la expresión es  ds <- wday(hoy)
+
+- Class: text
+  Output: Los días de la semana vienen representados de la siguiente manera Domingo = 1, Lunes = 2, Martes = 3, etc.
+
+- Class: cmd_question
+  Output: De la  misma manera obtendremos el día  del mes en el que estamos, esto con la funsión  de mday(), y lo guadamos en otra variable llamada dm
+  CorrectAnswer: dm <- mday(hoy)
+  AnswerTests: omnitest(correctExpr='dm <- mday(hoy)')
+  Hint: La expresión es  dm <- mday(hoy)
+
+- Class: cmd_question
+  Output: Por ultimo, obtendremos el número del día en el año, utilizando yday() y guardando en la variable da
+  CorrectAnswer: da <- yday(hoy)
+  AnswerTests: omnitest(correctExpr='da <- yday(hoy)')
+  Hint: La expresión es  da <- yday(hoy)
+
+- Class: cmd_question
+  Output: Para terminar junta las variabes ds,dm,da utilizando cbind()
+  CorrectAnswer: cbind(ds,dm,da)
+  AnswerTests: omnitest(correctExpr='cbind(ds,dm,da)')
+  Hint: La expresión es cbind(ds,dm,da)
+
+- Class: text
+  Output: También podemos utilizar la variable hoy para sacar el día en el que estamos, ya sea Lunes, Martes,etc.
+
+- Class: cmd_question
+  Output: Para poder sacar con la funsión wdday(), el nombre del día en el que estemos actualmente, tenemos que agregarle un segundo parametro el cual sera poner en TRUE  a label. Escribe la funsión wday() de tal manera que te regrese el nombre e la fecha en la que actualmente te encuentras.
+  CorrectAnswer: wday(hoy, label = TRUE)
+  AnswerTests: omnitest(correctExpr='wday(hoy, label = TRUE)')
+  Hint: la expresión es wday(hoy, label = TRUE)
+
+- Class: text
+  Output: Ahora para poder agregar una hora a las fechas es "_hm", por ejemplo ymd_hm("2018-12-12 19:15:56")
+
+- Class: cmd_question
+  Output: Crearmos otra variable para que además de mostrarnos la fecha actual tambien nos muestre la hora actual, para esto utilizaremos la funsión now() y guardaremos la información en hoy_hora
+  CorrectAnswer: hoy_hora <- now()
+  AnswerTests: omnitest(correctExpr='hoy_hora <- now()')
+  Hint: Vamos tu puedes! hoy_hora <- now()
+
+- Class: cmd_question
+  Output: Podemos enfocarnos en analizar las horas, minutos y segundos de la variable creada, al igual que hicimos al analizar las componentes de la fecha actual anteriormente, prmero separaremos la hora de la variable hoy_hora y la guardaremos en la variable h, esto se logra utilizando la funsión hour(). 
+  CorrectAnswer: h <- hour(hoy_hora)
+  AnswerTests: omnitest(correctExpr='h <- hour(hoy_hora)')
+  Hint: Vamos tu puedes! h <- hour(hoy_hora)
+
+- Class: cmd_question
+  Output: Hacemos lo mismo para los minutos, pero se gardaran en la variable m, y utilizaremos la funsión minute().
+  CorrectAnswer: m <- minute(hoy_hora)
+  AnswerTests: omnitest(correctExpr='m <- minute(hoy_hora)')
+  Hint: Vamos tu puedes! m <- minute(hoy_hora)
+
+- Class: cmd_question
+  Output: Por ultimo, deduce la funsión que hará guardar en la variable s, el contenido de los segundos de la variable hoy_hora
+  CorrectAnswer: s <- second(hoy_hora)
+  AnswerTests: omnitest(correctExpr='s <- second(hoy_hora)')
+  Hint: Vamos tu puedes! s <- second(hoy_hora)
+
+- Class: cmd_question
+  Output: Ahora, muestra las variables h,m y s por columnas
+  CorrectAnswer: cbind(h,m,s)
+  AnswerTests: omnitest(correctExpr='cbind(h,m,s)')
+  Hint: La respuesta correcta es cbind(h,m,s)
+
+- Class: text
+  Output: Las dos funsiones de today() y now() nos proporcionan formatos de fechas correctos, pero al momento de tener que analizar las fechas y horas de una base de datos, estas normalmente no tienen un formato apropiado para  el analisis de las fechas y sus horas, y se puede volver engorroso el trabajo, pero la libreria ofrece las funciones que utilizamos anteriormente para que puedas trabajar con casi cualquier tipo de formato en el que esten los datos. 
+
+
+
+
+
+
+- Class: text
+  Output: Ahora veremos como analizar las fechas y horas por sus componentes individuales dentro del conjunto de datos flights
 
 - Class: cmd_question
   Output:  Seleccionaremos los años, meses, días, horas y minutos, para esto utiliza la funcion select()
@@ -44,7 +186,7 @@
   Hint: la expresión es flights %>% select(year, month, day, hour, minute)
 
 - Class: text
-  Output: Ahora, si queremos que los vectores de la fecha aparescan en un solo vector dentro de flights usaremos la funsión mutate y como argumento "nombre del vector" = make_date(), pero si también queremos que salga la hora a make_date lo combiamos por make_datetime
+  Output: Si queremos que los vectores de la fecha aparescan en un solo vector dentro de flights usaremos la funsión mutate y como argumento "nombre del vector" = make_date(), pero si también queremos que salga la hora a make_date lo combiamos por make_datetime
 
 - Class: cmd_question
   Output: De la función anterior modificala para que en el vector "nuevo" contenga la fecha y hora completos, utiliza la funsión make_datetime()
@@ -157,3 +299,5 @@
 
 - Class: text
   Output: tambien puedes agregar o restar duraciones por ejemplo ayer <- today() - ddays(1) o sumarle hoy <- ayer + ddays(1)
+
+------------------------------------------------------------
