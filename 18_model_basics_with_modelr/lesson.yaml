@@ -59,3 +59,63 @@
 
 - Class: text
   Output: Si haces todo esto podrás generar hipotesis candidatas y hacer distintas pruebas para estar más seguro del modelo final.
+
+- Class: text
+  Output: Conceptos básicos de modelos con modelr.
+
+- Class: text
+  Output: Para está lección será necesario que instales y mandes llamar la paquetería modelr.
+
+- Class: text
+  Output: también deberás llamar library(tidyverse) & options(na.action = na.warn).
+
+- Class: text
+  Output: La primera es es encontrar una familia de modelos que exprese el patrón que estás buscando pero de una forma genérica. 
+
+- Class: text
+  Output: Despues tienes que adecuar uno de estos modelos para que se aproxime a tus datos. Es importante entender que no por que se parezca implica que está bien o que sus predicciones serán correctas.
+
+- Class: text
+  Output: Un modelo simple.
+
+- Class: cmd_question
+  Output: Vamos a generar dos vectores. Escribe x = c(1, 2, 3, 5, 6).
+  CorrectAnswer: x = c(1, 2, 3, 5, 6)
+  AnswerTests: omnitest(correctExpr='x = c(1, 2, 3, 5, 6)')
+  Hint: x = c(1, 2, 3, 5, 6)
+
+- Class: cmd_question
+  Output: Ahora escribe y = c(1, 3.5, 3, 5, 7).
+  CorrectAnswer: y = c(1, 3.5, 3, 5, 7)
+  AnswerTests: omnitest(correctExpr='y = c(1, 3.5, 3, 5, 7)')
+  Hint: y = c(1, 3.5, 3, 5, 7)
+
+- Class: cmd_question
+  Output: Ahora crea un data frame con estos dos vectores y llámalo df.
+  CorrectAnswer: df <- data.frame(x, y)
+  AnswerTests: omnitest(correctExpr='df <- data.frame(x, y)')
+  Hint: El código es df <- data.frame(x, y).
+
+- Class: cmd_question
+  Output: Ahora grafiquemos a df con la función ggplot y geom_point().
+  CorrectAnswer: ggplot(df, aes(x, y)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(df, aes(x, y)) + geom_point()')
+  Hint: Se grafica así ggplot(df, aes(x, y)) + geom_point().
+
+- Class: text
+  Output: Como podrás ver se tiene un tendencia y una correlación entre los puntos de la gráfica.
+
+- Class: text
+  Output: Pareciera que la relación entre los puntos se trata de un modelo lineal, ahora generaremos una familia de modelos líneales y los visualizaremos.
+
+- Class: cmd_question
+  Output: Utilizamos el siguiente código para generar a la familia linearm <- tibble(x1 = runif(300, -3, 10), y1 = runif(300, -5, 5))
+  CorrectAnswer: linearm <- tibble(x1 = runif(300, -3, 10), y1 = runif(300, -5, 5))
+  AnswerTests: omnitest(correctExpr='linearm <- tibble(x1 = runif(300, -3, 10), y1 = runif(300, -5, 5))')
+  Hint: Escribe linearm <- tibble(x1 = runif(300, -3, 10), y1 = runif(300, -5, 5))
+
+- Class: cmd_question
+  Output: Graficamos con este código ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1, data = linearm, alpha = 1/3) + geom_point()
+  CorrectAnswer: ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1, data = linearm, alpha = 1/3) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1, data = linearm, alpha = 1/3) + geom_point()')
+  Hint: Escribe ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1, data = linearm, alpha = 1/3) + geom_point()
