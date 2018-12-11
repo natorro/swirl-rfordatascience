@@ -119,3 +119,48 @@
   CorrectAnswer: ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1), data = linearm, alpha = 1/3) + geom_point()
   AnswerTests: omnitest(correctExpr='ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1), data = linearm, alpha = 1/3) + geom_point()')
   Hint: Escribe ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1), data = linearm, alpha = 1/3) + geom_point()
+
+- Class: text
+  Output: En la gráfica anterior puedes ver 300 modelos líneales, pero la mayoría están my alejados de nuestros datos. Intuitivamente el mejor modelo es el que está más cerca de todos nuestros datos.
+
+- Class: text
+  Output: Dicho de una mejor manera si sumamos las distancias de cada punto a cada modelo, el modelo con la menor suma de distancias será el mejor.
+
+- Class: text
+  Output: Una manera fácil de empezar es midiendo la distancia vertical de cada punto al modelo.
+
+- Class: text
+  Output: Para obtener estas distancias debemos convertir nuestra familia de modelos en una función de r que tome como argumentos los parámetros y los datos y arroje las predicciones de los valores.
+
+- Class: text
+  Output: Como son modelos líneales, son de la forma y = a0 + a1 * x.
+
+- Class: cmd_question
+  Output: Creamos la función que convierte nuestra familia de modelos en una función de R. Escribe familym <- function(a, data) { a[1] + data$x * a[2]}
+  CorrectAnswer: familym <- function(a, data) { a[1] + data$x * a[2]}
+  AnswerTests: omnitest(correctExpr='familym <- function(a, data) { a[1] + data$x * a[2]}')
+  Hint: EL código correcto es familym <- function(a, data) { a[1] + data$x * a[2]}
+
+- Class: cmd_question
+  Output: Ahora lo probamos con uno de los modelos que tenemos. Aplica la función con los siguientes argumentos familym(c(.25, 1.125), df)
+  CorrectAnswer: familym(c(.25, 1.125), df)
+  AnswerTests: omnitest(correctExpr='familym(c(.25, 1.125), df)')
+  Hint: Utiliza el código que se te proporciono. 
+
+- Class: text
+  Output: Ahora lo que queremos ver es la diferencia entre las prediciones y los valores reales. El problema es que tenemos 5 distancias y para hacer más eficiente la comparación entre modelos necesitamos un sólo valor.
+
+- Class: text
+  Output: En estadística una manera muy común de hacerlo es obteniendo el error promedio que se calcula haciendo la raiz cuadrada del promedio de las diferencias elevadas al cuadrado.
+
+- Class: cmd_question
+  Output: Hacemo suna función para hacer estos cálculos. Escribe distf <- function(modelo, data) { diff <- (data$y - familym(modelo, data))";" sqrt(mean(diff^2)) }
+  CorrectAnswer: distf <- function(modelo, data) { diff <- (data$y - familym(modelo, data))";" sqrt(mean(diff^2)) }
+  AnswerTests: omnitest(correctExpr='distf <- function(modelo, data) { diff <- (data$y - familym(modelo, data))";" sqrt(mean(diff^2)) }')
+  Hint: Usa el código que se te proporciono.
+
+- Class: cmd_question
+  Output: Ahora aplicamos la función que acabas de generar. Escribe distf(c(.25, 1.125), df)
+  CorrectAnswer: distf(c(.25, 1.125), df)
+  AnswerTests: omnitest(correctExpr='distf(c(.25, 1.125), df)')
+  Hint: Usa el código que se te proporciono.
