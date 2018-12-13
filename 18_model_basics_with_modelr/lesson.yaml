@@ -154,13 +154,17 @@
   Output: En estadística una manera muy común de hacerlo es obteniendo el error promedio que se calcula haciendo la raiz cuadrada del promedio de las diferencias elevadas al cuadrado.
 
 - Class: cmd_question
-  Output: Hacemo suna función para hacer estos cálculos. Escribe distf <- function(modelo, data) { diff <- (data$y - familym(modelo, data))";" sqrt(mean(diff^2)) }
-  CorrectAnswer: distf <- function(modelo, data) { diff <- (data$y - familym(modelo, data))";" sqrt(mean(diff^2)) }
-  AnswerTests: omnitest(correctExpr='distf <- function(modelo, data) { diff <- (data$y - familym(modelo, data))";" sqrt(mean(diff^2)) }')
-  Hint: Usa el código que se te proporciono.
+  Output: Hacemos una función para hacer estos cálculos. Escribe distf <- function(modelo, data) {sqrt(mean((data$y - familym(modelo, data))^2))}
+  CorrectAnswer: distf <- function(modelo, data) {sqrt(mean((data$y - familym(modelo, data))^2))}
+  AnswerTests: omnitest(correctExpr='distf <- function(modelo, data) {sqrt(mean((data$y - familym(modelo, data))^2))}')
+  Hint: Usa el código que se te proporcionó.
 
 - Class: cmd_question
   Output: Ahora aplicamos la función que acabas de generar. Escribe distf(c(.25, 1.125), df)
   CorrectAnswer: distf(c(.25, 1.125), df)
   AnswerTests: omnitest(correctExpr='distf(c(.25, 1.125), df)')
   Hint: Usa el código que se te proporciono.
+
+
+
+
