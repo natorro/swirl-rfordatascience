@@ -1,0 +1,79 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 16_vectors
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Podemos trabajar con dos tipos de vectores, el primero de ellos es un vector denominado atómico, el cual sus componentes son homogeneos, pueden ser del tipo entero, lógico, doble, caracter y complejo. Las listas por otro lado son heterogeneas.   
+
+- Class: text
+  Output: Primero daremos un breve recordatorio a los tipos de datos en los vectores 
+
+- Class: cmd_question
+  Output: Los tipos de vectores lógicos, pueden contener tres tipos de datos TRUE, FALSE y NA. por lo tanto escrive un vector, que contenga dos TRUE y un FALSE.
+  CorrectAnswer: c(TRUE, TRUE, FALSE)
+  AnswerTests: omnitest(correctExpr='c(TRUE, TRUE, FALSE)')
+  Hint: vamos tú puedes!!
+
+- Class: cmd_question
+  Output: Ahora guarda ese vector en la variable l
+  CorrectAnswer: l <- c(TRUE, TRUE, FALSE)
+  AnswerTests: omnitest(correctExpr='l <- c(TRUE, TRUE, FALSE)')
+  Hint: Es solo un repaso, tú puedes
+
+- Class: cmd_question
+  Output: Verifica la clase del vector que se encuentra contenido en l
+  CorrectAnswer: class(l)
+  AnswerTests: omnitest(correctExpr='class(l)')
+  Hint: Es solo un repaso, tú puedes
+
+- Class: text
+  Output: Al trabajar con vectores numéricos, nos encontramos con un primer problema, que por convensión en R los números son de tipo doble o double, por lo tanto para que al momento de preguntar por el tipo de clase del vector, si queremos que sea de tipo numérico solo colocamos los números en el vector, de lo contrario, si queremos un vector de tipo integer, a cada número le tendremos que añadil una L
+
+- Class: cmd_question
+  Output: Por Ejemplo escribe l <- c(1,2,3)
+  CorrectAnswer: l <- c(1,2,3)
+  AnswerTests: omnitest(correctExpr='l <- c(1,2,3)')
+  Hint: Vamos, si se puede 
+
+- Class: cmd_question
+  Output: Verific la clase del vector contenido en la variable l
+  CorrectAnswer: class(l)
+  AnswerTests: omnitest(correctExpr='class(l)')
+  Hint: Vamos, si se puede 
+
+- Class: text
+  Output: Como puedes ver, el tipo de clase es numérico, ahora crea una clase de tipo integer
+
+- Class: cmd_question
+  Output: Escribe n <- c(1L, 2L, 3L)
+  CorrectAnswer: n <- c(1L, 2L, 3L)
+  AnswerTests: omnitest(correctExpr='n <- c(1L, 2L, 3L)')
+  Hint: Vamos tú pudes
+
+- Class: text
+  Output: Tienes que tener cueidado con el tipo de datos que manejes, en este tipo de vectores ya que el vector de clase integer se espesifica como anteriormente se realizó, de lo contrario sacara valores erroneos al comenzar a manejar los datos del vector
+
+- Class: text
+  Output: Pasemos a los vectores de tipo caracter, los cuales contienen cadenas de letras, que van entre comillas dobles y cada cadena separada por una coma
+
+- Class: cmd_question
+  Output: Escribe c <- c("hola", "mundo")
+  CorrectAnswer: c <- c("hola", "mundo")
+  AnswerTests: omnitest(correctExpr='c <- c("hola", "mundo")')
+  Hint: Revisa la escritura de la expresión que se te pide 
+
+- Class: cmd_question
+  Output: Verifica que la clase sea de tipo caracter
+  CorrectAnswer: class(c)
+  AnswerTests: omnitest(correctExpr='class(c)')
+  Hint: Revisa la escritura de la expresión que se te pide 
+
+- Class: text
+  Output: Haremos referencía a los valores NA o valores perdidos o vacios, de los cuales tenemos tres tipos NA que es lógico, NA_integer_ que es entero y NA_character_ que es de tipo caracter
+
+- Class: text
+  Output: Normalmente esto no parese relevante, pero es mejor saber los tres tipos, para saber como tratar los valores vacios o perdidos que luego llegan a estar dentro de los diferentes tipos de vectores
