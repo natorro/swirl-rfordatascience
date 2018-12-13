@@ -171,11 +171,6 @@
 - Class: text
   Output: Las dos funsiones de today() y now() nos proporcionan formatos de fechas correctos, pero al momento de tener que analizar las fechas y horas de una base de datos, estas normalmente no tienen un formato apropiado para  el analisis de las fechas y sus horas, y se puede volver engorroso el trabajo, pero la libreria ofrece las funciones que utilizamos anteriormente para que puedas trabajar con casi cualquier tipo de formato en el que esten los datos. 
 
-
-
-
-
-
 - Class: text
   Output: Ahora veremos como analizar las fechas y horas por sus componentes individuales dentro del conjunto de datos flights
 
@@ -292,12 +287,45 @@
   Hint: la funsión queda as.duration(ddt)
 
 - Class: cmd_question
-  Output: Ahora bien, tambien podemos hacer conversiones de minutos, horas, días, meses y años a segundos por ejemplo, escribe dyears(10)
+  Output: Ahora bien, también podemos hacer conversiones de minutos, horas, días, meses y años a segundos por ejemplo, escribe dyears(10)
   CorrectAnswer: dyears(10)
   AnswerTests: omnitest(correctExpr='dyears(10)')
   Hint: Tú puedes
 
 - Class: text
-  Output: tambien puedes agregar o restar duraciones por ejemplo ayer <- today() - ddays(1) o sumarle hoy <- ayer + ddays(1)
+  Output: también puedes agregar o restar duraciones por ejemplo ayer <- today() - ddays(1) o sumarle hoy <- ayer + ddays(1)
 
-------------------------------------------------------------
+
+
+- Class: text
+  Output: Algunas veces nos vamos a encontrar con zonas horarias, por lo general esta diferencia de zonas horarias es más tipico encontrarlos en las bases de datos de los aeropuertos.
+
+- Class: cmd_question
+  Output: Por ejemplo, si nostros quisieramos saber a que hora y la fecha en la que llegariamos de un vuelo de México a Japon, primero lo que haríamos es a la variable m  asignarle nuestra fecha y hora actual.
+  CorrectAnswer: m <- now()
+  AnswerTests: omnitest(correctExpr='m <- now()')
+  Hint: La respuesta es m <- now()
+
+- Class: cmd_question
+  Output: Ahora supongamos que de la hora y fecha actual nuestro vuelo sale  dentro de un día, para esto a m le sumariamos  1 día con la funsión days()
+  CorrectAnswer: m <- m + days(1)
+  AnswerTests: omnitest(correctExpr='m <- m + days(1)')
+  Hint: La respuesta es m <- m + days(1)
+
+- Class: cmd_question
+  Output: Y la hora de arrivo al avión tomo 1 hora 20 minutos, entonces tenemos que sumarle a m esa hora y veinte minutos, para hacer esto hacemos uso de la funsión update() la cual será empleada de la siguiente manera m <- update(m, hours = 1, minutes = 20)
+  CorrectAnswer: m <- update(m, hours = 1, minutes = 20)
+  AnswerTests: omnitest(correctExpr='m <- update(m, hours = 1, minutes = 20)')
+  Hint: La respuesta es m <- update(m, hours = 1, minutes = 20)
+
+- Class: cmd_question
+  Output: Ahora sabemos que un vuelo de México  Japon son 18 horas y 15 minutos, por lo tanto usando la suma de las funsiones hours() y minutes() sumalas a la variable m y guarda el resultado en una nueva variable llamada vuelo
+  CorrectAnswer: vuelo <-  m + hours(18) + minutes(15)
+  AnswerTests: omnitest(correctExpr='vuelo <-  m + hours(18) + minutes(15)')
+  Hint: La respuesta es vuelo <-  m + hours(18) + minutes(15)
+
+- Class: cmd_question
+  Output: Por ultimo para saber la Fecha y hora de llegada a Japon utilizaremos la funsón with_tz(), escribe  llegada <- with_tz(vuelo, "Japan")
+  CorrectAnswer:  llegada <- with_tz(vuelo, "Japan")
+  AnswerTests: omnitest(correctExpr=' llegada <- with_tz(vuelo, "Japan")')
+  Hint: Vamos tu puedes!!!
