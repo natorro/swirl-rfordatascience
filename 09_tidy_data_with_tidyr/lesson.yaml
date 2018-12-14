@@ -33,7 +33,7 @@
 - Class: cmd_question
   Output: Ejecuta;head(table2,5) (las columnas cases y population ahora viven en la columna type)
   CorrectAnswer: head(table2,5)
-  AnswerTests: omnitest(correctExpr='head(table1,5)')
+  AnswerTests: omnitest(correctExpr='head(table2,5)')
   Hint: head(table2,5)
 
 - Class: text
@@ -85,12 +85,52 @@
   Hint: table1 %>% count(year, wt = cases)
 
 - Class: text
-  Output: Resumen, hemos visto 3 funciones mutate(),filter(),count() del paquete dplyr. En la siguiente liga puedes encontrar mas funciones utiles -https://www.rstudio.com/wp-content/uploads/2015/03/data-wrangling-spanish.pdf
+  Output: Resumen, hemos visto 3 funciones mutate(),filter(),count() del paquete dplyr. En la siguiente liga puedes encontrar mas funciones utiles -"https://www.rstudio.com/wp-content/uploads/2015/03/data-wrangling-spanish.pdf"
 
 - Class: text
   Output: Veamos 2 funciones muy utiles del paquete tidyr (transforma los datos), gather() y spread().
-  
-  
 
+- Class: cmd_question
+  Output: Un problema com?n es un conjunto de datos donde algunos de los nombres de columnas no son nombres de variables, sino valores de una variable. Veamos table4a; los nombres de columna 1999 y 2000 representan valores de la variable del a?o, y cada fila representa dos observaciones, no una. Ejecuta; head(table4a)
+  CorrectAnswer: head(table4a)
+  AnswerTests: omnitest(correctExpr='head(table4a)')
+  Hint: head(table4a)
 
+- Class: cmd_question
+  Output: La funcion Gather() acomoda las columnas en filas, se colocan los nombres de las columnas que se desear agrupar (argumento key = "nombre que almacena las columnas") y las columnas que quedan como valores (value = "cases"). Ejecuta; table4a %>%  gather(`1999`, `2000`, key = "year", value = "cases") 
+  CorrectAnswer: table4a %>%  gather(`1999`, `2000`, key = "year", value = "cases") 
+  AnswerTests: omnitest(correctExpr='table4a %>%  gather(`1999`, `2000`, key = "year", value = "cases") ')
+  Hint: table4a %>%  gather(`1999`, `2000`, key = "year", value = "cases") 
 
+- Class: cmd_question
+  Output: La funcion contraria a gather() es spread() separa las filas y las acomoda en columnas. Ejecuta; head(table2)
+  CorrectAnswer: head(table2)
+  AnswerTests: omnitest(correctExpr='head(table2)')
+  Hint: head(table2)
+
+- Class: cmd_question
+  Output: Espeficicando la columna type (valores unicos de las filas), se crearan 2 nuevas columnas (cases y population). Ejecuta; spread(table2, key = type, value = count)
+  CorrectAnswer: spread(table2, key = type, value = count)
+  AnswerTests: omnitest(correctExpr='spread(table2, key = type, value = count)')
+  Hint: spread(table2, key = type, value = count)
+
+- Class: text
+  Output: Ahora es tu Turno....
+
+- Class: cmd_question
+  Output: Define la siguiente tabla; table4a_gather <- table4a %>% gather('1999','2000', key = "year", value = "cases")
+  CorrectAnswer: table4a_gather <- table4a %>% gather('1999','2000', key = "year", value = "cases")
+  AnswerTests: omnitest(correctExpr='table4a_gather <- table4a %>% gather(\'1999','2000', key = "year", value = "cases")')
+  Hint: table4a_gather <- table4a %>% gather('1999','2000', key = "year", value = "cases")
+
+- Class: cmd_question
+  Output: Imprime la tabla.
+  CorrectAnswer: table4a_gather
+  AnswerTests: omnitest(correctExpr='table4a_gather')
+  Hint: table4a_gather
+
+- Class: cmd_question
+  Output: Ocupamos la funcion Gather() para cambiar su estructura, regresala a su estructura original (los valores de las filas en columnas y la columna cases como valores)
+  CorrectAnswer: spread(table4a_gather, key = year, value = cases)
+  AnswerTests: omnitest(correctExpr='spread(table4a_gather, key = year, value = cases)')
+  Hint: spread(table4a_gather, key = "columna a separar", value = "columna con los valores")
