@@ -120,7 +120,7 @@
 - Class: cmd_question
   Output: Define la siguiente tabla; table4a_gather <- table4a %>% gather('1999','2000', key = "year", value = "cases")
   CorrectAnswer: table4a_gather <- table4a %>% gather('1999','2000', key = "year", value = "cases")
-  AnswerTests: omnitest(correctExpr='table4a_gather <- table4a %>% gather(\'1999','2000', key = "year", value = "cases")')
+  AnswerTests: omnitest(correctExpr='table4a_gather <- table4a %>% gather('1999','2000', key = "year", value = "cases")')
   Hint: table4a_gather <- table4a %>% gather('1999','2000', key = "year", value = "cases")
 
 - Class: cmd_question
@@ -134,3 +134,128 @@
   CorrectAnswer: spread(table4a_gather, key = year, value = cases)
   AnswerTests: omnitest(correctExpr='spread(table4a_gather, key = year, value = cases)')
   Hint: spread(table4a_gather, key = "columna a separar", value = "columna con los valores")
+
+- Class: cmd_question
+  Output: Veamos la funcion separate(), en la siguiente tabla columna rate necesitamos separar los valores en 2 columnas distintas. Ejecuta; table3
+  CorrectAnswer: table3
+  AnswerTests: omnitest(correctExpr='table3')
+  Hint: table3
+
+- Class: cmd_question
+  Output: Ahora solo es necesario especificar el nombre de la columna que deseamos separar y los nombres de las nuevas columnas. Ejecuta; table3 %>% separate(rate, info = c("cases","population"))
+  CorrectAnswer: table3 %>% separate(rate, info = c("cases","population"))
+  AnswerTests: omnitest(correctExpr='table3 %>% separate(rate, info = c("cases","population"))')
+  Hint: table3 %>% separate(rate, info = c("cases","population"))
+
+- Class: cmd_question
+  Output: Por default la funcion separate(), separara los valores en el momento que encuentre un valor no alfanumerico, podemos especificar la regla de separacion (argumento sep = "/"). Ejecuta; table3 %>% separate(rate, info = c("cases","population"), sep = "/")
+
+  CorrectAnswer: table3 %>% separate(rate, info = c("cases","population"), sep = "/")
+  AnswerTests: omnitest(correctExpr='table3 %>% separate(rate, info = c("cases","population"), sep = "/")')
+  Hint: table3 %>% separate(rate, info = c("cases","population"), sep = "/")
+
+- Class: cmd_question
+  Output: Tambien podemos especificar el numero de elementos que toma en cuenta para la separacion (argumento sep = 2). Ejectua; table3 %>%  separate(year, into = c("century", "year"), sep = 2)
+
+  CorrectAnswer: table3 %>%  separate(year, into = c("century", "year"), sep = 2)
+  AnswerTests: omnitest(correctExpr='table3 %>%  separate(year, into = c("century", "year"), sep = 2)')
+  Hint: table3 %>%  separate(year, into = c("century", "year"), sep = 2)
+
+- Class: cmd_question
+  Output: Al separar los valores, creo 2 columnas con tipos de datos caracteres. Con el parametro convert = TRUE convertimos los valores en numericos. Ejecuta; table3 %>%  separate(rate,into = c("cases","population"),convert = TRUE)
+
+  CorrectAnswer: table3 %>%  separate(rate,into = c("cases","population"),convert = TRUE)
+  AnswerTests: omnitest(correctExpr='table3 %>%  separate(rate,into = c("cases","population"),convert = TRUE)')
+  Hint: table3 %>%  separate(rate,into = c("cases","population"),convert = TRUE)
+
+- Class: cmd_question
+  Output: Tambien existe una funcion contraria a separate() es unite(). Ejecuta; table5 
+  CorrectAnswer: table5
+  AnswerTests: omnitest(correctExpr='table5')
+  Hint: table5
+
+- Class: cmd_question
+  Output: En este caso uniremos la columna century y year. Ejecuta; table5 %>% unite(new, century, year)
+  CorrectAnswer: table5 %>% unite(new, century, year)
+  AnswerTests: omnitest(correctExpr='table5 %>% unite(new, century, year)')
+  Hint: table5 %>% unite(new, century, year)
+
+- Class: cmd_question
+  Output: De igual manera podemos jugar con el argumento sep = "" espeficicando algun caracter de union. Ejecuta; table5 %>%  unite(new, century, year, sep = "")
+  CorrectAnswer: table5 %>%  unite(new, century, year, sep = "")
+  AnswerTests: omnitest(correctExpr='table5 %>%  unite(new, century, year, sep = "")')
+  Hint: table5 %>%  unite(new, century, year, sep = "")
+
+- Class: text
+  Output: Ahora es tu turno....
+
+- Class: cmd_question
+  Output: Imprime los datos table5. Crea una nueva columna llamada new, union de las columnas country y century especificando el agumento sep = "-" y guardalos en una nueva variable table6.
+  CorrectAnswer: table5 %>% unite(new, country, century, sep = "-")
+  AnswerTests: omnitest(correctExpr='table5 %>% unite(new, country, century, sep = "-")')
+  Hint: table5 %>% unite(new, columna1, columna2, sep = "-")
+
+- Class: cmd_question
+  Output: Imprime tu nueva tabla, table6.
+  CorrectAnswer: table6
+  AnswerTests: omnitest(correctExpr='table6')
+  Hint: table6
+
+- Class: cmd_question
+  Output: Regresando los datos table6 a su forma original. Toma table6,separa la columna new en dos country y century con argumento sep = "-"
+  CorrectAnswer: table6 %>% separate(new,into =c("country","century"), sep = "-")
+  AnswerTests: omnitest(correctExpr='table6 %>% separate(new,into =c("country","century"), sep = "-")')
+  Hint: table6 %>% separate(new,into =c("columna1","columna2"), sep = "-")
+
+- Class: text
+  Output: Sigamos Aprendiendo....
+
+- Class: cmd_question
+  Output: Al trabajar con la representacion de los datos tambien es bueno conocer como trabajar con valores faltantes. Con la funcion spread() podemos darnos cuenta de algunos datos faltantes que no veamos tan facilmente. Ejecuta; stocks <- tibble(year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016), qtr = c(1,2,3,4,2,3,4),return = c(1.88,0.59,0.35,NA,0.92,0.17,2.66))
+
+  CorrectAnswer: stocks <- tibble(year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016), qtr = c(1,2,3,4,2,3,4),return = c(1.88,0.59,0.35,NA,0.92,0.17,2.66))
+  AnswerTests: omnitest(correctExpr='stocks <- tibble(year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016), qtr = c(1,2,3,4,2,3,4),return = c(1.88,0.59,0.35,NA,0.92,0.17,2.66))')
+  Hint: stocks <- tibble(year   = c(2015, 2015, 2015, 2015, 2016, 2016, 2016), qtr = c(1,2,3,4,2,3,4),return = c(1.88,0.59,0.35,NA,0.92,0.17,2.66))
+
+- Class: cmd_question
+  Output: En la tabla stocks, columna return tenemos a primera vista un dato faltante en el año 2015. Si compararamos los años en 2016 tendriamos tambien un dato faltante. Ejecuta; stocks %>% spread(year,return)
+  CorrectAnswer: stocks %>% spread(year,return)
+  AnswerTests: omnitest(correctExpr='stocks %>% spread(year,return)')
+  Hint: stocks %>% spread(year,return)
+
+- Class: cmd_question
+  Output: Podemos omitir estos datos faltante, combinando las funciones spread() y gather(). Especificando en gather() argumnento na.rm = TRUE. Ejecuta; stocks %>%  spread(year, return) %>%  gather(year, return, `2015`:`2016`, na.rm = TRUE)
+
+  CorrectAnswer: stocks %>%  spread(year, return) %>%  gather(year, return, `2015`:`2016`, na.rm = TRUE)
+  AnswerTests: omnitest(correctExpr='stocks %>%  spread(year, return) %>%  gather(year, return, `2015`:`2016`, na.rm = TRUE)')
+  Hint: stocks %>%  spread(year, return) %>%  gather(year, return, `2015`:`2016`, na.rm = TRUE)
+
+- Class: text
+  Output: Observa que no tomamos en cuenta los valores faltantes.
+
+- Class: cmd_question
+  Output: Que pasa si necesitamos idenficar esos valores faltantes dificiles de ver. Funcion complete() cuenta el numero de elementos distintos en una columna y los completa con otra. Ejecuta; stocks %>%  complete(year, qtr) 
+
+  CorrectAnswer: stocks %>%  complete(year, qtr)
+  AnswerTests: omnitest(correctExpr='stocks %>%  complete(year, qtr)')
+  Hint: stocks %>%  complete(year, qtr)
+
+- Class: text
+  Output: Oversva como se completo la columna qtr con 4 elementos por año.
+
+- Class: cmd_question
+  Output: Otra herramienta importante para acompletar los datos faltantes es fill(), la cual acompletara con el elmento anterior y se detrenda cuando encuentre un elemento distinto. Ejecuta; treatment <- tribble(~person,~treatment,~response,"Derrick Whitmore", 1,7,NA,2,10,NA,3,9,"Katherine Burke",1,4)
+
+  CorrectAnswer: treatment <- tribble(~person,~treatment,~response,"Derrick Whitmore", 1,7,NA,2,10,NA,3,9,"Katherine Burke",1,4)
+  AnswerTests: omnitest(correctExpr='treatment <- tribble(~person,~treatment,~response,"Derrick Whitmore", 1,7,NA,2,10,NA,3,9,"Katherine Burke",1,4)')
+  Hint: treatment <- tribble(~person,~treatment,~response,"Derrick Whitmore", 1,7,NA,2,10,NA,3,9,"Katherine Burke",1,4)
+
+- Class: cmd_question
+  Output: Imprime treatment, oberva que en la columna person tenemos 2 datos faltantes. Con la funcion fill() acompletaremos estas filas. Ejecuta; treatment %>%  fill(person)
+
+  CorrectAnswer: treatment %>%  fill(person)
+  AnswerTests: omnitest(correctExpr='treatment %>%  fill(person)')
+  Hint: treatment %>%  fill(person)
+
+- Class: text
+  Output: Ahora es tu turno....
