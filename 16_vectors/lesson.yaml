@@ -77,3 +77,156 @@
 
 - Class: text
   Output: Normalmente esto no parese relevante, pero es mejor saber los tres tipos, para saber como tratar los valores vacios o perdidos que luego llegan a estar dentro de los diferentes tipos de vectores
+
+- Class: text
+  Output: Otro de los casos que se nos puede presentar a la hora de trabajar con vectores son las diferentes longitudes que pueden presentarce, por ejemplo si tenemos un vector más largo que el otro y queremos concatenar estos dos, esto no se podrá realizar, ya que, para poderlos concatenear tienen que ser de la misma longitud 
+
+- Class: cmd_question
+  Output: Para entender mejor lo anterior, concatena dos vectores, uno que este formado de uno a seis elementos y el otro de uno a tres, la clase de estos dos vectores tienen que ser de tipo integer.
+  CorrectAnswer: 1:6 + 1:3
+  AnswerTests: omnitest(correctExpr='1:6 + 1:3')
+  Hint: La expresión correcta es 1:6 + 1:3
+
+- Class: text
+  Output: Nota que esta operación arroja un resultado un tanto extraño, porque en si, R no esta arrojando el resultado adecuado de la concatenación de los dos vectores.
+
+- Class: text
+  Output: Lo que nsotros queremos que R haga con la concatenación de estos dos vectores, es un reciclaje, ya que el vector de mayor longitud contiene al de menor longitud, pero esto solo lo podemos tratar con la funsión de tibble y para poder hacer esto necesitamos que al parametro que contenga al vector de menor longitud se le añada la funsión rep
+
+- Class: cmd_question
+  Output: Por lo tanto la funsión para hacer un reciclado, quedaría, por ejemplo tbble(x= 1:10, y= rep(1:2, 5)), para obserbar el resultado escribe ésta funsión.
+  CorrectAnswer: tbble(x= 1:10, y= rep(1:2, 5))
+  AnswerTests: omnitest(correctExpr='tbble(x= 1:10, y= rep(1:2, 5))')
+  Hint: Checa la expresión que se te sugiere anteriormente.
+
+- Class: text
+  Output: También, lo que podemos hacer es que se repitan en orden las 5 veces, con solo agregarle a rep el porametro each.
+
+- Class: cmd_question
+  Output: Por lo tanto la funsión la expresaremos de la siguinte anera tibble(x= 1:10, y= rep(1:2, each= 5)), escribela para que observes el resultado.
+  CorrectAnswer: tibble(x= 1:10, y= rep(1:2, each= 5))
+  AnswerTests: omnitest(correctExpr='tibble(x= 1:10, y= rep(1:2, each= 5))')
+  Hint: Expresa la fusión como se dijo anteriormente.
+
+- Class: text
+  Output: Si quisierás, en un dado caso nombrar los diferentes vectores y no hacerlo de la manera en la cual se la asignamos a una variable dentro de c(), bueno pues, con la funsión set_names, podremos nombrar cada una de las variables dentro de c()
+
+- Class: cmd_question
+  Output: Para poder hacer la asignación de las variables de c(), con ayuda de set_names, escribiremos lo siguiente set_names(1:6, c("uno", "dos", "tres", "cuatro", "cinco", "seis"))
+  CorrectAnswer: set_names(1:6, c("uno", "dos", "tres", "cuatro", "cinco", "seis"))
+  AnswerTests: omnitest(correctExpr='set_names(1:6, c("uno", "dos", "tres", "cuatro", "cinco", "seis"))')
+  Hint: Vamos tú puedes.
+
+- Class: cmd_question
+  Output: Para poder explicar lo siguiente crea un vector de caracteres del uno al diez y guardalo en la variable numeros
+  CorrectAnswer: numeros <- c("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez")
+  AnswerTests: omnitest(correctExpr='numeros <- c("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez")')
+  Hint: Lo que se te pidió fue numeros <- c("uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez")
+
+- Class: text
+  Output: Ahora en un dado caso que necesitemos acceder a ciertas posiciones del vector se utiliza la notación x[]
+
+- Class: cmd_question
+  Output: Por lo tanto, accede  a las posiciónes 2,5,7,9 del vecto que creaste anteriormente
+  CorrectAnswer: numeros[c(2, 5, 7, 9)]
+  AnswerTests: omnitest(correctExpr='numeros[c(2, 5, 7, 9)]')
+  Hint: Si es tu primer error la expresión para acceder es numeros[], si es el segundo considera utilizar c().
+
+- Class: text
+  Output: También podemos acceder a la información de la siguinete manera n[2:6], por ejemplo
+
+- Class: cmd_question
+  Output: Escribe la expresión anteriormente dicha.
+  CorrectAnswer: numeros[2:6]
+  AnswerTests: omnitest(correctExpr='numeros[2:6]')
+  Hint: concentrate en lo que se te dió.
+
+- Class: text
+  Output: Ahora bien, ya que estamos viendo la forma de acceder a la información del vector, tambien podemos decir cuales localidades no queremos que nos aparescan, esto lo hacemos poniendo los numeros en negativos
+
+- Class: cmd_question
+  Output: Del vector de numeros elimina las localidades 2, 4, 8 y 10
+  CorrectAnswer: numeros[c(-2, -4, -8, -10)]
+  AnswerTests: omnitest(correctExpr='numeros[c(-2, -4, -8, -10)]')
+  Hint: Confia en ti, concentrate.
+
+- Class: cmd_question
+  Output: También podemos eliminar un conjunto de variables continuas dentro del vector, por ejemplo n[2:4], por lo tanto si queremos utilizar esto, tenemos que tener conocimient de que nos sirve y que no dentro del vactor que estamos analizando, por lo tanto elimina el conjunto de elementos del 4 al 8 dentro del vector numeros
+  CorrectAnswer: numeros[-4:-8]
+  AnswerTests: omnitest(correctExpr='numeros[-4:-8]')
+  Hint: Confia en ti, concentrate.
+
+- Class: text
+  Output: Se nos puede prensentar a veces valores NA o perdidos dentro del vector que estamos analizando, lo pirmero que tenemos que hacer al momento de analizar un vector es ver si cuenta o contiene valores NA, por lo antanto utilizaremos is.na(), esta funsión nos retorna todos los valores NA que se encuentran dentro del vector. 
+
+- Class: cmd_question
+  Output: Crea el vector n2.na <- c(1,NA,3,4,5,NA,7,NA,9,NA) 
+  CorrectAnswer: n2.na <- c(1,NA,3,4,5,NA,7,NA,9,NA)
+  AnswerTests: omnitest(correctExpr='n2.na <- c(1,NA,3,4,5,NA,7,NA,9,NA)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: De la misma manera para acceder a las posiciones del vector, lo que aremos es preguntar si existen valores NA dentro del vector, has uso de is.na(n2.na) para saber cuantos NA contiene el vector.
+  CorrectAnswer: n2.na[is.na(n2.na)]
+  AnswerTests: omnitest(correctExpr='n2.na[is.na(n2.na)]')
+  Hint: No es tan dificil, tú puedes.
+
+- Class: cmd_question
+  Output: Si nosotros quremos, limpiar nuestro vector de los valores NA, haremos lo mismo, pero ahora negaremos a is.na
+  CorrectAnswer: n2.na[!is.na(n2.na)]
+  AnswerTests: omnitest(correctExpr='n2.na[!is.na(n2.na)]')
+  Hint: No es tan dificil, tú puedes.
+
+- Class: text
+  Output: Existen otro tipo de vectores llamados vectores recursivos, y bueno, estos vectores son creados por listas, dentro de las listas es posible combinar diferentes tipos de valores, entero, caracter, lógico, etc.
+
+- Class: text
+  Output: De acuerdo con anterior, hay veces en las que encontramos o trabajamos con una lista que contiene varias listas o listas ligadas
+
+- Class: cmd_question
+  Output: Crea una lista del 1 al 7 y almacena la lista en prb
+  CorrectAnswer: prb <- list(1:7)
+  AnswerTests: omnitest(correctExpr='prb <- list(1:7)')
+  Hint: No es dificil, prueva de nuevo 
+
+- Class: text
+  Output: Como vimos anteriormente, e donde accedimos y vimos la estructura del contenido de un vector x, ahora haremos lo mismo pero con listas.
+
+- Class: text
+  Output: La forma típica de acceder a la información de la lista es escribiendo el nombre de la lista y listo, pero si queremos ver el tipo de valores que contiene la lista, lo más recomendable y que se utiliza es la funsión str().
+
+- Class: text
+  Output: La funsión str(), regresa en formato estructurado el cual es el nombre de la variable, el tipo de variable o la clase de la variable y el valor de la variable.
+
+- Class: cmd_question
+  Output: Por lo tanto, utiliza str para visualizar la forma estructurada mencinada anteriormente.
+  CorrectAnswer: str(prb)
+  AnswerTests: omnitest(correctExpr='str(prb)')
+  Hint: Solo escribe str(prb)
+
+
+
+- Class: cmd_question
+  Output:  Como te abrás dado cuenta no aparecen los nobres de los valores de la lista, por lo tanto para rectificar lo dicho, construye la lista prb2 <- list(uno= 1, dos= 2, tres= 3)
+  CorrectAnswer:  prb2 <- list(uno= 1, dos= 2, tres= 3)
+  AnswerTests: omnitest(correctExpr=' prb2 <- list(uno= 1, dos= 2, tres= 3)')
+  Hint: intentalo de nuevo.
+
+- Class: cmd_question
+  Output:  Ahora usa str para ver la estructura mencionada anteriormente.
+  CorrectAnswer:  str(prb2)
+  AnswerTests: omnitest(correctExpr=' str(prb2)')
+  Hint: intentalo de nuevo.
+
+- Class: cmd_question
+  Output: Como se comentaba anteriormente veremos como se visualiza esta misma estructura con listas ligadas por lo tanto escribe list.lgd <- list(list(list(1:3)), list(1:6))
+  CorrectAnswer: list.lgd <- list(list(list(1:3)), list(1:6))
+  AnswerTests: omnitest(correctExpr='list.lgd <- list(list(list(1:3)), list(1:6))')
+  Hint: Rectifica la sintaxis.
+
+- Class: cmd_question
+  Output: A continuación usa str para ver la estructura 
+
+  CorrectAnswer: str(list.lgd)
+  AnswerTests: omnitest(correctExpr='str(list.lgd)')
+  Hint: Rectifica la sintaxis.
