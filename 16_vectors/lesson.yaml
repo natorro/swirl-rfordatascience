@@ -230,3 +230,18 @@
   CorrectAnswer: str(list.lgd)
   AnswerTests: omnitest(correctExpr='str(list.lgd)')
   Hint: Rectifica la sintaxis.
+
+- Class: text
+  Output: También es conveniente saber como manejar una lista de listas, por ejemplo, suele pasar que dentro de un dataframe tengamos una lista que contiene más listas pero nostros queremos el contenido de una lista espesifica dentro da la lista principal.
+
+- Class: cmd_question
+  Output: Por lo tanto, crea el siguiente dataframe precio <- list(list(L = 125000, N = 100000, B = 60000), list(L = 225000, N = 195000, B = 130000),list(L = 425000, N = 200000, B = 160000)) 
+  CorrectAnswer: precio <- list(list(L = 125000, N = 100000, B = 60000), list(L = 225000, N = 195000, B = 130000),list(L = 425000, N = 200000, B = 160000))
+  AnswerTests: omnitest(correctExpr='precio <- list(list(L = 125000, N = 100000, B = 60000), list(L = 225000, N = 195000, B = 130000),list(L = 425000, N = 200000, B = 160000))')
+  Hint: Escribe lo que se te pide, intentalo de nuevo 
+
+- Class: cmd_question
+  Output: Para acceder por ejemplo a la lista 2 y ver las cantidades numéricas que contiene, utilizaremos la funsión str pero esta vez, para acceder se utilizará una expresion similar a esta str(x[[2]]). Ahora con la funsión str accede a la lista dos para obtener los dotos que contiene. 
+  CorrectAnswer: str(precio[[2]])
+  AnswerTests: omnitest(correctExpr='str(precio[[2]])')
+  Hint: Escribe lo que se te pide, intentalo de nuevo 
