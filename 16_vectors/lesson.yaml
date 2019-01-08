@@ -40,7 +40,7 @@
   Hint: Vamos, si se puede 
 
 - Class: cmd_question
-  Output: Verific la clase del vector contenido en la variable l
+  Output: Verifica la clase del vector contenido en la variable l
   CorrectAnswer: class(l)
   AnswerTests: omnitest(correctExpr='class(l)')
   Hint: Vamos, si se puede 
@@ -91,10 +91,10 @@
   Output: Nota que esta operación arroja un resultado un tanto extraño, porque en si, R no esta arrojando el resultado adecuado de la concatenación de los dos vectores.
 
 - Class: text
-  Output: Lo que nsotros queremos que R haga con la concatenación de estos dos vectores, es un reciclaje, ya que el vector de mayor longitud contiene al de menor longitud, pero esto solo lo podemos tratar con la funsión de tibble y para poder hacer esto necesitamos que al parametro que contenga al vector de menor longitud se le añada la funsión rep
+  Output: Lo que nsotros queremos que R haga con la concatenación de estos dos vectores, es un reciclaje, ya que el vector de mayor longitud contiene al de menor longitud, pero esto solo lo podemos tratar con la función de tibble y para poder hacer esto necesitamos que al parametro que contenga al vector de menor longitud se le añada la función rep
 
 - Class: cmd_question
-  Output: Por lo tanto la funsión para hacer un reciclado, quedaría, por ejemplo tbble(x= 1:10, y= rep(1:2, 5)), para obserbar el resultado escribe ésta funsión.
+  Output: Por lo tanto la función para hacer un reciclado, quedaría, por ejemplo tbble(x= 1:10, y= rep(1:2, 5)), para obserbar el resultado escribe ésta función.
   CorrectAnswer: tbble(x= 1:10, y= rep(1:2, 5))
   AnswerTests: omnitest(correctExpr='tbble(x= 1:10, y= rep(1:2, 5))')
   Hint: Checa la expresión que se te sugiere anteriormente.
@@ -103,13 +103,13 @@
   Output: También, lo que podemos hacer es que se repitan en orden las 5 veces, con solo agregarle a rep el porametro each.
 
 - Class: cmd_question
-  Output: Por lo tanto la funsión la expresaremos de la siguinte anera tibble(x= 1:10, y= rep(1:2, each= 5)), escribela para que observes el resultado.
+  Output: Por lo tanto la función la expresaremos de la siguinte anera tibble(x= 1:10, y= rep(1:2, each= 5)), escribela para que observes el resultado.
   CorrectAnswer: tibble(x= 1:10, y= rep(1:2, each= 5))
   AnswerTests: omnitest(correctExpr='tibble(x= 1:10, y= rep(1:2, each= 5))')
   Hint: Expresa la fusión como se dijo anteriormente.
 
 - Class: text
-  Output: Si quisierás, en un dado caso nombrar los diferentes vectores y no hacerlo de la manera en la cual se la asignamos a una variable dentro de c(), bueno pues, con la funsión set_names, podremos nombrar cada una de las variables dentro de c()
+  Output: Si quisierás, en un dado caso nombrar los diferentes vectores y no hacerlo de la manera en la cual se la asignamos a una variable dentro de c(), bueno pues, con la función set_names, podremos nombrar cada una de las variables dentro de c()
 
 - Class: cmd_question
   Output: Para poder hacer la asignación de las variables de c(), con ayuda de set_names, escribiremos lo siguiente set_names(1:6, c("uno", "dos", "tres", "cuatro", "cinco", "seis"))
@@ -157,7 +157,7 @@
   Hint: Confia en ti, concentrate.
 
 - Class: text
-  Output: Se nos puede prensentar a veces valores NA o perdidos dentro del vector que estamos analizando, lo pirmero que tenemos que hacer al momento de analizar un vector es ver si cuenta o contiene valores NA, por lo antanto utilizaremos is.na(), esta funsión nos retorna todos los valores NA que se encuentran dentro del vector. 
+  Output: Se nos puede prensentar a veces valores NA o perdidos dentro del vector que estamos analizando, lo pirmero que tenemos que hacer al momento de analizar un vector es ver si cuenta o contiene valores NA, por lo antanto utilizaremos is.na(), esta función nos retorna todos los valores NA que se encuentran dentro del vector. 
 
 - Class: cmd_question
   Output: Crea el vector n2.na <- c(1,NA,3,4,5,NA,7,NA,9,NA) 
@@ -193,10 +193,10 @@
   Output: Como vimos anteriormente, e donde accedimos y vimos la estructura del contenido de un vector x, ahora haremos lo mismo pero con listas.
 
 - Class: text
-  Output: La forma típica de acceder a la información de la lista es escribiendo el nombre de la lista y listo, pero si queremos ver el tipo de valores que contiene la lista, lo más recomendable y que se utiliza es la funsión str().
+  Output: La forma típica de acceder a la información de la lista es escribiendo el nombre de la lista y listo, pero si queremos ver el tipo de valores que contiene la lista, lo más recomendable y que se utiliza es la función str().
 
 - Class: text
-  Output: La funsión str(), regresa en formato estructurado el cual es el nombre de la variable, el tipo de variable o la clase de la variable y el valor de la variable.
+  Output: La función str(), regresa en formato estructurado el cual es el nombre de la variable, el tipo de variable o la clase de la variable y el valor de la variable.
 
 - Class: cmd_question
   Output: Por lo tanto, utiliza str para visualizar la forma estructurada mencinada anteriormente.
@@ -241,7 +241,7 @@
   Hint: Escribe lo que se te pide, intentalo de nuevo 
 
 - Class: cmd_question
-  Output: Para acceder por ejemplo a la lista 2 y ver las cantidades numéricas que contiene, utilizaremos la funsión str pero esta vez, para acceder se utilizará una expresion similar a esta str(x[[2]]). Ahora con la funsión str accede a la lista dos para obtener los dotos que contiene. 
+  Output: Para acceder por ejemplo a la lista 2 y ver las cantidades numéricas que contiene, utilizaremos la función str pero esta vez, para acceder se utilizará una expresion similar a esta str(x[[2]]). Ahora con la función str accede a la lista dos para obtener los dotos que contiene. 
   CorrectAnswer: str(precio[[2]])
   AnswerTests: omnitest(correctExpr='str(precio[[2]])')
   Hint: Escribe lo que se te pide, intentalo de nuevo 
