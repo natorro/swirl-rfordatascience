@@ -1,0 +1,24 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 17_iteration_with_purrr
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Ahora pasaremos a trabajar con la sentencia for, esta sentencia es un bucle, el cual nos permite repetir una sentencia en un periodo definido, en R tenemos diferentes funcionalidades para las cuales aplicamos un for.
+
+- Class: text
+  Output: Por ejemplo si necesitamos checar la meia de diferentes valores dentro de un data frame podemos usar la funció median() para cada valor, pero esto esta mal empleado, la forma más efectiva y eficaz es aplicar un bucle.
+
+- Class: text
+  Output: Por ésta misma razón, hablaremos de cuatro variaciones básicas para implementar un bucle, la primera es para modificar un objeto de R que ya existe, el segundo para nombres o vaores, en vez de indices, también lo podemos utilizar para un analisis de salidas cuando no sabemos su longitud, así mismo la manipulación de secuencias.
+
+- Class: cmd_question
+  Output: Bien lo primero es crear un data frame que contenga del 1:6 y que este guardado en n
+  CorrectAnswer: n <- c(1, 2, 3, 4, 5, 6)
+  AnswerTests: omnitest(correctExpr='n <- c(1, 2, 3, 4, 5, 6)')
+  Hint: la respuesta es n <- c(1, 2, 3, 4, 5, 6)
+
+
