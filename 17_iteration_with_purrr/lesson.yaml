@@ -15,10 +15,131 @@
 - Class: text
   Output: Por ésta misma razón, hablaremos de cuatro variaciones básicas para implementar un bucle, la primera es para modificar un objeto de R que ya existe, el segundo para nombres o vaores, en vez de indices, también lo podemos utilizar para un analisis de salidas cuando no sabemos su longitud, así mismo la manipulación de secuencias.
 
-- Class: cmd_question
-  Output: Bien lo primero es crear un data frame que contenga del 1:6 y que este guardado en n
-  CorrectAnswer: n <- c(1, 2, 3, 4, 5, 6)
-  AnswerTests: omnitest(correctExpr='n <- c(1, 2, 3, 4, 5, 6)')
-  Hint: la respuesta es n <- c(1, 2, 3, 4, 5, 6)
 
+- Class: cmd_question
+  Output: Primero cargaremos la librería tidyverse 
+  CorrectAnswer: library(tidyverse)
+  AnswerTests: omnitest(correctExpr='library(tidyverse)')
+  Hint: Type a hint.
+
+
+- Class: cmd_question
+  Output: Ahora construiremos una tabla con tibble que es la siguiente df <- tibble(a = rnorm(10), b = rnorm(10), c = rnorm(10), d = rnorm(10))
+  CorrectAnswer: df <- tibble(a = rnorm(10), b = rnorm(10), c = rnorm(10), d = rnorm(10))
+  AnswerTests: omnitest(correctExpr='df <- tibble(a = rnorm(10), b = rnorm(10), c = rnorm(10), d = rnorm(10))')
+  Hint: Revisa la sintaxis para generar el tibble.
+
+- Class: text
+  Output: Lo que haremos es modificar el data frame con el valor de 3 en todas las columnas
+
+
+
+- Class: cmd_question
+  Output: La sintaxis es de la siguiente manera for(i in seq_along(df)){df[i] <- 3}
+  CorrectAnswer: for(i in seq_along(df)){df[i] <- 3}
+  AnswerTests: omnitest(correctExpr='for(i in seq_along(df)){df[i] <- 3}')
+  Hint: Revisa la sintaxis del for 
+
+- Class: text
+  Output: Si nosotros creamos una salida con nombres, tenemos que asegurarnos de nombrar el vector de resultado.
+
+- Class: cmd_question
+  Output: Asi de la siguiente manera queda la funsión r <- vector("lista_salida", length(x))
+  CorrectAnswer: r <- vector("lista_salida", length(x))
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: verifica si la sintaxis es correcta 
+
+- Class: text
+  Output: Para hacer un recorrido de los nombres de las columnas de un data frame y ver cuantos son, utilizaremos un bucle para saber el ancho del data frame, esto nos ayudará, para cuando trabajemos con un data frame muy grande.
+
+- Class: cmd_question
+  Output: Ahora bien para poder realizar este recorrido de nombres, lo primero que tendremos que hacer es cargar un data frame que tiene R el cual es iris, para cargarlo escribe data("iris")
+  CorrectAnswer: data("iris")
+  AnswerTests: omnitest(correctExpr='data("iris")')
+  Hint: vamos tú puedes.
+
+- Class: cmd_question
+  Output: Una vez cargado el data frame de iris, pasareos a realizar la función for( i in seq_along(iris)){nombre[[i]] <- iris [i]}
+  CorrectAnswer: for( i in seq_along(iris)){nombre[[i]] <- iris [i]}
+  AnswerTests: omnitest(correctExpr='for( i in seq_along(iris)){nombre[[i]] <- iris [i]}')
+  Hint: vamos tú puedes.
+
+- Class: cmd_question
+  Output: Ahora veremos los levels del data frame para eso en otro for aplicamos la sentencia for(i in seq_along(iris)){valor <- ris[[i]]}
+  CorrectAnswer: for(i in seq_along(iris)){valor <- ris[[i]]}
+  AnswerTests: omnitest(correctExpr='for(i in seq_along(iris)){valor <- ris[[i]]}')
+  Hint: vamos tú puedes.
+
+- Class: text
+  Output: Si en dado caso de que nosotros no tengamos conocimiento de las salidas de ciertos datos utilizaremos la función while, esta iteración no para hasta que se cumple una condición. Para ejemplificar esto calcularemos el valor de pi
+
+- Class: cmd_question
+  Output: Para esto ocuparemos el data frame iris y veremos su longitud la sentencia sería while(i <= length(iris)){i <- i + 1}
+  CorrectAnswer: while(i <= length(iris)){i <- i + 1}
+  AnswerTests: omnitest(correctExpr='while(i <= length(iris)){i <- i + 1}')
+  Hint: Revisa la sintaxis.
+
+- Class: text
+  Output: Si por alguna razón quisieras saber la media de una columna específica del data frame podemos hacer este calculo de dos maneras, la primero por un for y la segunda mediante funciones
+
+- Class: cmd_question
+  Output: Para representa la primera mediante el for, primero crearemos el mismo df que trabajamos con los numeros aleatorios, df <- tibble( a = rnorm(10), b = rnorm(10), c = rnorm(10), d = rnorm(10))
+  CorrectAnswer: df <- tibble( a = rnorm(10), b = rnorm(10), c = rnorm(10), d = rnorm(10))
+  AnswerTests: omnitest(correctExpr='df <- tibble( a = rnorm(10), b = rnorm(10), c = rnorm(10), d = rnorm(10))')
+  Hint: No es dificil, vamos tú puedes.
+
+- Class: cmd_question
+  Output: Ahora definimos una variable de salida a la cual le pasaremos un vector del tamaño del df  salida <- vector("double", length(df))
+  CorrectAnswer: salida <- vector("double", length(df))
+  AnswerTests: omnitest(correctExpr='salida <- vector("double", length(df))')
+  Hint: No es dificil, vamos tú puedes.
+
+- Class: cmd_question
+  Output: Ahora calcularemos la media con todos los valores  for(i in seq_along(df)){salida[[i]] <- mean(df[[i]])}
+  CorrectAnswer: for(i in seq_along(df)){salida[[i]] <- mean(df[[i]])}
+  AnswerTests: omnitest(correctExpr='for(i in seq_along(df)){salida[[i]] <- mean(df[[i]])}')
+  Hint: No es dificil, vamos tú puedes.
+
+- Class: cmd_question
+  Output: Para visualizarlo escribe  salida
+  CorrectAnswer: salida
+  AnswerTests: omnitest(correctExpr='salida')
+  Hint: No es dificil, vamos tú puedes.
+
+- Class: text
+  Output: Primero, la programaciń funcional, de forma simple es cuando una función admite otra como argumento, por ejemplo la función sapply
+
+- Class: cmd_question
+  Output: Escribe cuadrado <- function(x) if(x < 5) x**2 lse -x**2 
+  CorrectAnswer: cuadrado <- function(x) if(x < 5) x**2 lse -x**2
+  AnswerTests: omnitest(correctExpr='cuadrado <- function(x) if(x < 5) x**2 lse -x**2')
+  Hint: Revisa la sintaxis 
+
+- Class: cmd_question
+  Output: Comprobamos  sapply(1:10, cuadrado)
+  CorrectAnswer: sapply(1:10, cuadrado)
+  AnswerTests: omnitest(correctExpr='sapply(1:10, cuadrado)')
+  Hint: Revisa la sintaxis 
+
+- Class: text
+  Output: La programación funcional la podemos aplicar en grupos homoéneos de valores.
+
+- Class: text
+  Output: También podemos contar con las funciones de mapeo, tales como map(), map_lgl(), map_int(), map_dbl(), map_chr()
+
+- Class: text
+  Output: la función map() se utiiza para mapear listas, map_lgl() mapea vectores de tipo lógico, map_int() mapea un vector de tipo entero, map_dbl() mapea un vector de tipo ouble y map_chr  mapea un vector de tipo caracter.
+
+- Class: cmd_question
+  Output: Para calcular  la media de los datos con la función map hacemos lo siguiente  map_dbl(df, mean)
+  CorrectAnswer:  map_dbl(df, mean)
+  AnswerTests: omnitest(correctExpr=' map_dbl(df, mean)')
+  Hint: Revisa si es correcta la sintaxis 
+
+
+- Class: cmd_question
+  Output: Otra representación equivalente es df %>% map_dbl(mean)
+  CorrectAnswer: df %>% map_dbl(mean)
+  AnswerTests: omnitest(correctExpr='df %>% map_dbl(mean)')
+  Hint: Revisa si es correcta la sintaxis 
 
