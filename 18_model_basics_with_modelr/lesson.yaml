@@ -70,13 +70,13 @@
   Output: también deberás llamar library(tidyverse) & options(na.action = na.warn).
 
 - Class: text
-  Output: La primera es es encontrar una familia de modelos que exprese el patrón que estás buscando pero de una forma genérica. 
+  Output: El primera es es encontrar una familia de modelos que exprese el patrón que estás buscando pero de una forma genérica. 
 
 - Class: text
   Output: Despues tienes que adecuar uno de estos modelos para que se aproxime a tus datos. Es importante entender que no por que se parezca implica que está bien o que sus predicciones serán correctas.
 
 - Class: text
-  Output: Un modelo simple.
+  Output: Veamos un modelo simple.
 
 - Class: cmd_question
   Output: Vamos a generar dos vectores. Escribe x = c(1, 2, 3, 5, 6).
@@ -168,3 +168,45 @@
 
 
 
+
+- Class: text
+  Output: Ahora podemos utilizar purr para medir la distancia para todos los modelos que definimos previamente debemos modificar la función porque  la que teníamos anteriormente espera recibir el modelo como un vector de valores númericos de tamaño 2.
+
+- Class: text
+  Output: Creamos un función llamada dist1 para pata generalizar los modelos.
+
+- Class: cmd_question
+  Output: Utiliza el siguiente código para la primera parte de la función dist1 <- function(a1, a2) {distf(c(a1, a2), df)}
+  CorrectAnswer: dist1 <- function(a1, a2) {distf(c(a1, a2), df)}
+  AnswerTests: omnitest(correctExpr='dist1 <- function(a1, a2) {distf(c(a1, a2), df)}')
+  Hint: Utiliza el código que se te proporciono.
+
+- Class: text
+  Output: Ahora añadiremos la segunda parte de la función en la que se realiza el mapeo de todos los modelos con lo que se obtendrá la distancia para cada modelo.
+
+- Class: cmd_question
+  Output: Utilice el siguiente código bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( a1, a2, dist1))
+  CorrectAnswer: bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( a1, a2, dist1))
+  AnswerTests: omnitest(correctExpr='bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( a1, a2, dist1))')
+  Hint: Utiliza el código que se te proporciono.
+
+- Class: cmd_question
+  Output: Escribe bestmodel para poder visualizar la tabla que se generó.
+  CorrectAnswer: bestmodel
+  AnswerTests: omnitest(correctExpr='bestmodel')
+  Hint: Escribe lo que se te indicó.
+
+- Class: text
+  Output: Ahora la cuestion es que queremos los mejores 10 modelos pero tenemos no dada la cantidad de modelos no sería eficiente compararlos uno por uno.
+
+- Class: text
+  Output: Pero no te preocupes, para eso tenemos a r.
+
+- Class: cmd_question
+  Output: Utiliza el siguiente código para graficar los 10 mejores modelos según los datos que tenemos. ggplot(dif1, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = a1, slope = a2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))
+  CorrectAnswer: ggplot(dif1, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = a1, slope = a2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))
+  AnswerTests: omnitest(correctExpr='ggplot(dif1, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = a1, slope = a2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))')
+  Hint: Usa el código que se te proporcionó.
+
+- Class: text
+  Output: Ahora podemos visualizar que tal se adecuan los 10 mejores modelos a nuestros datos.
