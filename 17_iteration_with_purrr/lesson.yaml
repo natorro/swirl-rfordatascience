@@ -144,4 +144,71 @@
   Hint: Revisa si es correcta la sintaxis 
 
 
+- Class: text
+  Output: Al momento de hacer una función podemos colocar atajos dentro de las mismas declaraciones de las funciones, esto con el proposito de crear un código más limpio.
 
+- Class: text
+  Output: PAra comenzar, ocuparemos el dataset mtcars, y lo que haremos es enlistar los modelos de los automoviles de acuerdo a su tipo de cilindrage, por lo tanto cada una de estas listars por cilindarge, conendrá más listas en las cuales se dará el modelo, el tipo de la variable y su valor.
+
+- Class: cmd_question
+  Output: Lo primero que harás es escribir la siguiente funsión modelos <- mtcars %>% split(.$cyl) %>% map(function(df) lm(mpg ~ wt, data = df))
+  CorrectAnswer: modelos <- mtcars %>% split(.$cyl) %>% map(function(df) lm(mpg ~ wt, data = df))
+  AnswerTests: omnitest(correctExpr='modelos <- mtcars %>% split(.$cyl) %>% map(function(df) lm(mpg ~ wt, data = df))')
+  Hint:  Vamos tú puedes 
+
+- Class: text
+  Output: Ahora podemos construir la misma función, pero aplicando los atajos que nos permiten compactar el código y que se vea más presentable.
+
+- Class: cmd_question
+  Output: La función equivalente a la anterior pero con los atajos es la siguinete modelos <- mtcars %>% split(.$cyl) %>% map(~lm(mpg ~ wt, data = .))
+  CorrectAnswer: modelos <- mtcars %>% split(.$cyl) %>% map(~lm(mpg ~ wt, data = .))
+  AnswerTests: omnitest(correctExpr='modelos <- mtcars %>% split(.$cyl) %>% map(~lm(mpg ~ wt, data = .))')
+  Hint: Intentalo de nuevo, no se te olvide ejecutar la función 
+
+- Class: text
+  Output: Como puedes observar es exactamente lo mismo, solo que ahora la función es más corta. 
+
+- Class: text
+  Output: Para tratar con los datos en los cuales tenemos errores, ya sea al momento de que estamos trabajandocon los data frame o antes de tratarlos para ver los posibles errores que nos puedan arrojar. 
+
+- Class: cmd_question
+  Output: Para ilustrar lo anterior considerece que tenemos la siguiente lista prueba.1 <- safely(long)
+  CorrectAnswer: prueba.1 <- safely(long)
+  AnswerTests: omnitest(correctExpr='prueba.1 <- safely(long)')
+  Hint: Es bastante simple.
+
+- Class: cmd_question
+  Output: Ahora consultaremos el contenido de la ista con str  y lo pondremos como paramero el valor safe_long(10)
+  CorrectAnswer: str(safe_long(10))
+  AnswerTests: omnitest(correctExpr='str(safe_long(10))')
+  Hint:  El resultado correcto es str(safe_long(10))
+
+- Class: text
+  Output: la función safely() Lo que devuleve es un listado de los resultados y errores de los componentes.
+
+- Class: text
+  Output: Entonces practicamente al momento de pasarle la función los valores en los cuales se revisa su estado, si este es exitoso el resultado, los errores son nulos, y si no, pondrá el NA de resultados y los errores que se deben atender.
+
+- Class: cmd_question
+  Output: Ahora veremos un ejemplo en el cual se ponen en NULL los resultados y se enlistan los errores escribe str(safe_long("a"))
+  CorrectAnswer: str(safe_long("a"))
+  AnswerTests: omnitest(correctExpr='str(safe_long("a"))')
+  Hint: Revisa la sintaxis.
+
+- Class: cmd_question
+  Output: También podemos usar la función de mapeo para visualizar los errores posibles en el contenido de un vctor, por lo tanto escribe un vector que contenga "chucho", 10 y 20 y que esten guardados en la variable x
+  CorrectAnswer: x <- c("chucho", 10 , 20)
+  AnswerTests: omnitest(correctExpr='x <- c("chucho", 10 , 20)')
+  Hint: El vector pedido es x <- c("chucho", 10 , 20)
+
+- Class: cmd_question
+  Output: Ahora bien, escribe la siguiente linea de código x.2 <- x %>% map(safely(log))
+  CorrectAnswer: x.2 <- x %>% map(safely(log))
+  AnswerTests: omnitest(correctExpr='x.2 <- x %>% map(safely(log))')
+  Hint: El vector pedido es x.2 <- x %>% map(safely(log))
+
+- Class: cmd_question
+  Output: Finalmente usa la función str para viualizar el mapeo de errores 
+  CorrectAnswer: str(x.2)
+  AnswerTests: omnitest(correctExpr='str(x.2)')
+  Hint: El vector pedido es str(x.2)
