@@ -586,7 +586,34 @@
   Output: Repite le ejercicio anterior pero con str_match().
   CorrectAnswer: sentence_be %>% match(be)
   AnswerTests: omnitest(correctExpr='sentence_be %>% str_match(be)')
-  Hint: Mucho mejor, generamos una tabla mucho más completa.
-
+  Hint: Utiliza el código sentence_be %>% match(be)
+  
+- Class: text
+  Output: Mucho mejor, generamos una tabla mucho más completa.
+  
 - Class: text
   Output: Existe una manera más sencilla de hacer todo esto, podrás experimentar con ella despues si así lo deseas. Se usa la función tidyr::extract que funciona muy similar a str_match sólo que en esta se definen los nombres de los grupos de cada patrón. Por ejemplo tidyr::extract(sentence, c("be", "word"), "(is|are|am) ([^ ]+)", remove = FALSE)
+
+
+
+
+- Class: text
+  Output: Veremos dos funciones que son nativas de r pero que también utilizan expresiones regulares.
+
+- Class: text
+  Output: La primera es la función apropos() que busca entre todo los objetos disponibles en el entorno global.
+
+- Class: text
+  Output: La segunda función es dir(), lo que hace es buscar en todos los archivos de directorio.
+
+- Class: text
+  Output: Esta función toma como argumento una expresión regular y regresa los nombres de los archivos que coincidan con la busqueda.
+
+- Class: text
+  Output: Por ejemplo digamos que quieres todos los archivos html, el código para hacerlo sería -> head(dir(pattern = "\\.html$"))
+
+- Class: text
+  Output: Por último la librería de stringr está basada en stringi y es muy útil cuando estás aprendiendo ya que sólo utiliza las funciones más comunes pero es importante destacar que mientras stringr tiene tan solo 42 funciones stringi tiene 234 por lo que sí en algún momento tienes problemas para realizar algo no estaría mal que dieras una revisada entre las funciones de stringi.
+
+- Class: text
+  Output: Felicidades has terminado la lección.
