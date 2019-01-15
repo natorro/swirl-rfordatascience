@@ -212,3 +212,41 @@
   CorrectAnswer: str(x.2)
   AnswerTests: omnitest(correctExpr='str(x.2)')
   Hint: El vector pedido es str(x.2)
+
+- Class: text
+  Output: Si nosotros queremos tener solo una lista de errores, contamos con la función de transpose(), esta función conjunta en una sola variable todos los resultados y en otra todos los errores encontrados.
+
+
+
+- Class: cmd_question
+  Output: Con el mismo vetor creado anteriormente, lo que harmos es crear solo una variable de resultados y otra de errores. Entonces a la variable y modificala con la funció transpose().
+  CorrectAnswer: y %>% transpose()
+  AnswerTests: omnitest(correctExpr='y %>% transpose()')
+  Hint: La modificación es y <- transpose()
+
+- Class: cmd_question
+  Output: Ahora para checar la lista que en realidad se modifico aplicamos la función str() que anteriormente trabajamos.
+  CorrectAnswer: str(y)
+  AnswerTests: omnitest(correctExpr='str(y)')
+  Hint: La modificación es str(y)
+
+- Class: text
+  Output: En algun momento, lo que nos importará es capturar los mensajes de salida, las salidas como tal, y los mensajes de warning
+
+- Class: cmd_question
+  Output: Por lo tanto crea una lista de tipo numerica list(2,6,9), y guardala en la variable x.prueba
+  CorrectAnswer: x.prueba <- list(2, 6, 9)
+  AnswerTests: omnitest(correctExpr='x.prueba <- list(2, 6, 9)')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Recopilaremos la información de las salidas,a continuación modifica la variable x.prueba, para mapear las salidas, para esto utiliza la función map() y dentro la función quietly(log)
+  CorrectAnswer: x.prueba %>% map(quietly(log))
+  AnswerTests: omnitest(correctExpr='x.prueba %>% map(quietly(log))')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Por ultimo verifica la información que se recopilo anteriormente con la función que hemos venido trabajando para consultar las listas
+  CorrectAnswer: str(x.prueba) 
+  AnswerTests: omnitest(correctExpr='str(x.prueba) ')
+  Hint: Escribe lo que se te pide.
