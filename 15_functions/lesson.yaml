@@ -37,4 +37,89 @@
   Output: 2. Un listado de las entradas o argumentos de entrada que seran procesados dentro de la función, pueden ser uno o varios argumetos.
 
 - Class: text
-Output: 3. Pones el codigo que has desarrollado en el cuerpo de la función entre {}
+  Output: 3. Pones el codigo que has desarrollado en el cuerpo de la función entre {}
+
+- Class: text
+  Output: Veamos un ejemplo sencillo en el que tendrías que repetir código para completar la taréa.
+
+- Class: cmd_question
+  Output: Crea un data frame con el siguiente código df <- data.frame(a = c(1:5), b = c(4:8))
+  CorrectAnswer: df <- data.frame(a = c(1:5), b = c(4:8))
+  AnswerTests: omnitest(correctExpr='df <- data.frame(a = c(1:5), b = c(4:8))')
+  Hint: Usa el código que se te proporcionó.
+
+- Class: cmd_question
+  Output: Escribe df para que visualices el data frame.
+  CorrectAnswer: df
+  AnswerTests: omnitest(correctExpr='df')
+  Hint: Escribe df.
+
+- Class: text
+  Output: El problema es que te piden que los valores estén en números decimales.
+
+- Class: text
+  Output: Una forma de hacerlo sería por columnas.
+
+- Class: text
+  Output: df$a <- df$a / 10
+
+- Class: text
+  Output: df$b <- df$b / 10
+
+- Class: text
+  Output: Se ve muy sencilla pero que pasa cuando tienes un gran número de columnas
+
+- Class: text
+  Output: 1 El error humano es decir que te equivoques al copiar y pegar.
+
+- Class: text
+  Output: 2 No es nada eficiente que estes copiando, pegando y mdoficando código para cada columna.
+
+- Class: text
+  Output: Ahora generaremos una función para hacer más rápido el proceso.
+
+- Class: cmd_question
+  Output: Escribe el siguiente código decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10)  data.frame(x) }
+  CorrectAnswer: decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10)  data.frame(x) }
+  AnswerTests: omnitest(correctExpr='decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10)  data.frame(x) }')
+  Hint: Escribe lo que se te pidió.
+
+
+
+- Class: cmd_question
+  Output: Type your text output here.
+  CorrectAnswer: decimal(df)
+  AnswerTests: omnitest(correctExpr='decimal(df)')
+  Hint: Type a hint.
+
+
+
+- Class: text
+  Output: Como podrás ver se modificó la dataframe y ahora tiene puros valores en decimal.
+
+- Class: text
+  Output: Es importante recalcar que no hay una fórmula que te diga exactamente que hacer para crear la función que necesitas.
+
+- Class: text
+  Output: Por que no existe una solución única.
+
+- Class: text
+  Output: Por lo tanto deberás practicar para que desarrolles tu intución y seas capaz de crear las funciones que necesites.
+
+- Class: text
+  Output: Lo ejemplificaremos con otra función que hace lo mismo que la anterior.
+
+- Class: cmd_question
+  Output: Utiliza el siguiente código decimal2 <- function(x) { for (i in 1:length(x)){ x[i] <- x[i] /10 } x }
+  CorrectAnswer: decimal2 <- function(x) { for (i in 1:length(x)){ x[i] <- x[i] /10 } x }
+  AnswerTests: omnitest(correctExpr='decimal2 <- function(x) { for (i in 1:length(x)){ x[i] <- x[i] /10 } x }')
+  Hint: Utiliza el código que se te proporcionó.
+
+- Class: cmd_question
+  Output: Aplica la función decimal2 en df.
+  CorrectAnswer: decimal2(df)
+  AnswerTests: omnitest(correctExpr='decimal2(df)')
+  Hint: Escribe decimal2(df).
+
+- Class: text
+  Output: Podrás ver que arrojó el mismo resultado.
