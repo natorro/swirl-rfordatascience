@@ -250,3 +250,75 @@
   CorrectAnswer: str(x.prueba) 
   AnswerTests: omnitest(correctExpr='str(x.prueba) ')
   Hint: Escribe lo que se te pide.
+
+- Class: text
+  Output: Hay ocaciones en las cuales necesitemos mapear varias variables/columnas dentro de un data frame, por lo tanto podemos hacerlo de dos maneras una por medio de funciones y la otra por medio de las funciones map2() y pmap().
+
+- Class: cmd_question
+  Output: Este ejemplo es para que te relaciones con la normalización de un vector, por lo tanto del data frame iris, guarda la primera columna dentro de iris.norm
+  CorrectAnswer: iris.norm <- iris[1]
+  AnswerTests: omnitest(correctExpr='iris.norm <- iris[1]')
+  Hint: Vamos tú puedes 
+
+- Class: cmd_question
+  Output: Ahora con la funcion map modificaras el vector iris.new, y pasando como parametro rnorm 
+  CorrectAnswer: iris.norm  %>% map(rnorm)
+  AnswerTests: omnitest(correctExpr='iris.norm  %>% map(rnorm)')
+  Hint: Vamos tú puedes 
+
+- Class: cmd_question
+  Output: Ahora crea una lista con valores del 1:5 y guardalos en la variable x.random
+  CorrectAnswer: x.random <- list(1, 2, 3, 4, 5)
+  AnswerTests: omnitest(correctExpr='x.random <- list(1, 2, 3, 4, 5)')
+  Hint: Escribe lo que se te pide
+
+- Class: cmd_question
+  Output: Ahora variaremos la desviacion estandar con los dos vectores creados anteriormente, por lo tanto escribe seq_along(iris.intcome) %>% map(~rnorm(10, iris.intcome[[.]], x.random[[.]])) %>% str()
+  CorrectAnswer: seq_along(iris.intcome) %>% map(~rnorm(10, iris.intcome[[.]], x.random[[.]])) %>% str()
+  AnswerTests: omnitest(correctExpr='seq_along(iris.intcome) %>% map(~rnorm(10, iris.intcome[[.]], x.random[[.]])) %>% str()')
+  Hint: Revisa la sintaxis. 
+
+- Class: text
+  Output: Una forma elegante o equivalente de la función anterior es la función map2, ésta función nos permite iterar dos vectores al mismo tiempo, por lo tanto quedaria de la siguiente manera.
+
+- Class: cmd_question
+  Output: Escribe map2(iris.intcome, x.random, n = 10) %>% str()
+  CorrectAnswer: map2(iris.intcome, x.random, n = 10) %>% str()
+  AnswerTests: omnitest(correctExpr='map2(iris.intcome, x.random, n = 10) %>% str()')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Crea en una tercera lista  que contenga los valores 3,5,9 y guardalos en la variable z
+  CorrectAnswer: z <- list(3, 5, 9) 
+  AnswerTests: omnitest(correctExpr='z <- list(3, 5, 9) ')
+  Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Ahora en una lista pondremos las tres lista creadas anteriormente iris.intcome, x.random y z, almacenalas en norm.multi
+  CorrectAnswer: norm.multi <- list(iris.intcome, x.random, z) 
+  AnswerTests: omnitest(correctExpr='norm.multi <- list(iris.intcome, x.random, z) ')
+  Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Ahora normalizaremos las tres listas con la unción pmap() y rnorm, modificando la misma lista norm.multi 
+  CorrectAnswer: norm.multi %>% pmap(rnorm)
+  AnswerTests: omnitest(correctExpr='norm.multi %>% pmap(rnorm)')
+  Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Por utilmo checamos los cambios en norm.multi 
+  CorrectAnswer: str(norm.multi)
+  AnswerTests: omnitest(correctExpr='str(norm.multi)')
+  Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Si en una ocación tenemos que mapear un tibble, podemos hacerlo, para esto lo primero que escribiras será norm.tibble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)
+  CorrectAnswer: norm.tibble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)
+  AnswerTests: omnitest(correctExpr='norm.tibble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)')
+  Hint: Revisa la sintaxis 
+
+- Class: cmd_question
+  Output: Ahora modifica norm.tibble con la función pmap
+  CorrectAnswer: norm.tibble %>% pmap(rnorm)
+  AnswerTests: omnitest(correctExpr='norm.tibble %>% pmap(rnorm)')
+  Hint: Escribe lo que se te pidió 
