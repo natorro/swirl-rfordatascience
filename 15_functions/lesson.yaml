@@ -78,10 +78,27 @@
 - Class: text
   Output: Ahora generaremos una función para hacer más rápido el proceso.
 
+
+
+
+
+- Class: script
+  Output: Escribe le siguiente código, decimal <- function(x) { for (i in seq_along(x)) { x[i] <- x[[i]] / 10  }; x}
+  AnswerTests: omnitest(correctExpr='decimal <- function(x) { for (i in seq_along(x)) { x[i] <- x[[i]] / 10  }; x}')
+  Hint: Escribe lo que se te pidió.
+  Script: function1.R
+
+
+
+
+
+
+
+
 - Class: cmd_question
-  Output: Escribe el siguiente código decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10)  data.frame(x) }
-  CorrectAnswer: decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10)  data.frame(x) }
-  AnswerTests: omnitest(correctExpr='decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10)  data.frame(x) }')
+  Output: Escribe el siguiente código decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10) x }
+  CorrectAnswer: decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10) x }
+  AnswerTests: omnitest(correctExpr='decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10) x }')
   Hint: Escribe lo que se te pidió.
 
 
@@ -123,3 +140,78 @@
 
 - Class: text
   Output: Podrás ver que arrojó el mismo resultado.
+
+
+
+
+- Class: text
+  Output: Al nombrar las funciones debes tener encuenta que la computadora no es la única que va a leer tú código por lo que debe ser entendible tanto para ti como para otros humanos.
+
+- Class: text
+  Output: Es preferible que utilices una sóla palabra pero si te parece más entendible poniendole más palabras procura separarlas con un guión bajo o que cada palabra comience con mayúscula.
+
+- Class: text
+  Output: No importa que forma de nombrar a las funciones elijas, lo que si importa es que seas consistente y cada función que hagas la nombres con el mismo formato.
+
+- Class: text
+  Output: Es importane por que vuelve tu código más legible.
+
+- Class: text
+  Output: Ahora si tienes un familia de funciones que hacen cosas similares o sirven al mismo objetivo es importante que haya consistencia tanto en sus nombres como en sus argumentos.
+
+- Class: text
+  Output: Por ejemplo
+
+- Class: text
+  Output: tienes las funciones
+
+- Class: text
+  Output: make_mult()
+
+- Class: text
+  Output: make_sum()
+
+- Class: text
+  Output: make_fact()
+
+- Class: text
+  Output: Sí en algún momento olvidas el nombre de la función que necesitas, todo será tan simple como escribir make y gracias al autocompletado podrás ver las funciones disponibles.
+
+- Class: text
+  Output: R ya tiene muchas funciones tanto en sus base como en las paqueterías por lo que te recomendamos que antes de hacer una función verifiques si no existe en alguna de las opciones anteriores.
+
+- Class: text
+  Output: Algo que puede ser muy útil tanto para ti como para las personas que vean tú código es comentarlo.
+
+- Class: text
+  Output: Así podrás explicar paso por paso lo que hace o poner palabras clave para que no tengas confución alguna.
+
+- Class: text
+  Output: Es tan simple como poner el signo de # y escribir lo que desees.
+
+- Class: text
+  Output: Ahora veremos condicionales
+
+- Class: text
+  Output: Cuando comiences a generar código más complejo muchas veces querrás que dependiendo del valor de cierta condición (Que tu vas a definir) se ejecute una u otra parte del código.
+
+- Class: text
+  Output: Bueno esto lo vas a hacer con condicionales.
+
+- Class: text
+  Output: Un condicional en r se declara como un 
+
+- Class: text
+  Output: if (condición) {#Código a ejecutar si la condición es verdadera} else {#Código a ejecutar si la condición es falsa}
+
+- Class: text
+  Output: Veamos  una función muy sencilla como ejemplo
+
+- Class: text
+  Output: Nuestra función recibirá la medida de dos lados con intersección en una figura geométrica y nos dirá si se trata de un rectángulo o de un cuadrado.
+
+- Class: cmd_question
+  Output: Escribe el siguiente código, tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}
+  CorrectAnswer: tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}
+  AnswerTests: omnitest(correctExpr='tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}')
+  Hint: Utiliza el código que se te proporcionó.
