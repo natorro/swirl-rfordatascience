@@ -312,13 +312,142 @@
   Hint: Escribe lo que se te pidió
 
 - Class: cmd_question
-  Output: Si en una ocación tenemos que mapear un tibble, podemos hacerlo, para esto lo primero que escribiras será norm.tibble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)
-  CorrectAnswer: norm.tibble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)
-  AnswerTests: omnitest(correctExpr='norm.tibble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)')
+  Output: Si en una ocación tenemos que mapear un tribble, podemos hacerlo, para esto lo primero que escribiras será norm.tribble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)
+  CorrectAnswer: norm.tribble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)
+  AnswerTests: omnitest(correctExpr='norm.tribble <- tribble(~m, ~s, ~x,6,2, 1,7,5, 3,8,9, 5)')
   Hint: Revisa la sintaxis 
 
 - Class: cmd_question
-  Output: Ahora modifica norm.tibble con la función pmap
-  CorrectAnswer: norm.tibble %>% pmap(rnorm)
-  AnswerTests: omnitest(correctExpr='norm.tibble %>% pmap(rnorm)')
+  Output: Ahora modifica norm.tribble con la función pmap
+  CorrectAnswer: norm.tribble %>% pmap(rnorm)
+  AnswerTests: omnitest(correctExpr='norm.tribble %>% pmap(rnorm)')
   Hint: Escribe lo que se te pidió 
+
+- Class: text
+  Output: En dado caso de que no quisieramos variar los parametros de una función en especifico, sino de varias funciones, supongamos que quieres variar los parametros de las siguientes listas parametro.1, parametro.2 y parametro.3, Ahora la pregunta sería cómo iteramos estas tres listas.
+
+- Class: text
+  Output: En purr, lo lleva a acabo la función invoke_map(), en el primer argumento es una lista de funciones, el segundo argumento especifica los argumentos de las funciones y el tercer argumento es la llamada a cada función cierto número de veces
+
+- Class: cmd_question
+  Output: En el siguiente ejemplo crea la siguiente lista  dtcn <- list("geom", "normal", "gamma")
+  CorrectAnswer:  dtcn <- list("geom", "normal", "gamma")
+  AnswerTests: omnitest(correctExpr=' dtcn <- list("geom", "normal", "gamma")')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Ahora pasaremos a hacer cada una de las funciones con sus parametros corespondientes, en la función geom <- list(), dale como parametro mean = 10
+  CorrectAnswer: geom <- list(mean = 10)
+  AnswerTests: omnitest(correctExpr='geom <- list(mean = 10)')
+  Hint: Escribe lo que se te pide
+
+- Class: cmd_question
+  Output: En la función normal <- list(), agregale un mínimo de 0 y un máximo de 6
+  CorrectAnswer: normal <- list(min = 0, max = 6)
+  AnswerTests: omnitest(correctExpr='normal <- list(min = 0, max = 6)')
+  Hint: Escribe lo que se te pide
+
+- Class: cmd_question
+  Output: En la función  gamma <- list(), agrega un rate con valor de 5 
+  CorrectAnswer: gamma <- list(rate = 5)
+  AnswerTests: omnitest(correctExpr='gamma <- list(rate = 5)')
+  Hint: Escribe lo que se te pide
+
+- Class: cmd_question
+  Output: Pasaremos a juntar estas listas en una lista y guardaremos en la variable parametros 
+  CorrectAnswer: parametros <- list(geom, normal, gamma)
+  AnswerTests: omnitest(correctExpr='parametros <- list(geom, normal, gamma)')
+  Hint: Escribe lo que se te pide
+
+- Class: cmd_question
+  Output: Por ultimo utilizando invoke_map(), parametros y haciendo que se iteren n = 6
+  CorrectAnswer: invoke_map(dtcn, parametros, n= 6)
+  AnswerTests: omnitest(correctExpr='invoke_map(dtcn, parametros, n= 6)')
+  Hint: Escribe lo que se te pide
+
+- Class: text
+  Output: Cuando se decea saber que sucede dentro de una función y no nos interesa el valor de retorno, utilizamos la función walk(), esta función lo que hace es checar paso a paso lo que hace la función y retorna los valores que estan intermedios de dicha función.
+
+- Class: cmd_question
+  Output: Por ejemplo, si quisieras ver lo que hay dentro de parametros, escribe  parametros %>% walk(print) 
+  CorrectAnswer: parametros %>% walk(print)
+  AnswerTests: omnitest(correctExpr='parametros %>% walk(print)')
+  Hint: Revisa la sintaxis.
+
+- Class: text
+  Output: Encontraremos alguna veces funciones predicativas, estas funciones lo unico que retornan es TRUE o FALSE.
+
+- Class: cmd_question
+  Output: Por ejemplo, carga el dataset iris
+  CorrectAnswer: data("iris")
+  AnswerTests: omnitest(correctExpr='data("iris")')
+  Hint: Esto se vió anteriormente 
+
+- Class: text
+  Output: Ahora verificaremos que tipos de variables hay dentro de el dataset iris, para esto haremos uso de las funciones keep() y discard(), estas funciones mantienen o guardan los elementos de las entradas cuando el predicado es TRUE o FALSE
+
+- Class: cmd_question
+  Output: Por lo tanto manten las entradas de iris %>% keep() cuando sean caracter (is.character) he imprime el resultado con str()
+  CorrectAnswer: iris %>% keep(is.character) %>% str()
+  AnswerTests: omnitest(correctExpr='iris %>% keep(is.character) %>% str()')
+  Hint: Una pista es  keep(is.character)
+
+- Class: text
+  Output: Como puedes observar no arrojo ninguna variable, por lo tanto no mantuvo ningun contenido que tuviera la caracteristica de caracter.
+
+- Class: cmd_question
+  Output: En cambio si en ves de usar is.character, quisieramos verificar si es is.atomic, reemplaza is.character por is.atomic
+  CorrectAnswer: iris %>% keep(is.atomic) %>% str()
+  AnswerTests: omnitest(correctExpr='iris %>% keep(is.atomic) %>% str()')
+  Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Ahora haremos lo mismo pero con discard() pero ahora reemplaza keep por discard y para como parametro is.factor
+  CorrectAnswer: iris %>% discard(is.factor) %>% str()
+  AnswerTests: omnitest(correctExpr='iris %>% discard(is.factor) %>% str()')
+  Hint: Escribe lo que se te pidió
+
+- Class: text
+  Output: Tambien contamos con las funciones some() y every(), estas funciones verifican si el predicado de la función se aplica para todas o solo para algunas y lo que retorna es un TRUE o FALSE.
+
+- Class: cmd_question
+  Output: Por ejemplo  varios.type <- list(1:7, "hola", list(2))
+  CorrectAnswer: varios.type <- list(1:7, "hola", list(2))
+  AnswerTests: omnitest(correctExpr='varios.type <- list(1:7, "hola", list(2))')
+  Hint: Revisa sintaxis
+
+- Class: cmd_question
+  Output: Ahora aplica la función some(is_integer)
+  CorrectAnswer: varios.type %>% some(is_integer)
+  AnswerTests: omnitest(correctExpr='varios.type %>% some(is_integer)')
+  Hint: Revisa sintaxis
+
+- Class: cmd_question
+  Output: Ahora reemplasa is_integer por is_function
+  CorrectAnswer: varios.type %>% some(is_function)
+  AnswerTests: omnitest(correctExpr='varios.type %>% some(is_function)')
+  Hint: Escribe lo que se te pide
+
+- Class: cmd_question
+  Output: Ahora en vez de some() utiliza every() y utiliza is_vector
+  CorrectAnswer: varios.type %>% every(is_vector)
+  AnswerTests: omnitest(correctExpr='varios.type %>% every(is_vector)')
+  Hint: Escribe lo que se te pide
+
+- Class: text
+  Output: Hay veces en las cuales tenemos en una lista diferentes vectores que tienen datos en comun y quisieramos trabajar solo con esos datos en los cuales aparecen en los tres vectores.
+
+- Class: text
+  Output: En purr, hay una función reduce() que nos ayuda a reducri la información que se encuentre en una lista o vector.
+
+- Class: cmd_question
+  Output: Por ejemplo, Tenemos en una lista los resultados de lanzar tres veces tres dados, los cuales son los siguientes resul.d <- list(c(1:3),c(2,5,1),c(6,2,3))
+  CorrectAnswer: resul.d <- list(c(1:3),c(2,5,1),c(6,2,3))
+  AnswerTests: omnitest(correctExpr='resul.d <- list(c(1:3),c(2,5,1),c(6,2,3))')
+  Hint: Escribe la lista mostrada.
+
+- Class: cmd_question
+  Output: Si quisieramos saber, en que resultados los tres dados fueron el mismo digito, utilizamos la función reduce(intersect). Aplica esta función a la variable resul.d
+  CorrectAnswer: resul.d %>% reduce(intersect)
+  AnswerTests: omnitest(correctExpr='resul.d %>% reduce(intersect)')
+  Hint: Escribe lo que se te pide.
