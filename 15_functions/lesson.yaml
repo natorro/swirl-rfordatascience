@@ -215,3 +215,105 @@
   CorrectAnswer: tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}
   AnswerTests: omnitest(correctExpr='tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}')
   Hint: Utiliza el código que se te proporcionó.
+
+- Class: text
+  Output: La condición debe ser evaluada como verdadera o falsa.
+
+- Class: text
+  Output: En caso de que utilices un vector como condición te arrojará un mensaje de warning advirtiendote que sólo tomará el primer valor del vector como condición.
+
+- Class: text
+  Output: Tampoco podrás poner NA como la única condición por que esto dará error al ser ejecutado.
+
+- Class: text
+  Output: Habrá casos en los que quieras poner más de una condición, afortunadamente existe una herramienta para esto.
+
+- Class: text
+  Output: Se utiliza || para referirse a un or.
+
+- Class: text
+  Output: Se utiliza & para referirse a un and.
+
+- Class: text
+  Output: Estos puedes usarlos para crear multiples expresiones lógicas.
+
+- Class: text
+  Output: Es importante que que tengas cuidado con la lógica de tus expresiones para que las condiciones funcionen de la manera correcta. Hagamos un ejercicio para ejemplificar un clásico error.
+
+
+
+- Class: text
+  Output: Para que no hay dudas veremos congruencias (con 0) como nota rápida.
+
+- Class: text
+  Output: En matemáticas un número tiene congruencia 0 con otro si al dividir el primero por el segundo se tiene residuo 0.
+
+- Class: text
+  Output: Es decir si hicieras x congruente con 2 y lo aplicaras a los números naturales ( cero a infinito) todos los números pares cumplirían la condición.
+
+- Class: text
+  Output: En R congruencia es representada por %%.
+
+- Class: text
+  Output: Vamos al ejercicio.
+
+- Class: mult_question
+  Output: Sí te doy la siguiente condición if ((x %% 2 == 0 || x %% 3 == 0) & (x %% 7 == 0)) {} y el vector b = c(2, 3, 4, 5, 6, 7, 8). ¿Qué números cumplen?
+  AnswerChoices: (2, 3, 4, 6, 7, 8);(2, 3, 7);(7);(ninguno)
+  CorrectAnswer: (ninguno)
+  AnswerTests: omnitest(correctVal='(ninguno)')
+  Hint: Revisa las implicaciones.
+
+- Class: text
+  Output: Un poco engañoso no?
+
+- Class: text
+  Output: Tienes dos condiciones pero al tener el & entre ellas obliga a que las dos se cumplan para que obtener un verdadero.
+
+- Class: mult_question
+  Output: Ahora con está condición if ((x %% 2 == 0 || x %% 7 == 0) & (x %% 7 == 0)) {} y el vector b = c(2, 3, 4, 5, 6, 7, 8). ¿Qué números cumplen?
+  AnswerChoices: (2, 4, 6, 7, 8);(2, 7);(7);(ninguno);(todos)
+  CorrectAnswer: (7)
+  AnswerTests: omnitest(correctVal='(7)')
+  Hint: Utiliza la lógica del ejercicio anterior.
+
+
+
+- Class: text
+  Output: Bien hecho, al tener un or en la primera condición admitía congruentes tanto con dos como con 7 pero al aplicar las segunda condición el único valor que cumple es el 7.
+
+- Class: text
+  Output: Ahora veremos condiciones multiples.
+
+- Class: text
+  Output: Estas son muy útiles cuando quieres que cuando los valores cumplan distintas condiciones se les apliquen distintas operaciones.
+
+- Class: text
+  Output: La estructura es de la siguiente forma.
+
+- Class: text
+  Output: if (condición1) {acción1} else if (acción2) {} else { otra acción}
+
+- Class: text
+  Output: Claro que va con sus saltos de línea y espacios correspondientes.
+
+- Class: text
+  Output: Ten cuidado por que las condiciones se aplican de manera ordenada así que trata de poner las más específicas al incio para que los datos se vayan a la condición que deseas.
+
+- Class: text
+  Output: Veamos un ejemplo.
+
+- Class: text
+  Output: Sí tu pones el siguiente código.
+
+- Class: text
+  Output: if (x %% 2 == 0) {} else if (x %% 2 & x %% 3){} else {}
+
+- Class: text
+  Output: Todos los números congruentes con 2 van a entrar en el primer if siendo que en el segundo podrían entrar algunos de ellos, entonces no tendría ningun sentido tener el primer argumento del segundo if. Pero si intercambian sus argumentos el primer y el segundo if entonces se tomarían los valores  de la manera correcta y ya no habría incongruencias.
+
+- Class: text
+  Output: Cuando se tienen demasiadas condiciones por separado se vuelve tedioso tener demasiados if's pero no te preocupes por que R tiene una herramienta para eso.
+
+- Class: text
+  Output: Se llama switch() y funciona como uno.
