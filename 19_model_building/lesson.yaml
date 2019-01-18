@@ -5,3 +5,43 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.3
+
+
+- Class: text
+  Output: El este capitulo nos centraremos en realizar progresivamente modelados de datos reales, para una mejor comprensión.
+
+- Class: text
+  Output: Por ejemplo, en los capitulos anteriores trabajamos con el dataset diamonds, en donde pudimos apreciar como los diamantes de baja calidad son más caros.
+
+- Class: cmd_question
+  Output: Para poder ver la evolución del modelo del análisis de los datos con la función ggplo() grafica solo la columna carat y price y aplicale la función geom_hex(bins = 50)
+  CorrectAnswer: ggplot(diamonds, aes(carat, price)) + geom_hex(bins = 50)
+  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(carat, price)) + geom_hex(bins = 50)')
+  Hint:  La función es ggplot(diamonds, aes(carat, price)) + geom_hex(bins = 50)
+
+- Class: text
+  Output: Para ver el efecto que causan los diferentes atributos de los diamantes en su precio, tendrémos que trabajar un poco los datos para llevar a cabo bien el modelo y poder ver con exactitud dichos efectos.
+
+- Class: text
+  Output: Primero tendremos que descartar aquellos valores que se encuentran fuera del rango de 0 a 2.5 ya que la mayor cantidad de datos se encuentra en este rango trabajaremos con ellos
+
+- Class: cmd_question
+  Output: Primero realizaremos un filtrado de los datos en carat para que solo aparezcan los datos entre el rango de 0-2.5, por lo tanto escribe  modelo.d <- diamonds %>% filter(carat <= 2.5)
+  CorrectAnswer: modelo.d <- diamonds %>% filter(carat <= 2.5)
+  AnswerTests: omnitest(correctExpr='modelo.d <- diamonds %>% filter(carat <= 2.5)')
+  Hint: Revisa la sintaxis.
+
+- Class: cmd_question
+  Output: Ahora modificaremos el dataset agregandole una transformación logaritmica para que los datos se apeguen  a un modelo lineal, por lo tanto modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))
+  CorrectAnswer: modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))
+  AnswerTests: omnitest(correctExpr='modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))')
+  Hint: Revisa la sintaxis.
+
+- Class: text
+  Output: Ahora se nos fácilita ver la relación que existe entre los quilates y el precio.
+
+- Class: cmd_question
+  Output: Por lo tanto grafica las variables caret.rescale y price.rescale de la variable modelo.d y aplica la función geom_hex(bins = 50)
+  CorrectAnswer: ggplot(modelo.d, aes(carat.rescale, price.rescale)) %>% geom_hex(bins = 50)
+  AnswerTests: omnitest(correctExpr='ggplot(modelo.d, aes(carat.rescale, price.rescale)) %>% geom_hex(bins = 50)')
+  Hint: Escribe la función para obtener el plot que se te pidió.
