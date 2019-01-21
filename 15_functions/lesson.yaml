@@ -317,3 +317,117 @@
 
 - Class: text
   Output: Se llama switch() y funciona como uno.
+
+- Class: text
+  Output: Veamos un ejemplo para que quede más claro.
+
+- Class: text
+  Output: ejemplo <- function(x, y, op) { switch(op, raiz = x ** (1/y), exponencial = x ** y, stop("Unknown op!")}
+
+- Class: text
+  Output: Para llamarla tendrías que escribir ejemplo(número x, número y, "elección")
+
+- Class: text
+  Output: Estilo de código
+
+- Class: text
+  Output: Lo que verás a continuación son buenas practicas al escribir funciones.
+
+- Class: text
+  Output: Siempre debes utilizar llaves {} en las funciones y el contenido debe tener sangría de dos espacios.
+
+- Class: text
+  Output: De está manera será mucho más sencillo ver la jerarquía en el código.
+
+- Class: text
+  Output: Una llave de apertura nunca debe estar sola en un ĺínea, por el contrario una llave de termino siempre debe de tener su propia línea a menos que siga un else en código.
+
+- Class: text
+  Output: Puedes omitir las llaves sí la declaración de tu if es muy corta.
+
+- Class: text
+  Output: Por ejemplo
+
+- Class: text
+  Output: if (calificación < 6) "Reprobado" else "Aprobado"
+
+- Class: text
+  Output: En una declararción más larga, la forma completa es más fácil de leer.
+
+- Class: text
+  Output: Argumentos en las funciones
+
+- Class: text
+  Output: Normalmente los argumentos se dividen en dos grupos, los datos con los que se va a hacer el cálculo y los argumentos que controlan los detalles del cálculo.
+
+- Class: text
+  Output: Por ejemplo en la función de switch que vimos en la lección el dato es el número al que se le quiere sacar la raìz o elevar aun exponente y los detalles es el valor al que se va a elevar el primer número o la raíz que se va a aplicar.
+
+- Class: text
+  Output: Otro ejemplo.
+
+- Class: text
+  Output: En la función log() los datos es el número al que se le aplica el logaritmo y los detalles son la base del logaritmo.
+
+- Class: text
+  Output: En general al enunciar una función lo primero que se pone son los datos seguidos por los argumentos.
+
+- Class: text
+  Output: Otra cosa que puedes hacer es definir argumentos que tengan un valor por default.
+
+- Class: text
+  Output: De esta manera no tienes que especificar su valor cada que la uses.
+
+- Class: text
+  Output: Veamos un ejemplo con la función ejemplo que utilizamos anteriormente.
+
+- Class: text
+  Output: ejemplo <- function(x, y = 2, op) { switch(op, raiz = x ** (1/y), exponencial = x ** y, stop("Unknown op!")}
+
+- Class: text
+  Output: Si te fijas podrás ver que en los argumentos de la función y = 2 lo que significa que si al mandar llamar la función no especificas la raiz o exponente dependiendo del tercer argumento, el valor de y será 2.
+
+- Class: text
+  Output: Es importante recalcar que el default value que utilices debe ser el que vas a utilizar más comunmente.
+
+- Class: text
+  Output: Veamos un ejemplo muy importante 
+
+- Class: text
+  Output: Tendría sentido que en los argumentos de la función pusieras na.rm = FALSE por default pues es importante notar donde están los valores faltantes sin embargo cuando escribas código lo más común será que definas na.rm = TRUE.
+
+- Class: text
+  Output: Como ya sabrás para facilitar la lectura es importante mantener ciertas normas.
+
+- Class: text
+  Output: 1 Siempre dar un espacio despues de cada coma.
+
+- Class: text
+  Output: 2 Dejar dos espacios uno antes y otro despues de cada signo de igual.
+
+- Class: text
+  Output: Elegir nombres.
+
+- Class: text
+  Output: Aun que no lo parezca los nombres de los argumentos también son importantes.
+
+- Class: text
+  Output: En general vas a preferir tener nombres descriptivos pero hay un puñado de nombres cortos que vale al pena aprender.
+
+- Class: text
+  Output: 1 x, y, z como vectores.
+
+- Class: text
+  Output: 2 w como vector de peso.
+
+- Class: text
+  Output: 3 df como data frame.
+
+- Class: text
+  Output: 4. i, j como índices numéricos.
+
+- Class: text
+  Output: 5 n para medir el largo o número de filas.
+
+- Class: text
+  Output: 6 p como número de columnas.
