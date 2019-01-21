@@ -45,3 +45,54 @@
   CorrectAnswer: ggplot(modelo.d, aes(carat.rescale, price.rescale)) %>% geom_hex(bins = 50)
   AnswerTests: omnitest(correctExpr='ggplot(modelo.d, aes(carat.rescale, price.rescale)) %>% geom_hex(bins = 50)')
   Hint: Escribe la función para obtener el plot que se te pidió.
+
+- Class: text
+  Output: Ahora veremos una manera más optima para visualizar los datos y entender más facilmente.
+
+- Class: text
+  Output: Esto lo haremos al hacer una modificación al conjunto de datos, el cual graficaremos su comportamiento a travez de una función cuadratica y la compararemos con los datos de modelo.d
+
+- Class: cmd_question
+  Output: La función lm() nos da la depedencia de una variable dependiente que explica a la otra, por lo tanto para  usar esta función, le pasaremos las dos columnas nuevas,y el dataset, model.fac <- lm(~price.rescale ~carat.rescale, data = modelo.d) 
+  CorrectAnswer: model.fac <- lm(~price.rescale ~carat.rescale, data = modelo.d)
+  AnswerTests: omnitest(correctExpr='model.fac <- lm(~price.rescale ~carat.rescale, data = modelo.d)')
+  Hint: Revisa la sintaxis
+
+- Class: cmd_question
+  Output: Para saber el modelo que estamos utilizando, escribe lm(modelo.d$price.rescale ~ modelo.d$carat.rescale)
+  CorrectAnswer: lm(modelo.d$price.rescale ~ modelo.d$carat.rescale)
+  AnswerTests: omnitest(correctExpr='lm(modelo.d$price.rescale ~ modelo.d$carat.rescale)')
+  Hint: Revisa la sintaxis.
+
+
+- Class: cmd_question
+  Output: Lo que haremos a continuación es generar otra variable en la cual crearemos una función que describa el comportamiento de los datos, por lo tanto primero es escribir la siguente función func <- modelo.d %>% mutate(carat.rescale = log2(carat)) 
+  CorrectAnswer: func <- modelo.d %>% mutate(carat.rescale = log2(carat))
+  AnswerTests: omnitest(correctExpr='func <- modelo.d %>% mutate(carat.rescale = log2(carat))')
+  Hint: Revisa la sintaxis 
+
+- Class: cmd_question
+  Output: Ahora modificaremos la nueva variable para agragar las predicciones del modelo de regresión, en este caso solo los datos de price.rescale, func %>% add_predictions(model.fac, "price.rescale")
+  CorrectAnswer: func %>% add_predictions(model.fac, "price.rescale")
+  AnswerTests: omnitest(correctExpr='func %>% add_predictions(model.fac, "price.rescale")')
+  Hint: Revisa la sintaxis 
+
+- Class: text
+  Output: Lo que hace la función anteriror, es agregar una columna de .pred para las entradas del dataframe, en este caso carat, para que se grafique con forme a las predicciones y las varables de entrada.
+
+- Class: cmd_question
+  Output: Por ultimo modificaremos los valores originales de price, func %>% mutate(price = 2 ^ price.rescale)
+  CorrectAnswer: func %>% mutate(price = 2 ^ price.rescale)
+  AnswerTests: omnitest(correctExpr='func %>% mutate(price = 2 ^ price.rescale)')
+  Hint: Revisa la sintaxis.
+
+- Class: text
+  Output:  Ya tenemos nuestro modelo de comportamiento de los datos, para que nuestro resultado al momento de hacer un analisis sea correcto, Ahora pasaremos a graficar las dos variables func y modelo.d
+
+- Class: cmd_question
+  Output: Escribe ggplot(modelo.d, aes(carat, price)) + geom_hex(bins = 50) + geom_line(data = func, color = "green", size = 1)
+  CorrectAnswer: ggplot(modelo.d, aes(carat, price)) + geom_hex(bins = 50) + geom_line(data = func, color = "green", size = 1)
+  AnswerTests: omnitest(correctExpr='ggplot(modelo.d, aes(carat, price)) + geom_hex(bins = 50) + geom_line(data = func, color = "green", size = 1)')
+  Hint: Revisa la sintaxis 
+
+
