@@ -96,3 +96,110 @@
   Hint: Revisa la sintaxis 
 
 
+
+- Class: text
+  Output: Ahora veremos otro ejemplo, en el cual trataremos con las dimenciones de los diamantes para saber si tambien influye en el precio del diamante
+
+- Class: cmd_question
+  Output: Lo primero que tenemos que hacer es cargar el dataset diamonds en la variable midiamonsd 
+  CorrectAnswer: midiamonds <- diamonds
+  AnswerTests: omnitest(correctExpr='midiamonds <- diamonds')
+  Hint: Escribe lo que se te pidió
+
+
+
+- Class: cmd_question
+  Output:  Ahora nuestra variable dependiente sera el precio, como en el ejercicio anteriror y la variable independiente será x,y e z. Primero grafíca la variable x 
+  CorrectAnswer: plot(midiamonds$x, midiamonds$pirce)
+  AnswerTests: omnitest(correctExpr='plot(midiamonds$x, midiamonds$price)')
+  Hint: Escribe lo que se te pidió, ya se vió anteriormente.
+
+- Class: text
+  Output: Como podrás obserbar, hay una fuerte relación entre el precio y las dimenciones del diamante, por lo tanto grafica por separado las otras dos dimenciones.
+
+- Class: cmd_question
+  Output: Grafíca y
+  CorrectAnswer: plot(midiamonds$y, midiamonds$price)
+  AnswerTests: omnitest(correctExpr='plot(midiamonds$y, midiamonds$price)')
+  Hint: es igual que la declaración de la gráfica de x, solo pon y.
+
+- Class: text
+  Output: En la siguiente gráfica si puedes obserbar se encuentran dos valores extremos que afectan a los emás datos, por lo tanto, modificaremos la gráfica eliminando esos valores extremos y así, no meter ruidos en los demás datos.
+
+- Class: cmd_question
+  Output: Por lo tanto primero lacalizaremos al valor maximo dentro del conjunto de valores de y, guarda el resultado en maximo.
+  CorrectAnswer: maximo<-max(midiamonds$y)
+  AnswerTests: omnitest(correctExpr='maximo<-max(midiamonds$y)')
+  Hint: recuerda que debes utilizar la función max().
+
+- Class: cmd_question
+  Output: Ahora con la función which(), procederemos a quitar el indice en el que se encuentra el valor maximo, y volvemos a guardar el nuevo dataset en midiamonsd.
+  CorrectAnswer: midiamonds <- midiamonds[-(which(midiamonds$y == maximo)), ]
+  AnswerTests: omnitest(correctExpr='midiamonds <- midiamonds[-(which(midiamonds$y == maximo)), ]')
+  Hint: Recuerda acceder a los valores de un dataset, midiamonds[] y la función which se emplea which(midiamonds$y == maximo)
+
+- Class: text
+  Output: Como podrás observar el numero de observaciones del dataset se redujo en 1, por lo tanto graficaremos de nuevo.
+
+- Class: cmd_question
+  Output: Grafíca la variable y 
+  CorrectAnswer: plot(midiamonds$y, midiamonds$price)
+  AnswerTests: omnitest(correctExpr='plot(midiamonds$y, midiamonds$price)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Como aún hay un valor extremo que altera al resto delos datos, procederemos a eliminarlo de la misma manera que el dato anterior. encuentra el valor maximo y guardalo en maximo.
+  CorrectAnswer: maximo <- max(midiamonds$y)
+  AnswerTests: omnitest(correctExpr='maximo <- max(midiamonds$y)')
+  Hint: Escribe lo que se te pdio.
+
+- Class: cmd_question
+  Output: Ahora procede a eliminar el indice del valor maximo con la funció which().
+  CorrectAnswer: midiamonds <- midiamonds[-(which(midiamonds$y == maximo)), ]
+  AnswerTests: omnitest(correctExpr='midiamonds <- midiamonds[-(which(midiamonds$y == maximo)), ]')
+  Hint: Escribe lo que se te pdio.
+
+- Class: cmd_question
+  Output: Ahora vuelve a graficar.
+  CorrectAnswer: plot(midiamonds$y, midiamonds$price)
+  AnswerTests: omnitest(correctExpr='plot(midiamonds$y, midiamonds$price)')
+  Hint: Escribe lo que se te pdio.
+
+- Class: text
+  Output: Ahora el conjunto de datos de la variable y se encuentra en condiciones para trabajar con el, lo único que nos falta es tratar con la variable z.
+
+- Class: cmd_question
+  Output: Grafíca la variable z
+  CorrectAnswer: plot(midiamonds$z, midiamonds$price)
+  AnswerTests: omnitest(correctExpr='plot(midiamonds$z, midiamonds$price)')
+  Hint: Escribe lo que se te pidió
+
+- Class: text
+  Output: En la gráfica podemos obserbar que también hay un valor extremo que nos hace variar el resultado. Procederemos a eliminar ese valor como lo hicimos anteriormente cuando trabajamos con y.
+
+- Class: cmd_question
+  Output: Encuentra el valor máximo de z y guardalo en maximo.
+  CorrectAnswer: maximo<-max(midiamonds$z)
+  AnswerTests: omnitest(correctExpr='maximo<-max(midiamonds$z)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Elimina el indice del valor máximo en z y guarda el cambio en midiamonds.
+  CorrectAnswer: midiamonds <- midiamonds[-(which(midiamonds$z == maximo)),]
+  AnswerTests: omnitest(correctExpr='midiamonds <- midiamonds[-(which(midiamonds$z == maximo)),]')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Ahora que ya estan las tres variables, listas para trabajar podemos tratar de responder a la pregunta si las tres variables tienen alguna relación para definir el precio.
+
+- Class: cmd_question
+  Output: Grafíca el volumen con las variables x, y, z que son las variables independientes y el precio que es la variable dependiente.
+  CorrectAnswer: plot( midiamonds$x * midiamonds$y * midiamonds$z, midiamonds$price)
+  AnswerTests: omnitest(correctExpr='plot( midiamonds$x * midiamonds$y * midiamonds$z, midiamonds$price)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Ahora podemos ver claramente en la gráfica que hay tres bandas bien definidas en las cuales, se puede apreciar claramente que aunque tengan el mismo volumen los diamantes hay otros factores con los cuales tambien afectan al precio de los mismos.
+
+- Class: text
+  Output: Pero lo que nos importa en este momento es sacar el modelo de regresión lineal.
