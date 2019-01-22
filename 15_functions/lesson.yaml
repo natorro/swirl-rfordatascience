@@ -431,3 +431,111 @@
 
 - Class: text
   Output: 6 p como número de columnas.
+
+- Class: text
+  Output: Checando Valores.
+
+- Class: text
+  Output: A medida que comiences a escribir más funciones llegará el punto en que no recuerdes exactamente como funcionan tus funciones.
+
+- Class: text
+  Output: Llegado ese punto será fácil que metas argumentos incorrectos.
+
+- Class: text
+  Output: Para evitar esto es recomendable que uses restricciones explícitas. Por ejemplo
+
+- Class: text
+  Output: Digamos que tienes una función que recibe como argumento dos números y como objetivo tiene dividir el primer número sobre el segundo.
+
+- Class: text
+  Output: division <- function(x, y) { x / y }
+
+- Class: text
+  Output: Sí a esta función se te ocurre meterle un 0 como segundo argumento no te va mandar ningun error, lo único que va a arrojar es que el valor resultante es infinito.
+
+- Class: text
+  Output: Aun que la computadora arroje un valor, matemáticamente habalndo es incorrecto dividir un número por 0. Ves a lo que nos referimos cuando decimos que puede llevar a confusiones?
+
+- Class: text
+  Output: Pero qué puedes hacer para corregir esto?
+
+- Class: text
+  Output: Restricciones, aquí te va un ejemplo con la función anterior.
+
+- Class: text
+  Output: division <- function(x, y) { if (y == 0) { stop("y debe ser diferente a 0")}; x / y }
+
+- Class: text
+  Output: Tampoco debes de pasarte al otro extremo en el que pones demasiadas condiciones ya que con eso puedes complicar sin razón tu función. Esto claro si no tienes demasiada experiencia con funciones.
+
+- Class: text
+  Output: Con el tiempo y la practica podrás hacer funciones cada vez más robustas.
+
+- Class: text
+  Output: Punto-punto-punto
+
+- Class: text
+  Output: Algunas funciones no tienen un número definido de argumentos a recibir es decir que así como pueden ser dos, podrían ser 100.
+
+- Class: text
+  Output: Hagamos un ejercicio.
+
+- Class: cmd_question
+  Output: Mete el siguiente código ordenar <- function(...) {stringr::str_order(..., decreasing = TRUE)}
+  CorrectAnswer: ordenar <- function(...) {stringr::str_order(..., decreasing = TRUE)}
+  AnswerTests: omnitest(correctExpr='ordenar <- function(...) {stringr::str_order(..., decreasing = TRUE)}')
+  Hint: Utiliza el código que se te proporcionó.
+
+- Class: cmd_question
+  Output: Introduce ordenar(1:3)
+  CorrectAnswer: ordenar(1:3)
+  AnswerTests: omnitest(correctExpr='ordenar(1:3)')
+  Hint: Utiliza el código que se te proporcionó.
+
+- Class: text
+  Output: Lo ordena de manera descendente y funcionó con tres argumentos.
+
+- Class: cmd_question
+  Output: Ahora introduce ordenar(1:9)
+  CorrectAnswer: ordenar(1:9)
+  AnswerTests: omnitest(correctExpr='ordenar(1:9)')
+  Hint: Introduce el código que se te pidió.
+
+- Class: text
+  Output: Pero también funciona con 9 argumentos.
+
+- Class: text
+  Output: Una de las últimas cosas que ves al crear tu función es el valor que te va a regresar y es curioso por que ese valor es por lo que hiciste la función en primer lugar.
+
+- Class: text
+  Output: Generalmente el valor que regresa la función es la última declaración que evalua. 
+
+- Class: text
+  Output: CLaro que puedes apresuarar a modificar esto con la función return().
+
+- Class: text
+  Output: Puedes ponerlo en caso de que se cumpla alguna condición.
+
+- Class: text
+  Output: Por ejemplo.
+
+- Class: text
+  Output: division <- function(x, y) { if (y == 0) { return("y debe ser diferente a 0")}; x / y }
+
+- Class: text
+  Output: Entonces queda claro que puedes dar un return distinto dependiendo de las condiciones que se cumplan dentro de tu función.
+
+- Class: text
+  Output: Ya para terminar te hablaremos de que tipo de funciones estás creando y lo que deben cumplir.
+
+- Class: text
+  Output: Pueden ser de transformación o de efecto secundario.
+
+- Class: text
+  Output: Las de transformación son en las que hay un claro objeto de entrada que es transformado por la función que regresa un función modificada del mismo.
+
+- Class: text
+  Output: Las segundas son en las que se les llama para que realizen un acción como puede ser generar o guardar un archivo estas funciones deben regresar de manera invisible el argumento, para que no se escriba de forma automática existe la función invisible()
+
+- Class: text
+  Output: Felicidades hemos terminado el curso.
