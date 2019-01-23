@@ -8,9 +8,62 @@
 
 
 - Class: text
-  Output: En esta sección te mostraremos lo útil que puede ser usar un Script para no trabajar directo desde consola.Este te permite tener mas espacio para trabajar. Un script editor se abre dando click en la pestaña file, seguido de eso baja a New File donde daras click nuevamente y se abrira otra pestaña, de la nueva pestaña seleccionamos la primera opción que es "R Script". Has terminado! Ahora puedes comenzar a escribir tú código
+  Output: En esta sección te mostraremos lo útil que puede ser usar un Script, sobre todo cuando comiences a escribir código más complejo. 
+
+- Class: text
+  Output: Un script editor se abre dando click en la pestaña file, seguido de eso baja a New File donde daras click nuevamente y se abrira otra pestaña, de la nueva pestaña seleccionamos la primera opción que es "R Script". Has terminado! Ahora puedes comenzar a escribir tú código
+
+- Class: text
+  Output: Utilizar un ScripT te brinda la posibilidad de tener más espacio para tu código(sin que se este ejecutando en automático), además de tener varias herramientas para optimizar tu forma de trabajar.
+
+- Class: text
+  Output: Para usar el R Script de manera eficiente debes memorizar los keyboard shortcuts correspondientes   
+
+- Class: text
+  Output: Cmd ó Ctrl - Enter que sirve para correr el comando sobre el que estas posicionado además el cursor avanzará hasta la siguiente declaración de tal manera que puedes correr todo el código presionando repetidamente dicho comando.
+  
+  
+- Class: text
+  Output: Cmd ó Ctrl-Shift-S que sirve para correr todo el Script.
+  
+  
+- Class: text
+  Output: Otra opción es que subrayes todo el código que deseas correr y ejecutes el comando Cmd ó Ctrl - Enter.
 
 
 
 - Class: text
-  Output: Para usar el R Script de manera eficiente debes memorizar los keyboard shortcuts correspondientes --> Cmd ó Ctrl - Enter que sirve para correr el comando sobre el que estas posicionado y Cmd ó Ctrl-Shift-S que sirve para correr todo el Script.
+  Output: Una de las funciones de R studio permite que puedas cerrar la IDE en el momento que desees y si dejaste código en un scripT, lo carga automáticamente.
+
+- Class: text
+  Output: Sin embargo es recomendable que siempre guardes los scripts con código que te sea importante.
+
+- Class: text
+  Output: Es recomendable que siempre empieces el script cargando las paqueterías que vas a necesitar.
+
+- Class: text
+  Output: De ese modo si compartes tu código con otras personas, podrán ver fácilmente que paqueterías necesitan instalar.
+
+- Class: text
+  Output: No deberías incluir código del tipo install.packages() o setwd() pues no es cortés cambiar los ajustes de una computadora ajena.
+
+- Class: text
+  Output: Trata de implementar los short-cuts que te dimos para que se vuelva algo natural a la hora de que programes.
+
+- Class: text
+  Output: Diagnósticos de R studio
+
+- Class: text
+  Output: El script editor de R studio detecta errores de sintaxis.
+
+- Class: text
+  Output: Te darás cuenta por que los subraya con una línea roja ondulada y una x roja en la barra lateral.
+
+- Class: text
+  Output: Sí te posisionas sobre la x podrás ver el error que tienes en tu sintaxis.
+
+- Class: text
+  Output: Por último R studio también puede detecar potenciales errores en tu código. Estos los marca con un ícono amarillo de warning y de igual manera si te posicionas sobre el te dirá cuál es el problema.
+
+- Class: text
+  Output: Felicidaes hemos terminado, continua con la siguiente lección!
