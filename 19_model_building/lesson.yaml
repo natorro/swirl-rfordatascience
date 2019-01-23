@@ -8,13 +8,13 @@
 
 
 - Class: text
-  Output: El este capitulo nos centraremos en realizar progresivamente modelados de datos reales, para una mejor comprensión.
+  Output: El este capítulo nos centraremos en realizar progresivamente modelados de datos reales, para una mejor comprensión.
 
 - Class: text
-  Output: Por ejemplo, en los capitulos anteriores trabajamos con el dataset diamonds, en donde pudimos apreciar como los diamantes de baja calidad son más caros.
+  Output: Por ejemplo, en los capítulos anteriores trabajamos con el dataset diamonds, en donde pudimos apreciar como los diamantes de baja calidad son más caros.
 
 - Class: cmd_question
-  Output: Para poder ver la evolución del modelo del análisis de los datos con la función ggplo() grafica solo la columna carat y price y aplicale la función geom_hex(bins = 50)
+  Output: Para poder ver la evolución del modelo del análisis de los datos con la función ggplot() grafica solo la columna carat y price y aplicale la función geom_hex(bins = 50)
   CorrectAnswer: ggplot(diamonds, aes(carat, price)) + geom_hex(bins = 50)
   AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(carat, price)) + geom_hex(bins = 50)')
   Hint:  La función es ggplot(diamonds, aes(carat, price)) + geom_hex(bins = 50)
@@ -32,18 +32,18 @@
   Hint: Revisa la sintaxis.
 
 - Class: cmd_question
-  Output: Ahora modificaremos el dataset agregandole una transformación logaritmica para que los datos se apeguen  a un modelo lineal, por lo tanto modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))
-  CorrectAnswer: modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))
-  AnswerTests: omnitest(correctExpr='modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))')
+  Output: Ahora modificaremos el dataset agregandole una transformación logaritmica para que los datos se apeguen  a un modelo lineal, por lo tanto modelo.d <- modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))
+  CorrectAnswer: modelo.d <- modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))
+  AnswerTests: omnitest(correctExpr='modelo.d <- modelo.d %>% mutate(price.rescale = log2(price), carat.rescale = log2(carat))')
   Hint: Revisa la sintaxis.
 
 - Class: text
   Output: Ahora se nos fácilita ver la relación que existe entre los quilates y el precio.
 
 - Class: cmd_question
-  Output: Por lo tanto grafica las variables caret.rescale y price.rescale de la variable modelo.d y aplica la función geom_hex(bins = 50)
-  CorrectAnswer: ggplot(modelo.d, aes(carat.rescale, price.rescale)) %>% geom_hex(bins = 50)
-  AnswerTests: omnitest(correctExpr='ggplot(modelo.d, aes(carat.rescale, price.rescale)) %>% geom_hex(bins = 50)')
+  Output: Por lo tanto grafica las variables carat.rescale y price.rescale de la variable modelo.d y aplica la función geom_hex(bins = 50)
+  CorrectAnswer: ggplot(modelo.d, aes(carat.rescale, price.rescale)) + geom_hex(bins = 50)
+  AnswerTests: omnitest(correctExpr='ggplot(modelo.d, aes(carat.rescale, price.rescale)) + geom_hex(bins = 50)')
   Hint: Escribe la función para obtener el plot que se te pidió.
 
 - Class: text
@@ -53,9 +53,9 @@
   Output: Esto lo haremos al hacer una modificación al conjunto de datos, el cual graficaremos su comportamiento a travez de una función cuadratica y la compararemos con los datos de modelo.d
 
 - Class: cmd_question
-  Output: La función lm() nos da la depedencia de una variable dependiente que explica a la otra, por lo tanto para  usar esta función, le pasaremos las dos columnas nuevas,y el dataset, model.fac <- lm(~price.rescale ~carat.rescale, data = modelo.d) 
-  CorrectAnswer: model.fac <- lm(~price.rescale ~carat.rescale, data = modelo.d)
-  AnswerTests: omnitest(correctExpr='model.fac <- lm(~price.rescale ~carat.rescale, data = modelo.d)')
+  Output: La función lm() nos da la depedencia de una variable dependiente que explica a la otra, por lo tanto para  usar esta función, le pasaremos las dos columnas nuevas,y el dataset, model.fac <- lm(price.rescale ~ carat.rescale, data = modelo.d) 
+  CorrectAnswer: model.fac <- lm(price.rescale ~ carat.rescale, data = modelo.d)
+  AnswerTests: omnitest(correctExpr='model.fac <- lm(price.rescale ~ carat.rescale, data = modelo.d)')
   Hint: Revisa la sintaxis
 
 - Class: cmd_question
@@ -72,7 +72,7 @@
   Hint: Revisa la sintaxis 
 
 - Class: cmd_question
-  Output: Ahora modificaremos la nueva variable para agragar las predicciones del modelo de regresión, en este caso solo los datos de price.rescale, func %>% add_predictions(model.fac, "price.rescale")
+  Output: Ahora modificaremos la nueva variable para agregar las predicciones del modelo de regresión, en este caso solo los datos de price.rescale, func %>% add_predictions(model.fac, "price.rescale")
   CorrectAnswer: func %>% add_predictions(model.fac, "price.rescale")
   AnswerTests: omnitest(correctExpr='func %>% add_predictions(model.fac, "price.rescale")')
   Hint: Revisa la sintaxis 
@@ -203,3 +203,32 @@
 
 - Class: text
   Output: Pero lo que nos importa en este momento es sacar el modelo de regresión lineal.
+
+- Class: cmd_question
+  Output: Haremos una regresión lineal con la variable price y la variable y por lo tanto, los cambios que vamos a realizar los vamos a guardar en el mismo dataset midiamonds. Entonces para hacer la regresión lineal al dataset midiamonds, le agregaremos la función mutate() (a midiamonds), para asi agregar dos columnas nuevas que se llamarán reg.price y reg.y, a cada una de las vriables le asignaremos una función log2(), y cada función resivirá como parametro price e y con su respectiva variable nueva.
+  CorrectAnswer: midiamonds <- midiamonds %>% mutate(reg.price = log2(price), reg.y = log2(y))
+  AnswerTests: omnitest(correctExpr='midiamonds <- midiamonds %>% mutate(reg.price = log2(price), reg.y = log2(y))')
+  Hint: La sintaxis para agregar las dos columnas nuevas es midiamonds <- midiamonds %>% mutate(reg.price = log2(price), reg.y = log2(y))
+
+- Class: cmd_question
+  Output: Por ultimo grafica reg.price y reg.y con la función de ggplot agregando la función geom_hex(bins = 50)
+  CorrectAnswer: ggplot(midiamonds, aes(reg.y, reg.price)) + geom_hex(bins = 50)
+  AnswerTests: omnitest(correctExpr='ggplot(midiamonds, aes(reg.y, reg.price)) + geom_hex(bins = 50)')
+  Hint: La sintaxis de la función es ggplot(midiamonds, aes(reg.y, reg.price)) + geom_hex(bins = 50)
+
+
+- Class: text
+  Output: Ahora pasaremos a ver un modelo que en particular trabajaremos con las cualidades de los diamantes y así poder ver más a fondo el comportamiento del preció de los diamantes.
+
+
+- Class: cmd_question
+  Output: Procederemos a agregar los valores cualitativos de los diamantes y tartar de explicar el precio de los diamantes, por lo tanto escribe midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d,)
+  CorrectAnswer: midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d,)
+  AnswerTests: omnitest(correctExpr='midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d,)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Ahora agregaremos predicciones dentro de una nueva variable que solo contendra las variables cualitativas, carat, price y predicciones para esto escribe pred <- modelo.d %>% data_grid(cut, .model = midiamonds.res) %>% add_predictions(midiamonds.res) 
+  CorrectAnswer: pred <- modelo.d %>% data_grid(cut, .model = midiamonds.res) %>% add_predictions(midiamonds.res)
+  AnswerTests: omnitest(correctExpr='pred <- modelo.d %>% data_grid(cut, .model = midiamonds.res) %>% add_predictions(midiamonds.res)')
+  Hint: Escribe lo que se te pidió.
