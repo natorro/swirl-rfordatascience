@@ -7,7 +7,7 @@
   Version: 2.4.3
   
 - Class: text
-  Output: En esta lección aprenderas a escribir funciones para automatizar tareas en el copiado y pegado de datos.
+  Output: En esta lección aprenderas a escribir funciones para automatizar tareas en el copiado y pegado de datos. Asegurate de tener instalada la paquetería de stringr(library(stringr)).
 
 - Class: text
   Output: Las ventajas de crear funciones se pueden resumir en(:)
@@ -76,43 +76,24 @@
   Output: 2 No es nada eficiente que estes copiando, pegando y mdoficando código para cada columna.
 
 - Class: text
-  Output: Ahora generaremos una función para hacer más rápido el proceso.
+  Output: Ahora te proporcionaremos el código de una función para hacer más rápido el proceso.
+
+- Class: text
+  Output: decimal <- function(x) { for (i in seq_along(x)) { x[i] <- x[[i]] / 10  }; x}
 
 
 
-
-
-- Class: script
-  Output: Escribe le siguiente código, decimal <- function(x) { for (i in seq_along(x)) { x[i] <- x[[i]] / 10  }; x}
-  AnswerTests: omnitest(correctExpr='decimal <- function(x) { for (i in seq_along(x)) { x[i] <- x[[i]] / 10  }; x}')
-  Hint: Escribe lo que se te pidió.
-  Script: function1.R
-
-
-
-
-
-
-
-
-- Class: cmd_question
-  Output: Escribe el siguiente código decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10) x }
-  CorrectAnswer: decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10) x }
-  AnswerTests: omnitest(correctExpr='decimal <- function(x) { for (i in seq_along(x)) ( x[i] <- x[[i]] / 10) x }')
-  Hint: Escribe lo que se te pidió.
-
-
-
-- Class: cmd_question
-  Output: Type your text output here.
-  CorrectAnswer: decimal(df)
-  AnswerTests: omnitest(correctExpr='decimal(df)')
-  Hint: Type a hint.
+- Class: mult_question
+  Output: Qué pasaría si corro el siguiente código? decimal(df)
+  AnswerChoices: Vuelve los números de la diagonal decimales;Todos los números se vuelven decimales;Ningún número se vuelve  decimal
+  CorrectAnswer: Todos los números se vuelven decimales
+  AnswerTests: omnitest(correctVal='Todos los números se vuelven decimales')
+  Hint: Revisa como funciona cada parte de la función.
 
 
 
 - Class: text
-  Output: Como podrás ver se modificó la dataframe y ahora tiene puros valores en decimal.
+  Output: Como te podrás imaginar esta función habría modificó el dataframe y tendría puros valores en decimal. (Sí quieres hacerlo sólo tendrás que copiar y pegar la función aun script de R)
 
 - Class: text
   Output: Es importante recalcar que no hay una fórmula que te diga exactamente que hacer para crear la función que necesitas.
@@ -125,23 +106,16 @@
 
 - Class: text
   Output: Lo ejemplificaremos con otra función que hace lo mismo que la anterior.
+  
+- Class: text
+  Output: Aquí el código.
+  
+- Class: text
+  Output: decimal2 <- function(x) { for (i in 1:length(x)){ x[i] <- x[i] /10 }; x }
 
-- Class: cmd_question
-  Output: Utiliza el siguiente código decimal2 <- function(x) { for (i in 1:length(x)){ x[i] <- x[i] /10 } x }
-  CorrectAnswer: decimal2 <- function(x) { for (i in 1:length(x)){ x[i] <- x[i] /10 } x }
-  AnswerTests: omnitest(correctExpr='decimal2 <- function(x) { for (i in 1:length(x)){ x[i] <- x[i] /10 } x }')
-  Hint: Utiliza el código que se te proporcionó.
-
-- Class: cmd_question
-  Output: Aplica la función decimal2 en df.
-  CorrectAnswer: decimal2(df)
-  AnswerTests: omnitest(correctExpr='decimal2(df)')
-  Hint: Escribe decimal2(df).
 
 - Class: text
-  Output: Podrás ver que arrojó el mismo resultado.
-
-
+  Output: Cada quien tiene su forma de entender las funciones por eso te decimos que no hay una fórmula exacta para que las hagas.
 
 
 - Class: text
@@ -209,12 +183,15 @@
 
 - Class: text
   Output: Nuestra función recibirá la medida de dos lados con intersección en una figura geométrica y nos dirá si se trata de un rectángulo o de un cuadrado.
+  
+- Class: text
+  Output: El código que vas a utilizar es 
 
-- Class: cmd_question
-  Output: Escribe el siguiente código, tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}
-  CorrectAnswer: tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}
-  AnswerTests: omnitest(correctExpr='tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}')
-  Hint: Utiliza el código que se te proporcionó.
+
+- Class: text
+  Output: tipoFig <-function(a,b) { if(a == b) {print("Es un cuadrado")} else { print( "Es un rectángulo")}}
+
+
 
 - Class: text
   Output: La condición debe ser evaluada como verdadera o falsa.
@@ -478,31 +455,34 @@
   Output: Algunas funciones no tienen un número definido de argumentos a recibir es decir que así como pueden ser dos, podrían ser 100.
 
 - Class: text
-  Output: Hagamos un ejercicio.
-
-- Class: cmd_question
-  Output: Mete el siguiente código ordenar <- function(...) {stringr::str_order(..., decreasing = TRUE)}
-  CorrectAnswer: ordenar <- function(...) {stringr::str_order(..., decreasing = TRUE)}
-  AnswerTests: omnitest(correctExpr='ordenar <- function(...) {stringr::str_order(..., decreasing = TRUE)}')
-  Hint: Utiliza el código que se te proporcionó.
-
-- Class: cmd_question
-  Output: Introduce ordenar(1:3)
-  CorrectAnswer: ordenar(1:3)
-  AnswerTests: omnitest(correctExpr='ordenar(1:3)')
-  Hint: Utiliza el código que se te proporcionó.
+  Output: Veamos otro ejemplo de función.
+  
+  
+  
+- Class: text
+  Output: ordenar <- function(...){str_order(...)}
+  
+- Class: text
+  Output: Lo que hace esta función es ordenar de manera ascendente una serie de números.
+  
+- Class: text
+  Output: Pero el beneficio que te otorgan los tres puntos es que esa serie puede ser tan larga como quieras, por que puede recibir muchos argumentos.
 
 - Class: text
-  Output: Lo ordena de manera descendente y funcionó con tres argumentos.
-
-- Class: cmd_question
-  Output: Ahora introduce ordenar(1:9)
-  CorrectAnswer: ordenar(1:9)
-  AnswerTests: omnitest(correctExpr='ordenar(1:9)')
-  Hint: Introduce el código que se te pidió.
+  Output: No importa si introduces ordenar(c(3, 2, 1)) u ordenar(9, 8, 7, 6, 5, 4, 3, 2, 1)
 
 - Class: text
-  Output: Pero también funciona con 9 argumentos.
+  Output: El resultado de la primera será 1 2 3
+  
+- Class: text
+  Output: y el resultado de la segunda será 1 2 3 4 5 6 7 8 9
+
+- Class: text
+  Output: Lo ordena de manera ascendente y funciona con tres argumentos.
+
+
+- Class: text
+  Output: Pero también funciona con 9 argumentos (Lo puedes probar en un scrip de R).
 
 - Class: text
   Output: Una de las últimas cosas que ves al crear tu función es el valor que te va a regresar y es curioso por que ese valor es por lo que hiciste la función en primer lugar.
@@ -539,3 +519,8 @@
 
 - Class: text
   Output: Felicidades hemos terminado el curso.
+
+
+
+
+
