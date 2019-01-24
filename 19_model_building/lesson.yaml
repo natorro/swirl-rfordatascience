@@ -222,9 +222,9 @@
 
 
 - Class: cmd_question
-  Output: Procederemos a agregar los valores cualitativos de los diamantes y tartar de explicar el precio de los diamantes, por lo tanto escribe midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d,)
-  CorrectAnswer: midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d,)
-  AnswerTests: omnitest(correctExpr='midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d,)')
+  Output: Procederemos a agregar los valores cualitativos de los diamantes y tartar de explicar el precio de los diamantes, por lo tanto escribe midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d)
+  CorrectAnswer: midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d)
+  AnswerTests: omnitest(correctExpr='midiamonds.res <- lm(price.rescale ~ carat.rescale + color + cut + clarity, data = modelo.d)')
   Hint: Escribe lo que se te pidió.
 
 - Class: cmd_question
@@ -232,3 +232,147 @@
   CorrectAnswer: pred <- modelo.d %>% data_grid(cut, .model = midiamonds.res) %>% add_predictions(midiamonds.res)
   AnswerTests: omnitest(correctExpr='pred <- modelo.d %>% data_grid(cut, .model = midiamonds.res) %>% add_predictions(midiamonds.res)')
   Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Ahora construiremos la gráfica  con ggplot(), pasando como primer parametro pred y como segundo parametro la función aes(), con los dos parametros cut y pred (la variable que es parte del dataset, no el data set), concatenandolo coon la función de geom_point()
+  CorrectAnswer: ggplot(pred, aes(cut, pred)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(pred, aes(cut, pred)) + geom_point()')
+  Hint: La sintaxis de la función es ggplot(pred, aes(cut, pred)) + geom_point()
+
+- Class: text
+  Output: Si el modelo necesita variables que explicitamente no tiene, la función data_grit() automaticamente les proporciona el valor típico. Para las variables continuas usará la media, y para variable categoricas, usará el valor más común.
+
+- Class: text
+  Output: Ahora agregaremos la columna de residuos y te estarás preguntando para que ver los residuos, bueno, los residuos son elementos esenciales y un medio para identificar probemas potenciales de cualquier modelo estadístico. 
+
+- Class: cmd_question
+  Output: Para ello escribe modelo.d <- modelo.d %>% add_residuals(midiamonds.res, "lresid")
+  CorrectAnswer: modelo.d <- modelo.d %>% add_residuals(midiamonds.res, "lresid")
+  AnswerTests: omnitest(correctExpr='modelo.d <- modelo.d %>% add_residuals(midiamonds.res, "lresid")')
+  Hint: Escribe lo que se te pidió
+
+- Class: cmd_question
+  Output: Ahora graficamos, ggplot(modelo.d, aes(carat.rescale, lresid)) + geom_hex(bins = 50)
+  CorrectAnswer: ggplot(modelo.d, aes(carat.rescale, lresid)) + geom_hex(bins = 50)
+  AnswerTests: omnitest(correctExpr='ggplot(modelo.d, aes(carat.rescale, lresid)) + geom_hex(bins = 50)')
+  Hint: Escribe lo que se te pidió
+
+- Class: text
+  Output: Como puedes obserbar en la gráfica, algunos diamantes tienen residuales vastante garndes, como por ejemplo los residuales de 2, nos indican que el diamante es 4 veces el precio que esperabamos, y estos son valores inusuales, por lo tanto si deceas tratar o visualizar los valores inusuales debe ser por separado.
+
+- Class: cmd_question
+  Output: Por lo tanto, primero tendremos que aplicar un filtrado a modelo.d para serapar todos aquellos valores que sean mayores a uno, despues agregaremos predicciones de midiamonds.res, también agregaremos la función mutate  donde modificaremos la variable  pred = round(2^ pred), aremos una selección de las columnas price, pred, carat:table y x:z y por ultimo con la función arrange(price)
+  CorrectAnswer: modelo.d %>% filter(abs(lresid) > 1) %>% add_predictions(midiamonds.res) %>% mutate(pred = round (2 ^ pred)) %>% select(price, pred, carat:table, x:z) %>% arrange(price)
+  AnswerTests: omnitest(correctExpr='modelo.d %>% filter(abs(lresid) > 1) %>% add_predictions(midiamonds.res) %>% mutate(pred = round (2 ^ pred)) %>% select(price, pred, carat:table, x:z) %>% arrange(price)')
+  Hint: La sintaxis de la función es modelo.d %>% filter(abs(lresid) > 1) %>% add_predictions(midiamonds.res) %>% mutate(pred = round (2 ^ pred)) %>% select(price, pred, carat:table, x:z) %>% arrange(price)
+
+- Class: text
+  Output: Los datos que ahora muestra modelo.d son los supuestos valores inusuales, donde nosotros tenemos que aplicar un criterio para saber si son congruentes con nuestro modelo o no, y si no lo son quiere decir que nuestro modelo no es el adecuado para tratar los datos. 
+
+- Class: text
+  Output: Ahora pasaremos a analisar los vuelos en NYC por día, a quí podremos visualizar otro tipo de efectos dentro de este dataset.
+
+- Class: cmd_question
+  Output: Comencemos por asignar el dataset de fligths a la variable vuelo.xd
+  CorrectAnswer: vuelo.xd <- fligths
+  AnswerTests: omnitest(correctExpr='vuelo.xd <- fligths')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Ahora del data set vuelo.xd solo queremos las fechas y el numero de vuelos por día por lo tanto vuelo.xd <- vuelo.xd %>% mutate(date = make_date(year, month, day))%>% group_by(date) %>% summarize(n = n())
+  CorrectAnswer:  vuelo.xd <- vuelo.xd %>% mutate(date = make_date(year, month, day))%>% group_by(date) %>% summarize(n = n())
+  AnswerTests: omnitest(correctExpr=' vuelo.xd <- vuelo.xd %>% mutate(date = make_date(year, month, day))%>% group_by(date) %>% summarize(n = n())')
+  Hint: Escribe lo que se te pide.
+
+- Class: text
+  Output: Como podrás ver en la parte superior donde estan los datos, ya solo nuestro dataset contiene solo doos columnas una de las fechas y otra de el número de vuelos.
+
+- Class: cmd_question
+  Output: Ahora para saber como se esta comportando estos datos, gráficaremos con ggplot y concatenamos con geom_line()
+  CorrectAnswer: ggplot(vuelo.xd, aes(date, n)) + geom_line()
+  AnswerTests: omnitest(correctExpr='ggplot(vuelo.xd, aes(date, n)) + geom_line()')
+  Hint: Solo tienes que graficar las dos variables que se encuentran en el dataset.
+
+- Class: text
+  Output: Tratar de comprender la gráfica, y encontrar lo que está haciendo que la gráfica se comport de esta manera es un tanto complicado, por eso empesaremos visualizando la distribución de los números de vuelo por día.
+
+- Class: cmd_question
+  Output: Para esto escribe vuelo.xd <- vuelo.xd %>% mutate(sday = wday(date,  label = TRUE))
+  CorrectAnswer: vuelo.xd <- vuelo.xd %>% mutate(sday = wday(date,  label = TRUE))
+  AnswerTests: omnitest(correctExpr='vuelo.xd <- vuelo.xd %>% mutate(sday = wday(date,  label = TRUE))')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Ahora gráfica  la columna sday y n y concatena la función de ggplot con geom_boxplot()
+  CorrectAnswer: ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot()
+  AnswerTests: omnitest(correctExpr='ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot()')
+  Hint: Escribe lo que se te pide.
+
+- Class: text
+  Output: En la gráfica anterior podemos darnos cuenta que la mayoria de los vuelos se da entre semana y en fines de semana, el número de vuelos se reduce considerablemente a comparación de los demás días.
+
+- Class: cmd_question
+  Output: Sacaramos un modelo en donde el número de vuelos es nuestra bariable que explicará  los puelos por día de la semana por lo tanto escribe mod.v <- lm(n ~ sday, data = vuelo.xd)
+  CorrectAnswer: mod.v <- lm(n ~ sday, data = vuelo.xd)
+  AnswerTests: omnitest(correctExpr='mod.v <- lm(n ~ sday, data = vuelo.xd)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Ahora le aplicaremos las predicciones pred <- vuelo.xd %>% data_grid(sday) %>% add_predictions(mod.v, "n")
+  CorrectAnswer: pred <- vuelo.xd %>% data_grid(sday) %>% add_predictions(mod.v, "n")
+  AnswerTests: omnitest(correctExpr='pred <- vuelo.xd %>% data_grid(sday) %>% add_predictions(mod.v, "n")')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Graficamos sday y n concatenando con geom_boxplot y geom_point(data = pred, color = "green", size = 3) 
+  CorrectAnswer: ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot() + geom_point(data = pred, color = "green", size = 3)
+  AnswerTests: omnitest(correctExpr='ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot() + geom_point(data = pred, color = "green", size = 3)')
+  Hint: La sintaxis de la función es ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot() + geom_point(data = pred, color = "green", size = 3)
+
+- Class: text
+  Output: Ahora como en el ejercicio de los diamantes, agregaremos los residuales y los graficaremos.
+
+- Class: cmd_question
+  Output: Aplica al dataset vuelo.xd la función add_residuals(mod.v)
+  CorrectAnswer: vuelo.xd <- vuelo.xd %>% add_residuals(mod.v)
+  AnswerTests: omnitest(correctExpr='vuelo.xd <- vuelo.xd %>% add_residuals(mod.v)')
+  Hint: La sintaxis es vuelo.xd <- vuelo.xd %>% add_residuals(mod.v)
+
+- Class: cmd_question
+  Output: Por ultimo graficamos date y resid concatenandolo con geom_ref_line(h = 0) y geom_line()
+  CorrectAnswer: ggplot(vuelo.xd, aes(date, resid)) + geom_ref_line(h = 0) + geom_line()
+  AnswerTests: omnitest(correctExpr='ggplot(vuelo.xd, aes(date, resid)) + geom_ref_line(h = 0) + geom_line()')
+  Hint: Escribe lo que se te pide, vamos no es difícil.
+
+- Class: text
+  Output: Ahora la gráfica en el eje y estamos viendo la desviación de el número esperado de vuelos, dado el día de la semana.
+
+- Class: text
+  Output: Pero un nuestro moldelo falla a partir del ms de junio, ya que aún se puede apreciar que sigue un parametro regular fuerte que nuestro modelo no puede capturar. Por lo tanto graficaremos por dia de la semana.
+
+- Class: cmd_question
+  Output: Escribe ggplot(vuelo.xd, aes(date, resid, color = sday)) + geom_ref_line(h = 0) + geom_line()
+  CorrectAnswer: ggplot(vuelo.xd, aes(date, resid, color = sday)) + geom_ref_line(h = 0) + geom_line()
+  AnswerTests: omnitest(correctExpr='ggplot(vuelo.xd, aes(date, resid, color = sday)) + geom_ref_line(h = 0) + geom_line()')
+  Hint: escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Ahora hay que ver cuantos vuelos estan por debajo de lo esperado. a vuelo.xd aplicale un filtrado con valores de resid que esten por debajo de -100
+  CorrectAnswer: vuelo.xd %>% filter(resid < -100)
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% filter(resid < -100)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Se ve claramente que aún hay una cantidad considerable de vuelos por debajo de lo esperado por día. Nos referimos a que hay muy pocos vuelos por día, esto también se debe a otros factores que no estamos tomando en cuenta dentro de nuestro modelo, por ejemplo los días festivos en EU.
+
+- Class: text
+  Output: Lo único que nos queda por hacer es sacar una tendencía a lo largo del año.
+
+- Class: cmd_question
+  Output: Para lograr esta tendencía escribe vuelo.xd %>% ggplot(aes(date, resid)) + geom_ref_line(h = 0) + geom_line(color = "grey50") + geom_smooth(se = FALSE, span = 0.20)
+  CorrectAnswer: vuelo.xd %>% ggplot(aes(date, resid)) + geom_ref_line(h = 0) + geom_line(color = "grey50") + geom_smooth(se = FALSE, span = 0.20)
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% ggplot(aes(date, resid)) + geom_ref_line(h = 0) + geom_line(color = "grey50") + geom_smooth(se = FALSE, span = 0.20)')
+  Hint: Escribe lo que s te pide.
+
+- Class: text
+  Output: Lo único que podemos sacar de este modelo, es que no nos sirve da nada, más que para afirmar que en epoca de invierno hay menos vuelos que en verano. Pero esto es ganancia porque ya pudimos identificar que hay modelos que no nos sirven por la poca información que contienen los dataset y por lo tanto tenemos que cambiar la manera en que podemos analizar este tipo de dataset. 
