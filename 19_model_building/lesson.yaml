@@ -376,3 +376,24 @@
 
 - Class: text
   Output: Lo único que podemos sacar de este modelo, es que no nos sirve da nada, más que para afirmar que en epoca de invierno hay menos vuelos que en verano. Pero esto es ganancia porque ya pudimos identificar que hay modelos que no nos sirven por la poca información que contienen los dataset y por lo tanto tenemos que cambiar la manera en que podemos analizar este tipo de dataset. 
+
+- Class: text
+  Output: Por el momento podemos analizar los vuelos en sábado, dichos valores son los que afectan mayormente a nuestro modelo anterior.
+
+- Class: cmd_question
+  Output: Primero a nuestro dataset tenemos que hacer un filtro, donde del listado sday revisaremos solamente los vuelos que en la primera columna empiecen con "sáb", despues aplicaremos la graficación del comportamiento de los vuelos dentro de este día especificamente y concatenamos las siguientes funciones geom_point() + geom_line() + scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")
+  CorrectAnswer: vuelo.xd %>% filter(sday == "sáb") %>% ggplot(aes(date, n)) + geom_point() + geom_line() + scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% filter(sday == "sáb") %>% ggplot(aes(date, n)) + geom_point() + geom_line() + scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")')
+  Hint: La sintaxis es vuelo.xd %>% filter(sday == "sáb") %>% ggplot(aes(date, n)) + geom_point() + geom_line() + scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")
+
+- Class: text
+  Output: Aquí la función scale_x_date(), hacemos que en el eje x tome como escala de tiempo por mes, para tener una mejor visualización de los vuelos en sábado.
+
+- Class: text
+  Output: Ahora separaremos la gráfica en tres partes para identificar la epoca de verano invierno y el resto del año.
+
+- Class: cmd_question
+  Output: Para lograr laste tres separaciones crearemos una variable en donde separemos los datos de los vuelos.
+  CorrectAnswer: Expression or Value
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: Type a hint.
