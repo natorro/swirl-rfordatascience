@@ -78,35 +78,42 @@
 - Class: text
   Output: Veamos un modelo simple.
 
-- Class: cmd_question
-  Output: Vamos a generar dos vectores. Escribe x = c(1, 2, 3, 5, 6).
-  CorrectAnswer: x = c(1, 2, 3, 5, 6)
-  AnswerTests: omnitest(correctExpr='x = c(1, 2, 3, 5, 6)')
-  Hint: x = c(1, 2, 3, 5, 6)
+
+- Class: text
+  Output: Vamos a utilizar la base de datos de diamonds contenida en ggplot2, también vamos a necesitar que tengas la paquetería de dplyr.
+
+
+- Class: text
+  Output: Extraeremos una subtabla que utilizaremos para hacer nuestras aproximaciones.
+
 
 - Class: cmd_question
-  Output: Ahora escribe y = c(1, 3.5, 3, 5, 7).
-  CorrectAnswer: y = c(1, 3.5, 3, 5, 7)
-  AnswerTests: omnitest(correctExpr='y = c(1, 3.5, 3, 5, 7)')
-  Hint: y = c(1, 3.5, 3, 5, 7)
+  Output: Corre el siguiente código dia <- head(diamonds, 100) %>% select(x, y) %>% as.tibble(dia)
+  CorrectAnswer: dia <- head(diamonds, 100) %>% select(x, y) %>% as.tibble(dia)
+  AnswerTests: omnitest(correctExpr='dia <- head(diamonds, 100) %>% select(x, y) %>% as.tibble(dia)')
+  Hint: Usa el código que se te proporcionó.
+
 
 - Class: cmd_question
-  Output: Ahora crea un data frame con estos dos vectores y llámalo df.
-  CorrectAnswer: df <- data.frame(x, y)
-  AnswerTests: omnitest(correctExpr='df <- data.frame(x, y)')
-  Hint: El código es df <- data.frame(x, y).
+  Output: Escribe dia para que veas el tibble que se creó.
+  CorrectAnswer: dia
+  AnswerTests: omnitest(correctExpr='dia')
+  Hint: Escribe Día.
+
+
+
 
 - Class: cmd_question
   Output: Ahora grafiquemos a df con la función ggplot y geom_point().
-  CorrectAnswer: ggplot(df, aes(x, y)) + geom_point()
-  AnswerTests: omnitest(correctExpr='ggplot(df, aes(x, y)) + geom_point()')
-  Hint: Se grafica así ggplot(df, aes(x, y)) + geom_point().
+  CorrectAnswer: ggplot(dia, aes(x, y)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(dia, aes(x, y)) + geom_point()')
+  Hint: Se grafica así ggplot(dia, aes(x, y)) + geom_point().
 
 - Class: text
   Output: Como podrás ver se tiene un tendencia y una correlación entre los puntos de la gráfica.
 
 - Class: text
-  Output: Pareciera que la relación entre los puntos se trata de un modelo lineal, ahora generaremos una familia de modelos líneales y los visualizaremos.
+  Output: Es claro que la relación entre los puntos se trata de un modelo lineal, ahora generaremos una familia de modelos líneales y los visualizaremos.
 
 - Class: cmd_question
   Output: Utilizamos el siguiente código para generar a la familia linearm <- tibble(x1 = runif(300, -3, 6), y1 = runif(300, -3, 3))
@@ -210,3 +217,6 @@
 
 - Class: text
   Output: Ahora podemos visualizar que tal se adecuan los 10 mejores modelos a nuestros datos.
+
+
+
