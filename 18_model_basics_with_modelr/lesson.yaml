@@ -67,7 +67,7 @@
   Output: Para está lección será necesario que instales y mandes llamar la paquetería modelr.
 
 - Class: text
-  Output: también deberás llamar library(dplyr) & options(na.action = na.warn).
+  Output: también deberás llamar library(dplyr), library(purrr) & options(na.action = na.warn).
 
 - Class: text
   Output: El primera es encontrar una familia de modelos que exprese el patrón que estás buscando pero de una forma genérica. 
@@ -160,48 +160,45 @@
 - Class: text
   Output: En estadística una manera muy común de hacerlo es obteniendo el error promedio que se calcula haciendo la raiz cuadrada del promedio de las diferencias elevadas al cuadrado.
 
-- Class: cmd_question
-  Output: Hacemos una función para hacer estos cálculos. Escribe distf <- function(modelo, data) {sqrt(mean((data$y - familym(modelo, data))^2))}
-  CorrectAnswer: distf <- function(modelo, data) {sqrt(mean((data$y - familym(modelo, data))^2))}
-  AnswerTests: omnitest(correctExpr='distf <- function(modelo, data) {sqrt(mean((data$y - familym(modelo, data))^2))}')
-  Hint: Usa el código que se te proporcionó.
-
-- Class: cmd_question
-  Output: Ahora aplicamos la función que acabas de generar. Escribe distf(c(.25, 1.125), df)
-  CorrectAnswer: distf(c(.25, 1.125), df)
-  AnswerTests: omnitest(correctExpr='distf(c(.25, 1.125), df)')
-  Hint: Usa el código que se te proporciono.
+- Class: text
+  Output: Para hacer eso se utilizaría el siguiente código.
+  
+- Class: text
+  Output: distf <- function(modelo, data) {sqrt(mean((data$y - familym(modelo, data))^2))}
+  
+  
+- Class: text
+  Output: Seguido de esto aplicamos la función al tibble día con los siguientes parámetros. Podríamos ponerle cualquier par de parámetros que definan las función lineal pero procurá que tengan sentido para lo que quieres modelar.
 
 
+- Class: text
+  Output: distf(c(.25, 1.125), dia)
+
+
+- Class: text
+  Output: La cual nos arroja el valor de 0.7837071 que ya es mucho más fácil de comparar con otros modelos que los cien valores que teníamos en la tabla anterior.
 
 
 
 - Class: text
-  Output: Ahora podemos utilizar purr para medir la distancia para todos los modelos que definimos previamente debemos modificar la función porque  la que teníamos anteriormente espera recibir el modelo como un vector de valores númericos de tamaño 2.
+  Output: Ahora podemos utilizar purrr para medir la distancia para todos los modelos que definimos previamente debemos modificar la función porque  la que teníamos anteriormente espera recibir el modelo como un vector de valores númericos de tamaño 2.
 
 - Class: text
-  Output: Creamos un función llamada dist1 para pata generalizar los modelos.
+  Output: Creamos un función llamada dist1 para generalizar los modelos.
 
-- Class: cmd_question
-  Output: Utiliza el siguiente código para la primera parte de la función dist1 <- function(x, y) {distf(c(x, y), df)}
-  CorrectAnswer: dist1 <- function(x, y) {distf(c(x, y), df)}
-  AnswerTests: omnitest(correctExpr='dist1 <- function(x, y) {distf(c(x, y), df)}')
-  Hint: Utiliza el código que se te proporciono.
+- Class: text
+  Output: Con el siguiente código dist1 <- function(x, y) {distf(c(x, y), dia)}
+
 
 - Class: text
   Output: Ahora añadiremos la segunda parte de la función en la que se realiza el mapeo de todos los modelos con lo que se obtendrá la distancia para cada modelo.
 
-- Class: cmd_question
-  Output: Utilice el siguiente código bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( x, y, dist1))
-  CorrectAnswer: bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( x, y, dist1))
-  AnswerTests: omnitest(correctExpr='bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( x, y, dist1))')
-  Hint: Utiliza el código que se te proporciono.
+- Class: text
+  Output: Con el siguiente código bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( x, y, dist1))
+  
 
 - Class: cmd_question
-  Output: Escribe bestmodel para poder visualizar la tabla que se generó.
-  CorrectAnswer: bestmodel
-  AnswerTests: omnitest(correctExpr='bestmodel')
-  Hint: Escribe lo que se te indicó.
+  Output: Se manda llamar para visualizar el resultado escribiendo bestmodel
 
 - Class: text
   Output: Ahora la cuestion es que queremos los mejores 10 modelos pero dada la cantidad de modelos no sería eficiente compararlos uno por uno.
