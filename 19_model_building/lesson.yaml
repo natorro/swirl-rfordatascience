@@ -64,11 +64,16 @@
   AnswerTests: omnitest(correctExpr='lm(modelo.d$price.rescale ~ modelo.d$carat.rescale)')
   Hint: Revisa la sintaxis.
 
+- Class: cmd_question
+  Output: Lo que haremos a continuación es generar otra variable en la cual crearemos una función que describa el comportamiento de los datos, por lo tanto primero es escribir la siguente función func <- modelo.d %>% data_grid(carat = seq_range(carat, 20))
+  CorrectAnswer: func <- modelo.d %>% data_grid(carat = seq_range(carat, 20))
+  AnswerTests: omnitest(correctExpr='func <- modelo.d %>% data_grid(carat = seq_range(carat, 20))')
+  Hint: Escribe lo que se te pide.
 
 - Class: cmd_question
-  Output: Lo que haremos a continuación es generar otra variable en la cual crearemos una función que describa el comportamiento de los datos, por lo tanto primero es escribir la siguente función func <- modelo.d %>% mutate(carat.rescale = log2(carat)) 
-  CorrectAnswer: func <- modelo.d %>% mutate(carat.rescale = log2(carat))
-  AnswerTests: omnitest(correctExpr='func <- modelo.d %>% mutate(carat.rescale = log2(carat))')
+  Output: Lo que haremos a continuación es generar dos columnas más func <- func %>% mutate(carat.rescale = log2(carat)) 
+  CorrectAnswer: func <- func %>% mutate(carat.rescale = log2(carat))
+  AnswerTests: omnitest(correctExpr='func <- func %>% mutate(carat.rescale = log2(carat))')
   Hint: Revisa la sintaxis 
 
 - Class: cmd_question
@@ -393,7 +398,57 @@
   Output: Ahora separaremos la gráfica en tres partes para identificar la epoca de verano invierno y el resto del año.
 
 - Class: cmd_question
-  Output: Para lograr laste tres separaciones crearemos una variable en donde separemos los datos de los vuelos.
-  CorrectAnswer: Expression or Value
-  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
-  Hint: Type a hint.
+  Output: Para lograr las tres separaciones crearemos una variable en donde separemos los datos de los vuelos. primero crearemos una función en donde tendremos los datos separados categoricamente. Escribe cat <- function(day){ cut(day, breacks = ymd(20130101, 20130605, 20130825, 20140101), labels = c("primavera", "verano", "invierno"))}
+  CorrectAnswer: cat <- function(day){ cut(day, breacks = ymd(20130101, 20130605, 20130825, 20140101), labels = c("primavera", "verano", "invierno"))}
+  AnswerTests: omnitest(correctExpr='cat <- function(day){ cut(day, breacks = ymd(20130101, 20130605, 20130825, 20140101), labels = c("primavera", "verano", "invierno"))}')
+  Hint: Revisa la sintáxis.
+
+
+
+- Class: cmd_question
+  Output: Ahora agregamos una columna de categorias al dataset  vuelo.xd, en donde a la variable cat le asignaremos term(date).
+  CorrectAnswer: vuelo.xd <- vuelo.xd %>% mutate(cat = term(date)
+  AnswerTests: omnitest(correctExpr='vuelo.xd <- vuelo.xd %>% mutate(cat = term(date)')
+  Hint:  La sintáxis es vuelo.xd <- vuelo.xd %>% mutate(cat = term(date).
+
+- Class: cmd_question
+  Output: Ahora, tenemos que separar los datos por las tres categorias, y esto lo haremos mediante la función filter, donde le pasaremos aquellos datos que tenga la cadena de caracteres "sáb", de la variable sday. Así mismo aplicaremos la función ggplot para graficar date, n y en color = cat, concatenaremos con geom_point(alpha = 1/3) (recuerda que alpha es el grao de transparencia), geom_line() y sacle(NULL, date_breaks = "1 month", date_labels = "%b")
+  CorrectAnswer: vuelo.xd %>% filter(sday == "sáb") %>% ggplot(aes(date, n, color = cat)) + geom_point(alpha = 1/3) + geom_line() + scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% filter(sday == "sáb") %>% ggplot(aes(date, n, color = cat)) + geom_point(alpha = 1/3) + geom_line() + scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")')
+  Hint:  La sintáxis es vuelo.xd %>% filter(sday == "sáb") %>% ggplot(aes(date, n, color = cat)) + geom_point(alpha = 1/3) + geom_line() + scale_x_date(NULL, date_breaks = "1 month", date_labels = "%b")
+
+- Class: text
+  Output: Ahora al graficar estos datos en una gráfica de cajas, podrémos ver como afectan en los demás días de la semana.
+
+- Class: cmd_question
+  Output: Gráfica del dataset vuelo.xd, las variables sday, n, color = cat y concatenalo con la función correspondiente a la gráfica boxplot.
+  CorrectAnswer: vuelo.xd %>% ggplot(aes(sday, n, color = cat)) + geom_boxplot()
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% ggplot(aes(sday, n, color = cat)) + geom_boxplot()')
+  Hint: La sintaxis de lo que se te pide es vuelo.xd %>% ggplot(aes(sday, n, color = cat)) + geom_boxplot()
+
+- Class: text
+  Output: En la gráfica anterior se puede apreciar que hay datos atípicos que son los que nos modifícan el resultado del modelo anterior, por tanto haremos un modelo para estos datos y ver como se comportan.
+
+- Class: cmd_question
+  Output: Crearemos dos modelos, uno con categorias y el segundo sin categorias, para esto, creamos primero los dos primeros modelos el primero se llamará model1 <- lm(n  sday, data = vuelo.xd)
+  CorrectAnswer: model1 <- lm(n  sday, data = vuelo.xd)
+  AnswerTests: omnitest(correctExpr='model1 <- lm(n  sday, data = vuelo.xd)')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Ahora crearemos el segundo modelo model2 <- lm(n ~ sday * cat, data = vuelo.xd)
+  CorrectAnswer: model2 <- lm(n ~ sday * cat, data = vuelo.xd)
+  AnswerTests: omnitest(correctExpr='model2 <- lm(n ~ sday * cat, data = vuelo.xd)')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Ahora al dataset vuelo.xd le aplicaremos dos funiones la primera sera gather_residuals, esta función tendrá dos variables, la primera será scat = model1 y la segunda será ccat = model2. La segunda función será ggplot, donde graficaremos  date, resid, color = model y concatenaremos con a funcion geom_line(alpha = 0.75) 
+  CorrectAnswer: vuelo.xd %>% gather_residuals(scat = model1, ccat = model2) %>% ggplot(aes(date, resid, color = model)) + geom_line(alpha = 0.75)
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% gather_residuals(scat = model1, ccat = model2) %>% ggplot(aes(date, resid, color = model)) + geom_line(alpha = 0.75)')
+  Hint: La modificación pedida es vuelo.xd %>% gather_residuals(scat = model1, ccat = model2) %>% ggplot(aes(date, resid, color = model)) + geom_line(alpha = 0.75)
+
+- Class: text
+  Output: Como podemos ver, la gráfica que tiene las categorias esta un poco más ajustada que la gráfica que no contiene las categorias de los datos.
+
+- Class: text
+  Output: Si nosotros quisieramos ver el comportamiento de los datos separado categoricamente, y ver con exactitud la concentración de los datos mediante predicciones.
