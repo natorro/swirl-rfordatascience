@@ -67,10 +67,10 @@
   Output: Para está lección será necesario que instales y mandes llamar la paquetería modelr.
 
 - Class: text
-  Output: también deberás llamar library(tidyverse) & options(na.action = na.warn).
+  Output: también deberás llamar library(dplyr) & options(na.action = na.warn).
 
 - Class: text
-  Output: El primera es es encontrar una familia de modelos que exprese el patrón que estás buscando pero de una forma genérica. 
+  Output: El primera es encontrar una familia de modelos que exprese el patrón que estás buscando pero de una forma genérica. 
 
 - Class: text
   Output: Despues tienes que adecuar uno de estos modelos para que se aproxime a tus datos. Es importante entender que no por que se parezca implica que está bien o que sus predicciones serán correctas.
@@ -88,9 +88,9 @@
 
 
 - Class: cmd_question
-  Output: Corre el siguiente código dia <- head(diamonds, 100) %>% select(x, y) %>% as.tibble(dia)
-  CorrectAnswer: dia <- head(diamonds, 100) %>% select(x, y) %>% as.tibble(dia)
-  AnswerTests: omnitest(correctExpr='dia <- head(diamonds, 100) %>% select(x, y) %>% as.tibble(dia)')
+  Output: Corre el siguiente código dia <- head(diamonds, 100) %>% select(x, y) %>% as_tibble(dia)
+  CorrectAnswer: dia <- head(diamonds, 100) %>% select(x, y) %>% as_tibble(dia)
+  AnswerTests: omnitest(correctExpr='dia <- head(diamonds, 100) %>% select(x, y) %>% as_tibble(dia)')
   Hint: Usa el código que se te proporcionó.
 
 
@@ -116,16 +116,16 @@
   Output: Es claro que la relación entre los puntos se trata de un modelo lineal, ahora generaremos una familia de modelos líneales y los visualizaremos.
 
 - Class: cmd_question
-  Output: Utilizamos el siguiente código para generar a la familia linearm <- tibble(x1 = runif(300, -3, 6), y1 = runif(300, -3, 3))
-  CorrectAnswer: linearm <- tibble(x1 = runif(300, -3, 6), y1 = runif(300, -3, 3))
-  AnswerTests: omnitest(correctExpr='linearm <- tibble(x1 = runif(300, -3, 6), y1 = runif(300, -3, 3))')
-  Hint: Escribe linearm <- tibble(x1 = runif(300, -3, 6), y1 = runif(300, -3, 3))
+  Output: Utilizamos el siguiente código para generar a la familia linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))
+  CorrectAnswer: linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))
+  AnswerTests: omnitest(correctExpr='linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))')
+  Hint: Escribe linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))
 
 - Class: cmd_question
-  Output: Graficamos con este código ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1), data = linearm, alpha = 1/3) + geom_point()
-  CorrectAnswer: ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1), data = linearm, alpha = 1/3) + geom_point()
-  AnswerTests: omnitest(correctExpr='ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1), data = linearm, alpha = 1/3) + geom_point()')
-  Hint: Escribe ggplot(df, aes(x, y)) + geom_abline(aes(intercept = x1, slope = y1), data = linearm, alpha = 1/3) + geom_point()
+  Output: Graficamos con este código ggplot(dia, aes(x, y)) + geom_abline(aes(intercept = x1, slope = x2), data = linearm, alpha = 1/3) + geom_point()
+  CorrectAnswer: ggplot(dia, aes(x, y)) + geom_abline(aes(intercept = x1, slope = x2), data = linearm, alpha = 1/3) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(dia, aes(x, y)) + geom_abline(aes(intercept = x1, slope = x2), data = linearm, alpha = 1/3) + geom_point()')
+  Hint: Escribe ggplot(dia, aes(x, y)) + geom_abline(aes(intercept = x1, slope = x2), data = linearm, alpha = 1/3) + geom_point()
 
 - Class: text
   Output: En la gráfica anterior puedes ver 300 modelos líneales, pero la mayoría están my alejados de nuestros datos. Intuitivamente el mejor modelo es el que está más cerca de todos nuestros datos.
@@ -149,13 +149,13 @@
   Hint: EL código correcto es familym <- function(a, data) { a[1] + data$x * a[2]}
 
 - Class: cmd_question
-  Output: Ahora lo probamos con uno de los modelos que tenemos. Aplica la función con los siguientes argumentos familym(c(.25, 1.125), df)
-  CorrectAnswer: familym(c(.25, 1.125), df)
-  AnswerTests: omnitest(correctExpr='familym(c(.25, 1.125), df)')
+  Output: Ahora lo probamos con uno de los modelos que tenemos. Aplica la función con los siguientes argumentos familym(c(.25, 1.125), dia)
+  CorrectAnswer: familym(c(.25, 1.125), dia)
+  AnswerTests: omnitest(correctExpr='familym(c(.25, 1.125), dia)')
   Hint: Utiliza el código que se te proporciono. 
 
 - Class: text
-  Output: Ahora lo que queremos ver es la diferencia entre las prediciones y los valores reales. El problema es que tenemos 5 distancias y para hacer más eficiente la comparación entre modelos necesitamos un sólo valor.
+  Output: Ahora lo que queremos ver es la diferencia entre las prediciones y los valores reales. El problema es que tenemos 100 distancias y para hacer más eficiente la comparación entre modelos necesitamos un sólo valor.
 
 - Class: text
   Output: En estadística una manera muy común de hacerlo es obteniendo el error promedio que se calcula haciendo la raiz cuadrada del promedio de las diferencias elevadas al cuadrado.
@@ -204,7 +204,7 @@
   Hint: Escribe lo que se te indicó.
 
 - Class: text
-  Output: Ahora la cuestion es que queremos los mejores 10 modelos pero tenemos no dada la cantidad de modelos no sería eficiente compararlos uno por uno.
+  Output: Ahora la cuestion es que queremos los mejores 10 modelos pero dada la cantidad de modelos no sería eficiente compararlos uno por uno.
 
 - Class: text
   Output: Pero no te preocupes, para eso tenemos a r.
