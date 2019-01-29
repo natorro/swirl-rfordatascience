@@ -452,3 +452,53 @@
 
 - Class: text
   Output: Si nosotros quisieramos ver el comportamiento de los datos separado categoricamente, y ver con exactitud la concentración de los datos mediante predicciones.
+  
+  
+
+- Class: cmd_question
+  Output: Escribiremos una variable cuad, donde le pasaremos el dataset vuelo.xd pero para que al momento de gráficar el geom_boxplot salga por día, entonces le aplicaremos la función data_grid(sday, cat) y al mismo tiempo agregamos la predicciones  add_predictions(model2, "n")
+  CorrectAnswer: cuad <- vuelo.xd %>% data_grid(sday, cat) %>% add_predictions(model2, "n")
+  AnswerTests: omnitest(correctExpr='cuad <- vuelo.xd %>% data_grid(sday, cat) %>% add_predictions(model2, "n")')
+  Hint: La asignación de la variable es cuad <- vuelo.xd %>% data_grid(sday, cat) %>% add_predictions(model2, "n")
+
+- Class: cmd_question
+  Output: Ahora pasaremos a graficar vuelo.xd, tomando solo las columnas de sday y n y concatenaremos con geom_boxplot(), geom_point(data = cuad, color = "red") y por ultimo facet_wrap(~ cat)
+  CorrectAnswer: ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot() + geom_point(data = cuad, color = "red") + facet_wrap(~ cat)
+  AnswerTests: omnitest(correctExpr='ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot() + geom_point(data = cuad, color = "red") + facet_wrap(~ cat)')
+  Hint: La asignación de la variable es ggplot(vuelo.xd, aes(sday, n)) + geom_boxplot() + geom_point(data = cuad, color = "red") + facet_wrap(~ cat)
+
+- Class: text
+  Output: lo que buscamos con este modelo es reducir el impacto de los valores atípicos grandes que afectan a los demás valores, una manera de reducir los valres atípicos es con la función MASS::rlm(), lo que hace esta función es que devuelve una reducción de impacto de los valores atípicos sobre los estimados.
+
+- Class: cmd_question
+  Output: Para aplicar la funció escribe model3 <- MASS::rlm(n ~ sday * cat, data = vuelo.xd)
+  CorrectAnswer: model3 <- MASS::rlm(n ~ sday * cat, data = vuelo.xd)
+  AnswerTests: omnitest(correctExpr='model3 <- MASS::rlm(n ~ sday * cat, data = vuelo.xd)')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Ahora lo aplicaremos al dataset vuelo.xd %>% add_residuals(model3, "resid") %>% ggplot(aes(date, resid)) + geom_line(yintercept = 0, size = 2, color = "white") + geom_line()
+  CorrectAnswer: vuelo.xd %>% add_residuals(model3, "resid") %>% ggplot(aes(date, resid)) + geom_line(yintercept = 0, size = 2, color = "white") + geom_line()
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% add_residuals(model3, "resid") %>% ggplot(aes(date, resid)) + geom_line(yintercept = 0, size = 2, color = "white") + geom_line()')
+  Hint: Escribe lo que se te pide.
+
+- Class: text
+  Output: Ahora se puede apreciar mucho mejor los valores atípicos positivos y negativos.
+
+- Class: text
+  Output: Para terminar la leccion te enseñaremos como con el tiempo tambien se puede crear un modelo, utilizaremos el dataset anterior vuelo.xd y aplicaremos predicciones y usaremos MASS::rlm()
+
+- Class: cmd_question
+  Output: Primero crearemos el modelo para esto escribe model4 <- MASS::rlm(n ~ sday * ns(date, 5), data = vuelo.xd)
+  CorrectAnswer: model4 <- MASS::rlm(n ~ sday * ns(date, 5), data = vuelo.xd)
+  AnswerTests: omnitest(correctExpr='model4 <- MASS::rlm(n ~ sday * ns(date, 5), data = vuelo.xd)')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Ahora a vuelo.xd le aplicaremos la función data_grid(sday, data = seq_range(date, n = 13)), add_predictions(model4), ggplot(aes(date, pred, color = sday)) y concatenaremos con geom_line() y geom_point().
+  CorrectAnswer: vuelo.xd %>% data_grid(sday, date = seq_range(date, n = 13)) %>% add_predictions(model4) %>% ggplot(aes(date, pred, color = sday)) + geom_line() + geom_point()
+  AnswerTests: omnitest(correctExpr='vuelo.xd %>% data_grid(sday, date = seq_range(date, n = 13)) %>% add_predictions(model4) %>% ggplot(aes(date, pred, color = sday)) + geom_line() + geom_point()')
+  Hint: La respuesta es vuelo.xd %>% data_grid(sday, date = seq_range(date, n = 13)) %>% add_predictions(model4) %>% ggplot(aes(date, pred, color = sday)) + geom_line() + geom_point()
+
+- Class: text
+  Output: Como puedes observar el la grafica de los vuelos de los sábados, hay datos extremos que son o muy chicos o muy grandes, dado a estos valores se afectan los demás al momento de querer hacer un modelo con todos los datos.
