@@ -200,6 +200,15 @@
 - Class: cmd_question
   Output: Se manda llamar para visualizar el resultado escribiendo bestmodel
 
+
+- Class: figure
+  Output: Mira la tabla que se generó con las distancia para cada par de puntos.
+  Figure: function1.R
+  FigureType: new
+
+
+
+
 - Class: text
   Output: Ahora la cuestion es que queremos los mejores 10 modelos pero dada la cantidad de modelos no sería eficiente compararlos uno por uno.
 
