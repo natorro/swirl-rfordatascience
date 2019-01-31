@@ -18,15 +18,15 @@ familym <- function(a, data) {
   a[1] + data$x * a[2]}
 
 dist1 <- function(mod, data) {
-  diff <- data$y - model1(mod, data)
+  diff <- data$y - familym(mod, data)
   sqrt(mean(diff ^ 2))
 }
-dist1 <- function(x, y) {
-  distf(c(x, y), dia)
+distf <- function(x, y) {
+  dist1(c(x, y), dia)
 }
 
 bestmodel <- linearm %>% 
-  mutate(dist = map2_dbl( x, y, dist1))
+  mutate(dist = map2_dbl( x1, x2, distf))
 
 
 bestmodel
