@@ -10,8 +10,8 @@ dia <- head(diamonds, 20) %>%
   select(x, y) %>% 
   as_tibble(dia)
 
-linearm <- tibble(x1 = runif(300, -3, 6),
-                  x2 = runif(300, -3, 3))
+linearm <- tibble(x1 = runif(3000, -3, 6),
+                  x2 = runif(3000, -3, 3))
 
 
 familym <- function(a, data) {
