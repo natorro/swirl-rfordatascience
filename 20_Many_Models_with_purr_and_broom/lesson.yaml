@@ -1,0 +1,410 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 20_Many_Models_with_purr_and_broom
+  Author: Carlos Roberto Flores Luna
+  Type: Standard
+  Organization: Proyecto
+  Version: 2.4.3
+
+- Class: text
+  Output: En esta leccion aprenderemos un concepto llamada Lista en Columnas, el cual es util para analizar grupos. Nos permitira ejecutar multiples modelos lineales sobre distintos Grupos.
+
+- Class: text
+  Output: Ocuparemos un dataset llamado gapminder, propociona estadiscias de varios paises. Esperanza de Vida, Poblacion, Ingreso percapita.
+
+- Class: text
+  Output: Antes de comenzar a trabajar con el dataset gapminder, necesitamos llamar la paqueteria gapminder.
+
+- Class: cmd_question
+  Output: Ejecuta; library(gapminder)
+  CorrectAnswer: library(gapminder)
+  AnswerTests: omnitest(correctExpr='library(gapminder)')
+  Hint: Coloca en consola, head(gapminder)
+
+- Class: cmd_question
+  Output: Ejecuta; head(gapminder)
+  CorrectAnswer: head(gapminder)
+  AnswerTests: omnitest(correctExpr='head(gapminder)')
+  Hint: Coloca en consola, head(gapminder)
+
+- Class: text
+  Output: Veamos una grafica con respecto a la esperanza de vida de cada pais.
+
+- Class: cmd_question
+  Output: Ejecuta; gapminder %>% ggplot(aes(year, lifeExp, group = country)) + geom_line(alpha = 1/3)
+  CorrectAnswer: gapminder %>% ggplot(aes(year, lifeExp, group = country)) + geom_line(alpha = 1/3)
+  AnswerTests: omnitest(correctExpr='gapminder %>% ggplot(aes(year, lifeExp, group = country)) + geom_line(alpha = 1/3)')
+  Hint: Ejecuta; gapminder %>% ggplot(aes(year, lifeExp, group = country)) + geom_line(alpha = 1/3)
+
+- Class: text
+  Output: En la mayoria de los casos tenemos un incremento, sin embargo surgen ciertas preguntas. ¿Que paises representan los picos?, ¿Que significado tienen los picos?
+
+- Class: text
+  Output: Imaginemos ajustar un modelo lineal para cada pais, de esta forma veriamos si existen tendencias significativas. 
+
+- Class: text
+  Output: Ajustaremos un modelo lineal para un pais en especifico,seleccionaremos New Zealand.
+
+- Class: cmd_question
+  Output: Ejecuta; nz <- filter(gapminder, country == "New Zealand")
+  CorrectAnswer: nz <- filter(gapminder, country == "New Zealand")
+  AnswerTests: omnitest(correctExpr='nz <- filter(gapminder, country == "New Zealand")')
+  Hint: Ejecuta; nz <- filter(gapminder, country == "New Zealand")
+
+- Class: text
+  Output: Veamos el comportamiento de la espernza de vida para New Zealand.
+
+- Class: cmd_question
+  Output: Ejecuta; nz %>% ggplot(aes(year, lifeExp)) + geom_line() + ggtitle("lifeExp New Zealand")
+  CorrectAnswer: nz %>% ggplot(aes(year, lifeExp)) + geom_line() + ggtitle("lifeExp New Zealand")
+  AnswerTests: omnitest(correctExpr='nz %>% ggplot(aes(year, lifeExp)) + geom_line() + ggtitle("lifeExp New Zealand")')
+  Hint: Ejecuta; nz %>% ggplot(aes(year, lifeExp)) + geom_line() + ggtitle("lifeExp New Zealand")
+
+- Class: text
+  Output: Al parecer tiene una tendencia positiva.
+
+- Class: text
+  Output: Corramos un modelo lineal y validemos la tendenica positiva.
+
+- Class: cmd_question
+  Output:  Ejecuta; nz_mod <- lm(lifeExp ~ year, data = nz)
+  CorrectAnswer: nz_mod <- lm(lifeExp ~ year, data = nz)
+  AnswerTests: omnitest(correctExpr='nz_mod <- lm(lifeExp ~ year, data = nz)')
+  Hint: Ejecuta; nz_mod <- lm(lifeExp ~ year, data = nz)
+
+- Class: text
+  Output: Graficando los resultados de nuestro modelo, podemos ver si efectivamente existe una tendencia para New Zealand.
+  
+- Class: cmd_question
+  Output: Ejecuta; nz %>% add_predictions(nz_mod) %>% ggplot(aes(year, pred)) + geom_line() + ggtitle("Tendencia Lineal")
+  CorrectAnswer: nz %>% add_predictions(nz_mod) %>% ggplot(aes(year, pred)) + geom_line() + ggtitle("Tendencia Lineal")
+  AnswerTests: omnitest(correctExpr='nz %>% add_predictions(nz_mod) %>% ggplot(aes(year, pred)) + geom_line() + ggtitle("Tendencia Lineal")')
+  Hint: Ejecuta; nz %>% add_predictions(nz_mod) %>% ggplot(aes(year, pred)) + geom_line() + ggtitle("Tendencia Lineal")
+
+- Class: text
+  Output: Al parecer tenemos una tendencia lineal positiva. Veamos el comportamiento de los residuales.
+
+- Class: cmd_question
+  Output: Ejecuta; nz %>% add_residuals(nz_mod) %>% ggplot(aes(year, resid)) + geom_hline(yintercept = 0, color = "white", size = 3) + geom_line() + ggtitle("Residuales")
+  CorrectAnswer: nz %>% add_residuals(nz_mod) %>% ggplot(aes(year, resid)) + geom_hline(yintercept = 0, color = "white", size = 3) + geom_line() + ggtitle("Residuales")
+  AnswerTests: omnitest(correctExpr='nz %>% add_residuals(nz_mod) %>% ggplot(aes(year, resid)) + geom_hline(yintercept = 0, color = "white", size = 3) + geom_line() + ggtitle("Residuales")')
+  Hint: Ejecuta; nz %>% add_residuals(nz_mod) %>% ggplot(aes(year, resid)) + geom_hline(yintercept = 0, color = "white", size = 3) + geom_line() + ggtitle("Residuales")
+
+- Class: text
+  Output: Bien Hecho!!!,Como podemos llevar este mismo analisis a todos los paises.
+
+- Class: text
+  Output: Lo primero que me viene a la mente es ejecutar un for para cada pais e ir almacenando los resultados. Suena bien pero es demasiado trabajo.
+
+- Class: text
+  Output: Comanzaremos a trabajar con una tecnica diferente al momento de estructurar nuestros datos, estos nos permitira correr multiples modelos lineales sobre un mismo data.frame y analizar de forma general los resultados.
+
+- Class: text
+  Output: Cambiando la estructura de nuetro marco de datos, agruparemos los datos por pais.
+
+- Class: cmd_question
+  Output: Ejecuta; by_country <- gapminder %>% group_by(country, continent) %>% nest()
+  CorrectAnswer: by_country <- gapminder %>% group_by(country, continent) %>% nest()
+  AnswerTests: omnitest(correctExpr='by_country <- gapminder %>% group_by(country, continent) %>% nest()')
+  Hint: Ejecuta; by_country <- gapminder %>% group_by(country, continent) %>% nest()
+
+- Class: text
+  Output: Observa la funcion tidyr::nest() al final del dplyr::group_by()
+
+- Class: cmd_question
+  Output: Ejecuta; head(by_country)
+  CorrectAnswer: head(by_country)
+  AnswerTests: omnitest(correctExpr='head(by_country)')
+  Hint: Ejecuta; head(by_country)
+
+- Class: text
+  Output: Lo que hicimos fue resumir los datos de cada pais en una sola fila, colocando las varibales en una lista. Veamos que datos contiene una fila.
+
+- Class: cmd_question
+  Output: Ejecuta; by_country$data[[1]]
+  CorrectAnswer: by_country$data[[1]]
+  AnswerTests: omnitest(correctExpr='by_country$data[[1]]')
+  Hint: Ejecuta; by_country$data[[1]]
+
+- Class: text
+  Output: De que nos sirve tener esta estructura, bueno podemos correr un modelo lineal sobre cada fila.
+
+- Class: text
+  Output: Detengamos un poco a entender esta tecnica, estamos acostumbrados a trabajar con marcos de datos estandar y lo que acabamos de crear se conoce como marco de datos anidado.
+
+- Class: text
+  Output: En los marcos de datos estandares cada fila representa una observacion en cambio en los marcos de datos anidados tenemos que cada fila es un grupo.
+
+- Class: text
+  Output: En nuestro caso particular cada fila nos muestra la historia de cada pais.
+
+- Class: text
+  Output: Esto se conoce como Listas en Columnas. Nos permitira ejecutar un modelo lineal para cada fila.
+
+- Class: text
+  Output: Definamos una funcion que nos permita ejecutar un modelo lineal.
+
+- Class: cmd_question
+  Output: Ejecuta; country_model <- function(df) {lm(lifeExp ~ year, data = df)}
+  CorrectAnswer: country_model <- function(df) {lm(lifeExp ~ year, data = df)}
+  AnswerTests: omnitest(correctExpr='country_model <- function(df) {lm(lifeExp ~ year, data = df)}')
+  Hint: Ejecuta; country_model <- function(df) {lm(lifeExp ~ year, data = df)}
+
+- Class: text
+  Output: El paquete purr tiene funciones utiles para trabajar con marcos de datos anidados. En este caso utilizaremos la funcion purr::map(), nos permitira aplicar la funcion country_model a cada elemento.
+
+- Class: cmd_question
+  Output: Ejecuta; models <- map(by_country$data, country_model)
+  CorrectAnswer: models <- map(by_country$data, country_model)
+  AnswerTests: omnitest(correctExpr='models <- map(by_country$data, country_model)')
+  Hint: Ejecuta; models <- map(by_country$data, country_model)
+
+- Class: text
+  Output: Funcion map() permitio aplicar la funcion country_model a cada elemento del marco de datos anidados columna by_country$data. Generando una lista con 142 elementos.
+
+- Class: cmd_question
+  Output: Ejecuta; length(models)
+  CorrectAnswer: length(models)
+  AnswerTests: omnitest(correctExpr='length(models)')
+  Hint: Ejecuta; length(models)
+
+- Class: cmd_question
+  Output: Ejecuta; head(models,1)
+  CorrectAnswer: head(models,1)
+  AnswerTests: omnitest(correctExpr='head(models,1)')
+  Hint: Ejecuta; head(models,1)
+
+- Class: text
+  Output: Wua!,Hemos creado 142 modelos uno para cada pais.
+
+- Class: text
+  Output: El siguiente paso es interpretar los resultados, agreguemos al marco de datos una columna llamada model contendra los resultados en forma de lista.
+
+- Class: cmd_question
+  Output: Ejecuta;by_country <- by_country %>% mutate(model = map(data, country_model))
+  CorrectAnswer: by_country <- by_country %>% mutate(model = map(data, country_model))
+  AnswerTests: omnitest(correctExpr='by_country <- by_country %>% mutate(model = map(data, country_model))')
+  Hint: Ejecuta; by_country <- by_country %>% mutate(model = map(data, country_model))
+
+- Class: text
+  Output: Veamos el encabezado...
+
+- Class: cmd_question
+  Output: Ejecuta; head(by_country)
+  CorrectAnswer: head(by_country)
+  AnswerTests: omnitest(correctExpr='head(by_country)')
+  Hint: head(by_country)
+
+- Class: text
+  Output: Genial!, tenemos organizado los modelos para cada pais. Ahora juguemos un poco con los resultados.
+
+- Class: text
+  Output: Es tu turno...
+
+- Class: cmd_question
+  Output: Realiza un filtrado a la base by_country selecciona solo el continente Europe.
+  CorrectAnswer: by_country %>% filter(continent == "Europe")
+  AnswerTests: omnitest(correctExpr='by_country %>% filter(continent == "Europe")')
+  Hint: Solo acompleta filter() con continent == "Europe", by_country %>% filter().
+
+- Class: cmd_question
+  Output: Organizar los datos es una buena practica, en caso de tener nuevos datos y poderlos idenfiticar mas rapido. Ordena los by_countrty por continent y country.
+  CorrectAnswer: by_country %>% arrange(continent, country)
+  AnswerTests: omnitest(correctExpr='by_country %>% arrange(continent, country)')
+  Hint: Solo acompleta arrange() con continent y country, by_country %>% arrange(). 
+
+- Class: text
+  Output: Muy bie!!! Te seguire guiando, ahora analizaremos los residuos del modelo.
+
+- Class: text
+  Output: Extraigamos los resultados de los modelos, utilizando funcion purr::map2 y modelr::add_residuals.
+
+- Class: cmd_question
+  Output: Ejecuta; by_country <- by_country %>% mutate(resids = map2(data, model, add_residuals))
+  CorrectAnswer: by_country <- by_country %>% mutate(resids = map2(data, model, add_residuals))
+  AnswerTests: omnitest(correctExpr='by_country <- by_country %>% mutate(resids = map2(data, model, add_residuals))')
+  Hint: Ejecuta; by_country <- by_country %>% mutate(resids = map2(data, model, add_residuals))
+
+- Class: text
+  Output: Definimos una nueva variable llamada resids...
+
+- Class: cmd_question
+  Output: Ejecuta; head(by_country)
+  CorrectAnswer: head(by_country)
+  AnswerTests: omnitest(correctExpr='head(by_country)')
+  Hint: Ejecuta; head(by_country)
+
+- Class: text
+  Output: Observa la estructura de nuestra informacion, columna data tenemos la informacion estadistica de los paises, columna model resultados de un modelo lineal por pais, columna resids residuos modelos lineales.
+  
+- Class: text
+  Output:   Listo, analisemos los residuales. Agregaremos una columna al marco original gapminder con los residuales.
+
+- Class: text
+  Output: Recordemos la siguiente agrupacion que realizamos "by_country <- gapminder %>% group_by(country, continent) %>% nest()"
+
+- Class: text
+  Output: La funcion tidyr::nest() nos permitio almacenar los valores Listas en Columnas, extraigamos los valores de la columna resids con la funcion inversa tidyr::unnest()
+
+- Class: cmd_question
+  Output: Ejecuta; resids <- unnest(by_country, resids)
+  CorrectAnswer: resids <- unnest(by_country, resids)
+  AnswerTests: omnitest(correctExpr='resids <- unnest(by_country, resids)')
+  Hint: Ejecuta; resids <- unnest(by_country, resids)
+
+- Class: cmd_question
+  Output: Ejecuta; head(resids)
+  CorrectAnswer: head(resids)
+  AnswerTests: omnitest(correctExpr='head(resids)')
+  Hint: Ejecuta; head(resids)
+
+- Class: text
+  Output: Recordemos que los residuales son la diferencia entre una ei = [Y-Yi] y nos dan una idea del ajuste lineal.
+
+- Class: text
+  Output: Grafiquemos los residuales.
+
+- Class: cmd_question
+  Output: Ejecuta; resids %>% ggplot(aes(year, resid)) + geom_line(aes(group = country), alpha = 1 / 3) + geom_smooth(se = FALSE)
+  CorrectAnswer: resids %>% ggplot(aes(year, resid)) + geom_line(aes(group = country), alpha = 1 / 3) + geom_smooth(se = FALSE)
+  AnswerTests: omnitest(correctExpr='resids %>% ggplot(aes(year, resid)) + geom_line(aes(group = country), alpha = 1 / 3) + geom_smooth(se = FALSE)')
+  Hint: Ejecuta; resids %>% ggplot(aes(year, resid)) + geom_line(aes(group = country), alpha = 1 / 3) + geom_smooth(se = FALSE)
+
+- Class: text
+  Output: A simple vista podemos ver que un 70% de los modelos tienen buenos residuales.
+
+- Class: text
+  Output: Veamos que sucede por continente.
+
+- Class: cmd_question
+  Output: Ejecuta; resids %>% ggplot(aes(year, resid, group = country)) + geom_line(alpha = 1 / 3) + facet_wrap(~continent)
+  CorrectAnswer: resids %>% ggplot(aes(year, resid, group = country)) + geom_line(alpha = 1 / 3) + facet_wrap(~continent)
+  AnswerTests: omnitest(correctExpr='resids %>% ggplot(aes(year, resid, group = country)) + geom_line(alpha = 1 / 3) + facet_wrap(~continent)')
+  Hint: Ejecuta; resids %>% ggplot(aes(year, resid, group = country)) + geom_line(alpha = 1 / 3) + facet_wrap(~continent)
+
+- Class: text
+  Output: Esta grafica es realmente reveladora...
+
+- Class: text
+  Output: Nos permite ver los patrones por continente, Africa y Asia contiene un numero de residuales muy grandes sugieren varias cosas.
+
+- Class: text
+  Output: Tenemos Outliers o tendencias atipicas.
+
+- Class: text
+  Output: Sigamos buscando...
+
+- Class: text
+  Output: Analizaremos el error cuadratico. Paquete broom nos ayudara a extraer los elementos de las listas.
+
+- Class: cmd_question
+  Output: Ejecuta; library(broom)
+  CorrectAnswer: library(broom)
+  AnswerTests: omnitest(correctExpr='library(broom)')
+  Hint: Ejecuta; library(broom)
+
+- Class: text
+  Output: Funcion bromm::glance nos ayuda a extraer. Veamos un ejemplo sensillo
+
+- Class: text
+  Output: Extraigamos los resultados del modelo nz_mod
+
+- Class: cmd_question
+  Output: Ejecuta; nz_mod
+  CorrectAnswer: nz_mod
+  AnswerTests: omnitest(correctExpr='nz_mod')
+  Hint: Ejecuta; nz_mod
+
+- Class: text
+  Output: Extraigamos con broom::glance() los resultados del modelo nz_mod.
+
+- Class: cmd_question
+  Output: Ejecuta; glance(nz_mod)
+  CorrectAnswer: glance(nz_mod)
+  AnswerTests: omnitest(correctExpr='glance(nz_mod)')
+  Hint: Ejecuta; glance(nz_mod)
+
+- Class: text
+  Output: Con la ayuda de dplyr::mutate() y purr::unnest() crearemos un nuevo marco de datos donde cada fila tendra las metricas necesarias para revisar la calidad de nuestros modelos.
+
+- Class: cmd_question
+  Output: Ejecuta; by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance)
+  CorrectAnswer: by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance)
+  AnswerTests: omnitest(correctExpr='by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance)')
+  Hint: Ejecuta; by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance)
+
+- Class: text
+  Output: Este no es realmente el marco de datos que buscamos, observa las columnas data,model y resids siguen teniendo algunas columnas con listas, agreguemos un nuevo parametro a la funcion unnest() .drop = TRUE. Nos permitira extraer todos lo valores de las listas.
+
+- Class: cmd_question
+  Output: Ejecuta;glance <- by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance, .drop = TRUE)
+  CorrectAnswer: glance <- by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance, .drop = TRUE)
+  AnswerTests: omnitest(correctExpr='glance <- by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance, .drop = TRUE)')
+  Hint: Ejecuta; glance <- by_country %>% mutate(glance = map(model, broom::glance)) %>% unnest(glance, .drop = TRUE)
+
+- Class: text
+  Output: Genial!!! Extrajimos los resultados con exito.
+
+- Class: cmd_question
+  Output: Ejecuta; head(glance)
+  CorrectAnswer: head(glance)
+  AnswerTests: omnitest(correctExpr='head(glance)')
+  Hint: Ejecuta; head(glance)
+
+- Class: text
+  Output: Listo! Veamos que modelo no ajusta correctamente ordenando el error cuadratico.
+
+- Class: cmd_question
+  Output: Ejecuta; glance %>% arrange(r.squared)
+  CorrectAnswer: glance %>% arrange(r.squared)
+  AnswerTests: omnitest(correctExpr='glance %>% arrange(r.squared)')
+  Hint: Ejecuta; glance %>% arrange(r.squared)
+
+- Class: text
+  Output: Mmmm... Los peores modelos parecen estar en Africa. Grafiquemos los errores cuadraticos.
+
+- Class: cmd_question
+  Output: Ejecuta; glance %>% ggplot(aes(continent, r.squared)) + geom_jitter(width = 0.5)
+  CorrectAnswer: glance %>% ggplot(aes(continent, r.squared)) + geom_jitter(width = 0.5)
+  AnswerTests: omnitest(correctExpr='glance %>% ggplot(aes(continent, r.squared)) + geom_jitter(width = 0.5)')
+  Hint: glance %>% ggplot(aes(continent, r.squared)) + geom_jitter(width = 0.5)
+
+- Class: text
+  Output: Extraigamos los paises con un error cuadratico menor a .25, particularmente malo y trazemos los datos.
+
+- Class: cmd_question
+  Output: bad_fit <- filter(glance, r.squared < 0.25)
+  CorrectAnswer: bad_fit <- filter(glance, r.squared < 0.25)
+  AnswerTests: omnitest(correctExpr='bad_fit <- filter(glance, r.squared < 0.25)')
+  Hint: Ejecuta; bad_fit <- filter(glance, r.squared < 0.25)
+
+- Class: text
+  Output: Grafiquemos los errores cuadraticos malos.
+
+- Class: cmd_question
+  Output: Ejecuta; gapminder %>% semi_join(bad_fit, by = "country") %>% ggplot(aes(year, lifeExp, color = country)) + geom_line()
+  CorrectAnswer: gapminder %>% semi_join(bad_fit, by = "country") %>% ggplot(aes(year, lifeExp, color = country)) + geom_line()
+  AnswerTests: omnitest(correctExpr='gapminder %>% semi_join(bad_fit, by = "country") %>% ggplot(aes(year, lifeExp, color = country)) + geom_line()')
+  Hint: Ejecuta; gapminder %>% semi_join(bad_fit, by = "country") %>% ggplot(aes(year, lifeExp, color = country)) + geom_line()
+
+- Class: text
+  Output: Wua! Hemos encontrado a los paises con algo raro en su Esperanza de Vida.
+
+- Class: text
+  Output: Lamentablemente los efectos principales de los picos fueron ocasionados por la epidemia de VIH/SIDA y genocidios.
+
+- Class: text
+  Output: Aprendamos un poco sobre la historia del dataset gapminder...
+
+- Class: text
+  Output: Fue propuesto por Hans Rosling. Promovia el uso de datos para analizar problemas de desarrollo globales.
+
+- Class: text
+  Output: Fundo Gapmider y si exito fue tanto que Google ayudo a la creacion de un sitio web para abrir las estadisticas y analisis a todo el publico.
+
+- Class: text
+  Output: Entra a la siguiente liga en tu buscador y eplora un poco. https://www.gapminder.org/
+
+- Class: text
+  Output: Por ultimo repasemos todas las funciones que ocupamos en esta leccion...
+  
