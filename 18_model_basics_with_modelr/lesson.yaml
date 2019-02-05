@@ -197,32 +197,47 @@
   Output: Con el siguiente código bestmodel <- linearm %>% mutate(dist = purrr::map2_dbl( x, y, dist1))
   
 
-- Class: cmd_question
+- Class: text
   Output: Se manda llamar para visualizar el resultado escribiendo bestmodel
 
-
 - Class: figure
-  Output: Mira la tabla que se generó con las distancia para cada par de puntos.
+  Output: enter
   Figure: function1.R
   FigureType: new
 
 
+- Class: figure
+  Output: enter
+  Figure: function2.R
+  FigureType: new
 
+- Class: cmd_question
+  Output: Escribe bestmodel
+  CorrectAnswer: bestmodel
+  AnswerTests: omnitest(correctExpr='bestmodel')
+  Hint: Escribe lo que se te pidió.
 
 - Class: text
-  Output: Ahora la cuestion es que queremos los mejores 10 modelos pero dada la cantidad de modelos no sería eficiente compararlos uno por uno.
+  Output: Mira la tabla que se generó con las distancia para cada par de puntos.
+
+- Class: text
+  Output: Ahora podemos visualizar que tal se adecuan los 10 mejores modelos a nuestros datos.
+
+- Class: text
+  Output: La cuestion es que queremos los mejores 10 modelos pero dada la cantidad de modelos no sería eficiente compararlos uno por uno.
 
 - Class: text
   Output: Pero no te preocupes, para eso tenemos a r.
 
 - Class: cmd_question
-  Output: Utiliza el siguiente código para graficar los 10 mejores modelos según los datos que tenemos. ggplot(dif1, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = a1, slope = a2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))
-  CorrectAnswer: ggplot(dif1, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = a1, slope = a2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))
-  AnswerTests: omnitest(correctExpr='ggplot(dif1, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = a1, slope = a2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))')
+  Output: Utiliza el siguiente código para graficar los 10 mejores modelos según los datos que tenemos. ggplot(dia, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = x1, slope = x2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))
+  CorrectAnswer: ggplot(dia, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = x1, slope = x2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))
+  AnswerTests: omnitest(correctExpr='ggplot(dia, aes(x,y)) + geom_point(size = 2) + geom_abline(aes(intercept = x1, slope = x2, color = -dist), data = filter(bestmodel, rank(dist) <= 10))')
   Hint: Usa el código que se te proporcionó.
 
+
+
+
+
 - Class: text
-  Output: Ahora podemos visualizar que tal se adecuan los 10 mejores modelos a nuestros datos.
-
-
-
+  Output: En la gráfica puedes ver los 10 modelos con la menor suma de distancias hacia los puntos, mientras más clara sea la línea menor es el promedio de las distancias.
