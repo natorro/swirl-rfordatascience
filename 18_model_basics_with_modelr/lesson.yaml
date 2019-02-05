@@ -116,10 +116,10 @@
   Output: Es claro que la relación entre los puntos se trata de un modelo lineal, ahora generaremos una familia de modelos líneales y los visualizaremos.
 
 - Class: cmd_question
-  Output: Utilizamos el siguiente código para generar a la familia linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))
-  CorrectAnswer: linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))
-  AnswerTests: omnitest(correctExpr='linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))')
-  Hint: Escribe linearm <- tibble(x1 = runif(300, -3, 6), x2 = runif(300, -3, 3))
+  Output: Utilizamos el siguiente código para generar a la familia linearm <- tibble(x1 = runif(3000, -3, 6), x2 = runif(3000, -3, 3))
+  CorrectAnswer: linearm <- tibble(x1 = runif(3000, -3, 6), x2 = runif(3000, -3, 3))
+  AnswerTests: omnitest(correctExpr='linearm <- tibble(x1 = runif(3000, -3, 6), x2 = runif(3000, -3, 3))')
+  Hint: Escribe linearm <- tibble(x1 = runif(3000, -3, 6), x2 = runif(3000, -3, 3))
 
 - Class: cmd_question
   Output: Graficamos con este código ggplot(dia, aes(x, y)) + geom_abline(aes(intercept = x1, slope = x2), data = linearm, alpha = 1/3) + geom_point()
@@ -128,7 +128,7 @@
   Hint: Escribe ggplot(dia, aes(x, y)) + geom_abline(aes(intercept = x1, slope = x2), data = linearm, alpha = 1/3) + geom_point()
 
 - Class: text
-  Output: En la gráfica anterior puedes ver 300 modelos líneales, pero la mayoría están my alejados de nuestros datos. Intuitivamente el mejor modelo es el que está más cerca de todos nuestros datos.
+  Output: En la gráfica anterior puedes ver 3000 modelos líneales, pero la mayoría están my alejados de nuestros datos. Intuitivamente el mejor modelo es el que está más cerca de todos nuestros datos.
 
 - Class: text
   Output: Dicho de una mejor manera si sumamos las distancias de cada punto a cada modelo, el modelo con la menor suma de distancias será el mejor.
@@ -241,3 +241,39 @@
 
 - Class: text
   Output: En la gráfica puedes ver los 10 modelos con la menor suma de distancias hacia los puntos, mientras más clara sea la línea menor es el promedio de las distancias.
+
+- Class: text
+  Output: Pero so lo analisas no tiene mucho sentido obtener tantos modelos, debe haber una forma más optima de obtener estos 10 modelos.
+
+- Class: text
+  Output: Pues si la hay, se le llama cuadrícula espacial de puntos.
+
+- Class: text
+  Output: La ventaja que te da esta cuadrícula es que te permite visualizar donde van a estar los mejores modelos.
+
+- Class: text
+  Output: Con el siguiente código la generas.
+
+- Class: text
+  Output: grid <- expand.grid( a1 = seq(-5, 20, length = 25), a2 = seq(1, 3, length = 25)) %>% mutate(dist = purrr::map2_dbl(a1, a2, dist1))
+
+- Class: figure
+  Output: enter
+  Figure: function3.R
+  FigureType: new
+
+
+- Class: text
+  Output: y con el siguiente se genera su gráfica.
+
+
+
+- Class: figure
+  Output: grid
+  Figure: function4.R
+  FigureType: new
+
+
+
+- Class: text
+  Output: Como podrás apreciar los modelos que se generan como los 10 mejores superan a los de la gráfica anterior.
