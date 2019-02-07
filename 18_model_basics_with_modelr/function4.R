@@ -9,6 +9,6 @@ grid %>%
     data = filter(grid, rank(dist) <= 10),
     size = 4, colour = "red"
   ) +
-  geom_point(aes(color = -dist))
+  geom_point(aes(color = -dist)) 
 
 

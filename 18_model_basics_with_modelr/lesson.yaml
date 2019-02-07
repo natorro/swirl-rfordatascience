@@ -243,7 +243,7 @@
   Output: En la gráfica puedes ver los 10 modelos con la menor suma de distancias hacia los puntos, mientras más clara sea la línea menor es el promedio de las distancias.
 
 - Class: text
-  Output: Pero so lo analisas no tiene mucho sentido obtener tantos modelos, debe haber una forma más optima de obtener estos 10 modelos.
+  Output: Pero si lo analisas no tiene mucho sentido obtener tantos modelos, debe haber una forma más optima de obtener estos 10 modelos.
 
 - Class: text
   Output: Pues si la hay, se le llama cuadrícula espacial de puntos.
@@ -255,7 +255,7 @@
   Output: Con el siguiente código la generas.
 
 - Class: text
-  Output: grid <- expand.grid( a1 = seq(-5, 20, length = 25), a2 = seq(1, 3, length = 25)) %>% mutate(dist = purrr::map2_dbl(a1, a2, dist1))
+  Output: grid <- expand.grid(x1 = seq(3, 15, length = 20), x2 = seq(1.9, 3.9, length = 25)) %>% mutate(dist = purrr::map2_dbl(x1, x2, distf))
 
 - Class: figure
   Output: enter
@@ -264,9 +264,10 @@
 
 
 - Class: text
-  Output: y con el siguiente se genera su gráfica.
+  Output: y con el siguiente se genera la gráfica de la red.
 
-
+- Class: text
+  Output: grid %>% ggplot(aes(x1, x2)) + geom_point(data = filter(grid, rank(dist) <= 10), size = 4, colour = "red") + geom_point(aes(color = -dist)) 
 
 - Class: figure
   Output: grid
@@ -274,6 +275,34 @@
   FigureType: new
 
 
+- Class: text
+  Output: Como podrás apreciar se ve por dónde van a pasar los mejores modelos.
+  
+
+- Class: text
+  Output: Ahora graficaremos los nuevos modelos con el siguiente código.
+
+  
+- Class: text
+  Output: ggplot(sim1, aes(x, y)) + geom_point(size = 2, color = "grey30") + geom_abline(aes(intercept = x1, slope = x2, color = -dist), data = filter(grid, rank(dist) <= 100))
+
+
+- Class: figure
+  Output: .
+  Figure: function5.R
+  FigureType: new
+
+
 
 - Class: text
   Output: Como podrás apreciar los modelos que se generan como los 10 mejores superan a los de la gráfica anterior.
+
+
+
+
+
+
+
+
+
+
