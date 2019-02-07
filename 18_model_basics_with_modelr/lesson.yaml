@@ -299,10 +299,58 @@
 
 
 
+- Class: text
+  Output: Pasemos la siguiente tema.
+
+- Class: text
+  Output: Visualizando Modelos
+
+- Class: text
+  Output: Cuando trabajamos con modelos simples como en la lección anterior puedes darte cuenta de que patrones son capturados por el modelo estudiando la familia de modelos así como los coeficientes que se ajustan a los datos. 
+
+- Class: text
+  Output: En esta sección veremos un enfoque diferente.
+
+- Class: text
+  Output: Trataremos de entender el modelo a partir de sus predicciones y aunque suene extraño esto te ayudará a entender otros modelos predictivos.
+
+- Class: text
+  Output: Otra ventaja de los que vamos a ver es al analizar el modelo desde esta perspectiva es más fácil ver lo que el modelo no captura.
+
+- Class: text
+  Output: Predicciones
+
+- Class: text
+  Output: Para visualizar las predicciones comenzamos por generar un espacio cuadriculado que cubra la región en la que se encuentran nuestros datos.
+
+- Class: text
+  Output: Usaremos la función data_grid() que pertence a la paquetería de modelr.
+
+- Class: cmd_question
+  Output: Corre el siguiente código. cuadri <- dia %>% data_grid(x)
+  CorrectAnswer: cuadri <- dia %>% data_grid(x)
+  AnswerTests: omnitest(correctExpr='cuadri <- dia %>% data_grid(x)')
+  Hint: Corre el código que se te proporcionó.
+
+- Class: cmd_question
+  Output: Ahora escribe cuadri para que veas lo que se generó.
+  CorrectAnswer: cuadri
+  AnswerTests: omnitest(correctExpr='cuadri')
+  Hint: Corre el código que se te proporcionó.
+
+- Class: text
+  Output: Lo que hace el código que acabas de correr es que toma un data frame como primer argumento y para cada argumento subsecuente encuentra sus valores únicos y genera todas las combinaciones.
+
+- Class: text
+  Output: Ahora podemos agregar las predicciones con la función add_predictions() de modelr.
+
+- Class: text
+  Output: Esta función va a generar una nueva columna con las predicciones correspondientes.
 
 
 
-
-
-
-
+- Class: cmd_question
+  Output: Escribe cuadri <- cuadri %>% add_predictions(dia_mod)
+  CorrectAnswer: cuadri <- cuadri %>% add_predictions(dia_mod)
+  AnswerTests: omnitest(correctExpr='cuadri <- cuadri %>% add_predictions(dia_mod)')
+  Hint: Usa el código que se te proporcionó.
