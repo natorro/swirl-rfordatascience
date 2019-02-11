@@ -5,3 +5,85 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.3
+
+- Class: text
+  Output: En está sección veremos como crear nuestras presentaciones para dar a conocer nuestra información recabada al momento de hacer el análisis adecuado de los datos.
+
+- Class: text
+  Output: Una de las ventajas que tiene Rstudio es que, puedes hacer tus presentaciones en el mismo entorno de trabajo, puede convertir trabajos a HTML, Presentaciones, solo texto.
+
+- Class: text
+  Output: La única caracteristica es que tiene su propio "estilo de comandos" los cules permitiirán crear perfectamente una presentación en HTML por ejemplo.
+
+- Class: text
+  Output: Entonces primero, en la parte superior izquierda de la pantalla, se encuentra un rectángulo con un signo de más, le damos click derecho y ahí encontraremos los diferentes tipos de formatos en las cuales puede trabajar los cuales son R script, R Notebook, R Markdown, tex file, entre otros. 
+
+- Class: video
+  Output: Damos click y se despliega una ventana para la configuración del R Markdown, en donde pide asignar un título al archivo y el nombre del autor, depsués le damos en aceptar.
+  VideoLink: 
+
+- Class: text
+  Output: Se genera un archivo con espesificaciones del uso de R Markdown, antes de pasar a las espesificaciones de como hacer correctamente un formato en el entorno d trabajo de Rstudio.
+
+- Class: text
+  Output: Ahora para que visualices como se va a ver gráficamnte la evolución de tú presentación, es dandole click a Knit, que se encuentra en la barra de herramientas que se depliega al momento de crear el archivo .rmd o de lo contrario, se puede ejecutar con la ruta de comando Cmd/Ctrl + Shift + K
+
+- Class: text
+  Output: Por defecto al momento de ejecutar con el comando a knit o darle click, la visualización será en HTML (en web), pero también se puede visualizar el contenido en pdf y en .doct (formato de Word).
+
+- Class: text
+  Output: Ahora pasaremos a explicar el formato que debe emplarse en el texto para que no se tenga errores al momento de interpretar el texto imagenes y código en HTML o cualquiera de los dos formatos mencionados anteriormente.
+
+- Class: text
+  Output: Para las letras estan las cursivas  que se pueden representar de dos formas, la primera *italic* o _italic_, para las letras en negritas tenemos dos formatos **blod** o __blod__ 
+
+- Class: text
+  Output: Para poner códigos y que se diferencien del texto, al código lo ponemos entre triples comillas simples ```{r code}```, tambien hay veces en las qu usamos supeindices o subindice, para el superindice usamos ^2^, y para los subindices usamos ~2~, por ejemplo hola^1^ y hola~1~. Cabe mencionar que con este formato es una de las tres manras de ejecutar el código, más adelante te diremos las otras dos opciones para ejecutar código.
+
+- Class: text
+  Output: Para los encavezados utilizamos #, si utilizamos varias veces este sómbolo  en un solo encavezado este se hará más chico, pero si solo usamos uno es el tamaño máximo que puede tener un encavezado.
+
+- Class: text
+  Output: Para poner una irección web o imagen usaremos el siguiente formato <URL> o <img.jpg>, también podemos colocar banderas para resaltar un punto importante o cuando quemos resaltar varis parámetros de un proceso, esto lo hacemos con *, por ejemplo quiero resaltar "item2", entonces solo le pongo * item2. 
+
+- Class: text
+  Output: También se puede enumerar los parrafos, ejemplo 1. manzana
+
+- Class: text
+  Output: Como anteriormente se menciono hay tres formas de ejecutar código dentro del .rmd, la primera forma es por comandos de teclado Cmd/Ctrl + Alt + I, la segunda forma es mediante el boton insert que se encuentra en la parte superior de la barra de herramientas, por ultim esta la forma mencionada anteriormente.
+
+- Class: text
+  Output: Ahora estos pequeños códigos (Chunk code), estan enumerados, en caso de que se requiera revisar o navegar a través de los chunk code, hay un buscador que se encuentra en la parte de abao del editor con el título R Notebook, al momento de dar click s desplegaran todos los pequeños bloques de código que tienes en tú presentacioń.
+
+- Class: text
+  Output: Knitr ofrece aproximadamente 60 opciones en las que puedes optimizar tú codigo, en este apartado te presentamos las seis importantes opciones de control si tú bloque de código esta ejecutando.
+
+- Class: text
+  Output: La primera es eval = FALSE evita código de primera evaluación, esta opción es usada para desplegar código o para deshabilitar un bloque largo de código.
+
+- Class: text
+  Output: include = FALSE ejecuta código, pero no muestra el código o resultados al final del documento, esta opción en general se utiliza para no saturar tu reporte de ejecuciones de los bloques de código.
+
+- Class: text
+  Output: echo = FALSE esta opción evita código, es usado para evitar el interlineado del código R.
+
+- Class: text
+  Output: message = FALSE o warning = FALSE estas dos opciones evitan que aparescan mensajes o avisos de advertencia al final del archivo.
+
+- Class: text
+  Output: results = 'hide', esta opcion oculta las salidas del código, fig.show = 'hide' oculta las gráficas.
+
+- Class: text
+  Output: error = TRUE, al mantener esta opción habilitada, causa que el renderizado continue incluso si el código lanza un error, esto solamente se ocupa al final del reporte, y en el caso espesifico que quieras checar el funcionamiento de todo el documento, por el contrario se mantiene deshabilitado para que al ejecutar el código muestre el error y sea corregido antes de le previsualización.
+
+- Class: text
+  Output: Otra de las grandes ventajas que tenemos al trabajar con R Markdown es que podemos desplegar los dataframes con un formato adicional y que no salga la tabla como nos lo arroja en la consola.
+
+- Class: text
+  Output: Para que se pueda ver la visualización de nuestra tabla usaremos knitr::kable, y usaremos el dataframe iris las primeros 5 renglones, knitr::kable(iris[1:5, ],caption = "A knitr kable.")
+
+- Class: text
+  Output: Otra de las ventajas que tiene knit es que podemos colocar funciones para tener un formato único por ejemplo que en vez de que aparesca 16835, aparesca 16,835, utilizaremos la función format(), por ejemplo formato <- function(x) format(x, digits = 2, big.mark = ",")
+
+- Class: text
+  Output: Esta función lo que hace es separar un número cualquiera cada tres digitos si es entero, si es decimal, solo muestra los dos primeros dígitos despues del punto.
