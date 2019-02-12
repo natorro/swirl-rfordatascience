@@ -423,3 +423,44 @@
 
 - Class: text
   Output: El código sería model_matrix(df, y ~ x1 - 1)
+
+- Class: text
+  Output: Variables Categóricas
+
+- Class: text
+  Output: Generar una función a partir de una fórmula puede ser sencillo cuando el predictor es continuo, pero las cosas se complican cuando es categórico.
+
+- Class: text
+  Output: Imagina que tienes una fórmula del tipo x ~ calificacion, donde calificacion puede ser aprobado, reprobado. 
+
+- Class: text
+  Output: No tendría sentido alguno pasar estos valores directamente a una fórmula del tipo y = x1 + x2*x.
+
+- Class: text
+  Output: Lo que tiene más sentido es asignar un valor a cada opción. Por ejemplo 1 aprobado y 0 reprobado.
+
+
+
+- Class: text
+  Output: Se vuelve 1 si está aprobado y cero si no.
+
+- Class: cmd_question
+  Output: Escribe el siguiente código. df <- tribble(~calificacion, ~respuesta, "aprobado", 1, "reprobado", 0, "aprobado", 1)
+  CorrectAnswer: df <- tribble(~calificacion, ~respuesta, "aprobado", 1, "reprobado", 0, "aprobado", 1)
+  AnswerTests: omnitest(correctExpr='df <- tribble(~calificacion, ~respuesta, "aprobado", 1, "reprobado", 0, "aprobado", 1)')
+  Hint: Escribe lo que se te indicó.
+
+- Class: cmd_question
+  Output: Escribe df para que veas lo que se generó.
+  CorrectAnswer: df
+  AnswerTests: omnitest(correctExpr='df')
+  Hint: Escribe df.
+
+- Class: text
+  Output: Ahora le aplicamos la función model_matrix()
+
+- Class: cmd_question
+  Output: Escribe model_matrix(df, respuesta ~ calificacion)
+  CorrectAnswer: model_matrix(df, respuesta ~ calificacion)
+  AnswerTests: omnitest(correctExpr='model_matrix(df, respuesta ~ calificacion)')
+  Hint: Escribe model_matrix(df, respuesta ~ calificacion)
