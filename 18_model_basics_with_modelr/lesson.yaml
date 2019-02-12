@@ -354,3 +354,72 @@
   CorrectAnswer: cuadri <- cuadri %>% add_predictions(dia_mod)
   AnswerTests: omnitest(correctExpr='cuadri <- cuadri %>% add_predictions(dia_mod)')
   Hint: Usa el código que se te proporcionó.
+
+- Class: text
+  Output: El otro lado de las predicciones son los residuales,así como las predicciones te hablan de los patrones que capturo tu modelo, los residuales te hablan de lo que tu modelo se perdio. 
+
+- Class: text
+  Output: En palabras más simples son las distancia entre las predicciones de tus modelos y las observaciones.
+
+- Class: text
+  Output: Afortunadamente en R existe una función muy sencilla que sirve para agregar los residuales para cada estimación.
+
+- Class: text
+  Output: Funciona de manera similar a add_predictions() que vimos anteriormente.
+
+- Class: text
+  Output: Se usa add_residuals()
+
+- Class: text
+  Output: Es importante notar que al calcular los residuales debes pasar como primer argumento el dataset original seguido del estimado.
+
+- Class: text
+  Output: Nota -> El promedio de los residuales siempre debe ser igual a 0.
+
+- Class: text
+  Output: Ahora hablemos de modelos más generales en R.
+
+- Class: text
+  Output: La mayoría de las funciones de modelado en R usan conversiones estandar de formulas a fuciones.
+
+- Class: text
+  Output: Hemos visto conversiones simples como fue
+
+- Class: text
+  Output: y ~ x que se traduce a y = x1 + x2 * x
+
+- Class: text
+  Output: Para ver lo que hace R en realidad revisaremos la función model_matrix()
+
+- Class: text
+  Output: Como argumento recibe un data frame y un fórmula y devuelve un tibble que define la ecuación del modelo.
+
+- Class: cmd_question
+  Output: Escribe df <- tribble(~y, ~x1, ~x2, 3, 9, 5, 5, 4, 8)
+  CorrectAnswer: df <- tribble(~y, ~x1, ~x2, 3, 9, 5, 5, 4, 8)
+  AnswerTests: omnitest(correctExpr='df <- tribble(~y, ~x1, ~x2, 3, 9, 5, 5, 4, 8)')
+  Hint: Escribe lo que se te indicó.
+
+- Class: cmd_question
+  Output: Escribe df para que veas lo que se generó.
+  CorrectAnswer: df
+  AnswerTests: omnitest(correctExpr='df')
+  Hint: Escribe df.
+
+- Class: text
+  Output: Ahora vamos aplicar la función.
+
+- Class: cmd_question
+  Output: Escribe model_matrix(df, ~y, ~x1)
+  CorrectAnswer: model_matrix(df, ~y, ~x1)
+  AnswerTests: omnitest(correctExpr='model_matrix(df, ~y, ~x1)')
+  Hint: Escribe model_matrix(df, ~y, ~x1).
+
+- Class: text
+  Output: R agrega la intercepción al modelo es simplemente por tener una columna que está llena de unos. 
+
+- Class: text
+  Output: R siempre agregará esta columna si no quieres eso, debes eliminarlo explícitamente con -1.
+
+- Class: text
+  Output: El código sería model_matrix(df, y ~ x1 - 1)
