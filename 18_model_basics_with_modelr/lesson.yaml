@@ -464,3 +464,59 @@
   CorrectAnswer: model_matrix(df, respuesta ~ calificacion)
   AnswerTests: omnitest(correctExpr='model_matrix(df, respuesta ~ calificacion)')
   Hint: Escribe model_matrix(df, respuesta ~ calificacion)
+
+- Class: figure
+  Output: enter.
+  Figure: datasetpok.R
+  FigureType: new
+
+- Class: text
+  Output: Ahora veamos nuestro dataset con el que haremos las siguientes pruebas de variables categóricas.
+
+- Class: cmd_question
+  Output: Teclea pokemon3
+  CorrectAnswer: pokemon3
+  AnswerTests: omnitest(correctExpr='pokemon3')
+  Hint: Escribe pokemon3
+
+- Class: text
+  Output: En particula las columnas que usaremos serán categorical y Total.
+
+- Class: text
+  Output: Sí te fijas cada tipo1 representa un valor de categorical.
+
+- Class: cmd_question
+  Output: Escribe pokemon3 %>% select(categorical, Total)
+  CorrectAnswer: pokemon3 %>% select(categorical, Total)
+  AnswerTests: omnitest(correctExpr='pokemon3 %>% select(categorical, Total)')
+  Hint: Escribe lo que se te indicó.
+
+- Class: text
+  Output: Ahora vamos a ajustar un modelo y generar predicciones.
+
+- Class: cmd_question
+  Output: Escribe mod2 <- lm(Total ~ categorical, data = pokemon3)
+  CorrectAnswer: mod2 <- lm(Total ~ categorical, data = pokemon3)
+  AnswerTests: omnitest(correctExpr='mod2 <- lm(Total ~ categorical, data = pokemon3)')
+  Hint: Escribe lo que se te indicó.
+
+- Class: cmd_question
+  Output: Ahora  grid <- pokemon3 %>% data_grid(categorical) %>% add_predictions(mod2)
+  CorrectAnswer: grid <- pokemon3 %>% data_grid(categorical) %>% add_predictions(mod2)
+  AnswerTests: omnitest(correctExpr='grid <- pokemon3 %>% data_grid(categorical) %>% add_predictions(mod2)')
+  Hint: Escribe lo que se te indicó.
+
+- Class: cmd_question
+  Output: Ahora  grid 
+  CorrectAnswer: grid
+  AnswerTests: omnitest(correctExpr='grid')
+  Hint: Escribe lo que se te indicó.
+
+- Class: text
+  Output: Lo que sigue es graficar las predicciones con el siguiente código.
+
+- Class: cmd_question
+  Output: ggplot(pokemon3, aes(tipo1)) + geom_point(aes(y = Total)) + geom_point(data = grid, aes(y = pred), color = "red", size = 4)
+  CorrectAnswer: ggplot(pokemon3, aes(tipo1)) + geom_point(aes(y = Total)) + geom_point(data = grid, aes(y = pred), color = "red", size = 4)
+  AnswerTests: omnitest(correctExpr='ggplot(pokemon3, aes(tipo1)) + geom_point(aes(y = Total)) + geom_point(data = grid, aes(y = pred), color = "red", size = 4)')
+  Hint: Usa el código que se te proporionó.
