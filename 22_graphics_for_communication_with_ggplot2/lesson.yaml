@@ -1,0 +1,33 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 22_graphics_for_communication_with_ggplot2
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: En este capítulo aprenderás a comentar tus gráficas para que puedas tener una transmisión de la información mucho más adecuada, que con solo tener los datos interpretados.
+
+- Class: text
+  Output: Además que nos enfocaremos en las herramientas para crear buenas gráficas, por ello comenzaremos con una gráfica muy sencilla.
+
+
+
+- Class: text
+  Output: Podemos poner un título a la gráfica para que otros puedan darse una idea de que quiere representar la gráfica presentada. Por tanto en ggplot2 en la función labs, puedes usar el parametro title para introducir una frase que permina entender de que trata la información presentada, esto con ayuda de la función paste(). Entonces escribe la siguiente función para comenzar a trabajar  ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) + geom_smooth(se = FALSE)
+
+- Class: cmd_question
+  Output: De la función anterior agrega Lables() y la función title() con la frase "Decremento en el rendimiento del combustible dependiendo del tipo de motor"
+  CorrectAnswer: ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) + geom_smooth(se = FALSE) + labs(title = paste ("Decremento en el rendimiento del combustible dependiendo del tipo de motor"))
+  AnswerTests: omnitest(correctExpr='ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) + geom_smooth(se = FALSE) + labs(title = paste ("Decremento en el rendimiento del combustible dependiendo del tipo de motor"))')
+  Hint: la función a implementar es labs(title = paste ("Decremento en el rendimiento del combustible dependiendo del tipo de motor"))
+
+- Class: text
+  Output: Tambien puedes agregar subtitulo, para hacer alguna espesificación importante, esto lo hacemos con subtitle, esta función tiene exactamenete el mismo formato que title, otro de las ventajas es que podemos poner referencias a las gráficas, esto con ayuda del parametro caption = "".
+
+- Class: cmd_question
+  Output: De la gráfica anterior agrega el subttulo "Se encuentran dos carros sports que son la excepción", además proporciona la referencia "Datos de fuelcompany.com"
+  CorrectAnswer: ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) + geom_smooth(se = FALSE) + labs(title = paste ("Decremento en el rendimiento del combustible dependiendo del tipo de motor") subtitle = paste("Se encuentran dos carros sports que son la excepción") caption = "Datos de fuelcompany.com")
+  AnswerTests: omnitest(correctExpr='ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) + geom_smooth(se = FALSE) + labs(title = paste ("Decremento en el rendimiento del combustible dependiendo del tipo de motor") subtitle = paste("Se encuentran dos carros sports que son la excepción") caption = "Datos de fuelcompany.com")')
+  Hint: Agrega a la función labs, subtitle y caption.
