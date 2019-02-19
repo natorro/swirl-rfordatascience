@@ -31,3 +31,42 @@
   CorrectAnswer: ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) + geom_smooth(se = FALSE) + labs(title = paste ("Decremento en el rendimiento del combustible dependiendo del tipo de motor") subtitle = paste("Se encuentran dos carros sports que son la excepción") caption = "Datos de fuelcompany.com")
   AnswerTests: omnitest(correctExpr='ggplot(mpg, aes(displ, hwy)) + geom_point(aes(color = class)) + geom_smooth(se = FALSE) + labs(title = paste ("Decremento en el rendimiento del combustible dependiendo del tipo de motor") subtitle = paste("Se encuentran dos carros sports que son la excepción") caption = "Datos de fuelcompany.com")')
   Hint: Agrega a la función labs, subtitle y caption.
+
+- Class: cmd_question
+  Output: tambien podemos colocar ecuaciones que representen la información que esta en la gráfica, por ejemplo, en la variable random crea un tibble, en el cual guardes en "x" 20 valores aleatorios y en "y" tros 20, te recomendamos usar runif, para los valores aleatorios.
+  CorrectAnswer: random <- tibble(x = runif(20), y = runif(20))
+  AnswerTests: omnitest(correctExpr='random <- tibble(x = runif(20), y = runif(20))')
+  Hint: La función es random <- tibble(x = runif(20), y = runif(20))
+
+- Class: cmd_question
+  Output: Porsteriormente crea una gráfica de puntos con random, agregandole la función labs en el cual a "x" le asignaras quote(m * sum(x[i], i == 1, n)) y a "y" quote(beta + beta[1] * X[1])
+  CorrectAnswer: ggplot(random, aes(x,y)) + geom_point() + labs(x = quote(m * sum(x[i], i == 1, n)), y = quote(beta + beta[1] * X[1]))
+  AnswerTests: omnitest(correctExpr='ggplot(random, aes(x,y)) + geom_point() + labs(x = quote(m * sum(x[i], i == 1, n)), y = quote(beta + beta[1] * X[1]))')
+  Hint: La función es ggplot(random, aes(x,y)) + geom_point() + labs(x = quote(m * sum(x[i], i == 1, n)), y = quote(beta + beta[1] * X[1]))
+
+- Class: text
+  Output: También lo que podemos hacer es agregar notas en los puntos que estamos graficando para saber que representan.
+
+- Class: cmd_question
+  Output: En el seguiente ejercicio, guarda en random el dataset iris y que sus datos esten agrupados por especie.
+  CorrectAnswer: random <- iris %>% group_by(Species)
+  AnswerTests: omnitest(correctExpr='random <- iris %>% group_by(Species)')
+  Hint: utilizaste group_by()?
+
+- Class: cmd_question
+  Output: Posteriormente graficaremos el dataset iris pero las clasificaciones tendran una notación en cada punto, escribe ggplot(iris, aes(Petal.Length, Petal.Width)) + geom_point(aes(color = Species)) + geom_text(aes(label = Sepal.Length), data = random)
+  CorrectAnswer: ggplot(iris, aes(Petal.Length, Petal.Width)) + geom_point(aes(color = Species)) + geom_text(aes(label = Sepal.Length), data = random)
+  AnswerTests: omnitest(correctExpr='ggplot(iris, aes(Petal.Length, Petal.Width)) + geom_point(aes(color = Species)) + geom_text(aes(label = Sepal.Length), data = random)')
+  Hint: Escribe lo que se t pide.
+
+- Class: text
+  Output: Existe una forma en la cual podemos hacer estas anotaciones de forma más presentable con ggrepel::geom_label_repel(), la cual  nos ayudará a despegar un poco la etiqueta del punto y que no se vea amontonado.
+
+- Class: cmd_question
+  Output: Escribe ggplot(iris, aes(Petal.Length, Petal.Width)) + geom_point(aes(color = class)) + geom_point(size = 3, shpe = 1, data = random) + ggrepel::geom_label_repel(aes(label = Species), data = random)
+  CorrectAnswer: ggplot(iris, aes(Petal.Length, Petal.Width)) + geom_point(aes(color = class)) + geom_point(size = 3, shpe = 1, data = random) + ggrepel::geom_label_repel(aes(label = Species), data = random)
+  AnswerTests: omnitest(correctExpr='ggplot(iris, aes(Petal.Length, Petal.Width)) + geom_point(aes(color = class)) + geom_point(size = 3, shpe = 1, data = random) + ggrepel::geom_label_repel(aes(label = Species), data = random)')
+  Hint: Escribe lo que se te pide.
+
+- Class: text
+  Output: También podemos hacer que coincidan con el color de la clase, esto lo logramos agregando en ggplot(), en su atributo aes(), agregarle color = Species y asi minmo agregar el parametro segment.color = NA en la función ggrepel::geom_label_repel.
