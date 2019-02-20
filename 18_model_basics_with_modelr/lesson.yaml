@@ -520,3 +520,119 @@
   CorrectAnswer: ggplot(pokemon3, aes(tipo1)) + geom_point(aes(y = Total)) + geom_point(data = grid, aes(y = pred), color = "red", size = 4)
   AnswerTests: omnitest(correctExpr='ggplot(pokemon3, aes(tipo1)) + geom_point(aes(y = Total)) + geom_point(data = grid, aes(y = pred), color = "red", size = 4)')
   Hint: Usa el código que se te proporionó.
+
+- Class: text
+  Output: Lo siguiente que veremos es la interacción entre variables continuas y categóricas en un modelo.
+
+- Class: text
+  Output: Generaremos un data set para este ejemplo.
+
+- Class: cmd_question
+  Output: Escribe pokemon3 para que recuerdes lo que contiene ese dataset.
+  CorrectAnswer: pokemon3
+  AnswerTests: omnitest(correctExpr='pokemon3')
+  Hint: Escribe pokemon3
+
+- Class: text
+  Output: Ahora utilizando funciones de dplyr generaremos el dataset pokemon4
+
+- Class: cmd_question
+  Output:  Escribe pokemon4 <- pokemon3 %>% select(Legendary, Attack, Total) %>% mutate(level_attack = ifelse(Attack < 55, 1, ifelse(Attack > 100, 3, 2))) %>% select(level_attack, Legendary, Total)
+  CorrectAnswer: pokemon4 <- pokemon3 %>% select(Legendary, Attack, Total) %>% mutate(level_attack = ifelse(Attack < 55, 1, ifelse(Attack > 100, 3, 2))) %>% select(level_attack, Legendary, Total)
+  AnswerTests: omnitest(correctExpr='pokemon4 <- pokemon3 %>% select(Legendary, Attack, Total) %>% mutate(level_attack = ifelse(Attack < 55, 1, ifelse(Attack > 100, 3, 2))) %>% select(level_attack, Legendary, Total)')
+  Hint: Usa el código que se te proporcionó.
+
+- Class: cmd_question
+  Output:  Ahora escribe pokemon4 para que veas el resultado.
+  CorrectAnswer: pokemon4
+  AnswerTests: omnitest(correctExpr='pokemon4')
+  Hint: Usa el código que se te proporcionó.
+
+- Class: text
+  Output: Seguido de esto lo gráficamos con el siguiente código.
+
+- Class: cmd_question
+  Output: Escribe ggplot(pokemon4, aes(level_attack, Total)) + geom_point(aes(color = Legendary))
+  CorrectAnswer: ggplot(pokemon4, aes(level_attack, Total)) + geom_point(aes(color = Legendary))
+  AnswerTests: omnitest(correctExpr='ggplot(pokemon4, aes(level_attack, Total)) + geom_point(aes(color = Legendary))')
+  Hint: Usa el código que se te proporcionó.
+
+- Class: text
+  Output: Existen dos modelos que podrían ajustarse a estos datos.
+
+- Class: text
+  Output: Como primer modelo usaremos el siguiente código.
+
+- Class: cmd_question
+  Output: Escribe mod1 <- lm(Total ~ level_attack + Legendary, data = pokemon4)
+  CorrectAnswer: mod1 <- lm(Total ~ level_attack + Legendary, data = pokemon4)
+  AnswerTests: omnitest(correctExpr='mod1 <- lm(Total ~ level_attack + Legendary, data = pokemon4)')
+  Hint: Usa el código que se te proporcionó.
+
+- Class: cmd_question
+  Output: Para el segundo escribe mod2 <- lm(Total ~ level_attack * Legendary, data = pokemon4)
+  CorrectAnswer: mod2 <- lm(Total ~ level_attack * Legendary, data = pokemon4)
+  AnswerTests: omnitest(correctExpr='mod2 <- lm(Total ~ level_attack * Legendary, data = pokemon4)')
+  Hint: Usa el código que se te proporcionó.
+
+- Class: text
+  Output: Cuando sumas tus variables el modelo va a estimar su effecto de manera independiente, por el contrario cuando las multiplicas tanto la interacción entre ellas como su componente individual son incluidos en el modelo.
+
+- Class: text
+  Output: Para visualizar estos modelos vamos a utilizar dos funciones nuevas.
+
+- Class: text
+  Output: la primera es data_grid(), esta función encuentra todos los valores únicos de las variables que le metas y luego generá todas sus combinaciones.
+
+- Class: text
+  Output: La segunda función es gather_predictions() que añade la predicción para cada row. Esta función recibe los modelos como argumentos.
+
+- Class: text
+  Output: Vamos la ejercicio.
+
+- Class: text
+  Output: Para generar la red usamos el siguiente código.
+
+- Class: cmd_question
+  Output: Escribe grid <- pokemon4 %>% data_grid(level_attack, Legendary) %>% gather_predictions(mod1, mod2)
+  CorrectAnswer: grid <- pokemon4 %>% data_grid(level_attack, Legendary) %>% gather_predictions(mod1, mod2)
+  AnswerTests: omnitest(correctExpr='grid <- pokemon4 %>% data_grid(level_attack, Legendary) %>% gather_predictions(mod1, mod2)')
+  Hint: Escribe lo que se te pidió.
+
+- Class: cmd_question
+  Output: Escribe grid para que veas lo que se generó.
+  CorrectAnswer: grid
+  AnswerTests: omnitest(correctExpr='grid')
+  Hint: Escribe lo que se te pidió.
+
+- Class: text
+  Output: Ahora visualizemos los modelos.
+
+
+
+- Class: cmd_question
+  Output: Escribe ggplot(pokemon4, aes(level_attack, Total, color = Legendary)) + geom_point() + geom_line(data = grid, aes(y = pred)) + facet_wrap(~ model)
+  CorrectAnswer: ggplot(pokemon4, aes(level_attack, Total, color = Legendary)) + geom_point() + geom_line(data = grid, aes(y = pred)) + facet_wrap(~ model)
+  AnswerTests: omnitest(correctExpr='ggplot(pokemon4, aes(level_attack, Total, color = Legendary)) + geom_point() + geom_line(data = grid, aes(y = pred)) + facet_wrap(~ model)')
+  Hint: Escribe lo que se te indicó.
+
+- Class: text
+  Output: Existen distinas formas de ver cual modelo es mejor para los datos.
+
+- Class: text
+  Output: Una forma de hacerlo es revisando los residuales.
+
+- Class: cmd_question
+  Output: Generamos los residuales con el siguiente código residuales <- pokemon4 %>% gather_residuals(mod1, mod2)
+  CorrectAnswer: residuales <- pokemon4 %>% gather_residuals(mod1, mod2)
+  AnswerTests: omnitest(correctExpr='residuales <- pokemon4 %>% gather_residuals(mod1, mod2)')
+  Hint: Usa el código.
+
+- Class: cmd_question
+  Output: Ahora los visualizamos ggplot(residuales, aes(level_attack, resid, color = Legendary)) + geom_point() + facet_grid(model ~ Legendary)
+  CorrectAnswer: ggplot(residuales, aes(level_attack, resid, color = Legendary)) + geom_point() + facet_grid(model ~ Legendary)
+  AnswerTests: omnitest(correctExpr='ggplot(residuales, aes(level_attack, resid, color = Legendary)) + geom_point() + facet_grid(model ~ Legendary)')
+  Hint: Usa el código.
+
+- Class: text
+  Output: Vemos que son muy similares. Aun que en los legendarios mod1 vemos que se perdió un poco más de información. Para hacerlo de manera más precisa se requiere tener cierto conocimiento matemático por lo que no lo veremos aquí.
