@@ -70,3 +70,49 @@
 
 - Class: text
   Output: También podemos hacer que coincidan con el color de la clase, esto lo logramos agregando en ggplot(), en su atributo aes(), agregarle color = Species y asi minmo agregar el parametro segment.color = NA en la función ggrepel::geom_label_repel.
+
+- Class: text
+  Output: También podemos agregar un simple parrafo que describa bien lo que representa la gráfica de nuestros datos.
+
+- Class: text
+  Output: Para hacer que el parrafo tome cualquier posición dentro de la gráfica, lo que hacemos es utilizar la función geom_text(), en la parte de aes(), le pasaremos como parametro vjust = "top" y hjust = "right", por ejemplo.
+
+- Class: cmd_question
+  Output: Escribe lex <- mpg %>% summarize(gas = max(displ), cab = max(hwy), label = paste("Rendimiento de motor por litros de gasolina consumida"))
+  CorrectAnswer: lex <- mpg %>% summarize(gas = max(displ), cab = max(hwy), label = paste("Rendimiento de motor por litros de gasolina consumida"))
+  AnswerTests: omnitest(correctExpr='lex <- mpg %>% summarize(gas = max(displ), cab = max(hwy), label = paste("Rendimiento de motor por litros de gasolina consumida"))')
+  Hint: Escribe lo que se te pide.
+
+- Class: cmd_question
+  Output: Ahora graficamos ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_text(aes(label = lex), data = lex, vjust = "top", hust = "right")
+  CorrectAnswer: ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_text(aes(label = lex), data = lex, vjust = "top", hust = "right")
+  AnswerTests: omnitest(correctExpr='ggplot(mpg, aes(displ, hwy)) + geom_point() + geom_text(aes(label = lex), data = lex, vjust = "top", hust = "right")')
+  Hint: Escribe lo que se te pide.
+
+- Class: text
+  Output: También podemos modificar las escalas de la gráfica con las funciones que contiene la biblioteca ggplot2, las cuales son las siguientes, para escalar la variabl x se unsa scale_x_continuous(), para y scale_y_continuous() y para escalar el color usamos scale_color_discrete(). Nota que estas funciones van concatenadas con la función ggplot()
+
+- Class: cmd_question
+  Output: Grafica las columnas carat y x del dataset diamonds y concatena scale_y_continuous(breaks = seq(0, 15, by = 2))
+  CorrectAnswer: ggplot(diamonds, aes(carat, x)) +   geom_point() +  scale_y_continuous(breaks = seq(0, 15, by = 2))
+  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(carat, x)) +   geom_point() +  scale_y_continuous(breaks = seq(0, 15, by = 2))')
+  Hint: La función es ggplot(diamonds, aes(carat, x)) +   geom_point() +  scale_y_continuous(breaks = seq(0, 15, by = 2))
+
+- Class: cmd_question
+  Output: Ahora usaremos una escala donde necesitemos pasar a la escala logaritmica, por lo tanto escribe ggplot(diamonds, aes(carat, price)) + geom_bin2d() + scale_x_log10() + scale_y_log10()
+  CorrectAnswer: ggplot(diamonds, aes(carat, price)) + geom_bin2d() + scale_x_log10() + scale_y_log10()
+  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(carat, price)) + geom_bin2d() + scale_x_log10() + scale_y_log10()')
+  Hint: Escribe lo que se te pide.
+
+- Class: text
+  Output: Como podrás notar cambiamos a la escala logaritmica ya que para ver la relación de quilataje por presio fuese visible más facilmente, como en lecciones anteriores se fue trabajando, estas funciones nos permiten trabajar con los datos sin tener que modificar los datos directamente.
+
+
+- Class: text
+  Output: Por último podemos guardar nuestras graficas en formato pdf.
+
+- Class: cmd_question
+  Output: Guarda la gráfica anterior con ggsave("mydiamonds.pdf")
+  CorrectAnswer: ggsave("mydiamonds.pdf")
+  AnswerTests: omnitest(correctExpr='ggsave("mydiamonds.pdf")')
+  Hint: Escribe lo que se te pide.
