@@ -636,3 +636,9 @@
 
 - Class: text
   Output: Vemos que son muy similares. Aun que en los legendarios mod1 vemos que se perdió un poco más de información. Para hacerlo de manera más precisa se requiere tener cierto conocimiento matemático por lo que no lo veremos aquí.
+
+- Class: text
+  Output: Te habrás dado cuenta de que todos estos modelos funcionan de manera similar desde una prespectiva de programación. Ahora que hemos sentado las bases es importante que practiques para que llegues a dominar los modelos lineales, una vez hecho esto no debería de ser muy complicado que entiendas la mecánica de otras familias de modelos.
+
+- Class: text
+  Output: Ser un experto modelando implica tener una mezcla de buenos principios generales y tener muchas herramientas técnicas a tu disposición. Ahora que has adquirido los conocimientos básicos y herramientas para trabajar con ello es tu turno de investigar más clases de modelos, cómo funcionan y seguir aprendiendo.
