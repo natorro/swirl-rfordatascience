@@ -1,0 +1,106 @@
+- Class: meta
+  Course: swirl-rfordatascience
+  Lesson: 23_r_markdown_formats
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.3
+
+- Class: text
+  Output: Hasta ahora todo lo que has visto de R Markdown estuvo enfocado en producir documentos html.
+
+- Class: text
+  Output: Este capítulo te dará una visión general de los muchos tipos de elementos de salida que puedes generar con R Markdown.
+
+- Class: text
+  Output: Existen dos formas de establecer el formato de salida.
+
+- Class: text
+  Output: La primera es modificando de manera permanente el encabezado YAML.
+
+- Class: text
+  Output: Por ejemplo
+
+- Class: text
+  Output: title: "Demo"
+
+
+- Class: text
+  Output: output: html_document
+
+
+- Class: text
+  Output: La segunda es transitoriamente
+
+
+- Class: text
+  Output: Para hacerlo así se llama la función rmarkdown::render() y se aplica de la siguiente manera
+
+- Class: text
+  Output: rmarkdown::render( "pokemon.Rmd", output_format = "word_document")
+
+- Class: text
+  Output: El botón de punto de RStudio renderiza un archivo al primer formato listado en su campo de salida. Puede renderizar a formatos adicionales haciendo clic en el menu desplegable junto al botón de tejer.
+
+- Class: text
+  Output: Opciones de Salida
+
+- Class: text
+  Output: Cada formato de salida está asociado con una función R. Es importante saber el nombre de la función que hace la salida porque ahí es donde se obtiene ayuda. 
+
+- Class: text
+  Output: Por ejemplo, para averiguar qué parámetros puedes configurar con html_document, puedes buscar  ?rmarkdown:html_document().
+
+- Class: text
+  Output: También puedes reescribir los parámetros que están dados por default.
+
+- Class: text
+  Output: Un ejemplo sería
+
+- Class: text
+  Output: output: html_document: toc: true toc_float: true
+
+- Class: text
+  Output: Documentos
+
+- Class: text
+  Output: Como lo mencionamos anteriormente R Markdown puede generar muchos tipos de dcoumentos, aquí te los enlistamos.
+
+- Class: text
+  Output: 1 pdf_document hace un pdf con LaTeX, nota: debes instalar el diseño de documento de código abierto.
+
+- Class: text
+  Output: 2 word_document genera undocumento de Microsoft Word (.docx)
+
+- Class: text
+  Output: odt_document genera un documento de OpenDocuments (.odt)
+
+- Class: text
+  Output: rtf_document para Rich Text Format (.rtf)
+
+- Class: text
+  Output: md_document para un documento Markdown. 
+
+- Class: text
+  Output: Recuerda que cuando generes documentos puedes apagar la pantalla por defecto de codigo entrando a global options y correr
+
+- Class: text
+  Output: knitr::opts_chunk$set(echo = FALSE)
+
+- Class: text
+  Output: Cuadernos
+
+- Class: text
+  Output: Un html_notebook es una variación de un html_document.
+
+- Class: text
+  Output: Un documento html se centra en la comunicación con los tomadores de decisiones, mientras que un cuaderno se centra en colaborar con otros científicos de datos. Estos diferentes propósitos llevan al uso del HTML.Ambas salidas HTML contendrán la salida renderizada, pero el portátil también contiene la fuente completa de código.
+
+- Class: text
+  Output: A diferencia de un html_document, esta representación siempre incluye una copia incrustada del código fuente que la generó.
+
+- Class: text
+  Output: También puede ser editado en RStudio. Cuando abres un archivo .nb.html, RStudio vuelve a crear automáticamente el archivo .Rmd que generó eso. Otra cosa que puedes hacer es incluir archivos de soporte (por ejemplo, .csv archivos de datos), que se extraerán automáticamente cuando sea necesario.
+
+- Class: text
+  Output: Así puedes compartir análisis que hayas hecho con colegas de una forma fácil, clara y rápida.
