@@ -104,3 +104,85 @@
 
 - Class: text
   Output: Así puedes compartir análisis que hayas hecho con colegas de una forma fácil, clara y rápida.
+
+- Class: text
+  Output: Presentaciones
+
+- Class: text
+  Output: También puedes utilizar R Markdown para hacer presentaciones.
+
+- Class: text
+  Output: Aun que pierdes un poco de la personalización que tendrías al usar otras herramientas como PowerPoint tienes la ventaja de que te puedes ahorrar mucho tiempo al usar tu código de R directamente para hacer la presentación.
+
+- Class: text
+  Output: Las presentaciones funcionan dividiendo el contenido en diapositivas, con una nueva diapositiva que comienza en cada primera (#) o segundo encabezado de nivel (##). También puede insertar una regla horizontal (***) para crear una nueva diapositiva sin un encabezado.
+
+- Class: text
+  Output: Existen distintos formatos para las presentaciones
+
+- Class: text
+  Output: ioslides_presentation - presentación HTML con ioslides
+
+
+- Class: text
+  Output: slidy_presentation - presentación HTML con W3C Slidy
+
+- Class: text
+  Output: beamer_presentation - presentación PDF con LaTeX Beamer
+
+- Class: text
+  Output: Tableros
+
+- Class: text
+  Output: Los tableros son útiles para comunicar grandes cantidades de información de manera visual y rápida.
+
+- Class: text
+  Output: flexdashboard es una herramienta que vuelve muy sencillo generar dashboards con R Markdown.
+
+- Class: text
+  Output: Ahora veamos como los encabezados afectan el diseño:
+
+- Class: text
+  Output: Encabezado nivel 1 (#) comienza una nueva página en el panel de control.
+
+- Class: text
+  Output: Encabezado nivel 2 (#) comienza una nueva columna.
+
+- Class: text
+  Output: Encabezado nivel 3 (#) comienza una nueva línea.
+
+- Class: text
+  Output: Componentes Interactivos
+
+- Class: text
+  Output: Cualquier archivo con formato HTML puede contener componentes interactivos.
+
+- Class: text
+  Output: Es decir documentos cuadernos, presentaciones o tableros.
+
+- Class: text
+  Output: htmlwidgets
+
+- Class: text
+  Output: Son funciones de R que producen visualizaciones interactivas de HTML.
+
+- Class: text
+  Output: Una gran ventaja de los htmlwidgets es que no necesitas saber nada de HTML o JavaScript para utilizarlos. 
+
+- Class: text
+  Output: Existen muchas paqueterias que contienen htmlwidgets como son:
+
+- Class: text
+  Output: dygraphs para visualizaciones interactivas de series de tiempo
+
+- Class: text
+  Output: DT para tablas interactivas.
+
+- Class: text
+  Output: rthreejs para gráficas interactivas en 3D
+
+- Class: text
+  Output: DiagrammeR para diagramas.
+
+- Class: text
+  Output: Una página donde puedes aprender más de htmlwidgets y de las diversas paqueterías es la página http://www.htmlwidgets.org/.
