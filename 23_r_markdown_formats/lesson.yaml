@@ -185,4 +185,67 @@
   Output: DiagrammeR para diagramas.
 
 - Class: text
-  Output: Una página donde puedes aprender más de htmlwidgets y de las diversas paqueterías es la página http://www.htmlwidgets.org/.
+  Output: Una lugar donde puedes aprender más de htmlwidgets y de las diversas paqueterías es la página http://www.htmlwidgets.org/.
+
+- Class: text
+  Output: Shiny
+
+- Class: text
+  Output: Los htmlwidgets proporcionan interactividad del lado del cliente aunque esta interactividad sucede en el navegador.
+
+- Class: text
+  Output: Por un lado está bien porque el archivo de html puede ser distribuido sin conexión alguna sin embargo esto limita lo que se puede hacer pues todo es implementado con HTML y JavaScript.
+
+- Class: text
+  Output: Aquí es donde entra la paquetería de Shiny que te permite crear contenido interactivo con código de R y sin usar JavaScript.
+
+- Class: text
+  Output: Para poder llamar a Shiny desde un documento de R Markdown debes añadir lo siguiente en el encabezado(runtime)
+
+- Class: text
+  Output: title: "Shiny Web App"
+
+- Class: text
+  Output: output: html_document
+
+- Class: text
+  Output: runtime: shiny
+
+- Class: text
+  Output: Seguido de esto puedes añadir funciones de "input" para agregar contenido interactivo.
+
+- Class: text
+  Output: Por ejemplo:
+
+- Class: text
+  Output: numericInput("age", "How old are you?", NA, min = 0, max = 150)
+
+- Class: text
+  Output: SHiny tiene mucho potencial e incluso puedes crear aplicaciones interactivas sin usar JavaScript.
+
+- Class: text
+  Output: si quieres aprender más de Shiny podrás hacerlo en http://shiny.rstudio.com/
+
+- Class: text
+  Output: Páginas web
+
+- Class: text
+  Output: Con un poco de infraestructura puedes usar R Markdown para generar una página web completa
+
+- Class: text
+  Output: Algunos consejos básicos para que puedas hacerlo son:
+
+- Class: text
+  Output: Coloque sus archivos .Rmd en un solo directorio, index.Rmd se convertirá la página de inicio
+
+- Class: text
+  Output: Agregue un archivo YAML nombre_site.yml que proporcione la navegación para el sitio
+
+- Class: text
+  Output: Ejecute rmarkdown::render_site() para compilar _site, un directorio de archivos listos para implementarse como un sitio web estático independiente, o si utiliza un Proyecto RStudio para su directorio web. RStudio agregará una pestaña al IDE que puede usar para crear y previsualizar su sitio.
+
+- Class: text
+  Output: De igual manera si quieres aprender más podrás hacerlo en http://bit.ly/RMarkdownWebsites.
+
+- Class: text
+  Output: Felicidades! hemos terminado.
