@@ -14,7 +14,13 @@
   Output: ggplot2 es un sistema que implementa una gramática gráfica.
 
 - Class: text
-  Output: Primero nos apoyaremos de una librería que tiene un nconjunto de datos llamado tidyverse, los cules estan contenidos en un dataframe, el cual mandaremos a imprimir para ver el conjunto de datos que este contiene y poderlos modificar más adelante.
+  Output: Trabajaremos con un conjunto de datos llamado mpg que vive en la paqueteria tidyverse.
+
+- Class: cmd_question
+  Output: Ejecuta; library(tidyverse)
+  CorrectAnswer: library(tidyverse)
+  AnswerTests: omnitest(correctExpr='library(tidyverse)')
+  Hint: Ejecuta; library(tidyverse)
 
 - Class: text
   Output: Data frame --> Colección rectangular de variables en las columnas, y observaciones en los campos.
@@ -32,7 +38,7 @@
   Output: Ahora pasemos a la estructura para la manipulación de los datos, si se quiere visualizar la información en un gráfico se puede usar la siguiente estructura básica de codigo":"
 
 - Class: text
-  Output: ggplot(data = <DATOS>) + <GEOM_FUNCIÓN>(mapping = aes(<MAPPEADOS>))
+  Output: ggplot(data = <DATOS>) + <GEOM_FUNCION>(mapping = aes(<MAPPEADOS>))
 
 - Class: text
   Output: Ahora analizaremos las componentes de la función ggplot.
@@ -53,7 +59,7 @@
   Output: Escribe la función ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
   CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))')
-  Hint: Vamos, con calma.
+  Hint: Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 
 - Class: text
   Output: Ahora bien al diagrama de dispersión binomial generado por el comando anterior, puede agregarle una tercera variable, como clase, asignándolo a una estética.
@@ -71,10 +77,10 @@
   Output: Lo que podemos hacer para la visualización de los datos es ponerle color a la clase, esto lo logramos con el parametro color=class, este parametro  va dentro de la de la función aes después de la asignación de los vectores x,y.
 
 - Class: cmd_question
-  Output: Escribe la función ggplot y agregale el parametro color dentro de la función aes.
+  Output: Agregaremos argumentos a aes(). Agregaa color = class
   CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))')
-  Hint: La función modificada es --> ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  Hint: Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
 
 - Class: text
   Output: En este ejemplo se le esta asignando un solo nivel a la estética, para cada valor único de la variable, este proceso se le conoce como "scaling". Esta función también te agregará una leyenda que explica que niveles coresponden a cada valor del conjunto.
@@ -83,10 +89,10 @@
   Output: Un parametro muy util de la función aes es el size, el cual nos permite realizar un mapeo de nuetro conjunto de datos, el cual nos ayuda a saber el tipo de lase que tienen los datos.
 
 - Class: cmd_question
-  Output: Modifica la función ggplot y agrega a la función aes el parametro size.
+  Output: Cambia color = class por size = class
   CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))')
-  Hint:  La función deberia dee ser --> ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
+  Hint:  Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
 
 - Class: text
   Output: NOTA --> Este comando es sólo para mapear un desorden variable, si se mapea una estética en orden, nos lanzará una advertencia
@@ -96,16 +102,19 @@
 
 
 - Class: cmd_question
-  Output: Modifica la función ggplot para que cambie la transparencia de los datos graficados.
-  CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
-  AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))')
-  Hint: La función es la siguiente ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+  Output: Cambia size = class por alpha = class
+  CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+  AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))')
+  Hint: Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
 
 - Class: cmd_question
-  Output: Ahora modificala para que cambie la forma de los datos de la clase.
+  Output: Cambia size = class por shape = class
   CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))')
-  Hint: La funciń queda como sigue ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+  Hint: Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+
+- Class: text
+  Output: Puedes ver que la estetica se cambia en el parametro mapping = aes()
 
 - Class: text
   Output: Las estéticas tambien se pueden aplicar a todo el conjunto, sin que contengan información sobre la variable, y solo cambien la apariencia del gráfico, definindolas fuera de la funcion aes()
@@ -126,22 +135,10 @@
   Output: Aquí "formula" es el nombre de la estructura de datos en R.
 
 - Class: cmd_question
-  Output: La variable que le pasas a facet_wrap debe ser discreto. Escribe como quedaría la función ggplot agregando la función facet_wrap. Visualiza el resultado.
-  CorrectAnswer: geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
-  AnswerTests: omnitest(correctExpr='geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)')
-  Hint: no te preocupes, la función queda como geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
-
-- Class: text
-  Output: Ahora para facetear tu gráfica pero con dos variables, lo único que tenemos que hacer es cambiar facet_wrap por facet_grid.
-
-- Class: text
-  Output: El primer argumento de facet_grid debe ser una formula, pero a diferencia de la anterior, ésta contendrá dos nombres de variables separados por "~".
-
-- Class: cmd_question
-  Output: ¿Cómo seria la implementación de la función facet_grid? Escribe la pura función facet_grid con sus respectivos parametros.
-  CorrectAnswer: facet_grid(drv ~ cyl)
-  AnswerTests: omnitest(correctExpr='facet_grid(drv ~ cyl)')
-  Hint: la función es facet_grid(drv ~ cyl)
+  Output: Ejecuta; ggplot(mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2) y observa las divisiones que crear facet_wrap()
+  CorrectAnswer: ggplot(mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
+  AnswerTests: omnitest(correctExpr='ggplot(mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)')
+  Hint: Ejecuta; ggplot(mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
 
 - Class: text
   Output: Si no quiere facetear en filas y columnas, use a **"."** En lugar de un nombre de variable, por ejemplo --> facet_grid(.~cyl)
@@ -159,10 +156,10 @@
   Output: la función geom in ggplot2 toma un argumento de mapeo. Sin envargo, no siempre se trabaja la estetica con geom. Puedes transformar la forma de un punto, pero no puedes transformar la forma de una linea, lo que puedes hacer en este caso es establecer el tipo de una linea. La funcion geom_smooth() se encarga de dibujar una linea diferente, para cada valor único de la variable que asigne al tipo de linea.
 
 - Class: cmd_question
-  Output: un ejemplo de esto es la siguiente grafica en la que comprovaremos lo anterior, escribe --> ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+  Output: Ejemplo de esto es la siguiente grafica en la que comprobaremos lo anterior, escribe --> ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
   CorrectAnswer: ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))')
-  Hint: Tu puedes!!
+  Hint: Ejecuta; ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
 
 - Class: text
   Output: Puedes visualizar multiples geoms en una gráfica, agregando multiples funciones a ggplot().
@@ -171,16 +168,16 @@
   Output: A la función anterior agrega la función geom_point pasando como valores displ y hwy, al parametro aes dentro de la misma función. 
   CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + geom_smooth(mapping = aes(x = displ, y = hwy))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + geom_smooth(mapping = aes(x = displ, y = hwy))')
-  Hint: la función queda de la siguiente manera ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + geom_smooth(mapping = aes(x = displ, y = hwy))
+  Hint: Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + geom_smooth(mapping = aes(x = displ, y = hwy))
 
 - Class: text
-  Output: Sin emvargo, el codigo anterior se nos duplica, para evitar ésta duplicación, pasamos un conjunto de asignaciones a ggplot(). ggplot2 tratará estos mapeos como mapeos globales que se aplican a cada geom en el gráfico.
+  Output: Sin embargo, el codigo anterior se nos duplica, para evitar ésta duplicación, pasamos un conjunto de asignaciones a ggplot(). ggplot2 tratará estos mapeos como mapeos globales que se aplican a cada geom en el gráfico.
 
 - Class: cmd_question
-  Output: Lo que podemos hacer es alpicar un filtro a la función geom_smooth de la siguiente manera ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth(data = filter(mpg, class == "subcompact"),se = FALSE).Escribe la función para que visualices el resultado.
+  Output: Podemos alpicar un filtro a la función geom_smooth de la siguiente manera, ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth(data = filter(mpg, class == "subcompact"),se = FALSE).Escribe la función para que visualices el resultado.
   CorrectAnswer: ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth(data = filter(mpg, class == "subcompact"),se = FALSE)
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth(data = filter(mpg, class == "subcompact"),se = FALSE)')
-  Hint: Verifica si no te equivocaste al escribir la función.
+  Hint: Ejecuta; ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + geom_point(mapping = aes(color = class)) + geom_smooth(data = filter(mpg, class == "subcompact"),se = FALSE)
 
 - Class: text
   Output: El argumento de datos locales en geom_smooth () anula el argumento de datos globales en ggplot () solo para esa capa esto lo hace con se = FALSE.
@@ -195,7 +192,7 @@
   Output: Realiza una grafica de barras agregando a ggplot(data = mpg) la función geom_bar, pasandole como variable hwy al parametro aes, recuerda que aes va dentro de las funciones adicionales a la función ggplot.
   CorrectAnswer: ggplot(data = mpg) + geom_bar(mapping = aes(x = hwy))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_bar(mapping = aes(x = hwy))')
-  Hint: La función es ggplot(data = mpg) + geom_bar(mapping = aes(x = hwy))
+  Hint: Ejecuta; ggplot(data = mpg) + geom_bar(mapping = aes(x = hwy))
 
 - Class: text
   Output: Para recrear la gráfica anterior o culquiera utilizamos la función stat_count.
@@ -204,7 +201,7 @@
   Output: Recrea la función anterior utilizando la funcion stat_count.
   CorrectAnswer: ggplot(data = mpg) + stat_count(mapping = aes(x = hwy))
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + stat_count(mapping = aes(x = hwy))')
-  Hint: Solo cambia geom_bar por stat_count
+  Hint: Ejecuta; ggplot(data = mpg) + stat_count(mapping = aes(x = hwy))
 
 - Class: text
   Output: Esto funciona porque cada geom tiene una estadística predeterminada, y cada estadística tiene un geom predeterminado. Esto significa que normalmente puede usar geoms sin preocuparse por la transformación estadística subyacente.
@@ -217,15 +214,15 @@
 
 - Class: cmd_question
   Output: Para verificar lo anterior, contruye la tabla con la función antes mencionada, tomando en cuenta que para la columna ~a los nombres de las barras seran intervalo_1,intervalo_2 e intervalo_3, para la columna ~b las alturas seran de 10,20 y 35. Recuerda guardar eta tabla en una variable la cual llamaras demo.
-  CorrectAnswer: demo <- tribble(~a,      ~b,"intervalo_1", 10,"intervalo_2", 20,"intervalo_3", 35)
-  AnswerTests: omnitest(correctExpr='demo <- tribble(~a,      ~b,"intervalo_1", 10,"intervalo_2", 20,"intervalo_3", 35)')
-  Hint: La construcción de la tabla es demo <- tribble(~a,      ~b,"bar_1", 20,"bar_2", 30,"bar_3", 40)
+  CorrectAnswer: demo <- tribble(~a,~b,"intervalo_1", 10,"intervalo_2", 20,"intervalo_3", 35)
+  AnswerTests: omnitest(correctExpr='demo <- tribble(~a,~b,"intervalo_1", 10,"intervalo_2", 20,"intervalo_3", 35)')
+  Hint: Ejecuta; demo <- tribble(~a,~b,"intervalo_1", 10,"intervalo_2", 20,"intervalo_3", 35)
 
 - Class: cmd_question
   Output: Ahora escribe la función con ggplot para mostrar la gráfica de barras para el data fgrame que creamos llamado demo.
   CorrectAnswer: ggplot(data = demo) + geom_bar(mapping = aes(x = a, y = b), stat = "identity")
   AnswerTests: omnitest(correctExpr='ggplot(data = demo) + geom_bar(mapping = aes(x = a, y = b), stat = "identity")')
-  Hint: La función quedaria de la siguiente forma ggplot(data = demo) + geom_bar(mapping = aes(x = a, y = b), stat = "identity")
+  Hint: Ejecuta; ggplot(data = demo) + geom_bar(mapping = aes(x = a, y = b), stat = "identity")
 
 - Class: text
   Output: Si quisieramos modificar el mapeo por estáticas predeterminado (una de conteo por ejemplo) a una gráfica de barras de proporción.
@@ -234,7 +231,7 @@
   Output: Escibe la siguiente función para verificar lo dicho anteriormente ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1)).
   CorrectAnswer: ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))')
-  Hint: Verifica la escritura.
+  Hint: Ejecuta; ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))
   
   
 
@@ -245,19 +242,19 @@
   Output: Escribe la siguiente función y visualiza los cambios realizados ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
   CorrectAnswer: ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)')
-  Hint: verifica tu escritura
+  Hint: Ejecuta; ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
 
 - Class: cmd_question
   Output: Escribe la siguiente función y visualiza los cambios realizados ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
   CorrectAnswer: ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)')
-  Hint: verifica tu escritura
+  Hint: Ejecuta; ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
 
 - Class: cmd_question
   Output: Escribe la siguiente función y visualiza los cambios realizados ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
   CorrectAnswer: ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)')
-  Hint: verifica tu escritura
+  Hint: Ejecuta; ggplot(data = diamonds) + stat_summary(mapping = aes(x = cut, y = depth), fun.ymin = min, fun.ymax = max, fun.y = median)
 
 - Class: text
   Output: Se puede colorear una gráfica de barras usando tanto la estetica color o fill.
@@ -269,7 +266,7 @@
   Output: Modifica la función  de ggplot, y en la función geom_bar utiliza fill = clarity y compara lo dico con el resultado.
   CorrectAnswer: ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity))
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity))')
-  Hint: La función es ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity))
+  Hint: Ejecuta; ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity))
 
 - Class: text
   Output: Existen varias opciones para evitar que se arreglen de manera automática. position = "identity" pone cada objeto exactamente donde debe ir en el contexto del gráfico. La gran desventaja de usarlo en una gráfica de barras es que se colocan una sobre otra.
@@ -278,7 +275,7 @@
   Output: Para verificar lo dicho anteriormente escribe la siguiente variación de la función ggplot ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + geom_bar(alpha = 1/5, position = "identity")
   CorrectAnswer: ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + geom_bar(alpha = 1/5, position = "identity")
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + geom_bar(alpha = 1/5, position = "identity")')
-  Hint: Revisa la escritura.
+  Hint: Ejecuta; ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + geom_bar(alpha = 1/5, position = "identity")
 
 - Class: text
   Output: Position = "fill" funciona como el apilamiento, pero hace cada set de barras de la misma altura, lo que lo hace ideal para comparar proporciones en grupos.
@@ -287,7 +284,7 @@
   Output: Modifica la finción ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity)) con psition = "identity" y verifica lo antes dicho.
   CorrectAnswer: ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")')
-  Hint: a función es ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
+  Hint: Ejecuta; ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
 
 - Class: text
   Output: position = "dodge" pone objetos que se traslapan directamente uno tras otro. Esto hace mas fácil comparar valores individuales
@@ -296,7 +293,7 @@
   Output: Como en el ejercicio anterior pero ahora asignale a position la palabra dodge.
   CorrectAnswer: ggplot(data = diamonds) + geom_bar( mapping = aes(x = cut, fill = clarity), position = "dodge")
   AnswerTests: omnitest(correctExpr='ggplot(data = diamonds) + geom_bar( mapping = aes(x = cut, fill = clarity), position = "dodge")')
-  Hint: LA función es ggplot(data = diamonds) + geom_bar( mapping = aes(x = cut, fill = clarity), position = "dodge")
+  Hint: Ejecuta; ggplot(data = diamonds) + geom_bar( mapping = aes(x = cut, fill = clarity), position = "dodge")
 
 - Class: text
   Output: Hay otro tipo de ajuste que no es ideal para gráficas de barras, pero si para gráficas de puntos. Normalmente los puntos que estan expresados en una gráfica de puntos es un redondeo de los registros que se estan tomando en cuenta, y ademas no muestra el grueso de las muestras, dejandonos solo con los datos representatyivos, mas no el volumen. Esto se puede evitar usando el ajuste "jitter".
@@ -305,10 +302,10 @@
   Output: position = "jitter" añade una pequeña cantidad de ruido aleatorio a cada punto.
 
 - Class: cmd_question
-  Output: Cómo quedaria la función ggplot quitando la función geom_bar y agregando geom_bar utilizando el data frame mpg y x= displ e y= hwy en la funcion aes, añadiendo position ="jitter".
+  Output: Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
   CorrectAnswer: ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
   AnswerTests: omnitest(correctExpr='ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")')
-  Hint: La función es ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
+  Hint: Ejecuta; ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 
 - Class: text
   Output: Ahora pasemos a los sistemas coordinados. El sistema coordinado carteciano esta por determinado, donde la posición de x y de y actuan de manera independiente que buscan la localización de cada punto. Son un número de otros sistemas coordinados ocacionalmente útil. 
