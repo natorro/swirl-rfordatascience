@@ -8,7 +8,10 @@
 
 
 - Class: text
-  Output: En esta sección te mostraremos lo útil que puede ser usar un Script, sobre todo cuando comiences a escribir código más complejo. 
+  Output: Te habras percatado sobre la estructura que tiene Rstudio, repasemos un poco sobre los Script.
+
+- Class: text
+  Output: Del lado izquierdo podemos colocar el codigo que queramos sin ser ejecutado, de esta manera podemos tener un orden y documentacion de nuestros codigos.
 
 - Class: text
   Output: Un script editor se abre dando click en la pestaña file, seguido de eso baja a New File donde daras click nuevamente y se abrira otra pestaña, de la nueva pestaña seleccionamos la primera opción que es "R Script". Has terminado! Ahora puedes comenzar a escribir tú código
@@ -26,11 +29,8 @@
 - Class: text
   Output: Cmd ó Ctrl-Shift-S que sirve para correr todo el Script.
   
-  
-- Class: text
+ - Class: text
   Output: Otra opción es que subrayes todo el código que deseas correr y ejecutes el comando Cmd ó Ctrl - Enter.
-
-
 
 - Class: text
   Output: Una de las funciones de R studio permite que puedas cerrar la IDE en el momento que desees y si dejaste código en un scripT, lo carga automáticamente.
@@ -67,3 +67,4 @@
 
 - Class: text
   Output: Felicidaes hemos terminado, continua con la siguiente lección!
+
