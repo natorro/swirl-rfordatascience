@@ -9,19 +9,19 @@
   
   
 - Class: text
-  Output: Bien ahora que has entendido como se visualizan los datos es momento de obtener conocimientos básicos sobre el flujo de trabajo con R a un nivel básico.
+  Output: Veremos el Flujo de Trabajo que es recomendable seguir dentro de Rstudio.
 
 - Class: cmd_question
-  Output: R se puede utilizar como calculadora. Inicia una suma de 2 + 2
+  Output: R se puede utilizar como calculadora. Ejecuta;  2 + 2
   CorrectAnswer: 2 + 2
   AnswerTests: omnitest(correctExpr='2 + 2')
-  Hint: Solo escribe 2 + 2.
+  Hint: Ejecuta; 2 + 2
 
 - Class: cmd_question
-  Output: Desde operaciones tan símples como 2 + 2 hasta unas más complejas, como la que tendras que transcribir en este momento - (59 + 73 + 2) / 3
+  Output: Multiples operaciones con Jerarquia Matematica. Ejecuta; (59 + 73 + 2) / 3
   CorrectAnswer: (59 + 73 + 2) / 3
   AnswerTests: omnitest(correctExpr='(59 + 73 + 2) / 3')
-  Hint: transcribe la siguiente operación en la consola - (59 + 73 + 2) / 3
+  Hint: Ejecuta; (59 + 73 + 2) / 3
 
 
 - Class: text
@@ -31,17 +31,17 @@
   Output: Támbien existen las funciones matemáticas seno, coseno, logaritmo, exponencial y se pueden anidar unas a otras.
 
 - Class: mult_question
-  Output: Para expresarlas, te mostraremos un listado de como se deben de expresar, por favor, selecciona la función de logaritmo  de 1 para continuar.
+  Output: Ejecuta; log(1) (De igual forma puedes prbar usar exp(0), cos(0), sen(0))
   AnswerChoices: sin(0);cos(0);log(1);exp(1);log(exp(1))
   CorrectAnswer: log(1)
   AnswerTests: omnitest(correctVal='log(1)')
-  Hint: Todas las expresiónes aqui mostradas son correctas, pero para continuar selecciona la de logaritmo de 1.
+  Hint: Ejecuta; log(1)
 
 - Class: cmd_question
   Output: Ahora que ya sabes que se pueden llevar a cabo operaciones, tambien debes saber que puedes asignar valores a objetos, asigna el valor 10 a x con la expresión x <- 10
   CorrectAnswer: x <- 10
   AnswerTests: omnitest(correctExpr='x <- 10')
-  Hint: Transcribe la expresión x <- 10
+  Hint: Ejecuta; x <- 10
 
 - Class: text
   Output: Para llevar a cabo la asinganción de valores basta con que sigas esta nomenclatura":" nombre_del_objeto <- valor_u_operacion 
@@ -50,16 +50,16 @@
   Output: EN R, se usa la convención snake_case para asignar nombres a los objetos, alguno de los ejemplos pueden ser yo_uso_snake_case, otras PersonasUsanCamelCase, otras.usan.puntos.
 
 - Class: cmd_question
-  Output: Para que se entienda mejor, asigna el valor 25 al objeto mi_numero
+  Output: Asigna el valor 25 al objeto mi_numero.
   CorrectAnswer: mi_numero <- 25
   AnswerTests: omnitest(correctExpr='mi_numero <- 25')
-  Hint: Escribe el objeto y despues asigna el numero 25 de acuerdo a la fórmula que vimos anteriormente.
+  Hint: Ejecuta; mi_numero <- 25
 
 - Class: cmd_question
-  Output: ¡Muy bien! Ahora, si quieres consultar lo que contiene el objeto, basta con que lo invoques; invoca mi_numero
+  Output: Ejecuta; mi_numero (Veras que se le asigno el valor 25)
   CorrectAnswer: mi_numero
   AnswerTests: omnitest(correctExpr='mi_numero')
-  Hint: solo escribe el nombre de mi_numero
+  Hint: Ejecuta; mi_numero
 
 - Class: text
   Output: Recuerda que en R es de vital importancia que seas preciso, la forma en como escribes si con mayuscula o minuscula importa, no es lo mismo Mi_numero, mi_Numero MInumero o mi_numero, por lo que debes estar siempre atento a como escribes las expresiones en todo momento para no toparte con errores.
@@ -71,22 +71,44 @@
   Output: Puedes usar la función seq(x, y) para establecer la secuencia de un número x a un número y de manera ordenada, intentalo numerando del 1 al 10
   CorrectAnswer: seq(1, 10)
   AnswerTests: omnitest(correctExpr='seq(1, 10)')
-  Hint: x es el primer valor, y 10 el segundo valor, x es el inicio y y el final, ahora reemplaza los numeros de acuerdo a la numeración deseada
+  Hint: Ejecuta; seq(1,10)
 
 - Class: cmd_question
   Output: También puedes asignar el resultado de operaciones o salidas de funciones en objetos; añade la siguiente operación al objeto y seq(1, 10, length.out = 5)
   CorrectAnswer: y <- seq(1, 10, length.out = 5)
   AnswerTests: omnitest(correctExpr='y <- seq(1, 10, length.out = 5)')
-  Hint: solo transcribe la operación y asignala a y como objeto
+  Hint: Ejecuta; y <- seq(1, 10, length.out = 5)
 
 - Class: cmd_question
   Output: Y bien, ¿Ahora como puedo saber el valor de la operación que realize? Te puedes llevar una sorpresa al ver que no es solo un valor, y que corresponde con una serie de reglas que definiste en la operación; consulta el objeto y
   CorrectAnswer: y
   AnswerTests: omnitest(correctExpr='y')
-  Hint: Solo escribe y
+  Hint: Ejecuta; y 
+
+- Class: text
+  Output: Una vez asignado valores a las variables puedes realizar aplicar funciones a las variables. 
+  
+- Class: cmd_question
+  Output: Sumemos los valores de la variable y. Ejecuta; sum(y)
+  CorrectAnswer: sum(y)
+  AnswerTests: omnitest(correctExpr='sum(y)')
+  Hint: Ejecuta; sum(y)
+
 
 - Class: cmd_question
-  Output: El siguiente codigo tiene errores y no se ejecuta de manera correcta, por favor, corrigelo y ejecutalo para obtener lo deseado":" library(tidyverse) ggplot(dota = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) fliter(mpg, cyl = 8) filter(diamond, carat > 3)
-  CorrectAnswer: library(tidyverse) ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) filter(mpg, cyl = 8) filter(diamond, carat > 3)
-  AnswerTests: omnitest(correctExpr='library(tidyverse) ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) filter(mpg, cyl = 8) filter(diamond, carat > 3)')
-  Hint: Presta especial atención a las letras, y que esten bien escritas las expresiones.
+  Output: Ahora definamos un nuevo vector x <- seq(1, 5, length.out = 5)
+  CorrectAnswer: x <- seq(1, 5, length.out = 5)
+  AnswerTests: omnitest(correctExpr='x <- seq(1, 5, length.out = 5)')
+  Hint: Ejecuta; x <- seq(1, 5, length.out = 5)
+
+- Class: cmd_question
+  Output: Multiplicaremos los valores de ambos vectores x y y. Ejecuta; x * y
+  CorrectAnswer: x * y
+  AnswerTests: omnitest(correctExpr='x * y')
+  Hint: Ejecuta; x * y
+
+- Class: cmd_question
+  Output: Recuerda que R es un lenguaje estadistico, tiene un amplio numero de funciones que facilitan el analisis de los datos. Ejecuta; summary(x)
+  CorrectAnswer: summary(y)
+  AnswerTests: omnitest(correctExpr='summary(y)')
+  Hint: Ejecuta; summary(y)
